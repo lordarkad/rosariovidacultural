@@ -1,0 +1,32 @@
+apis:
+  main:
+    root: docs/api-spec.yml
+    x-openapi-ts:
+      output: packages/shared/src/types/openapi.d.ts
+
+rules:
+  no-unused-components: warn
+  operation-operationId: warn
+  security-defined: warn
+  operation-summary: off
+  info-contact: off
+
+  # Enforce Triptongo response envelope on ALL responses
+  response-contains-property:
+    severity: error
+    responses:
+      - 2xx
+    properties:
+      - success
+      - data
+  response-contains-property/error-envelope:
+    severity: error
+    responses:
+      - 4xx
+      - 5xx
+    properties:
+      - success
+      - error
+
+lint:
+  extends: [recommended]

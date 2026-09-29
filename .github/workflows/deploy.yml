@@ -1,0 +1,64 @@
+name: Deploy
+
+# Waits for CI to pass on main before deploying. Thin caller: deploy/migrate/verify logic lives in the
+# playbook's reusable workflow (post-merge-deploy.yml). Requiere squash-merge-only + branch protection
+# en main (ver tracks/app/00-playbook.md y la nota del skill /new-track-app).
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+
+concurrency:
+  group: deploy-${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    outputs:
+      api: ${{ steps.filter.outputs.api }}
+      dashboard: ${{ steps.filter.outputs.dashboard }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 2
+      - id: parent
+        run: echo "sha=$(git rev-parse HEAD^)" >> "$GITHUB_OUTPUT"
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          base: ${{ steps.parent.outputs.sha }}
+          filters: |
+            api:
+              - 'apps/api/**'
+            dashboard:
+              - 'apps/dashboard/**'
+
+  deploy-staging:
+    needs: changes
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    uses: Triptongo/triptongo-ci-shared/.github/workflows/post-merge-deploy.yml@main
+    with:
+      environment: staging
+      ref: ${{ github.event.workflow_run.head_sha }}
+      deploy_api: ${{ needs.changes.outputs.api == 'true' }}
+      deploy_dashboard: ${{ needs.changes.outputs.dashboard == 'true' }}
+      d1_database_name: "rosariovidacultural-db-staging"
+      api_health_url: "" # REPLACE once the staging API domain is known — empty skips the smoke check
+    secrets: inherit
+
+  deploy-production:
+    needs: [changes, deploy-staging]
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    uses: Triptongo/triptongo-ci-shared/.github/workflows/post-merge-deploy.yml@main
+    with:
+      environment: production
+      ref: ${{ github.event.workflow_run.head_sha }}
+      deploy_api: ${{ needs.changes.outputs.api == 'true' }}
+      deploy_dashboard: ${{ needs.changes.outputs.dashboard == 'true' }}
+      d1_database_name: "rosariovidacultural-db"
+      api_health_url: "" # REPLACE once the production API domain is known — empty skips the smoke check
+    secrets: inherit

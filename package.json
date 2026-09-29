@@ -1,0 +1,29 @@
+{
+  "name": "rosariovidacultural",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:api": "npm -w apps/api run dev",
+    "dev:dashboard": "npm -w apps/dashboard run dev",
+    "build": "npm -w packages/shared run build --if-present && npm -w apps/api run build --if-present && npm -w apps/dashboard run build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "type-check": "npm run type-check --workspaces --if-present",
+    "lint:spec": "redocly lint",
+    "generate:types": "openapi-typescript docs/api-spec.yml -o packages/shared/src/types/openapi.d.ts",
+    "mock": "prism mock docs/api-spec.yml --port 8787",
+    "deploy:api:staging": "npm -w apps/api run deploy:staging",
+    "deploy:api:production": "npm -w apps/api run deploy:production",
+    "deploy:dashboard:staging": "npm -w apps/dashboard run deploy:staging",
+    "deploy:dashboard:production": "npm -w apps/dashboard run deploy:production"
+  },
+  "devDependencies": {
+    "@redocly/cli": "^1.34.0",
+    "@stoplight/prism-cli": "^5.14.0",
+    "openapi-typescript": "^7.6.0",
+    "vitest": "^4.1.8"
+  }
+}

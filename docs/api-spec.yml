@@ -1,0 +1,68 @@
+openapi: 3.1.0
+info:
+  title: "rosariovidacultural API"
+  version: 0.1.0
+  description: "Agregador de planes en Rosario (eventos, espacios, lugares): sitio público + panel admin."
+
+servers:
+  - url: /api
+
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      summary: Health check
+      tags: [system]
+      responses:
+        "200":
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [success, data]
+                properties:
+                  success:
+                    type: boolean
+                    enum: [true]
+                  data:
+                    $ref: "#/components/schemas/HealthData"
+        "500":
+          $ref: "#/components/responses/ServerError"
+
+components:
+  schemas:
+    HealthData:
+      type: object
+      required: [status, ts]
+      properties:
+        status:
+          type: string
+          enum: [ok]
+        ts:
+          type: string
+          format: date-time
+
+    ErrorEnvelope:
+      type: object
+      required: [success, error]
+      properties:
+        success:
+          type: boolean
+          enum: [false]
+        error:
+          type: string
+
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"
+    ServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorEnvelope"

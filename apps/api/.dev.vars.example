@@ -1,0 +1,4 @@
+# Copy to .dev.vars for local development. NEVER commit .dev.vars.
+ENVIRONMENT=development
+# Token que usa el job de ingesta Python para llamar a POST /api/ingest
+INGEST_TOKEN=dev-ingest-token-change-me

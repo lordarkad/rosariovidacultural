@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+
+      - run: npm install --package-lock-only --ignore-scripts
+      - run: npm ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Lint spec
+        run: npm run lint:spec
+
+      - name: Generate types
+        run: npm run generate:types
+
+      - name: Check for spec drift
+        run: git diff --exit-code packages/shared/src/types/openapi.d.ts
+
+      - name: Type check
+        run: npm run type-check
+
+      - name: Test
+        run: npm test
+
+      - name: Ingestion tests (Python)
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r ingestion/requirements.txt
+      - run: python -m unittest discover -s tests
+        working-directory: ingestion
+
+      - name: Snyk SAST
+        uses: snyk/actions/node@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: code test
+
+      - name: Snyk SCA
+        uses: snyk/actions/node@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: test

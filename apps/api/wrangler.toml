@@ -1,0 +1,42 @@
+name = "rosariovidacultural-api"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# account_id intentionally omitted — Triptongo is a multi-tenant agency.
+# Set CLOUDFLARE_ACCOUNT_ID in your shell or as a CI secret (never hardcode here).
+
+# Default [vars]/[[d1_databases]] below are read by `wrangler dev` (local Miniflare) — keep ENVIRONMENT=development here.
+# Staging and production are separate named environments with their own D1 database, never the default block.
+
+[vars]
+ENVIRONMENT = "development"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "rosariovidacultural-db"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+
+[env.staging]
+# `name` MUST be set explicitly on every named environment (otherwise Wrangler composes "<base>-<env>").
+name = "rosariovidacultural-api-staging"
+[env.staging.vars]
+ENVIRONMENT = "staging"
+
+[[env.staging.d1_databases]]
+binding = "DB"
+database_name = "rosariovidacultural-db-staging"
+database_id = "REPLACE_WITH_D1_STAGING_DATABASE_ID"
+
+[env.production]
+name = "rosariovidacultural-api"
+[env.production.vars]
+ENVIRONMENT = "production"
+
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "rosariovidacultural-db"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+
+# Secrets — provision per environment via `wrangler secret put <NAME> --env staging` / `--env production`:
+# INGEST_TOKEN            — authenticates the Python ingestion job (GitHub Actions) -> POST /api/ingest
