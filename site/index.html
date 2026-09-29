@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rosario, qué hacer</title>
+<meta name="description" content="Agenda unificada de cultura, gastronomía y recreación en Rosario.">
+<style>
+:root {
+  --bg: #f7f4ef; --surface: #ffffff; --ink: #1d1b19; --muted: #6b655d; --line: #e4ddd2;
+  --accent: #b4432a; --accent-ink: #ffffff; --chip: #efe9de; --chip-on: #1d1b19; --chip-on-ink: #fff;
+  --free: #1f7a4d;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #17150f; --surface: #221f18; --ink: #f1ece2; --muted: #a69f92; --line: #38332a;
+    --accent: #e0674b; --accent-ink: #1a0f0b; --chip: #2d2920; --chip-on: #f1ece2; --chip-on-ink: #17150f;
+    --free: #5fc08c;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px 64px; }
+header { padding: 28px 0 8px; }
+h1 { font: 700 clamp(1.7rem, 4vw, 2.4rem)/1.1 Georgia, "Times New Roman", serif; margin: 0 0 4px; letter-spacing: -.01em; }
+.sub { color: var(--muted); margin: 0; font-size: .95rem; }
+.panel { position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 12px 0; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 8px; }
+input[type=search], input[type=date] { font: inherit; padding: 9px 12px; border: 1px solid var(--line); border-radius: 10px;
+  background: var(--surface); color: var(--ink); }
+input[type=search] { flex: 1 1 220px; min-width: 0; }
+.chip { font: inherit; font-size: .9rem; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line);
+  background: var(--chip); color: var(--ink); cursor: pointer; }
+.chip[aria-pressed=true] { background: var(--chip-on); color: var(--chip-on-ink); border-color: var(--chip-on); }
+.chip:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.label { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-right: 4px; }
+label.check { display: inline-flex; gap: 6px; align-items: center; font-size: .9rem; cursor: pointer; }
+.count { color: var(--muted); font-size: .9rem; margin: 4px 0 12px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
+.thumb { aspect-ratio: 16/9; background: var(--chip); object-fit: cover; width: 100%; display: block; }
+.body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.when { color: var(--accent); font-weight: 600; font-size: .9rem; }
+.card h2 { font-size: 1.05rem; line-height: 1.25; margin: 0; }
+.venue { color: var(--muted); font-size: .9rem; }
+.desc { color: var(--muted); font-size: .88rem; margin: 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 6px; }
+.tag { font-size: .75rem; padding: 2px 8px; border-radius: 6px; background: var(--chip); }
+.tag.free { background: transparent; color: var(--free); border: 1px solid var(--free); font-weight: 600; }
+.links { font-size: .85rem; display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.links a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.links a:hover { text-decoration: underline; }
+.empty { padding: 48px 0; text-align: center; color: var(--muted); }
+footer { margin-top: 40px; color: var(--muted); font-size: .85rem; }
+footer .warn { color: var(--accent); }
+.geo-msg { font-size: .85rem; color: var(--muted); }
+.km { color: var(--accent); font-weight: 600; }
+.tabs { display: flex; flex-wrap: wrap; gap: 0 8px; margin-top: 14px; }
+.next { display: flex; flex-direction: column; gap: 4px; font-size: .88rem; }
+.next ul { margin: 0; padding-left: 18px; }
+.next li { margin: 2px 0; }
+.next a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.next a:hover { text-decoration: underline; }
+.next .src { color: var(--muted); font-weight: 400; }
+.tag.offer { background: var(--chip-on); color: var(--chip-on-ink); }
+.tab { font: inherit; font-weight: 600; padding: 8px 16px; border: 0; border-bottom: 3px solid transparent; background: none; color: var(--muted); cursor: pointer; }
+.tab[aria-selected=true] { color: var(--ink); border-bottom-color: var(--accent); }
+.tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.place h2 { font-size: 1.05rem; margin: 0; line-height: 1.25; }
+.place .body { padding-top: 14px; }
+@media (max-width: 520px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Rosario, qué hacer</h1>
+    <p class="sub" id="updated">Cargando agenda…</p>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="tab-events" aria-selected="true" aria-controls="view-events" type="button">Eventos</button>
+      <button class="tab" role="tab" id="tab-venues" aria-selected="false" aria-controls="view-venues" type="button">Espacios</button>
+      <button class="tab" role="tab" id="tab-places" aria-selected="false" aria-controls="view-places" type="button">Lugares para comer y tomar algo</button>
+    </div>
+  </header>
+
+  <section id="view-events" role="tabpanel" aria-labelledby="tab-events">
+  <div class="panel" role="search">
+    <input type="search" id="q" placeholder="Buscar: artista, obra, sala…" aria-label="Buscar">
+    <div class="row" id="when-row"><span class="label">Cuándo</span></div>
+    <div class="row" id="plan-row"><span class="label">Plan</span></div>
+    <div class="row" id="cat-row"><span class="label">Tipo</span></div>
+    <div class="row">
+      <label class="check"><input type="checkbox" id="free"> Solo gratis</label>
+      <label class="check"><input type="checkbox" id="long" checked> Incluir muestras y ciclos largos</label>
+    </div>
+    <div class="row geo-row"></div>
+  </div>
+
+  <div class="count" id="count" aria-live="polite"></div>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" hidden>No encontramos nada con esos filtros. Probá ampliar la fecha o sacar el tipo.</div>
+  </section>
+
+  <section id="view-venues" role="tabpanel" aria-labelledby="tab-venues" hidden>
+    <div class="panel" role="search">
+      <input type="search" id="vq" placeholder="Buscar: nombre o calle…" aria-label="Buscar espacios">
+      <div class="row" id="offer-row"><span class="label">Ofrece</span></div>
+      <div class="row geo-row"></div>
+    </div>
+    <div class="count" id="vcount" aria-live="polite"></div>
+    <div class="grid" id="vgrid"></div>
+    <div class="empty" id="vempty" hidden>No hay espacios que ofrezcan todo eso junto. Probá sacar alguna opción.</div>
+    <div class="count" id="vnote"></div>
+  </section>
+
+  <section id="view-places" role="tabpanel" aria-labelledby="tab-places" hidden>
+    <div class="panel" role="search">
+      <input type="search" id="pq" placeholder="Buscar: nombre, cocina, calle…" aria-label="Buscar lugares">
+      <div class="row" id="kind-row"><span class="label">Tipo</span></div>
+      <div class="row" id="cuisine-row"><span class="label">Cocina</span></div>
+      <div class="row"><label class="check"><input type="checkbox" id="outdoor"> Con mesas al aire libre</label></div>
+      <div class="row geo-row"></div>
+    </div>
+    <div class="count" id="pcount" aria-live="polite"></div>
+    <div class="grid" id="pgrid"></div>
+    <div class="empty" id="pempty" hidden>No hay lugares con esos filtros.</div>
+    <div class="count" id="pattr"></div>
+  </section>
+
+  <footer id="foot"></footer>
+</div>
+
+<script>
+"use strict";
+const CAT_LABEL = { musica: "Música", teatro: "Teatro", cine: "Cine", danza: "Danza", arte: "Arte", muestras: "Muestras",
+  chicos: "Chicos", deporte: "Deporte", eventos: "Eventos", otros: "Otros" };
+const PLAN_LABEL = { cultura: "Cultura", gastronomia: "Gastronomía", recreacion: "Recreación" };
+const WHEN = [["todo", "Todo"], ["hoy", "Hoy"], ["manana", "Mañana"], ["finde", "Este finde"], ["semana", "Próximos 7 días"], ["mes", "Este mes"], ["fecha", "Elegir día"]];
+
+const state = { when: "todo", plan: "todos", cat: "todos", free: false, long: true, q: "", day: "" };
+let EVENTS = [];
+
+const iso = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
+// Quita las marcas de acento (U+0300-U+036F) sin usar regex sobre datos remotos
+const norm = s => [...(s || "").normalize("NFD")].filter(c => { const k = c.charCodeAt(0); return k < 0x300 || k > 0x36f; }).join("").toLowerCase();
+
+// ---- Ubicación del dispositivo: se usa solo en este navegador, no se envía a ningún lado ----
+const geo = { on: false, pos: null, radius: 2, busy: false, msg: "" };
+const RADII = [0.5, 1, 2, 5, 10];
+const geoListeners = [];
+const kmLabel = km => km < 1 ? `${Math.round(km * 100) * 10} m` : `${km.toLocaleString("es-AR", { maximumFractionDigits: 1 })} km`;
+
+function distKm(lat, lon) {
+  const rad = x => x * Math.PI / 180, R = 6371;
+  const dLat = rad(lat - geo.pos.lat), dLon = rad(lon - geo.pos.lon);
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(rad(geo.pos.lat)) * Math.cos(rad(lat)) * Math.sin(dLon / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(h));
+}
+// Distancia mínima a cualquiera de las sedes [[lat, lon], ...]; null si no hay ubicación de la sede
+function nearestKm(coords) {
+  if (!geo.on || !geo.pos || !coords || !coords.length) return null;
+  return Math.min(...coords.map(([la, lo]) => distKm(la, lo)));
+}
+
+function setupGeo(row, rerender) {
+  const btn = el("button", "chip", "📍 Cerca mío");
+  btn.type = "button";
+  const radii = el("span"); radii.style.display = "none";
+  const msg = el("span", "geo-msg");
+  for (const km of RADII) {
+    const b = el("button", "chip", kmLabel(km));
+    b.type = "button"; b.dataset.km = km;
+    b.onclick = () => { geo.radius = km; geoListeners.forEach(f => f()); };
+    radii.append(b);
+  }
+  const sync = () => {
+    btn.setAttribute("aria-pressed", String(geo.on));
+    radii.style.display = geo.on ? "contents" : "none";
+    radii.querySelectorAll(".chip").forEach(b => b.setAttribute("aria-pressed", String(Number(b.dataset.km) === geo.radius)));
+    msg.textContent = geo.msg;
+    rerender();
+  };
+  btn.onclick = () => {
+    if (geo.on) { geo.on = false; geo.msg = ""; geoListeners.forEach(f => f()); return; }
+    if (!navigator.geolocation) { geo.msg = "Tu navegador no permite obtener la ubicación."; geoListeners.forEach(f => f()); return; }
+    geo.msg = "Buscando tu ubicación…"; geoListeners.forEach(f => f());
+    navigator.geolocation.getCurrentPosition(
+      p => { geo.pos = { lat: p.coords.latitude, lon: p.coords.longitude }; geo.on = true; geo.msg = ""; geoListeners.forEach(f => f()); },
+      err => { geo.on = false; geo.msg = err.code === 1 ? "Sin permiso de ubicación: habilitalo en el navegador para usar este filtro." : "No pudimos obtener tu ubicación."; geoListeners.forEach(f => f()); },
+      { enableHighAccuracy: false, timeout: 15000, maximumAge: 300000 });
+  };
+  geoListeners.push(sync);
+  row.append(el("span", "label", "Ubicación"), btn, radii, msg);
+  sync();
+}
+
+function whenRange() {
+  const now = new Date(), today = iso(now);
+  switch (state.when) {
+    case "hoy": return [today, today];
+    case "manana": { const t = iso(addDays(now, 1)); return [t, t]; }
+    case "finde": {
+      const dow = now.getDay(); // 0 dom ... 6 sáb
+      if (dow === 0) return [today, today];
+      if (dow === 6) return [today, iso(addDays(now, 1))];
+      const fri = addDays(now, 5 - dow);
+      return [iso(fri), iso(addDays(fri, 2))];
+    }
+    case "semana": return [today, iso(addDays(now, 6))];
+    case "mes": return [today, iso(new Date(now.getFullYear(), now.getMonth() + 1, 0))];
+    case "fecha": return state.day ? [state.day, state.day] : null;
+    default: return null;
+  }
+}
+
+function inRange(ev, [from, to]) {
+  if (ev.ranged) return ev.start <= to && ev.end >= from;
+  return ev.dates.some(d => d >= from && d <= to);
+}
+
+function matches(ev, range) {
+  if (state.plan !== "todos" && ev.plan !== state.plan) return false;
+  if (state.cat !== "todos" && !ev.categories.includes(state.cat)) return false;
+  if (state.free && !ev.free) return false;
+  if (!state.long && ev.ranged) return false;
+  if (range && !inRange(ev, range)) return false;
+  if (geo.on && geo.pos) {
+    ev._km = nearestKm(ev.coords);
+    if (ev._km === null || ev._km > geo.radius) return false;
+  } else ev._km = null;
+  if (state.q) {
+    const hay = norm(`${ev.title} ${ev.venue} ${ev.description}`);
+    if (!state.q.split(" ").filter(Boolean).every(w => hay.includes(w))) return false;
+  }
+  return true;
+}
+
+function el(tag, cls, text) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+const cmp = (x, y) => (x < y ? -1 : x > y ? 1 : 0);
+const titleCase = s => s.toLowerCase().split(" ").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+const safeUrl = u => { const l = String(u || "").slice(0, 8).toLowerCase(); return l.startsWith("https://") || l.startsWith("http://") ? u : null; };
+
+function card(ev) {
+  const c = el("article", "card");
+  const img = safeUrl(ev.image);
+  if (img) {
+    const i = el("img", "thumb"); i.src = img; i.alt = ""; i.loading = "lazy"; i.referrerPolicy = "no-referrer";
+    i.onerror = () => i.remove();
+    c.append(i);
+  }
+  const b = el("div", "body");
+  b.append(el("div", "when", ev.time ? `${ev.date_text} · ${ev.time} h` : ev.date_text), el("h2", null, ev.title));
+  if (ev.venue) b.append(el("div", "venue", ev.address ? `${ev.venue} · ${titleCase(ev.address)}` : ev.venue));
+  if (ev._km != null) b.append(el("div", "km", `A ${kmLabel(ev._km)} de vos`));
+  if (ev.description) b.append(el("p", "desc", ev.description));
+  const tags = el("div", "tags");
+  tags.append(el("span", "tag", CAT_LABEL[ev.category] || ev.category));
+  if (ev.plan !== "cultura") tags.append(el("span", "tag", PLAN_LABEL[ev.plan]));
+  if (ev.free) tags.append(el("span", "tag free", "Gratis"));
+  else if (ev.price_from) tags.append(el("span", "tag", `Desde $${ev.price_from.toLocaleString("es-AR")}`));
+  b.append(tags);
+  const links = el("div", "links");
+  for (const s of ev.sources) {
+    const u = safeUrl(s.url); if (!u) continue;
+    const a = el("a", null, `Ver en ${s.name} ↗`); a.href = u; a.target = "_blank"; a.rel = "noopener noreferrer";
+    links.append(a);
+  }
+  b.append(links);
+  c.append(b);
+  return c;
+}
+
+function render() {
+  const range = whenRange();
+  let list = EVENTS.filter(e => matches(e, range));
+  // Con un día/rango elegido, las funciones puntuales van antes que las muestras largas
+  if (range) list.sort((a, b) => (a.ranged - b.ranged) || cmp(a.start, b.start) || cmp(a.title, b.title));
+  else if (geo.on && geo.pos) list.sort((a, b) => a._km - b._km);
+  const grid = document.getElementById("grid");
+  grid.replaceChildren(...list.map(card));
+  document.getElementById("empty").hidden = list.length > 0;
+  let unlocated = 0;
+  if (geo.on && geo.pos) unlocated = EVENTS.filter(e => !(e.coords && e.coords.length)).length;
+  document.getElementById("count").textContent = `${list.length} ${list.length === 1 ? "plan" : "planes"}` +
+    (geo.on ? ` a menos de ${kmLabel(geo.radius)}${unlocated ? ` (${unlocated} planes sin ubicación conocida no se muestran)` : ""}` : "");
+}
+
+// ---- Lugares (directorio, no eventos) ----
+const pstate = { kind: "todos", cuisine: "todas", outdoor: false, q: "" };
+let PLACES = null, PLACES_ERR = false;
+const PAGE = 120;
+
+function pmatches(p) {
+  if (pstate.kind !== "todos" && p.kind !== pstate.kind) return false;
+  if (pstate.cuisine !== "todas" && !p.cuisine.includes(pstate.cuisine)) return false;
+  if (pstate.outdoor && !p.outdoor) return false;
+  if (geo.on && geo.pos) {
+    p._km = distKm(p.lat, p.lon);
+    if (p._km > geo.radius) return false;
+  } else p._km = null;
+  if (pstate.q) {
+    const hay = norm(`${p.name} ${p.kind} ${p.cuisine.join(" ")} ${p.address}`);
+    if (!pstate.q.split(" ").filter(Boolean).every(w => hay.includes(w))) return false;
+  }
+  return true;
+}
+
+function pcard(p) {
+  const c = el("article", "card place");
+  const b = el("div", "body");
+  b.append(el("h2", null, p.name));
+  b.append(el("div", "venue", [p.kind, ...p.cuisine.slice(0, 3).map(titleCase)].join(" · ")));
+  if (p.address) b.append(el("div", "venue", titleCase(p.address)));
+  if (p._km != null) b.append(el("div", "km", `A ${kmLabel(p._km)} de vos`));
+  if (p.hours) b.append(el("div", "venue", `Horario: ${p.hours}`));
+  if (p.phone) b.append(el("div", "venue", `Tel: ${p.phone}`));
+  const tags = el("div", "tags");
+  if (p.outdoor) tags.append(el("span", "tag", "Mesas afuera"));
+  b.append(tags);
+  const links = el("div", "links");
+  const add = (text, href) => { const u = safeUrl(href); if (!u) return; const a = el("a", null, text); a.href = u; a.target = "_blank"; a.rel = "noopener noreferrer"; links.append(a); };
+  add("Sitio ↗", p.website);
+  if (p.instagram) {
+    const h = p.instagram.startsWith("http") ? p.instagram : `https://www.instagram.com/${encodeURIComponent(p.instagram.replace("@", ""))}/`;
+    add("Instagram ↗", h);
+  }
+  add("Ver en el mapa ↗", `https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lon}`);
+  b.append(links);
+  c.append(b);
+  return c;
+}
+
+function prender() {
+  const list = PLACES.filter(pmatches);
+  if (geo.on && geo.pos) list.sort((a, b) => a._km - b._km);
+  document.getElementById("pgrid").replaceChildren(...list.slice(0, PAGE).map(pcard));
+  document.getElementById("pempty").hidden = list.length > 0;
+  const near = geo.on ? `, ordenados por cercanía (radio ${kmLabel(geo.radius)})` : "";
+  document.getElementById("pcount").textContent = list.length > PAGE
+    ? `${list.length} lugares${near} (mostrando los primeros ${PAGE}: afiná con la búsqueda o los filtros)`
+    : `${list.length} ${list.length === 1 ? "lugar" : "lugares"}${near}`;
+}
+
+function pchips(rowId, options, key) {
+  const row = document.getElementById(rowId);
+  for (const [val, text] of options) {
+    const b = el("button", "chip", text);
+    b.type = "button"; b.dataset.val = val;
+    b.setAttribute("aria-pressed", String(pstate[key] === val));
+    b.onclick = () => {
+      pstate[key] = val;
+      row.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", String(x.dataset.val === val)));
+      prender();
+    };
+    row.append(b);
+  }
+}
+
+async function initPlaces() {
+  if (PLACES || PLACES_ERR) return;
+  const count = document.getElementById("pcount");
+  count.textContent = "Cargando lugares…";
+  try {
+    const r = await fetch("places.json", { cache: "no-cache" });
+    if (!r.ok) throw new Error(r.status);
+    const data = await r.json();
+    PLACES = data.places;
+    document.getElementById("pattr").textContent = `Datos: ${data.attribution}. Verificá horarios con el lugar.`;
+  } catch (e) {
+    PLACES_ERR = true;
+    count.textContent = "No se pudo cargar el directorio de lugares.";
+    return;
+  }
+  const kinds = [...new Set(PLACES.map(p => p.kind))].sort();
+  const freq = {};
+  for (const p of PLACES) for (const c of p.cuisine) freq[c] = (freq[c] || 0) + 1;
+  const cuisines = Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 14).map(([c]) => c);
+  pchips("kind-row", [["todos", "Todos"], ...kinds.map(k => [k, k])], "kind");
+  pchips("cuisine-row", [["todas", "Todas"], ...cuisines.map(c => [c, titleCase(c)])], "cuisine");
+  setupGeo(document.querySelector("#view-places .geo-row"), prender);
+  document.getElementById("pq").oninput = e => { pstate.q = norm(e.target.value).trim(); prender(); };
+  document.getElementById("outdoor").onchange = e => { pstate.outdoor = e.target.checked; prender(); };
+  prender();
+}
+
+// ---- Espacios: lugares curados que albergan eventos (música en vivo, cena, baile...) ----
+const vstate = { offers: new Set(), q: "" };
+let VENUES = null, VENUES_ERR = false;
+
+function vmatches(v) {
+  for (const o of vstate.offers) if (!v.offers.includes(o)) return false; // las opciones se combinan: tiene que ofrecer todas
+  if (geo.on && geo.pos) {
+    if (v.lat == null) return false;
+    v._km = distKm(v.lat, v.lon);
+    if (v._km > geo.radius) return false;
+  } else v._km = null;
+  if (vstate.q) {
+    const hay = norm(`${v.name} ${v.address} ${v.note}`);
+    if (!vstate.q.split(" ").filter(Boolean).every(w => hay.includes(w))) return false;
+  }
+  return true;
+}
+
+function vcard(v, labels) {
+  const c = el("article", "card place");
+  const b = el("div", "body");
+  b.append(el("h2", null, v.name));
+  if (v.address) b.append(el("div", "venue", v.address));
+  if (v._km != null) b.append(el("div", "km", `A ${kmLabel(v._km)} de vos`));
+  if (v.note) b.append(el("p", "desc", v.note));
+  const tags = el("div", "tags");
+  for (const o of v.offers) tags.append(el("span", "tag offer", labels[o] || o));
+  b.append(tags);
+  const next = el("div", "next");
+  if (v.upcoming.length) {
+    next.append(el("div", "label", "Próximos eventos"));
+    const ul = el("ul");
+    for (const e of v.upcoming) {
+      const li = el("li"), u = safeUrl(e.url);
+      const text = `${e.date_text}${e.time ? ` · ${e.time} h` : ""} — ${e.title}`;
+      if (u) { const a = el("a", null, text); a.href = u; a.target = "_blank"; a.rel = "noopener noreferrer"; li.append(a); }
+      else li.append(document.createTextNode(text));
+      li.append(el("span", "src", ` (${e.source})`));
+      ul.append(li);
+    }
+    if (v.upcoming_count > v.upcoming.length) ul.append(el("li", "src", `y ${v.upcoming_count - v.upcoming.length} más en la agenda`));
+    next.append(ul);
+  } else next.append(el("div", "venue", "Sin eventos cargados por ahora."));
+  b.append(next);
+  const links = el("div", "links");
+  const add = (text, href) => { const u = safeUrl(href); if (!u) return; const a = el("a", null, text); a.href = u; a.target = "_blank"; a.rel = "noopener noreferrer"; links.append(a); };
+  if (v.instagram) add("Instagram ↗", `https://www.instagram.com/${encodeURIComponent(v.instagram)}/`);
+  add("Sitio ↗", v.website);
+  if (v.lat != null) add("Ver en el mapa ↗", `https://www.google.com/maps/search/?api=1&query=${v.lat},${v.lon}`);
+  for (const s of v.info_sources) add(`Más info: ${s.name} ↗`, s.url);
+  b.append(links);
+  c.append(b);
+  return c;
+}
+
+function vrender() {
+  const list = VENUES.venues.filter(vmatches);
+  if (geo.on && geo.pos) list.sort((a, b) => a._km - b._km);
+  else list.sort((a, b) => cmp(a.upcoming[0]?.start ?? "9999", b.upcoming[0]?.start ?? "9999") || cmp(a.name, b.name));
+  document.getElementById("vgrid").replaceChildren(...list.map(v => vcard(v, VENUES.offers)));
+  document.getElementById("vempty").hidden = list.length > 0;
+  const near = geo.on ? `, ordenados por cercanía (radio ${kmLabel(geo.radius)})` : "";
+  document.getElementById("vcount").textContent = `${list.length} ${list.length === 1 ? "espacio" : "espacios"}${near}`;
+}
+
+async function initVenues() {
+  if (VENUES || VENUES_ERR) return;
+  const count = document.getElementById("vcount");
+  count.textContent = "Cargando espacios…";
+  try {
+    const r = await fetch("venues.json", { cache: "no-cache" });
+    if (!r.ok) throw new Error(r.status);
+    VENUES = await r.json();
+  } catch (e) {
+    VENUES_ERR = true;
+    count.textContent = "No se pudo cargar la lista de espacios.";
+    return;
+  }
+  const row = document.getElementById("offer-row");
+  for (const [key, text] of Object.entries(VENUES.offers)) {
+    const b = el("button", "chip", text);
+    b.type = "button"; b.setAttribute("aria-pressed", "false");
+    b.onclick = () => {
+      const on = !vstate.offers.has(key);
+      on ? vstate.offers.add(key) : vstate.offers.delete(key);
+      b.setAttribute("aria-pressed", String(on));
+      vrender();
+    };
+    row.append(b);
+  }
+  setupGeo(document.querySelector("#view-venues .geo-row"), vrender);
+  document.getElementById("vq").oninput = e => { vstate.q = norm(e.target.value).trim(); vrender(); };
+  document.getElementById("vnote").textContent = "Elegí varias opciones para ver los lugares que las ofrecen todas juntas. Confirmá horarios y reservas con el lugar.";
+  vrender();
+}
+
+function showTab(name) {
+  for (const t of ["events", "venues", "places"]) {
+    document.getElementById(`view-${t}`).hidden = t !== name;
+    document.getElementById(`tab-${t}`).setAttribute("aria-selected", String(t === name));
+  }
+  if (name === "venues") initVenues();
+  if (name === "places") initPlaces();
+}
+document.getElementById("tab-events").onclick = () => showTab("events");
+document.getElementById("tab-venues").onclick = () => showTab("venues");
+document.getElementById("tab-places").onclick = () => showTab("places");
+
+function chips(rowId, options, key) {
+  const row = document.getElementById(rowId);
+  for (const [val, text] of options) {
+    const b = el("button", "chip", text);
+    b.type = "button"; b.dataset.val = val;
+    b.setAttribute("aria-pressed", String(state[key] === val));
+    b.onclick = () => {
+      state[key] = val;
+      row.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", String(x.dataset.val === val)));
+      dayInput.hidden = !(key === "when" && val === "fecha");
+      render();
+    };
+    row.append(b);
+  }
+}
+
+const dayInput = el("input"); dayInput.type = "date"; dayInput.hidden = true; dayInput.setAttribute("aria-label", "Elegir día");
+dayInput.onchange = () => { state.day = dayInput.value; render(); };
+
+async function init() {
+  let data;
+  try {
+    const r = await fetch("events.json", { cache: "no-cache" });
+    if (!r.ok) throw new Error(r.status);
+    data = await r.json();
+  } catch (e) {
+    document.getElementById("updated").textContent = "No se pudo cargar la agenda.";
+    return;
+  }
+  EVENTS = data.events;
+  const cats = [...new Set(EVENTS.flatMap(e => e.categories))].sort();
+  chips("when-row", WHEN, "when");
+  document.getElementById("when-row").append(dayInput);
+  chips("plan-row", [["todos", "Todos"], ...Object.entries(PLAN_LABEL)], "plan");
+  chips("cat-row", [["todos", "Todos"], ...cats.map(c => [c, CAT_LABEL[c] || c])], "cat");
+  const gen = new Date(data.generated_at);
+  document.getElementById("updated").textContent =
+    `Actualizado el ${gen.toLocaleDateString("es-AR", { day: "numeric", month: "long" })} · ${EVENTS.length} planes de ${Object.keys(data.sources).length} fuentes`;
+  const bad = Object.entries(data.sources).filter(([, s]) => !s.ok).map(([n]) => n);
+  const foot = document.getElementById("foot");
+  foot.append(document.createTextNode("Datos tomados de: " + Object.keys(data.sources).join(", ") + ". Confirmá horarios y precios en el enlace de cada plan."));
+  if (bad.length) { const w = el("div", "warn", `Última actualización fallida en: ${bad.join(", ")} (se muestran datos anteriores).`); foot.append(w); }
+  setupGeo(document.querySelector("#view-events .geo-row"), render);
+  document.getElementById("q").oninput = e => { state.q = norm(e.target.value).trim(); render(); };
+  document.getElementById("free").onchange = e => { state.free = e.target.checked; render(); };
+  document.getElementById("long").onchange = e => { state.long = e.target.checked; render(); };
+  render();
+}
+init();
+</script>
+</body>
+</html>

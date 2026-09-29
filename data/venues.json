@@ -1,0 +1,29 @@
+{
+  "_comment": "Espacios curados a mano. 'aliases' son los nombres con que las fuentes escriben la sede (se comparan sin tildes ni mayúsculas). 'offers' viene de scrapers/venues.py::OFFERS. Coordenadas: si no se cargan lat/lon salen de los eventos de la sede o se geocodifican por dirección. Instagram: solo el usuario, sin @ ni URL.",
+  "venues": [
+    {
+      "id": "casa-brava",
+      "name": "Casa Brava",
+      "aliases": ["Casa Brava"],
+      "address": "Pichincha 120",
+      "offers": ["musica_en_vivo", "cena", "baile"],
+      "instagram": "",
+      "website": "",
+      "note": "Bandas en vivo; también hay cena y se baila.",
+      "info_sources": []
+    },
+    {
+      "id": "bon-scott",
+      "name": "Bon Scott",
+      "aliases": ["Bon Scott", "Bon Scott Bar"],
+      "address": "Pichincha 131",
+      "offers": ["musica_en_vivo", "cena", "baile"],
+      "instagram": "barbonscott",
+      "website": "",
+      "note": "Bar de Pichincha con bandas y música electrónica; pizzas y cerveza artesanal.",
+      "info_sources": [
+        {"name": "La Noche de las Birrerías", "url": "https://lanochedelasbirrerias.com.ar/cerveceria/bon-scott/"}
+      ]
+    }
+  ]
+}

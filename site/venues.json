@@ -1,0 +1,108 @@
+{
+ "generated_at": "2026-09-29T23:21:47+00:00",
+ "offers": {
+  "musica_en_vivo": "Música en vivo",
+  "cena": "Cena",
+  "baile": "Baile"
+ },
+ "venues": [
+  {
+   "id": "casa-brava",
+   "name": "Casa Brava",
+   "address": "Pichincha 120",
+   "lat": -32.93415,
+   "lon": -60.66093,
+   "offers": [
+    "musica_en_vivo",
+    "cena",
+    "baile"
+   ],
+   "instagram": "",
+   "website": "",
+   "note": "Bandas en vivo; también hay cena y se baila.",
+   "info_sources": [],
+   "upcoming_count": 4,
+   "upcoming": [
+    {
+     "id": "fc5cffa2cf",
+     "title": "AnEspil",
+     "start": "2026-10-01",
+     "date_text": "1 oct",
+     "time": "20:30",
+     "url": "https://www.bandsintown.com/e/108861934-anespil-at-casa-brava",
+     "source": "Bandsintown",
+     "free": false,
+     "price_from": null
+    },
+    {
+     "id": "32c17b3254",
+     "title": "Los Espiritus",
+     "start": "2026-10-09",
+     "date_text": "9 oct",
+     "time": "20:00",
+     "url": "https://www.bandsintown.com/e/108876706-los-espiritus-at-casa-brava",
+     "source": "Bandsintown",
+     "free": false,
+     "price_from": null
+    },
+    {
+     "id": "6f80e12a9a",
+     "title": "Paz Carrara",
+     "start": "2026-10-22",
+     "date_text": "22 oct",
+     "time": "21:00",
+     "url": "https://www.bandsintown.com/e/108835448-paz-carrara-at-casa-brava",
+     "source": "Bandsintown",
+     "free": false,
+     "price_from": null
+    },
+    {
+     "id": "be0a46b215",
+     "title": "TOBIKA",
+     "start": "2026-10-29",
+     "date_text": "29 oct",
+     "time": "20:30",
+     "url": "https://www.bandsintown.com/e/108736562-tobika-at-casa-brava",
+     "source": "Bandsintown",
+     "free": false,
+     "price_from": null
+    }
+   ]
+  },
+  {
+   "id": "bon-scott",
+   "name": "Bon Scott",
+   "address": "Pichincha 131",
+   "lat": -32.93427,
+   "lon": -60.66071,
+   "offers": [
+    "musica_en_vivo",
+    "cena",
+    "baile"
+   ],
+   "instagram": "barbonscott",
+   "website": "",
+   "note": "Bar de Pichincha con bandas y música electrónica; pizzas y cerveza artesanal.",
+   "info_sources": [
+    {
+     "name": "La Noche de las Birrerías",
+     "url": "https://lanochedelasbirrerias.com.ar/cerveceria/bon-scott/"
+    }
+   ],
+   "upcoming_count": 1,
+   "upcoming": [
+    {
+     "id": "9e6d49375d",
+     "title": "⚔️ LvRod & Juana Maidagan en Bon Scott (Rosario)",
+     "start": "2026-10-15",
+     "date_text": "15 oct",
+     "time": "21:00",
+     "url": "https://alpogo.com/evento/lvrod-juana-maidagan-en-bon-scott-rosario-28927",
+     "source": "Alpogo",
+     "free": false,
+     "price_from": null
+    }
+   ]
+  }
+ ]
+}
