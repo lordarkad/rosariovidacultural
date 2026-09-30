@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rosario, qué hacer — ¿Dónde? · Elegir en el mapa (wireframe)</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="draft-banner">BORRADOR — WIREFRAME EXPLORATORIO <span>· Rosario, qué hacer · grayscale, sin tokens de marca · no representa diseño final</span></div>
+<nav class="screens" aria-label="Pantallas"><a href="index.html">Índice</a><span class="grp">Flujo</span><a href="home.html">Home</a><a href="zona-cerca.html">Cerca mío</a><a href="zona-mapa.html" class="active">Elegir en el mapa</a><a href="zona-zonas.html">Zonas predefinidas</a><a href="resultados.html">mapa + lista</a><a href="detalle.html">Detalle de resultado</a><span class="grp">Estados</span><a href="estado-sin-ubicacion.html">Primer uso sin ubicación</a><a href="estado-permiso-denegado.html">Permiso denegado</a><a href="estado-cargando.html">Cargando</a><a href="estado-sin-resultados.html">Sin resultados</a><a href="estado-error.html">Error de carga</a></nav>
+<main class="page">
+<h1>¿Dónde? · Elegir en el mapa</h1>
+<div class="subtitle">Origen por pin arrastrable o búsqueda de barrio.</div>
+<div class="frames">
+<figure><figcaption>Elegir en mapa</figcaption>
+      <div class="m">
+        <div class="status"><span>9:41</span><span><i style="width:12px"></i><i style="width:10px"></i><i style="width:8px"></i></span></div>
+        <div class="nav"><div class="back"><span class="sq"></span><i class="l d" style="--w:40px;--h:8"></i></div><span class="title">¿Dónde?</span><div class="menu"><i></i><i></i></div></div>
+        <div class="px4 py3 bb"><div class="seg"><div class="chip">Cerca mío</div><div class="chip on">Elegir mapa</div><div class="chip">Zonas</div></div></div>
+        <div class="px4 py3 bb"><div class="search"><i></i><i class="l d" style="--w:55%;--h:9"></i><span class="note">AutoComplete — barrio o zona</span></div></div>
+        <div class="grow rel">
+          <div class="box"><em class="osm">© OpenStreetMap</em><span>Mapa interactivo
+Pin arrastrable = centro de búsqueda</span></div>
+          <div class="pin" style="top:45%;left:52%"></div>
+          <div class="abs col g1" style="bottom:16px;left:16px;right:16px;background:#fff;border:1px solid var(--hair);padding:8px">
+            <i class="l" style="--w:70%;--h:8"></i><i class="l d" style="--w:50%;--h:7"></i>
+            <span class="note top" style="bottom:calc(100% + 6px)">Distancias: desde el pin de búsqueda (sin GPS no hay otra referencia)</span>
+          </div>
+          <div class="zoom"><div>+</div><div>−</div></div>
+        </div>
+        <div class="cta"><div class="btn full pri" style="--h:52">Buscar aquí →</div></div>
+        <div class="tabbar"><div><i></i><span>Buscar</span></div><div class="on"><i></i><span>Zona</span></div><div><i></i><span>Resultados</span></div></div>
+      </div>
+    </figure>
+<figure><figcaption>Desktop · elegir mapa</figcaption>
+      <div class="dwrap"><div class="d">
+        <div class="topnav"><i class="l" style="--w:160px;--h:14"></i>
+          <div class="seg" style="width:auto"><div class="chip" style="width:140px">Cerca mío</div><div class="chip on" style="width:180px">Elegir en mapa</div><div class="chip" style="width:120px">Zonas</div></div>
+          <div class="btn pri" style="--h:40">Buscar aquí →</div></div>
+        <div class="row-f grow" style="overflow:hidden">
+          <div class="col g5 br scroll" style="width:380px;padding:24px 32px">
+            <div class="search"><i></i><i class="l d" style="--w:60%;--h:9"></i></div>
+            <div class="col g2"><i class="l d" style="--w:50%;--h:9"></i><i class="l" style="--w:90%;--h:12"></i><i class="l d" style="--w:70%;--h:9"></i></div>
+            <div class="sep"><span>Radio de búsqueda</span></div>
+            <div><div class="between" style="margin-bottom:8px"><i class="l d" style="--w:30%;--h:8"></i><i class="l" style="--w:15%;--h:8"></i></div><div class="slider" style="--x:40%"><i></i></div></div>
+            <div class="card col g1"><i class="l d" style="--w:70%;--h:8"></i><i class="l" style="--w:55%;--h:9"></i></div>
+          </div>
+          <div class="grow rel">
+            <div class="box"><em class="osm">© OpenStreetMap</em><span>Mapa interactivo — pin arrastrable
+centro de búsqueda = origen de distancias</span></div>
+            <div class="pin lg" style="top:48%;left:55%"></div>
+            <div class="zoom lg"><div>+</div><div>−</div><div>⊡</div></div>
+          </div>
+        </div>
+      </div></div>
+    </figure>
+</div>
+<div class="panel"><h2>Notas de la pantalla</h2><ul>
+<li>El pin arrastrable define el centro de búsqueda.</li>
+<li>Las distancias se miden desde el centro elegido (pin o zona), no desde «mi ubicación»: en este modo puede no haber GPS (regla E-11).</li>
+<li>Autocomplete de barrio o zona sobre el mapa.</li>
+<li>Desktop: barra lateral con buscador y radio, mapa a pantalla completa.</li>
+</ul></div>
+<div class="flow"><span>← <a href="zona-cerca.html">¿Dónde? · Cerca mío</a></span><span><a href="zona-zonas.html">¿Dónde? · Zonas predefinidas</a> →</span></div>
+</main>
+</body>
+</html>

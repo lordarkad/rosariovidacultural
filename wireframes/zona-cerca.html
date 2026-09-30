@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rosario, qué hacer — ¿Dónde? · Cerca mío (wireframe)</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="draft-banner">BORRADOR — WIREFRAME EXPLORATORIO <span>· Rosario, qué hacer · grayscale, sin tokens de marca · no representa diseño final</span></div>
+<nav class="screens" aria-label="Pantallas"><a href="index.html">Índice</a><span class="grp">Flujo</span><a href="home.html">Home</a><a href="zona-cerca.html" class="active">Cerca mío</a><a href="zona-mapa.html">Elegir en el mapa</a><a href="zona-zonas.html">Zonas predefinidas</a><a href="resultados.html">mapa + lista</a><a href="detalle.html">Detalle de resultado</a><span class="grp">Estados</span><a href="estado-sin-ubicacion.html">Primer uso sin ubicación</a><a href="estado-permiso-denegado.html">Permiso denegado</a><a href="estado-cargando.html">Cargando</a><a href="estado-sin-resultados.html">Sin resultados</a><a href="estado-error.html">Error de carga</a></nav>
+<main class="page">
+<h1>¿Dónde? · Cerca mío</h1>
+<div class="subtitle">Origen por GPS con radio de búsqueda.</div>
+<div class="frames">
+<figure><figcaption>Cerca mío</figcaption>
+      <div class="m">
+        <div class="status"><span>9:41</span><span><i style="width:12px"></i><i style="width:10px"></i><i style="width:8px"></i></span></div>
+        <div class="nav"><div class="back"><span class="sq"></span><i class="l d" style="--w:40px;--h:8"></i></div><span class="title">¿Dónde?</span><div class="menu"><i></i><i></i></div></div>
+        <div class="grow scroll col g4 p4">
+          <div class="rel"><span class="note top">3 modos de origen — SelectButton</span>
+            <div class="seg"><div class="chip on">Cerca mío</div><div class="chip">Elegir mapa</div><div class="chip">Zonas</div></div></div>
+          <div class="gps"><div class="ic"><i></i></div><div class="col g1 grow" style="gap:6px"><i class="l" style="--w:60%;--h:10"></i><i class="l d" style="--w:40%;--h:8"></i></div><span class="tag ok">GPS OK</span></div>
+          <div class="rel col g3">
+            <span class="note top">Slider — radio de búsqueda 500 m–10 km</span>
+            <div class="between" style="padding-top:16px"><i class="l d" style="--w:25%;--h:8"></i><i class="l" style="--w:20%;--h:8"></i></div>
+            <div class="slider"></div>
+            <div class="between"><span class="hint">500 m</span><span class="hint">10 km</span></div>
+          </div>
+          <div class="box" style="--h:200px"><em class="osm">© OpenStreetMap</em><span>Mapa centrado en mi ubicación
+con radio visual</span></div>
+          <div class="card col g2"><i class="l d" style="--w:50%;--h:8"></i><i class="l" style="--w:80%;--h:9"></i><i class="l d" style="--w:55%;--h:8"></i></div>
+        </div>
+        <div class="cta"><div class="btn full pri" style="--h:52">Buscar cerca mío →</div></div>
+        <div class="tabbar"><div><i></i><span>Buscar</span></div><div class="on"><i></i><span>Zona</span></div><div><i></i><span>Resultados</span></div></div>
+      </div>
+    </figure>
+</div>
+<div class="panel"><h2>Notas de la pantalla</h2><ul>
+<li>Tres modos de origen en un SelectButton: Cerca mío, Elegir en el mapa, Zonas.</li>
+<li>Estado del GPS visible (GPS OK) y slider de radio de 500 m a 10 km, con el radio dibujado en el mapa.</li>
+<li>Si no hay permiso de ubicación, ver los estados «Sin ubicación» y «Permiso denegado».</li>
+</ul></div>
+<div class="flow"><span>← <a href="home.html">Home · ¿Qué querés hacer?</a></span><span><a href="zona-mapa.html">¿Dónde? · Elegir en el mapa</a> →</span></div>
+</main>
+</body>
+</html>

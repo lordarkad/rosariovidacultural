@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rosario, qué hacer — Home · ¿Qué querés hacer? (wireframe)</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="draft-banner">BORRADOR — WIREFRAME EXPLORATORIO <span>· Rosario, qué hacer · grayscale, sin tokens de marca · no representa diseño final</span></div>
+<nav class="screens" aria-label="Pantallas"><a href="index.html">Índice</a><span class="grp">Flujo</span><a href="home.html" class="active">Home</a><a href="zona-cerca.html">Cerca mío</a><a href="zona-mapa.html">Elegir en el mapa</a><a href="zona-zonas.html">Zonas predefinidas</a><a href="resultados.html">mapa + lista</a><a href="detalle.html">Detalle de resultado</a><span class="grp">Estados</span><a href="estado-sin-ubicacion.html">Primer uso sin ubicación</a><a href="estado-permiso-denegado.html">Permiso denegado</a><a href="estado-cargando.html">Cargando</a><a href="estado-sin-resultados.html">Sin resultados</a><a href="estado-error.html">Error de carga</a></nav>
+<main class="page">
+<h1>Home · ¿Qué querés hacer?</h1>
+<div class="subtitle">Pantalla de entrada: intención, modo de combinación y momento.</div>
+<div class="frames">
+<figure><figcaption>Mobile 390</figcaption>
+      <div class="m">
+        <div class="status"><span>9:41</span><span><i style="width:12px"></i><i style="width:10px"></i><i style="width:8px"></i></span></div>
+        <div class="nav"><i class="l" style="--w:110px;--h:12"></i><div class="menu"><i></i><i></i></div></div>
+        <div class="grow scroll col g5" style="padding:20px 16px">
+          <div class="col g2 rel">
+            <i class="l d" style="--w:55%;--h:9"></i>
+            <i class="l" style="--w:85%;--h:22"></i>
+            <span class="note">H1 display — "¿Qué querés hacer?"</span>
+          </div>
+          <div class="rel">
+            <span class="note top">SelectButton múltiple — intenciones</span>
+            <div class="row-f wrap g2" style="padding-top:16px">
+              <div class="chip on">Comer</div><div class="chip">Tomar algo</div><div class="chip">Ver espectáculo</div><div class="chip on">Música en vivo</div><div class="chip">Bailar</div><div class="chip">Con chicos</div><div class="chip">Gratis</div>
+              <div class="dash"><i class="l d"></i><span>+ texto</span></div>
+            </div>
+          </div>
+          <div class="rel col g2" style="border:1px solid #e8e8e8;border-radius:4px;padding:12px">
+            <span class="note top">Condicional — aparece si "Música" activo</span>
+            <i class="l d" style="--w:30%;--h:8"></i>
+            <div class="row-f g2 wrap"><div class="chip on">Jazz</div><div class="chip">Rock</div><div class="chip">Folklore</div><div class="chip">Electrónica</div></div>
+          </div>
+          <div class="rel col g2">
+            <span class="note top">Toggle — modo de combinación</span>
+            <i class="l d" style="--w:45%;--h:8"></i>
+            <div class="seg"><div class="chip on">Todo en un lugar</div><div class="chip off" aria-disabled="true">Plan en secuencia</div></div>
+            <p class="hint">«Plan en secuencia» deshabilitado: llega en un slice posterior.</p>
+          </div>
+          <div class="rel col g2">
+            <i class="l d" style="--w:20%;--h:8"></i>
+            <div class="row-f g2"><div class="chip">Ahora</div><div class="chip on">Hoy</div><div class="chip">Mañana</div><div class="chip">Finde</div><div class="chip">Elegir</div></div>
+            <span class="note" style="top:60%">SelectButton horizontal</span>
+          </div>
+        </div>
+        <div class="cta"><div class="btn full pri" style="--h:52">Buscar →</div></div>
+        <div class="tabbar"><div class="on"><i></i><span>Buscar</span></div><div><i></i><span>Zona</span></div><div><i></i><span>Resultados</span></div></div>
+      </div>
+    </figure>
+<figure><figcaption>Desktop 1440</figcaption>
+      <div class="dwrap"><div class="d">
+        <div class="topnav"><i class="l" style="--w:160px;--h:14"></i></div>
+        <div class="row-f grow" style="overflow:hidden">
+          <div class="col g8 br scroll" style="width:520px;padding:40px 48px">
+            <div class="col g3 rel"><i class="l d" style="--w:35%;--h:11"></i><i class="l" style="--w:90%;--h:40"></i><span class="note">H1 display XL</span></div>
+            <div class="col g3"><i class="l d" style="--w:30%;--h:9"></i>
+              <div class="intents">
+                <div class="on"><i></i><b class="l" style="--w:70%;--h:9"></b></div><div><i></i><b class="l d" style="--w:70%;--h:9"></b></div><div><i></i><b class="l d" style="--w:70%;--h:9"></b></div><div class="on"><i></i><b class="l" style="--w:70%;--h:9"></b></div>
+                <div><i></i><b class="l d" style="--w:70%;--h:9"></b></div><div><i></i><b class="l d" style="--w:70%;--h:9"></b></div><div><i></i><b class="l d" style="--w:70%;--h:9"></b></div>
+              </div>
+            </div>
+            <div class="col g2"><i class="l d" style="--w:20%;--h:8"></i><div class="seg"><div class="chip on">Todo en un lugar</div><div class="chip off" aria-disabled="true">Plan en secuencia</div></div></div>
+            <div class="col g2"><i class="l d" style="--w:18%;--h:8"></i><div class="row-f g2"><div class="chip">Ahora</div><div class="chip on">Hoy</div><div class="chip">Mañana</div><div class="chip">Finde</div><div class="chip">Elegir</div></div></div>
+            <div class="btn full pri" style="--h:56">Buscar resultados →</div>
+          </div>
+          <div class="grow rel">
+            <div class="box"><em class="osm">© OpenStreetMap</em><span>Vista previa del mapa
+(actualiza con la zona)</span></div>
+            <div class="abs col g2" style="bottom:24px;right:24px"><div class="btn" style="--h:40">Cerca mío</div><div class="btn" style="--h:40">Elegir zona</div></div>
+          </div>
+        </div>
+      </div></div>
+    </figure>
+</div>
+<div class="panel"><h2>Notas de la pantalla</h2><ul>
+<li>Intenciones: selección múltiple (comer, tomar algo, ver espectáculo, música en vivo, bailar, con chicos, gratis) más texto libre.</li>
+<li>El subtipo de música (jazz, rock, folklore, electrónica) aparece solo si «Música» está activa.</li>
+<li>Modo de combinación: «Todo en un lugar» activo; «Plan en secuencia» visible pero deshabilitado (slice aparte).</li>
+<li>Cuándo: Ahora / Hoy / Mañana / Finde / Elegir.</li>
+<li>Sin «Entrar» ni «Favoritos»: no hay cuenta en esta etapa. Tab bar mobile de 3: Buscar, Zona, Resultados.</li>
+<li>Desktop: intenciones como grilla de tarjetas y mapa de vista previa a la derecha que se actualiza con la zona.</li>
+</ul></div>
+<div class="flow"><span></span><span><a href="zona-cerca.html">¿Dónde? · Cerca mío</a> →</span></div>
+</main>
+</body>
+</html>
