@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rosario, qué hacer — Detalle de resultado (wireframe)</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="draft-banner">BORRADOR — WIREFRAME EXPLORATORIO <span>· Rosario, qué hacer · grayscale, sin tokens de marca · no representa diseño final</span></div>
+<nav class="screens" aria-label="Pantallas"><a href="index.html">Índice</a><span class="grp">Flujo</span><a href="home.html">Home</a><a href="zona-cerca.html">Cerca mío</a><a href="zona-mapa.html">Elegir en el mapa</a><a href="zona-zonas.html">Zonas predefinidas</a><a href="resultados.html">mapa + lista</a><a href="detalle.html" class="active">Detalle de resultado</a><span class="grp">Estados</span><a href="estado-sin-ubicacion.html">Primer uso sin ubicación</a><a href="estado-permiso-denegado.html">Permiso denegado</a><a href="estado-cargando.html">Cargando</a><a href="estado-sin-resultados.html">Sin resultados</a><a href="estado-error.html">Error de carga</a></nav>
+<main class="page">
+<h1>Detalle de resultado</h1>
+<div class="subtitle">Ficha de un evento o lugar.</div>
+<div class="frames">
+<figure><figcaption>Mobile</figcaption>
+      <div class="m">
+        <div class="status"><span>9:41</span><span><i style="width:12px"></i><i style="width:10px"></i><i style="width:8px"></i></span></div>
+        <div class="nav"><div class="back"><span class="sq"></span><i class="l d" style="--w:40px;--h:8"></i></div><div class="menu"><i></i><i></i></div></div>
+        <div class="grow scroll">
+          <div class="box" style="--h:220px"><span>Imagen con tratamiento duotono
+o placeholder tipográfico</span></div>
+          <div class="col g4 p4">
+            <div class="row-f g2" style="align-items:center"><span class="tag">EVENTO</span><span class="tag g">MÚSICA</span><span class="tag ok">GRATIS</span></div>
+            <div class="col g2 rel"><i class="l" style="--w:90%;--h:22"></i><i class="l" style="--w:55%;--h:22"></i><span class="note" style="top:0;left:calc(55% + 6px);top:32px">H2 display — título del evento/lugar</span></div>
+            <div class="meta">
+              <div><i class="l d" style="--w:60px;--h:8"></i><i class="l" style="--w:120px;--h:9"></i></div>
+              <div><i class="l d" style="--w:60px;--h:8"></i><i class="l" style="--w:120px;--h:9"></i></div>
+              <div><i class="l d" style="--w:60px;--h:8"></i><i class="l" style="--w:120px;--h:9"></i></div>
+              <div><i class="l d" style="--w:60px;--h:8"></i><i class="l" style="--w:120px;--h:9"></i></div>
+            </div>
+            <div class="col g1" style="gap:6px"><i class="l"></i><i class="l"></i><i class="l"></i><i class="l" style="--w:65%"></i></div>
+            <div class="btn full" style="--h:44">Cómo llegar →</div>
+            <div class="rel card row-f g3" style="align-items:center">
+              <div class="box" style="--w:32px;--h:32px"></div>
+              <div class="col grow" style="gap:4px"><i class="l" style="--w:50%;--h:9"></i><i class="l d" style="--w:70%;--h:8"></i></div>
+              <span class="mono" style="font-size:10px;color:var(--muted);border:1px solid #ccc;padding:4px 8px">↗ Fuente</span>
+              <span class="note top">Link a la fuente original — siempre visible</span>
+            </div>
+            <div class="warn"><i class="l" style="--w:70%;--h:8"></i><i class="l d" style="--w:55%;--h:8"></i><span class="note in">Toast/Message — datos de ayer</span></div>
+          </div>
+        </div>
+        <div class="tabbar"><div><i></i><span>Buscar</span></div><div><i></i><span>Zona</span></div><div class="on"><i></i><span>Resultados</span></div></div>
+      </div>
+    </figure>
+<figure><figcaption>Desktop</figcaption>
+      <div class="dwrap"><div class="d">
+        <div class="topnav"><i class="l" style="--w:160px;--h:14"></i><div class="btn" style="--h:36">← Volver a resultados</div></div>
+        <div class="row-f grow" style="overflow:hidden">
+          <div style="width:560px;flex:none"><div class="box"><span>Imagen — duotono o placeholder
+con ratio 1:1 o 3:4</span></div></div>
+          <div class="grow scroll col g6" style="padding:40px 48px">
+            <div class="row-f g2"><span class="tag">EVENTO</span><span class="tag g">MÚSICA</span><span class="tag ok">GRATIS</span></div>
+            <div class="col g3"><i class="l" style="--w:95%;--h:36"></i><i class="l" style="--w:60%;--h:36"></i></div>
+            <div class="meta">
+              <div style="gap:24px;padding:12px 20px"><i class="l d" style="--w:80px;--h:8"></i><i class="l" style="--w:200px;--h:10"></i></div>
+              <div style="gap:24px;padding:12px 20px"><i class="l d" style="--w:80px;--h:8"></i><i class="l" style="--w:200px;--h:10"></i></div>
+              <div style="gap:24px;padding:12px 20px"><i class="l d" style="--w:80px;--h:8"></i><i class="l" style="--w:200px;--h:10"></i></div>
+              <div style="gap:24px;padding:12px 20px"><i class="l d" style="--w:80px;--h:8"></i><i class="l" style="--w:200px;--h:10"></i></div>
+            </div>
+            <div class="col" style="gap:6px"><i class="l"></i><i class="l"></i><i class="l"></i><i class="l"></i><i class="l" style="--w:65%"></i></div>
+            <div class="row-f g3"><div class="btn pri" style="--h:48">Cómo llegar →</div><div class="btn" style="--h:48">↗ Ver fuente original</div></div>
+          </div>
+        </div>
+      </div></div>
+    </figure>
+</div>
+<div class="panel"><h2>Notas de la pantalla</h2><ul>
+<li>Imagen con tratamiento duotono o placeholder tipográfico.</li>
+<li>Metadata: cuándo, dónde, precio, distancia. Acción «Cómo llegar».</li>
+<li>Link a la fuente original siempre visible.</li>
+<li>Aviso de datos desactualizados cuando la fuente no se actualizó (ej. «datos de ayer»).</li>
+<li>Tab bar de 3 (Buscar, Zona, Resultados) también acá; Detalle no es una tab: se abre desde un resultado y vuelve con «atrás» (queda activa Resultados).</li>
+</ul></div>
+<div class="flow"><span>← <a href="resultados.html">Resultados · mapa + lista</a></span><span><a href="estado-sin-ubicacion.html">Estado · Primer uso sin ubicación</a> →</span></div>
+</main>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # ADR 0002 — Ingesta en Python (desviación del stack Track App)
 
-- **Estado:** Propuesto · 2026-09-29 (pendiente de aprobación de Daniel)
+- **Estado:** Aceptado · 2026-09-30 (aprobado por Daniel; propuesto el 2026-09-29)
 
 ## Contexto
 
@@ -23,3 +23,11 @@ geocodificación. Reescribirlos en TS implica re-validar cada fuente (Cinemark, 
 - `ingestion/site/` (sitio estático legacy) queda como referencia hasta que el dashboard lo reemplace, y
   se elimina después.
 - Si más adelante conviene migrar fuentes a Workers + Cron Triggers, se hace fuente por fuente vía nuevo ADR.
+- **Costo de GitHub Actions:** el repo es público, así que los runners estándar no consumen minutos
+  facturables. Aun así, el job de scrape tiene `timeout-minutes: 30` para acotar cuelgues, y se revisa el
+  consumo real tras la primera semana de corridas.
+- **Cron en repo público:** GitHub desactiva los workflows programados tras 60 días sin actividad en el repo.
+  Mientras el repo tenga actividad no aplica; si pasa, reactivar el workflow a mano.
+- **Código visible:** al ser público, los scrapers (fuentes y métodos) quedan a la vista. Nunca van secretos
+  en el repo: `INGEST_TOKEN` solo como Secret.
+- **Pendiente para `/ff`:** definir en el spec del endpoint de ingesta si un lote se acepta completo o parcial.

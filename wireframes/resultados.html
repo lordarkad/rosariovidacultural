@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rosario, qué hacer — Resultados · mapa + lista (wireframe)</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="draft-banner">BORRADOR — WIREFRAME EXPLORATORIO <span>· Rosario, qué hacer · grayscale, sin tokens de marca · no representa diseño final</span></div>
+<nav class="screens" aria-label="Pantallas"><a href="index.html">Índice</a><span class="grp">Flujo</span><a href="home.html">Home</a><a href="zona-cerca.html">Cerca mío</a><a href="zona-mapa.html">Elegir en el mapa</a><a href="zona-zonas.html">Zonas predefinidas</a><a href="resultados.html" class="active">mapa + lista</a><a href="detalle.html">Detalle de resultado</a><span class="grp">Estados</span><a href="estado-sin-ubicacion.html">Primer uso sin ubicación</a><a href="estado-permiso-denegado.html">Permiso denegado</a><a href="estado-cargando.html">Cargando</a><a href="estado-sin-resultados.html">Sin resultados</a><a href="estado-error.html">Error de carga</a></nav>
+<main class="page">
+<h1>Resultados · mapa + lista</h1>
+<div class="subtitle">Frase de búsqueda editable, mapa y lista agrupada por franja.</div>
+<div class="frames">
+<figure><figcaption>Mobile — bottom sheet</figcaption>
+      <div class="m">
+        <div class="status"><span>9:41</span><span><i style="width:12px"></i><i style="width:10px"></i><i style="width:8px"></i></span></div>
+        <div class="px4 py3 bb col g1 rel">
+          <i class="l d" style="--w:25%;--h:7"></i>
+          <div class="phrase"><span class="p"><i class="l" style="--w:84px;--h:12"></i></span><span class="dot">·</span><span class="p"><i class="l" style="--w:126px;--h:12"></i></span><span class="dot">·</span><span class="p"><i class="l" style="--w:70px;--h:12"></i></span></div>
+          <span class="note" style="left:auto;right:6px;top:6px;text-align:right">Frase editable
+cada parte es tappable</span>
+        </div>
+        <div class="box" style="--h:180px"><em class="osm">© OpenStreetMap</em><span>Mapa — pins sincronizados con lista</span></div>
+        <div class="handle"><i></i><span class="note" style="left:calc(50% + 24px);top:6px">Bottom sheet arrastrable ↕</span></div>
+        <div class="grow scroll px4" style="padding-bottom:16px">
+          <div class="group"><i class="l" style="--w:25%;--h:12"></i><i class="l d" style="--w:15%;--h:7"></i></div>
+          <div class="item"><div class="box" style="--w:64px;--h:64px"></div><div class="col"><div class="row-f g2" style="align-items:center"><span class="tag">EVENTO</span><i class="l" style="--w:40px;--h:8"></i></div><i class="l" style="--w:80%;--h:12"></i><i class="l d" style="--w:60%;--h:8"></i><i class="l d" style="--w:50%;--h:7"></i></div><span class="note">evento
+21:30 · 0.8 km · 10 min</span></div>
+          <div class="item"><div class="box" style="--w:64px;--h:64px"></div><div class="col"><div class="row-f g2" style="align-items:center"><span class="tag">LUGAR</span></div><i class="l" style="--w:80%;--h:12"></i><i class="l d" style="--w:60%;--h:8"></i><i class="l d" style="--w:50%;--h:7"></i></div><span class="note">lugar
+Abierto · 1.2 km · 15 min</span></div>
+          <div class="group"><i class="l" style="--w:25%;--h:12"></i><i class="l d" style="--w:15%;--h:7"></i></div>
+          <div class="item"><div class="box" style="--w:64px;--h:64px"></div><div class="col"><div class="row-f g2" style="align-items:center"><span class="tag">LUGAR</span></div><i class="l" style="--w:80%;--h:12"></i><i class="l d" style="--w:60%;--h:8"></i><i class="l d" style="--w:50%;--h:7"></i></div><span class="note">lugar
+Abierto · 1.5 km · 18 min</span></div>
+          <div class="item"><div class="box" style="--w:64px;--h:64px"></div><div class="col"><div class="row-f g2" style="align-items:center"><span class="tag">EVENTO</span><i class="l" style="--w:40px;--h:8"></i></div><i class="l" style="--w:80%;--h:12"></i><i class="l d" style="--w:60%;--h:8"></i><i class="l d" style="--w:50%;--h:7"></i></div><span class="note">evento
+22:00 · 2.1 km · 26 min</span></div>
+        </div>
+        <div class="tabbar"><div><i></i><span>Buscar</span></div><div><i></i><span>Zona</span></div><div class="on"><i></i><span>Resultados</span></div></div>
+      </div>
+    </figure>
+<figure><figcaption>Desktop — split view</figcaption>
+      <div class="dwrap"><div class="d">
+        <div class="row-f g6 bb" style="align-items:center;padding:0 32px;height:64px;flex:none">
+          <i class="l" style="--w:140px;--h:14"></i>
+          <div class="phrase grow rel" style="align-items:center;gap:6px">
+            <span class="p"><i class="l" style="--w:84px;--h:11"></i></span><span class="dot">·</span><span class="p"><i class="l" style="--w:152px;--h:11"></i></span><span class="dot">·</span><span class="p"><i class="l" style="--w:80px;--h:11"></i></span>
+            <span class="note top" style="bottom:calc(100% + 2px)">Frase editable — desktop: inline en header</span>
+          </div>
+          <div class="btn" style="--h:36">Nueva búsqueda</div>
+        </div>
+        <div class="row-f grow" style="overflow:hidden">
+          <div class="grow rel">
+            <div class="box"><em class="osm">© OpenStreetMap</em><span>Mapa — vista completa
+Pins sincronizados con lista</span></div>
+            <div class="mpin" style="left:40%;top:35%">1</div><div class="mpin" style="left:55%;top:50%">2</div><div class="mpin" style="left:30%;top:60%">3</div><div class="mpin" style="left:65%;top:40%">4</div><div class="mpin" style="left:48%;top:65%">5</div>
+          </div>
+          <div class="col bl scroll list-d" style="width:420px">
+            <div class="bb" style="padding:12px 20px"><i class="l d" style="--w:40%;--h:8"></i></div>
+            <div class="group" style="padding:8px 20px"><i class="l" style="--w:30%;--h:10"></i><i class="l d" style="--w:15%;--h:7"></i></div>
+            <div class="item"><div class="box" style="--w:56px;--h:56px"></div><div class="col"><span class="tag" style="align-self:flex-start">EVENTO</span><i class="l" style="--w:85%;--h:11"></i><i class="l d" style="--w:60%;--h:8"></i><i class="l d" style="--w:45%;--h:7"></i></div></div>
+            <div class="item"><div class="box" style="--w:56px;--h:56px"></div><div class="col"><span class="tag" style="align-self:flex-start">LUGAR</span><i class="l" style="--w:85%;--h:11"></i><i class="l d" style="--w:60%;--h:8"></i><i class="l d" style="--w:45%;--h:7"></i></div></div>
+            <div class="group" style="padding:8px 20px"><i class="l" style="--w:30%;--h:10"></i><i class="l d" style="--w:15%;--h:7"></i></div>
+            <div class="item"><div class="box" style="--w:56px;--h:56px"></div><div class="col"><span class="tag" style="align-self:flex-start">LUGAR</span><i class="l" style="--w:85%;--h:11"></i><i class="l d" style="--w:60%;--h:8"></i><i class="l d" style="--w:45%;--h:7"></i></div></div>
+            <div class="item"><div class="box" style="--w:56px;--h:56px"></div><div class="col"><span class="tag" style="align-self:flex-start">EVENTO</span><i class="l" style="--w:85%;--h:11"></i><i class="l d" style="--w:60%;--h:8"></i><i class="l d" style="--w:45%;--h:7"></i></div></div>
+            <div class="group" style="padding:8px 20px"><i class="l" style="--w:30%;--h:10"></i><i class="l d" style="--w:15%;--h:7"></i></div>
+            <div class="item"><div class="box" style="--w:56px;--h:56px"></div><div class="col"><span class="tag" style="align-self:flex-start">LUGAR</span><i class="l" style="--w:85%;--h:11"></i><i class="l d" style="--w:60%;--h:8"></i><i class="l d" style="--w:45%;--h:7"></i></div></div>
+          </div>
+        </div>
+      </div></div>
+    </figure>
+</div>
+<div class="panel"><h2>Notas de la pantalla</h2><ul>
+<li>La frase de búsqueda es editable: cada parte (intención, zona, momento) es tappable.</li>
+<li>Mobile: mapa arriba y bottom sheet arrastrable con la lista. Desktop: vista dividida mapa + lista, con la frase inline en el header.</li>
+<li>Lista agrupada por franja (Ahora / Esta noche / Mañana). Cada ítem muestra tipo (evento o lugar), precio, distancia y minutos a pie.</li>
+<li>Pins sincronizados con la lista.</li>
+<li>Etiquetas: solo EVENTO y LUGAR. Los lugares de OSM sin horario muestran «horario no informado».</li>
+<li>Atribución «© OpenStreetMap» visible en el mapa.</li>
+</ul></div>
+<div class="flow"><span>← <a href="zona-zonas.html">¿Dónde? · Zonas predefinidas</a></span><span><a href="detalle.html">Detalle de resultado</a> →</span></div>
+</main>
+</body>
+</html>

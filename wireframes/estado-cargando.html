@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rosario, qué hacer — Estado · Cargando (wireframe)</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="draft-banner">BORRADOR — WIREFRAME EXPLORATORIO <span>· Rosario, qué hacer · grayscale, sin tokens de marca · no representa diseño final</span></div>
+<nav class="screens" aria-label="Pantallas"><a href="index.html">Índice</a><span class="grp">Flujo</span><a href="home.html">Home</a><a href="zona-cerca.html">Cerca mío</a><a href="zona-mapa.html">Elegir en el mapa</a><a href="zona-zonas.html">Zonas predefinidas</a><a href="resultados.html">mapa + lista</a><a href="detalle.html">Detalle de resultado</a><span class="grp">Estados</span><a href="estado-sin-ubicacion.html">Primer uso sin ubicación</a><a href="estado-permiso-denegado.html">Permiso denegado</a><a href="estado-cargando.html" class="active">Cargando</a><a href="estado-sin-resultados.html">Sin resultados</a><a href="estado-error.html">Error de carga</a></nav>
+<main class="page">
+<h1>Estado · Cargando</h1>
+<div class="subtitle">Skeletons mientras llega la lista.</div>
+<div class="frames">
+<figure><figcaption>Cargando (skeletons)</figcaption>
+      <div class="m">
+        <div class="status"><span>9:41</span><span><i style="width:12px"></i><i style="width:10px"></i><i style="width:8px"></i></span></div>
+        <div class="px4 py3 bb col g1"><i class="l d" style="--w:25%;--h:7"></i><div class="phrase"><span class="p"><i class="l" style="--w:84px;--h:12"></i></span><span class="dot">·</span><span class="p"><i class="l" style="--w:126px;--h:12"></i></span></div></div>
+        <div class="box" style="--h:180px"><em class="osm">© OpenStreetMap</em><span>Mapa — pins sincronizados con lista</span></div>
+        <div class="handle"><i></i></div>
+        <div class="grow scroll px4">
+          <div class="skel"><div class="box" style="--w:72px;--h:72px"></div><div class="col"><i class="l d" style="--w:40%;--h:8"></i><i class="l" style="--w:85%;--h:12"></i><i class="l d" style="--w:60%;--h:8"></i></div></div>
+          <div class="skel"><div class="box" style="--w:72px;--h:72px"></div><div class="col"><i class="l d" style="--w:40%;--h:8"></i><i class="l" style="--w:85%;--h:12"></i><i class="l d" style="--w:60%;--h:8"></i></div></div>
+          <div class="skel"><div class="box" style="--w:72px;--h:72px"></div><div class="col"><i class="l d" style="--w:40%;--h:8"></i><i class="l" style="--w:85%;--h:12"></i><i class="l d" style="--w:60%;--h:8"></i></div></div>
+        </div>
+        <div class="tabbar"><div><i></i><span>Buscar</span></div><div><i></i><span>Zona</span></div><div class="on"><i></i><span>Resultados</span></div></div>
+      </div>
+    </figure>
+</div>
+<div class="panel"><h2>Notas de la pantalla</h2><ul>
+<li>Tres filas skeleton con imagen; la frase y el mapa ya están visibles.</li>
+</ul></div>
+<div class="flow"><span>← <a href="estado-permiso-denegado.html">Estado · Permiso denegado</a></span><span><a href="estado-sin-resultados.html">Estado · Sin resultados</a> →</span></div>
+</main>
+</body>
+</html>
