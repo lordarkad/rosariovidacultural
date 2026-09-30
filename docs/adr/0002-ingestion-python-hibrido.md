@@ -24,7 +24,7 @@ geocodificación. Reescribirlos en TS implica re-validar cada fuente (Cinemark, 
   se elimina después.
 - Si más adelante conviene migrar fuentes a Workers + Cron Triggers, se hace fuente por fuente vía nuevo ADR.
 - **Costo de GitHub Actions:** el repo es público, así que los runners estándar no consumen minutos
-  facturables. Aun así, el job de scrape tiene `timeout-minutes: 15` para acotar cuelgues, y se revisa el
+  facturables. Aun así, el job de scrape tiene `timeout-minutes: 30` para acotar cuelgues, y se revisa el
   consumo real tras la primera semana de corridas.
 - **Cron en repo público:** GitHub desactiva los workflows programados tras 60 días sin actividad en el repo.
   Mientras el repo tenga actividad no aplica; si pasa, reactivar el workflow a mano.
