@@ -30,13 +30,13 @@
 | D-2 | Dirección visual | **B · Ribera** (ver `docs/DESIGN.md`). |
 | D-4 | Tab bar mobile | **Buscar, Zona, Resultados.** Detalle no es una tab: se abre desde un resultado y vuelve con «atrás». Se aplica de forma coherente en todas las pantallas. |
 
-## Cambios pendientes en los wireframes (derivados de las decisiones)
+## Cambios aplicados en los wireframes (2026-09-30)
 
-- Quitar la etiqueta ESPACIO (`LUGAR` y `EVENTO` solamente) en Resultados y Detalle.
-- Tab bar de 3 tabs (Buscar, Zona, Resultados) y consistente en todas las pantallas mobile, incluido Detalle.
-- Quitar «Entrar» y «Favoritos» del header desktop de Home.
-- Home: el toggle «Plan en secuencia» queda fuera o deshabilitado.
-- Agregar la atribución de OpenStreetMap en las pantallas con mapa.
+- Sin etiqueta ESPACIO: `LUGAR` y `EVENTO` solamente, en Resultados y Detalle.
+- Tab bar de 3 tabs (Buscar, Zona, Resultados), consistente en todas las pantallas mobile, incluido Detalle.
+- Sin «Entrar» ni «Favoritos» en el header desktop de Home.
+- Home: el toggle «Plan en secuencia» queda deshabilitado.
+- Atribución «© OpenStreetMap» en las pantallas con mapa.
 
 ## Edge cases: reglas resueltas (§A del enriquecimiento)
 
