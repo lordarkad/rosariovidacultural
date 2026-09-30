@@ -1,9 +1,9 @@
 import { definePreset } from '@primeuix/themes'
 import Aura from '@primeuix/themes/aura'
-import { TriptongoUiSeedOverrides } from '@triptongo/ui/theme'
 
 // Placeholder de marca (violeta Triptongo). Reemplazar por la identidad propia al definir docs/DESIGN.md.
 // Cero hex fuera de este archivo.
+// Sin @triptongo/ui por ahora (ver docs/changes/): se suma el seed al preset cuando se vuelva a incorporar.
 const brandOverrides = {
   primitive: {
     violet: {
@@ -36,4 +36,4 @@ const brandOverrides = {
   },
 }
 
-export const TriptongoPreset = definePreset(Aura, TriptongoUiSeedOverrides, brandOverrides)
+export const TriptongoPreset = definePreset(Aura, brandOverrides)

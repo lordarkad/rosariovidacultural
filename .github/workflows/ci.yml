@@ -18,10 +18,7 @@ jobs:
           node-version-file: ".nvmrc"
           cache: "npm"
 
-      - run: npm install --package-lock-only --ignore-scripts
       - run: npm ci
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Lint spec
         run: npm run lint:spec
