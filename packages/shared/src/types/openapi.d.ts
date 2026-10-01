@@ -213,7 +213,9 @@ export interface paths {
          *       50 m o menos. El `source_key` del `osm` absorbido queda como alias, para que los eventos que lo referencian
          *       resuelvan al lugar vigente. El dedupe de lugares se evalúa solo cuando aparece un `source_key` nuevo;
          *       actualizar una fila existente (por ejemplo, el curado reenviado con otro `name`, `lat` o `lon`) no dispara
-         *       fusiones ni las revierte.
+         *       fusiones ni las revierte. Dos lugares curados nunca se fusionan entre sí: un `osm` nuevo que coincide con
+         *       más de un curado (mismo nombre normalizado, a 50 m o menos) pasa a alias del curado de `created_at` más
+         *       antiguo (desempate por `id` ascendente) y los curados quedan como filas aparte.
          *     - **Clave canónica (lugares):** tras una fusión, la clave canónica de la fila es siempre el `source_key` del
          *       lugar curado, sea cual sea el `id` que sobrevive (el de la fila existente, o el del `osm` más antiguo si
          *       hay varios). El ítem curado reemplaza la fila por completo y `origin` pasa a `curated`, también cuando el
@@ -229,8 +231,8 @@ export interface paths {
          *     - **Mismo lote:** los ítems ya procesados del mismo lote cuentan como filas existentes, en orden de índice,
          *       tanto para el dedupe como para «Varios candidatos». Los conteos siguen las mismas reglas (`created` para
          *       el primero, `updated` para cada fusión).
-         *     - **Varios candidatos:** si un ítem nuevo coincide con más de una fila existente (lugares: dos filas `osm`, por
-         *       ejemplo nodo y way, a 50 m o menos del curado; eventos: el criterio de sede no es transitivo), se fusionan
+         *     - **Varios candidatos:** si un ítem nuevo coincide con más de una fila existente (lugares, solo cuando el ítem
+         *       nuevo es curado: dos filas `osm`, por ejemplo nodo y way, a 50 m o menos; eventos: el criterio de sede no es transitivo), se fusionan
          *       todos en la fila de `created_at` más antiguo (desempate por `id` ascendente). Las demás pasan a alias que
          *       resuelven a ella, y la fusión cuenta como un solo `updated`.
          *     - **Ids estables:** al fusionar, la fila ya existente conserva su `id` y los ids absorbidos resuelven al
