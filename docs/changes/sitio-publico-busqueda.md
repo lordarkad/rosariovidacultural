@@ -286,7 +286,7 @@ Nota: E-4 se mantiene literal (sin horario solo en `hoy` y `finde`); con `manana
 - Given (cada caso con su propio juego de fixtures y sus propios `source_key`, que son únicos; los casos B, E y H referencian explícitamente fixtures de otro caso donde lo dicen):
   - **Caso A:** un `osm` (`osm:a1`) y un curado, mismo nombre normalizado, a 30 m, en cualquier orden de llegada (el `id` que sobrevive es el de la fila existente). El `osm` trae `opening_hours` y `website`; el curado no.
   - **Caso B:** un `osm` (`osm:b1`) a 200 m del curado del caso A, con el mismo nombre.
-  - **Caso C:** dos `osm` (`osm:n1`, `osm:w1`, cargados en lotes distintos) con el mismo nombre, a 20 m entre sí y a 30 m de un curado que llega después.
+  - **Caso C:** dos `osm` (`osm:n1` y después `osm:w1`, cargados en lotes distintos) con el mismo nombre, a 20 m entre sí y a 30 m de un curado que llega después.
   - **Caso D:** un curado ya existente y, en un lote posterior, `osm:n2` y `osm:w2` juntos, con el mismo nombre y a 30 m del curado.
   - **Caso E:** un curado y un `osm` (`osm:x1`) a 40 m con otro nombre, ya cargados como filas aparte.
   - **Caso F:** dos curados de fuentes distintas, mismo nombre normalizado, a 10 m entre sí (filas aparte): el curado 1 se carga en un lote anterior al curado 2, con el reloj avanzado entre ambos; luego llega un `osm` nuevo (`osm:f1`) con ese nombre a 20 m de ambos.

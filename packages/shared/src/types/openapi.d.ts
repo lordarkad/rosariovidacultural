@@ -218,7 +218,7 @@ export interface paths {
          *       (orden de inserción: no depende de `id` ni del reloj; dentro de un lote, el orden de índice) y los curados
          *       quedan como filas aparte.
          *     - **Clave canónica (lugares):** tras una fusión, la clave canónica de la fila es siempre el `source_key` del
-         *       lugar curado, sea cual sea el `id` que sobrevive (el de la fila existente, o el del `osm` más antiguo si
+         *       lugar curado, sea cual sea el `id` que sobrevive (el de la fila existente, o el del `osm` insertado primero si
          *       hay varios). El ítem curado reemplaza la fila por completo y `origin` pasa a `curated`, también cuando el
          *       curado llega después del `osm`: los campos opcionales que el curado omite o manda en `null` quedan en
          *       `null` y no se heredan del `osm`. Así `getPlace` devuelve los datos del curado y la fila sigue absorbiendo
