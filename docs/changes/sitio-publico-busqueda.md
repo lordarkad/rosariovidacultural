@@ -276,14 +276,14 @@ Nota: E-4 se mantiene literal (sin horario solo en `hoy` y `finde`); con `manana
 - Given: mismo título normalizado, `start_date` y `venue_name` desde una fuente `aggregator` y otra `curated`; y un evento nuevo que coincide por sede con dos existentes que no coinciden entre sí (uno por `venue_name`, otro por `address`)
 - Then: queda un solo evento, con la fuente `curated` como primaria y la otra en `sources`; el conteo de la fusión es `updated`. Si al día siguiente el agregador reenvía el mismo `source_key`, la fila primaria no cambia (solo `last_seen_at` y `sources`) y no se crea un evento nuevo. Si el curado reenvía su `source_key` con `start_time` cambiado, se aplica (es la clave canónica); si llega después otra fuente de mayor `tier`, pasa a ser la canónica.
 - Dos eventos del mismo lote con distinto `source_key`, mismo título normalizado, fecha y `venue_name`: queda una sola fila (`created: 1, updated: 1`).
-- También se fusionan cuando una fuente trae el lugar resuelto y la otra solo `venue_name` igual (normalizado) al nombre de ese lugar. Con dos candidatos, se fusionan los tres en el de `created_at` más antiguo y el otro `id` resuelve a él. A igual `tier`, queda primaria la que llegó primero. Si el curado llega después del agregador, el evento conserva el `id` original y el `id` absorbido sigue resolviendo (no da 404).
+- También se fusionan cuando una fuente trae el lugar resuelto y la otra solo `venue_name` igual (normalizado) al nombre de ese lugar. Con dos candidatos, se fusionan los tres en el insertado primero (orden de inserción, no el `id` ni el reloj) y el otro `id` resuelve a él. A igual `tier`, queda primaria la que llegó primero. Si el curado llega después del agregador, el evento conserva el `id` original y el `id` absorbido sigue resolviendo (no da 404).
 
 **AC-37:** No fusionar sedes distintas (E-2)
 - Given: dos ítems con el mismo título, fecha y `source_url`, sin lugar resuelto y con distinto `venue_name`; otros dos sin lugar, sin `venue_name` y sin `address`; y dos películas distintas de la misma sede con el mismo `source_url` genérico (la cartelera)
 - Then: los primeros son dos eventos y cada `getEvent` lista al otro en `also_at`; los segundos tampoco se fusionan; las dos películas no se listan entre sí en `also_at` (distinto título).
 
 **AC-38:** Duplicados de lugares
-- Given (cada caso con su propio juego de fixtures y sus propios `source_key`, que son únicos; los casos B y E referencian explícitamente fixtures de otro caso donde lo dicen):
+- Given (cada caso con su propio juego de fixtures y sus propios `source_key`, que son únicos; los casos B, E y H referencian explícitamente fixtures de otro caso donde lo dicen):
   - **Caso A:** un `osm` (`osm:a1`) y un curado, mismo nombre normalizado, a 30 m, en cualquier orden de llegada (el `id` que sobrevive es el de la fila existente). El `osm` trae `opening_hours` y `website`; el curado no.
   - **Caso B:** un `osm` (`osm:b1`) a 200 m del curado del caso A, con el mismo nombre.
   - **Caso C:** dos `osm` (`osm:n1`, `osm:w1`, cargados en lotes distintos) con el mismo nombre, a 20 m entre sí y a 30 m de un curado que llega después.
@@ -295,10 +295,10 @@ Nota: E-4 se mantiene literal (sin horario solo en `hoy` y `finde`); con `manana
 - Then:
   - **Caso A:** el curado absorbe al `osm` y el `source_key` del `osm` queda como alias. En el orden `osm`→curado, `getPlace` devuelve `origin: curated` y los campos del curado, con `opening_hours` y `website` en `null` (no se heredan del `osm`). Si después el curado reenvía su `source_key` con un campo cambiado (p. ej. `phone`), el cambio se aplica a la fila sobreviviente.
   - **Caso B:** queda como lugar aparte.
-  - **Caso C:** se fusionan los tres en el `osm` más antiguo (que pasa a `origin: curated` con los campos del curado); el otro `id` y ambos `source_key` `osm` resuelven a él (`/l/:id` de ambos no da 404). Si el curado reenvía con un campo cambiado, el cambio se aplica a esa fila.
+  - **Caso C:** se fusionan los tres en el `osm` insertado primero (el de `osm:n1`, que pasa a `origin: curated` con los campos del curado); el otro `id` y ambos `source_key` `osm` resuelven a él (`/l/:id` de ambos no da 404). Si el curado reenvía con un campo cambiado, el cambio se aplica a esa fila.
   - **Caso D:** `osm:n2` y `osm:w2` se fusionan en la fila del curado (`places: { created: 0, updated: 2 }`).
   - **Caso E:** si el curado reenvía su `source_key` con el `name` del `osm:x1`, no se fusionan (el dedupe solo corre con un `source_key` nuevo): siguen siendo dos filas. Lo mismo si el curado del caso A reenvía con `lat`/`lon` a 50 m o menos del `osm:b1` (caso B): `osm:b1` sigue como fila aparte.
-  - **Caso F:** los dos curados siguen como filas aparte (no se fusionan entre sí) y no se crea fila para `osm:f1`: su `source_key` queda como alias del curado 1 (el de `created_at` más antiguo). Un evento con `place_source_key` = `osm:f1` devuelve en `getEvent` el `place.id` del curado 1, y `getPlace` de cada curado conserva sus propios campos. El lote cuenta `places: { created: 0, updated: 1 }`.
+  - **Caso F:** los dos curados siguen como filas aparte (no se fusionan entre sí) y no se crea fila para `osm:f1`: su `source_key` queda como alias del curado 1 (el insertado primero). Un evento con `place_source_key` = `osm:f1` devuelve en `getEvent` el `place.id` del curado 1, y `getPlace` de cada curado conserva sus propios campos. El lote cuenta `places: { created: 0, updated: 1 }`.
   - **Caso G:** sin curado no hay dedupe entre `osm`: terminan como dos filas, vengan en el mismo lote o en lotes distintos.
   - **Caso H:** el reenvío del `source_key` absorbido solo actualiza `last_seen_at`: los campos del lugar curado no cambian y no se crea un duplicado. El `id` del lugar que sobrevive no cambia.
 
