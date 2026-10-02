@@ -329,3 +329,23 @@ Nota: E-4 se mantiene literal (sin horario solo en `hoy` y `finde`); con `manana
 4. **Tests:** desde el root con `npm test`. Endpoints con mock y, para `searchItems`, `getPlace` e `ingestBatch` (JOIN y lote en el límite), cobertura contra D1 real con `@cloudflare/vitest-pool-workers`.
 5. **`ingestion/` (Python), parte del slice:** clasificar `intents` (B-3), prefijar `source_key` con la fuente, estructurar `opening_hours` de OSM, vincular eventos con lugares (`place_source_key`), enviar `source_url`, y publicar a `/ingest` en lotes de hasta 200.
 6. **Fuera de este slice:** stores y vistas del dashboard (Slice 2), Plan en secuencia (Slice 3).
+
+## Decisiones de implementación (`/apply`, 2026-10-02)
+
+Interpretaciones que el contrato no contradice y que el código toma. Si alguna se rechaza, pasa a ser un cambio de spec (`/ff`).
+
+- **AC-33 resuelto por diseño:** la ingesta hace 3 llamadas a D1 (2 lecturas y 1 escritura) y la escritura es un solo `D1.batch` de a lo sumo 14 sentencias, cada una con su lista como un único parámetro JSON consumido con `json_each`. No depende del tamaño del lote, así que no importa si cada sentencia del batch cuenta contra el límite de queries por invocación. Los tests lo prueban contando llamadas.
+- **`finde` y la tolerancia de 2 h:** los eventos la conservan dentro de `finde` en curso (`max(viernes 18:00, ahora - 2 h)`), igual que `hoy`. Los lugares no.
+- **Sede y dirección heredadas:** un evento sin `venue_name` o `address` muestra los del lugar vinculado, y sin coordenadas propias usa las del lugar (E-1).
+- **Campos de lugar en `SearchItem`:** `start_date`, `end_date`, `start_time` y `venue_name` son `null`; `price_status` es `unknown`.
+- **Ids absorbidos:** responden 200 con los datos de la fila vigente y el `id` vigente en el body.
+- **`source_key` duplicado:** se evalúa por tipo (eventos y lugares por separado), desde la segunda aparición válida; un primer ítem inválido no cuenta como aparición.
+- **Razones de rechazo:** `duplicate_source_key`, `invalid_date_range`, `invalid_opening_hours` (cualquier problema bajo `opening_hours`) e `invalid_item: <campo>` para el resto.
+- **Coordenadas parciales:** un evento con solo `lat` o solo `lon` se guarda sin coordenadas.
+- **`radio_m` con `z`:** se ignora aunque sea inválido, igual que `fecha` con otro `cuando`.
+- **Eventos próximos de un lugar:** un evento ya pasó cuando su última ocurrencia empezó hace más de 2 h (o, sin hora, si `end_date` es anterior al día de negocio de hoy).
+- **Sedes distintas (`also_at`):** se comparan por lugar vinculado si lo hay, y si no por `venue_name` y `address` normalizados; nulo contra nulo cuenta como igual.
+- **`last_seen_at` por alias:** reenviar una clave alias actualiza `last_seen_at` de la fila vigente, para lugares y eventos.
+- **Logs (D-9):** se reemplazó el `logger()` de Hono, que imprime el query string, por un log que solo registra el path.
+- **Riesgo conocido, no de contrato:** F-11 fusiona por título, fecha y sede sin considerar la hora, así que dos funciones del mismo día en la misma sede se fusionan.
+- **Concurrencia de la ingesta:** dos requests simultáneas con el mismo `source_key` nuevo pueden hacer fallar la segunda por `UNIQUE`. El job de scraping debe enviar los lotes en serie (`concurrency:` en el workflow) cuando se conecte a `/ingest`.
