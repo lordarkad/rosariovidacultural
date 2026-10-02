@@ -617,7 +617,7 @@ export interface components {
         IdPath: string;
         /** @description Intenciones, separadas por coma. Unión (cualquiera), ordenada por cantidad de coincidencias (E-7). */
         Intents: components["schemas"]["Intent"][];
-        /** @description Subtipos de música, por coma. Solo restringen a los ítems que coinciden por `musica_en_vivo` (los que coinciden por otra intención, ej. `comer`, no se filtran); sin esa intención se ignoran. Los lugares no tienen géneros: con `musica` activo no coinciden por `musica_en_vivo`. */
+        /** @description Subtipos de música, por coma. Con `musica_en_vivo` en `i`, restringen todo el resultado a eventos de esos géneros: los ítems que coinciden solo por otra intención (ej. `comer`) y los lugares (no tienen géneros) quedan fuera. Sin `musica_en_vivo` en `i` se ignoran. */
         MusicGenres: components["schemas"]["MusicGenre"][];
         /** @description `true` trae solo `price_status = free` (E-6). Los lugares no tienen precio: su `price_status` es siempre `unknown`, así que `gratis=true` los excluye. */
         Gratis: boolean;
@@ -696,7 +696,7 @@ export interface operations {
             query?: {
                 /** @description Intenciones, separadas por coma. Unión (cualquiera), ordenada por cantidad de coincidencias (E-7). */
                 i?: components["parameters"]["Intents"];
-                /** @description Subtipos de música, por coma. Solo restringen a los ítems que coinciden por `musica_en_vivo` (los que coinciden por otra intención, ej. `comer`, no se filtran); sin esa intención se ignoran. Los lugares no tienen géneros: con `musica` activo no coinciden por `musica_en_vivo`. */
+                /** @description Subtipos de música, por coma. Con `musica_en_vivo` en `i`, restringen todo el resultado a eventos de esos géneros: los ítems que coinciden solo por otra intención (ej. `comer`) y los lugares (no tienen géneros) quedan fuera. Sin `musica_en_vivo` en `i` se ignoran. */
                 musica?: components["parameters"]["MusicGenres"];
                 /** @description `true` trae solo `price_status = free` (E-6). Los lugares no tienen precio: su `price_status` es siempre `unknown`, así que `gratis=true` los excluye. */
                 gratis?: components["parameters"]["Gratis"];
@@ -749,7 +749,7 @@ export interface operations {
             query?: {
                 /** @description Intenciones, separadas por coma. Unión (cualquiera), ordenada por cantidad de coincidencias (E-7). */
                 i?: components["parameters"]["Intents"];
-                /** @description Subtipos de música, por coma. Solo restringen a los ítems que coinciden por `musica_en_vivo` (los que coinciden por otra intención, ej. `comer`, no se filtran); sin esa intención se ignoran. Los lugares no tienen géneros: con `musica` activo no coinciden por `musica_en_vivo`. */
+                /** @description Subtipos de música, por coma. Con `musica_en_vivo` en `i`, restringen todo el resultado a eventos de esos géneros: los ítems que coinciden solo por otra intención (ej. `comer`) y los lugares (no tienen géneros) quedan fuera. Sin `musica_en_vivo` en `i` se ignoran. */
                 musica?: components["parameters"]["MusicGenres"];
                 /** @description `true` trae solo `price_status = free` (E-6). Los lugares no tienen precio: su `price_status` es siempre `unknown`, así que `gratis=true` los excluye. */
                 gratis?: components["parameters"]["Gratis"];

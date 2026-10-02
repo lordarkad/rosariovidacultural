@@ -417,7 +417,7 @@ components:
     MusicGenres:
       name: musica
       in: query
-      description: "Subtipos de música, por coma. Solo restringen a los ítems que coinciden por `musica_en_vivo` (los que coinciden por otra intención, ej. `comer`, no se filtran); sin esa intención se ignoran. Los lugares no tienen géneros: con `musica` activo no coinciden por `musica_en_vivo`."
+      description: "Subtipos de música, por coma. Con `musica_en_vivo` en `i`, restringen todo el resultado a eventos de esos géneros: los ítems que coinciden solo por otra intención (ej. `comer`) y los lugares (no tienen géneros) quedan fuera. Sin `musica_en_vivo` en `i` se ignoran."
       style: form
       explode: false
       schema:

@@ -187,7 +187,7 @@ Nota: E-4 se mantiene literal (sin horario solo en `hoy` y `finde`); con `manana
 
 **AC-16:** Intenciones y música (E-7)
 - When: `?i=comer,bailar`
-- Then: unión; los que cumplen ambas van antes que los que cumplen una (dentro de la franja). `?musica=jazz` sin `musica_en_vivo` se ignora; con ella, filtra solo a los que coinciden por `musica_en_vivo`: con `?i=comer,musica_en_vivo&musica=jazz`, un restaurante que coincide por `comer` sigue, un evento de rock no, y un lugar con `musica_en_vivo` (sin géneros) no cuenta como coincidencia de esa intención.
+- Then: unión; los que cumplen ambas van antes que los que cumplen una (dentro de la franja). `?musica=jazz` sin `musica_en_vivo` en `i` se ignora; con ella, restringe todo el resultado a eventos de esos géneros: con `?i=comer,musica_en_vivo&musica=jazz` solo quedan eventos de jazz (el restaurante que coincide por `comer` queda fuera, un evento de rock también, y los lugares no tienen géneros, así que no aparecen).
 
 **AC-17:** Lugares: franja y `open_now` (F-9)
 - Given: reloj fijo a las 21:00; lugar abierto hasta las 23:00, lugar que abre a las 21:30, lugar que abre a las 22:30, lugar que cerró a las 20:00, y lugar con `opening_hours: null`
