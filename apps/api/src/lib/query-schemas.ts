@@ -112,3 +112,17 @@ export const SearchQuerySchema = z
       bbox: v.bbox !== undefined ? parseBbox(v.bbox) : null,
     }),
   )
+
+/** `lat`/`lon` opcionales de los detalles (E-11: pueden ser las del pin o la zona). Van juntos. */
+export const DetailQuerySchema = z
+  .object({
+    lat: decimal.pipe(z.number().min(-90).max(90)).optional(),
+    lon: decimal.pipe(z.number().min(-180).max(180)).optional(),
+  })
+  .superRefine((v, ctx) => {
+    if ((v.lat === undefined) !== (v.lon === undefined)) {
+      ctx.addIssue({ code: 'custom', message: 'lat y lon van juntos', path: ['lat'] })
+    }
+  })
+
+export const IdParamSchema = z.object({ id: z.string().uuid('id debe ser un UUID') })

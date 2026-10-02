@@ -4,7 +4,9 @@ import { HTTPException } from 'hono/http-exception'
 import { requestLog } from './middleware/request-log'
 import type { StatusCode } from 'hono/utils/http-status'
 import type { AppEnv } from './types/app'
+import eventsRoute from './routes/events'
 import ingestRoute from './routes/ingest'
+import placesRoute from './routes/places'
 import searchRoute from './routes/search'
 import zonesRoute from './routes/zones'
 
@@ -34,6 +36,8 @@ export function createApp(opts: { now?: () => Date } = {}) {
 
   app.route('/api/zones', zonesRoute)
   app.route('/api/search', searchRoute)
+  app.route('/api/events', eventsRoute)
+  app.route('/api/places', placesRoute)
   app.route('/api/ingest', ingestRoute)
 
   app.notFound((c) => c.json({ success: false, error: 'Not found' }, 404))
