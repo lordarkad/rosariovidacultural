@@ -188,7 +188,21 @@ Nota: E-4 se mantiene literal (sin horario solo en `hoy` y `finde`); con `manana
 
 **AC-16:** Intenciones y música (E-7)
 - When: `?i=comer,bailar`
-- Then: unión; los que cumplen ambas van antes que los que cumplen una (dentro de la franja). `?musica=jazz` sin `musica_en_vivo` en `i` se ignora; con ella, restringe todo el resultado a eventos de esos géneros: con `?i=comer,musica_en_vivo&musica=jazz` solo quedan eventos con género jazz que coinciden con alguna intención de `i`: una cena-show con `music_genres: [jazz]` e `intents: [comer]` entra (basta el género, F-16); un restaurante (lugar, sin géneros), un evento de rock y un evento de jazz cuyas `intents` no coinciden con ninguna de `i` quedan fuera. Con `?i=musica_en_vivo&musica=jazz` entran solo los eventos de jazz que tienen `musica_en_vivo` en sus `intents`: la cena-show `[jazz]/[comer]` queda fuera, porque `comer` no está en `i`. El género no cuenta como coincidencia de intención: para el orden de E-7 esa cena-show suma 1 coincidencia (`comer`) con `i=comer,musica_en_vivo`, no 2. Un género fuera del enum (`musica=tango`) es 400.
+- Then: unión; los que cumplen ambas van antes que los que cumplen una (dentro de la franja).
+- When: `?musica=jazz` sin `musica_en_vivo` en `i`
+- Then: `musica` se ignora.
+- When: `?i=comer,musica_en_vivo&musica=jazz` (con `musica_en_vivo` en `i`, `musica` restringe todo el resultado a eventos de esos géneros)
+- Then:
+  - Quedan solo eventos con género jazz que coinciden con alguna intención de `i`.
+  - Entra: una cena-show con `music_genres: [jazz]` e `intents: [comer]` (basta el género, F-16).
+  - Quedan fuera: un restaurante (lugar, sin géneros), un evento de rock y un evento de jazz cuyas `intents` no coinciden con ninguna de `i`.
+  - Orden (E-7): el género no cuenta como coincidencia de intención, así que esa cena-show suma 1 coincidencia (`comer`), no 2.
+- When: `?i=musica_en_vivo&musica=jazz`
+- Then:
+  - Entran solo los eventos de jazz que tienen `musica_en_vivo` en sus `intents`.
+  - La cena-show `[jazz]/[comer]` queda fuera, porque `comer` no está en `i`.
+- When: `?musica=tango` (género fuera del enum)
+- Then: 400.
 
 **AC-17:** Lugares: franja y `open_now` (F-9)
 - Given: reloj fijo a las 21:00; lugar abierto hasta las 23:00, lugar que abre a las 21:30, lugar que abre a las 22:30, lugar que cerró a las 20:00, y lugar con `opening_hours: null`
