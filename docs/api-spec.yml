@@ -407,7 +407,7 @@ components:
     Intents:
       name: i
       in: query
-      description: "Intenciones, separadas por coma. Unión (cualquiera), ordenada por cantidad de coincidencias (E-7)."
+      description: "Intenciones, separadas por coma. Unión (cualquiera), ordenada por cantidad de coincidencias (E-7); con `musica_en_vivo` y `musica` activos el resultado se restringe a eventos de esos géneros (ver `musica`)."
       style: form
       explode: false
       schema:
@@ -417,7 +417,7 @@ components:
     MusicGenres:
       name: musica
       in: query
-      description: "Subtipos de música, por coma. Con `musica_en_vivo` en `i`, restringen todo el resultado a eventos de esos géneros: los ítems que coinciden solo por otra intención (ej. `comer`) y los lugares (no tienen géneros) quedan fuera. Sin `musica_en_vivo` en `i` se ignoran."
+      description: "Subtipos de música, por coma. Con `musica_en_vivo` en `i`, el resultado queda restringido a eventos que tengan alguno de esos géneros (`music_genres`) y coincidan con al menos una intención de `i`; basta el género, no hace falta que el evento tenga `musica_en_vivo` en sus `intents`. Los lugares (no tienen géneros) y los eventos sin esos géneros quedan fuera. Sin `musica_en_vivo` en `i` se ignoran."
       style: form
       explode: false
       schema:
