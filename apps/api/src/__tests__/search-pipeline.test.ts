@@ -120,6 +120,16 @@ describe('buildSearchResults', () => {
       expect(res.map((r) => r.id)).toEqual([dos.id, temprano.id, tarde.id, uno.id, idA.id, idB.id])
     })
 
+    it('la distancia se compara redondeada, como la ve el cliente: a igual distance_m decide la hora', () => {
+      const origin2 = { lat: -32.94, lon: -60.65, radius_m: 10000 }
+      // ~0,1 m más cerca en bruto, pero mismo distance_m: el de las 22:30 va primero
+      const tarde = ev({ title: 'A', title_norm: 'a', intents: ['comer'], start_time: '23:30', lat: -32.930001, lon: -60.65 })
+      const temprano = ev({ title: 'B', title_norm: 'b', intents: ['comer'], start_time: '22:30', lat: -32.93, lon: -60.65 })
+      const res = run([tarde, temprano], [], params({ intents: ['comer'], origin: origin2 }))
+      expect(res[0]!.distance_m).toBe(res[1]!.distance_m)
+      expect(res.map((r) => r.id)).toEqual([temprano.id, tarde.id])
+    })
+
     it('en_cartel ordena por start_time como hora del día y deja sin horario al final', () => {
       const a = ev({ title: 'a', title_norm: 'a', start_date: '2026-09-10', end_date: '2026-10-30', start_time: '22:00' })
       const b = ev({ title: 'b', title_norm: 'b', start_date: '2026-09-10', end_date: '2026-10-30', start_time: '10:00' })

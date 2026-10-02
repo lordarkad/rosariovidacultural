@@ -60,6 +60,7 @@ interface Ranked {
   titleNorm: string
   startKey: number | null
   matches: number
+  /** `distance_m` redondeado: el orden coincide con lo que ve el cliente (F-10). */
   distance: number | null
 }
 
@@ -154,7 +155,7 @@ export function buildSearchResults(
       titleNorm: e.title_norm,
       startKey: c.startKey,
       matches,
-      distance: geo.distance,
+      distance: geo.distance_m,
     })
   }
 
@@ -194,7 +195,7 @@ export function buildSearchResults(
         titleNorm: p.name_norm,
         startKey: c.startKey,
         matches,
-        distance: geo.distance,
+        distance: geo.distance_m,
       })
     }
   }
