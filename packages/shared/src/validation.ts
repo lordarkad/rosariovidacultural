@@ -1,17 +1,7 @@
 import { z } from 'zod'
 
-// Hand-written for now; target state: generated from docs/api-spec.yml (ADR 0001 del playbook).
-// packages/shared/src/types/openapi.d.ts is generated — never edit it manually.
-
-export const HealthDataSchema = z.object({
-  status: z.literal('ok'),
-  ts: z.string(),
-})
+// Los schemas Zod de los payloads viven en schemas.ts (generado desde docs/api-spec.yml con
+// `npm run generate:schemas` — nunca editar a mano). Acá solo van helpers que no salen del spec.
 
 export const SuccessEnvelopeSchema = <T extends z.ZodTypeAny>(data: T) =>
   z.object({ success: z.literal(true), data })
-
-export const ErrorEnvelopeSchema = z.object({
-  success: z.literal(false),
-  error: z.string(),
-})
