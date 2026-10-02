@@ -4,6 +4,8 @@ import {
   businessDate,
   dateRange,
   daysInclusive,
+  EVENT_TOLERANCE_MS,
+  HOUR_MS,
   localMinutes,
   localToInstant,
   minutesOfTime,
@@ -30,7 +32,6 @@ export const BAND_ORDER: Band[] = [
   'a_confirmar',
 ]
 
-const HOUR_MS = 3_600_000
 const LONG_RANGE_DAYS = 7
 const NIGHT_FROM_MIN = 20 * 60
 const DAY_FROM_MIN = 6 * 60
@@ -45,7 +46,7 @@ export interface BandResult {
 export function bandOfInstant(t: Date, now: Date, opts: { allowAhora?: boolean } = {}): Band {
   const allowAhora = opts.allowAhora ?? true
   const ms = t.getTime()
-  if (allowAhora && ms >= now.getTime() - 2 * HOUR_MS && ms <= now.getTime() + HOUR_MS) {
+  if (allowAhora && ms >= now.getTime() - EVENT_TOLERANCE_MS && ms <= now.getTime() + HOUR_MS) {
     return 'ahora'
   }
   const tb = businessDate(t)

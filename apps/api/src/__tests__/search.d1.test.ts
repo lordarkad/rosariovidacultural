@@ -117,6 +117,13 @@ describe('GET /api/search', () => {
     expect(json.data.map((i: any) => i.title).sort()).toEqual(['Café del TEATRO', 'Obra en el Teatro Círculo'])
   })
 
+  it('[AC-20] q de exactamente 100 caracteres responde 200 contra la base real', async () => {
+    await ingest({ events: [{ source_key: 'f:1', title: 'Algo' }] })
+    const { res, json } = await get(`/api/search?cuando=hoy&q=${'a'.repeat(100)}`)
+    expect(res.status).toBe(200)
+    expect(json.data).toEqual([])
+  })
+
   it('[AC-16] musica estricto contra datos reales', async () => {
     await ingest({
       events: [

@@ -16,6 +16,18 @@ export function haversineM(lat1: number, lon1: number, lat2: number, lon2: numbe
 /** Minutos a pie sobre la distancia ya redondeada que ve el cliente. */
 export const walkMinutes = (distanceM: number): number => Math.ceil(distanceM / WALK_M_PER_MIN)
 
+/** Distancia al origen: `distance` sin redondear (filtro de radio) y los campos redondeados que ve el cliente. */
+export function distanceInfo(
+  origin: { lat: number; lon: number } | null,
+  lat: number | null,
+  lon: number | null,
+): { distance: number | null; distance_m: number | null; walk_minutes: number | null } {
+  if (!origin || lat === null || lon === null) return { distance: null, distance_m: null, walk_minutes: null }
+  const distance = haversineM(origin.lat, origin.lon, lat, lon)
+  const distance_m = Math.round(distance)
+  return { distance, distance_m, walk_minutes: walkMinutes(distance_m) }
+}
+
 /** Recuadro que contiene el círculo de radio `radiusM` (algo holgado: prefiltro, no filtro final). */
 export function bboxAround(lat: number, lon: number, radiusM: number): Bbox {
   const dLat = (radiusM / EARTH_RADIUS_M) * (180 / Math.PI) * 1.01

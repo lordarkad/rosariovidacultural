@@ -1,4 +1,4 @@
-import { addDays, businessDate, businessDayStart, localToInstant, weekdayMon0 } from './time'
+import { addDays, businessDate, businessDayStart, EVENT_TOLERANCE_MS, HOUR_MS, localToInstant, weekdayMon0 } from './time'
 
 export type Cuando = 'ahora' | 'hoy' | 'manana' | 'finde' | 'fecha'
 
@@ -21,7 +21,6 @@ export interface SearchWindow {
 
 export class InvalidWindowError extends Error {}
 
-const HOUR_MS = 3_600_000
 const FRIDAY = 4
 
 const dayWindow = (cuando: Cuando, date: string): SearchWindow => ({
@@ -36,7 +35,7 @@ const dayWindow = (cuando: Cuando, date: string): SearchWindow => ({
 
 export function resolveWindow(cuando: Cuando, fecha: string | undefined, now: Date): SearchWindow {
   const today = businessDate(now)
-  const tolerantFrom = new Date(now.getTime() - 2 * HOUR_MS)
+  const tolerantFrom = new Date(now.getTime() - EVENT_TOLERANCE_MS)
 
   const restOfToday = (c: Cuando): SearchWindow => ({
     cuando: c,

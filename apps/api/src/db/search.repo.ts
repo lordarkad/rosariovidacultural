@@ -3,14 +3,12 @@ import type { Intent, MusicGenre } from '@tript/shared'
 import { bboxAround } from '../domain/geo'
 import type { OpeningPeriod } from '../domain/opening-hours'
 import type { EventRow, PlaceRow, SearchOrigin } from '../domain/search-pipeline'
-import { addDays } from '../domain/time'
+import { addDays, DAY_MS } from '../domain/time'
 import type { SearchWindow } from '../domain/windows'
+import { parse } from './json'
 
-const DAY_MS = 24 * 3_600_000
 /** E-9: un evento sin verse hace más de 7 días sale de los resultados. Los lugares no vencen. */
 export const EVENT_TTL_MS = 7 * DAY_MS
-
-const parse = <T>(s: string | null, fallback: T): T => (s === null ? fallback : (JSON.parse(s) as T))
 
 interface EventDbRow {
   id: string
