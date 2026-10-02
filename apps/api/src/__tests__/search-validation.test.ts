@@ -6,6 +6,12 @@ import { envWithoutDb } from './helpers/fake-d1'
 const app = createApp({ now: () => new Date('2026-10-06T21:00:00-03:00') })
 const get = (path: string) => app.request(path, {}, envWithoutDb())
 
+// Pasar la validación es llegar a la base; la base de este archivo lanza, así que el 500 prueba que no hubo 400
+const reachesDb = async (path: string) => {
+  const res = await get(path)
+  expect(res.status, path).toBe(500)
+}
+
 const bad = async (path: string) => {
   const res = await get(path)
   expect(res.status, path).toBe(400)
@@ -38,8 +44,7 @@ describe('GET /api/search — parámetros inválidos (400)', () => {
   ])('[AC-5] %s', async (_name, path) => bad(path))
 
   it('[AC-20] q de exactamente 100 caracteres es válido (no da 400)', async () => {
-    const res = await get(`/api/search?q=${'a'.repeat(100)}`)
-    expect(res.status).not.toBe(400)
+    await reachesDb(`/api/search?q=${'a'.repeat(100)}`)
   })
 
   it('[AC-16] musica con género fuera del enum es 400 aunque musica_en_vivo no esté en i', async () => {
@@ -47,18 +52,15 @@ describe('GET /api/search — parámetros inválidos (400)', () => {
   })
 
   it('[AC-5] cuando=fecha&fecha de hoy no es 400 (se comporta como hoy)', async () => {
-    const res = await get('/api/search?cuando=fecha&fecha=2026-10-06')
-    expect(res.status).not.toBe(400)
+    await reachesDb('/api/search?cuando=fecha&fecha=2026-10-06')
   })
 
   it('[AC-5] fecha con cuando distinto de fecha se ignora aunque sea inválida', async () => {
-    const res = await get('/api/search?cuando=hoy&fecha=ayer')
-    expect(res.status).not.toBe(400)
+    await reachesDb('/api/search?cuando=hoy&fecha=ayer')
   })
 
   it('[AC-5] radio_m inválido se ignora cuando viene z (la zona usa su propio radio, E-8)', async () => {
-    const res = await get('/api/search?z=funes&radio_m=999999')
-    expect(res.status).not.toBe(400)
+    await reachesDb('/api/search?z=funes&radio_m=999999')
   })
 })
 

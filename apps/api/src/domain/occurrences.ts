@@ -1,6 +1,5 @@
-import { businessDate, businessDayStart, dateRange, localToInstant } from './time'
+import { businessDate, businessDayStart, dateRange, EVENT_TOLERANCE_MS, localToInstant } from './time'
 
-const TOLERANCE_MS = 2 * 3_600_000
 
 /**
  * Próxima ocurrencia de un evento a partir de `now`, o `null` si ya pasó. El horario se repite cada día del
@@ -16,7 +15,7 @@ export function nextOccurrence(
     if (e.end_date < today) return null
     return businessDayStart(e.start_date > today ? e.start_date : today)
   }
-  const cutoff = now.getTime() - TOLERANCE_MS
+  const cutoff = now.getTime() - EVENT_TOLERANCE_MS
   for (const date of dateRange(e.start_date, e.end_date)) {
     const t = localToInstant(date, e.start_time)
     if (t.getTime() >= cutoff) return t

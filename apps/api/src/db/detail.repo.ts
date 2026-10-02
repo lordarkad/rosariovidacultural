@@ -1,17 +1,16 @@
 import type { D1Database } from '@cloudflare/workers-types'
 import type { EventDetail, Intent, MusicGenre, PlaceDetail, SourceLink } from '@tript/shared'
-import { haversineM, walkMinutes } from '../domain/geo'
+import { distanceInfo } from '../domain/geo'
 import { isOpenAt, type OpeningPeriod } from '../domain/opening-hours'
 import { nextOccurrence } from '../domain/occurrences'
-import { addDays, businessDate } from '../domain/time'
+import { addDays, businessDate, HOUR_MS } from '../domain/time'
+import { parse } from './json'
 import { EVENT_TTL_MS } from './search.repo'
 
-const HOUR_MS = 3_600_000
 /** E-9: más de 36 h sin verse, el Detalle avisa «datos de ayer». */
 const STALE_AFTER_MS = 36 * HOUR_MS
 const MAX_UPCOMING = 20
 
-const parse = <T>(s: string | null, fallback: T): T => (s === null ? fallback : (JSON.parse(s) as T))
 
 export interface Origin {
   lat: number
@@ -19,9 +18,8 @@ export interface Origin {
 }
 
 function distanceFields(origin: Origin | null, lat: number | null, lon: number | null) {
-  if (!origin || lat === null || lon === null) return { distance_m: null, walk_minutes: null }
-  const distance_m = Math.round(haversineM(origin.lat, origin.lon, lat, lon))
-  return { distance_m, walk_minutes: walkMinutes(distance_m) }
+  const { distance_m, walk_minutes } = distanceInfo(origin, lat, lon)
+  return { distance_m, walk_minutes }
 }
 
 // El id puede ser el de una fila absorbida por una fusión: sigue resolviendo a la vigente (E-12, F-15)

@@ -2,8 +2,10 @@
 // El «día de negocio» va de las 06:00 a las 06:00 del siguiente: un evento a las 00:30 de D+1 es del día D.
 // Todo es aritmética sobre UTC, sin Intl, para que corra igual en Node y en Workers.
 
-const HOUR_MS = 3_600_000
-const DAY_MS = 24 * HOUR_MS
+export const HOUR_MS = 3_600_000
+export const DAY_MS = 24 * HOUR_MS
+/** Un evento con inicio hasta 2 h atrás sigue «en curso» (F-5, AC-8). */
+export const EVENT_TOLERANCE_MS = 2 * HOUR_MS
 const OFFSET_MS = -3 * HOUR_MS
 const BUSINESS_DAY_START = '06:00'
 

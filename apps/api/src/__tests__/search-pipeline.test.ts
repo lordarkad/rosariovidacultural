@@ -130,6 +130,13 @@ describe('buildSearchResults', () => {
       expect(res.map((r) => r.id)).toEqual([temprano.id, tarde.id])
     })
 
+    it('con todo igual salvo el título decide el título normalizado, no el id', () => {
+      const zeta = ev({ id: '00000000-0000-4000-8000-0000000000aa', title: 'Zeta', title_norm: 'zeta' })
+      const alfa = ev({ id: '00000000-0000-4000-8000-0000000000bb', title: 'Álfa', title_norm: 'alfa' })
+      const res = run([zeta, alfa], [])
+      expect(res.map((r) => r.id)).toEqual([alfa.id, zeta.id])
+    })
+
     it('en_cartel ordena por start_time como hora del día y deja sin horario al final', () => {
       const a = ev({ title: 'a', title_norm: 'a', start_date: '2026-09-10', end_date: '2026-10-30', start_time: '22:00' })
       const b = ev({ title: 'b', title_norm: 'b', start_date: '2026-09-10', end_date: '2026-10-30', start_time: '10:00' })

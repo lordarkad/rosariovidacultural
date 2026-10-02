@@ -1,4 +1,4 @@
-import { addDays, localDate, localToInstant, weekdayMon0 } from './time'
+import { addDays, DAY_MS, localDate, localToInstant, weekdayMon0 } from './time'
 
 /** Período semanal (spec `OpeningPeriod`): `day` 0 = lunes. `closes < opens` cierra al día siguiente. */
 export interface OpeningPeriod {
@@ -7,7 +7,6 @@ export interface OpeningPeriod {
   closes: string
 }
 
-const DAY_MS = 24 * 3_600_000
 
 /** Intervalos abiertos que se superponen con [from, to). Un período puede venir del día anterior. */
 function openIntervals(periods: OpeningPeriod[], from: Date, to: Date): Array<[Date, Date]> {

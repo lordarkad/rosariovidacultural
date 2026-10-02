@@ -1,6 +1,6 @@
 import type { Intent, MusicGenre, SearchItem } from '@tript/shared'
 import { BAND_ORDER, classifyEvent, classifyPlace } from './bands'
-import { haversineM, walkMinutes } from './geo'
+import { distanceInfo } from './geo'
 import { normalizeText } from './normalize'
 import type { OpeningPeriod } from './opening-hours'
 import type { SearchWindow } from './windows'
@@ -93,16 +93,6 @@ function compare(a: Ranked, b: Ranked): number {
   return a.item.id < b.item.id ? -1 : a.item.id > b.item.id ? 1 : 0
 }
 
-function geoFields(lat: number | null, lon: number | null, origin: SearchOrigin | null) {
-  const distance = origin && lat !== null && lon !== null ? haversineM(origin.lat, origin.lon, lat, lon) : null
-  const rounded = distance === null ? null : Math.round(distance)
-  return {
-    distance,
-    distance_m: rounded,
-    walk_minutes: rounded === null ? null : walkMinutes(rounded),
-  }
-}
-
 /**
  * Aplica en orden: origen/radio, filtros, franja y orden. Es función pura con reloj inyectado:
  * el repo solo hace un prefiltro grueso en SQL y la regla exacta vive acá.
@@ -120,7 +110,7 @@ export function buildSearchResults(
   const ranked: Ranked[] = []
 
   for (const e of rows.events) {
-    const geo = geoFields(e.lat, e.lon, origin)
+    const geo = distanceInfo(origin, e.lat, e.lon)
     if (origin && (geo.distance === null || geo.distance > origin.radius_m)) continue
     const matches = matchCount(e.intents, wanted)
     if (wanted.size > 0 && matches === 0) continue
@@ -162,7 +152,7 @@ export function buildSearchResults(
   // Los lugares no tienen género ni precio: ni `musica` ni `gratis` los dejan pasar (F-4, F-16)
   if (!genreFilter && !params.gratis) {
     for (const p of rows.places) {
-      const geo = geoFields(p.lat, p.lon, origin)
+      const geo = distanceInfo(origin, p.lat, p.lon)
       if (origin && (geo.distance === null || geo.distance > origin.radius_m)) continue
       const matches = matchCount(p.intents, wanted)
       if (wanted.size > 0 && matches === 0) continue

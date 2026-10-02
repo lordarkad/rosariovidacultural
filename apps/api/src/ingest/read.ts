@@ -1,5 +1,6 @@
 import type { D1Database } from '@cloudflare/workers-types'
 import type { IngestEvent, IngestPlace, SourceTier } from '@tript/shared'
+import { parse } from '../db/json'
 import { normalizeText } from '../domain/normalize'
 import type {
   EventFields,
@@ -13,13 +14,12 @@ import type {
 
 const json = (v: unknown): string => JSON.stringify(v)
 const uniq = <T>(xs: T[]): T[] => [...new Set(xs)]
-const parse = <T>(s: string | null, fallback: T): T => (s === null ? fallback : (JSON.parse(s) as T))
 
 // Cada consulta recibe sus listas como UN parámetro JSON consumido con json_each: D1 limita a 100
 // parámetros enlazados por consulta, y así el costo no depende del tamaño del lote.
 const EVENT_IDS_BY_KEYS = `SELECT event_id FROM event_sources WHERE source_key IN (SELECT value FROM json_each(?1))`
-const EVENT_IDS_BY_CANDIDATE = `SELECT e.id FROM events e WHERE EXISTS (
-  SELECT 1 FROM json_each(?2) p
+const eventIdsByCandidate = (param: number) => `SELECT e.id FROM events e WHERE EXISTS (
+  SELECT 1 FROM json_each(?${param}) p
   WHERE json_extract(p.value, '$.t') = e.title_norm AND json_extract(p.value, '$.d') = e.start_date)`
 
 interface EventDbRow {
@@ -71,10 +71,10 @@ export async function readEventState(db: D1Database, items: IngestEvent[]): Prom
   )
   const [byKey, byCandidate, sources, max] = await db.batch([
     db.prepare(`SELECT * FROM events WHERE id IN (${EVENT_IDS_BY_KEYS})`).bind(keys),
-    db.prepare(`SELECT * FROM events WHERE id IN (${EVENT_IDS_BY_CANDIDATE.replace('?2', '?1')})`).bind(pairs),
+    db.prepare(`SELECT * FROM events WHERE id IN (${eventIdsByCandidate(1)})`).bind(pairs),
     db
       .prepare(
-        `SELECT * FROM event_sources WHERE event_id IN (${EVENT_IDS_BY_KEYS} UNION ${EVENT_IDS_BY_CANDIDATE}) ORDER BY arrival`,
+        `SELECT * FROM event_sources WHERE event_id IN (${EVENT_IDS_BY_KEYS} UNION ${eventIdsByCandidate(2)}) ORDER BY arrival`,
       )
       .bind(keys, pairs),
     db.prepare(
