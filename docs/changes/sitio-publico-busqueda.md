@@ -50,7 +50,7 @@ Aprobadas por el tech lead el 2026-09-30.
 | E-4 | Sin horario (147 de 363) | Aparecen solo en «Hoy» y «Finde», en la franja «Horario a confirmar» al final, con «horario no informado». Nunca en «Ahora». |
 | E-5 | Medianoche y zona horaria | La base guarda UTC. Franjas, «Hoy», «Ahora» y «Finde» se calculan en `America/Argentina/Buenos_Aires` (UTC-3, sin horario de verano). Un evento a las 00:30 cuenta como la noche del día anterior; «Esta noche» llega hasta las 06:00. |
 | E-6 | Precio | Tres estados: `free` (etiqueta GRATIS), `paid` (precio en ARS), `unknown` («precio no informado» en el Detalle, sin etiqueta). El filtro «Gratis» trae solo `free`. |
-| E-7 | Intenciones parciales | Con varias intenciones activas, unión (cualquiera), ordenada primero por cantidad de coincidencias. Los subtipos de música filtran dentro de «Música en vivo». |
+| E-7 | Intenciones parciales | Con varias intenciones activas, unión (cualquiera), ordenada primero por cantidad de coincidencias. Los subtipos de música, con «Música en vivo» activa, restringen el resultado a eventos de esos géneros (F-16). |
 | E-8 | Radio máximo vs. localidades | El máximo de 10 km aplica a Cerca mío y Mapa. Las zonas (Funes, Roldán…) usan su propio radio fijo. |
 | E-9 | Frescura | Cada ítem guarda `last_seen_at`. **Solo eventos:** más de 36 h, el Detalle avisa «datos de ayer»; más de 7 días, sale de los resultados. **Los lugares no vencen** (decisión del tech lead, 2026-09-30: son negocios de larga vida y se importan poco). |
 | E-10 | Duplicados | Clave: título normalizado + fecha + lugar. (Operativa en F-11.) Fuente primaria, en orden: curado a mano, fuente oficial, agregador. En lugares, el curado pisa a OSM. |
@@ -110,6 +110,7 @@ Aprobados por el tech lead el 2026-09-30.
 | F-13 | `IngestEvent` trae `source_url` (+ `via` opcional); nombre y prioridad de la fuente salen del lote. | Evita la fuente duplicada y contradictoria. |
 | F-14 | Un rango de 2 a 7 días repite `start_time` cada día; `finde` arranca en `max(viernes 18:00, ahora)`; «hoy» es el día de negocio; `ahora` para un lugar es `open_now = true` y que la ventana incluya el momento actual. | Cierra los bordes que dejaba la definición de franjas. |
 | F-15 | Al fusionar, la fila existente conserva su `id` y los absorbidos resuelven al vigente; un alias reenviado solo actualiza `last_seen_at`. Presupuesto de ≤10 llamadas a D1 por request. | Los links compartidos no se rompen y el curado no lo pisa OSM. |
+| F-16 | Con `musica_en_vivo` en `i`, `musica` restringe el resultado a eventos que tengan alguno de esos géneros y coincidan con al menos una intención de `i`; basta el género (no se exige `musica_en_vivo` en las `intents` del evento), pero el género no cuenta como coincidencia de intención para el orden de E-7. Sin `musica_en_vivo` en `i`, `musica` se ignora. Decidido por Daniel el 2026-10-02 (antes: el filtro solo actuaba sobre lo que coincidía por música). | Un género pedido tiene que acotar el resultado; el género es un atributo del evento, independiente de sus intenciones. |
 
 Nota: E-4 se mantiene literal (sin horario solo en `hoy` y `finde`); con `manana` o `fecha` esos eventos no aparecen. Si se prefiere mostrarlos también ahí, es un cambio de E-4.
 
@@ -187,7 +188,21 @@ Nota: E-4 se mantiene literal (sin horario solo en `hoy` y `finde`); con `manana
 
 **AC-16:** Intenciones y música (E-7)
 - When: `?i=comer,bailar`
-- Then: unión; los que cumplen ambas van antes que los que cumplen una (dentro de la franja). `?musica=jazz` sin `musica_en_vivo` se ignora; con ella, filtra solo a los que coinciden por `musica_en_vivo`: con `?i=comer,musica_en_vivo&musica=jazz`, un restaurante que coincide por `comer` sigue, un evento de rock no, y un lugar con `musica_en_vivo` (sin géneros) no cuenta como coincidencia de esa intención.
+- Then: unión; los que cumplen ambas van antes que los que cumplen una (dentro de la franja).
+- When: `?musica=jazz` sin `musica_en_vivo` en `i`
+- Then: `musica` se ignora.
+- When: `?i=comer,musica_en_vivo&musica=jazz` (con `musica_en_vivo` en `i`, `musica` restringe todo el resultado a eventos de esos géneros)
+- Then:
+  - Quedan solo eventos con género jazz que coinciden con alguna intención de `i`.
+  - Entra: una cena-show con `music_genres: [jazz]` e `intents: [comer]` (basta el género, F-16).
+  - Quedan fuera: un restaurante (lugar, sin géneros), un evento de rock y un evento de jazz cuyas `intents` no coinciden con ninguna de `i`.
+  - Orden (E-7): el género no cuenta como coincidencia de intención, así que esa cena-show suma 1 coincidencia (`comer`), no 2.
+- When: `?i=musica_en_vivo&musica=jazz`
+- Then:
+  - Entran solo los eventos de jazz que tienen `musica_en_vivo` en sus `intents`.
+  - La cena-show `[jazz]/[comer]` queda fuera, porque `comer` no está en `i`.
+- When: `?musica=tango` (género fuera del enum)
+- Then: 400.
 
 **AC-17:** Lugares: franja y `open_now` (F-9)
 - Given: reloj fijo a las 21:00; lugar abierto hasta las 23:00, lugar que abre a las 21:30, lugar que abre a las 22:30, lugar que cerró a las 20:00, y lugar con `opening_hours: null`
