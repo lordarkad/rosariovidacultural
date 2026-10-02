@@ -2,15 +2,16 @@
 
 - Fecha: 2026-10-02
 - Track: app
-- Commit verificado: f289af6
+- Commit verificado: 1c453a4 (tope de la pila de PRs #6..#12; reemplaza la corrida anterior sobre f289af6)
 
 ## Comandos ejecutados
-- `npm run lint:spec` → ✅ (spec válido, 1 warning previo: `/health` sin `security`)
-- `npm run generate:schemas` + diff ignorando fin de línea sobre `packages/shared/src/schemas.ts` → ✅ sin drift
-- `npm run type-check` → ✅ (0 errores, `apps/api` y `apps/dashboard`)
-- `npm test` (desde la raíz) → ✅ 235 tests, 22 archivos (proyectos `api`, `api-d1` con D1 real, `dashboard`)
-- Snyk Code sobre `scripts/`, `apps/api/src` → ✅ 0 issues en cada bloque
-- Smoke real contra `wrangler dev` (D1 local, migraciones aplicadas con el runner de Wrangler) → ✅ 22/22
+- `npm run lint:spec` → ✅ (spec válido, 1 warning previo: `/health` sin `security`; y 1 warning de la config de Redocly)
+- `npm run generate:schemas` + `git diff --exit-code packages/shared/src/schemas.ts types.ts` → ✅ sin drift
+- `npm run type-check` → ✅ (0 errores)
+- `npm test` (desde la raíz) → ✅ 238 tests, 22 archivos (proyectos `api`, `api-d1` con D1 real, `dashboard`)
+- Búsqueda de AC sin test citado (AC-1..AC-39) → ✅ ninguno sin citar
+- Verificación de envelope: sin `c.json(...)` sin `success` en `routes/`, `index.ts` ni `middleware/` → ✅ (`validate_envelope` MCP no disponible en la sesión; se hizo a mano)
+- Smoke real contra `wrangler dev` en local (D1 local, migraciones ya aplicadas) → ✅ ver tabla
 
 ## Cobertura de AC
 Los 40 AC (AC-1..AC-39 y AC-10b) tienen al menos un test que los cita por nombre.
@@ -35,18 +36,29 @@ Los 40 AC (AC-1..AC-39 y AC-10b) tienen al menos un test que los cita por nombre
 ## Smoke real (Paso 4.5)
 | Operación | Request | Esperado | Obtenido |
 |---|---|---|---|
-| ingestBatch | sin token / token malo | 401 | 401 ✅ |
-| ingestBatch | JSON malformado / sin `source` | 400 | 400 ✅ |
-| ingestBatch | lote con 1 lugar, 2 eventos (1 roto) | 200, `rejected` 1 | 200 ✅ |
-| ingestBatch | mismo lote otra vez | 200, `created` 0 | 200 ✅ |
 | listZones | `GET /api/zones` | 200 | 200 ✅ |
-| searchItems | `?z=pichincha&cuando=hoy` (JOIN lugar-evento) | 200 | 200 ✅ |
-| searchItems | zona inexistente / `z`+`lat` / `per_page=101` | 404 / 400 / 400 | ✅ |
-| searchPins | `?z=pichincha` / bbox invertido | 200 / 400 | ✅ |
-| getEvent | con `lat`/`lon`, inexistente, no UUID, `lat` sin `lon` | 200 / 404 / 400 / 400 | ✅ |
-| getPlace | existente, inexistente | 200 / 404 | ✅ |
+| ingestBatch | sin token / token incorrecto | 401 | 401 ✅ |
+| ingestBatch | body `{"source":1}` | 400 | 400 ✅ |
+| ingestBatch | lote con 1 lugar y 1 evento | 200, `created` 1+1 | 200 ✅ |
+| ingestBatch | mismo lote otra vez | 200, `created` 0, `updated` 1+1 | 200 ✅ |
+| searchItems | `?cuando=fecha&fecha=2026-10-07` | 200 con el evento | 200 ✅ |
+| searchItems | `?q=lugar` | 200 con el lugar | 200 ✅ |
+| searchItems | `?z=centro&cuando=fecha&fecha=2026-10-07` | 200 vacío (el lugar queda a ~1,26 km, fuera del radio de 1200 m) | 200 ✅ |
+| searchItems | fecha pasada / `lat` sin `lon` | 400 / 400 | 400 / 400 ✅ |
+| searchPins | `?cuando=fecha&fecha=2026-10-07` | 200 | 200 ✅ |
+| getEvent | existente / inexistente / id no UUID | 200 / 404 / 400 | 200 / 404 / 400 ✅ |
+| getPlace | existente / inexistente | 200 / 404 | 200 / 404 ✅ |
+| (ruta inexistente) | `GET /api/nada` | 404 con envelope | 404 ✅ |
 
-Estado previo de D1 local: zones 13, el resto 0. Estado posterior a la restauración: zones 13, el resto 0 (coincide: sí). El `.dev.vars` de prueba (gitignored) se borró.
+Alcance del smoke: es más acotado que el de la corrida anterior (22 checks sobre f289af6). No repitió, por ejemplo, el lote con un evento roto ni los casos de zona inexistente, `per_page=101` y bbox invertido; esos siguen cubiertos por los tests (`ingest.d1.test.ts`, `search-validation.test.ts`, `pins.d1.test.ts`).
+
+Estado previo de D1 local: zones 13, places/events/place_keys/event_sources 0. Estado posterior a la restauración: zones 13, el resto 0 (coincide: sí). El `.dev.vars` de prueba (gitignored) se borró.
+
+## Observación (no bloqueante)
+En el smoke, un evento con `venue_name` igual al nombre de un lugar ingerido en el mismo lote quedó sin vincular (`place: null`, `location_known: false`). Es coherente con que el vínculo se haga por clave de lugar y no por nombre, pero conviene confirmarlo contra el spec cuando se defina el sub-slice Python de `ingestion/`.
+
+## Paso 6 (stores) y Paso 7 (deploy)
+N/A: el slice no toca `apps/dashboard` y no se investiga un problema de producción.
 
 ## Resultado
-✅ verificado. El `/code-review` posterior (4 focos) no cambió el código de este commit.
+✅ verificado sobre 1c453a4. Este commit tiene el mismo árbol que a729a2a (verificado antes del restack).
