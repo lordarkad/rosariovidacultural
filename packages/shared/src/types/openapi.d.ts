@@ -21,6 +21,236 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/zones": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Zonas predefinidas (barrios y localidades) con centro y radio
+         * @description Lista fija (B-6). Sin paginación, son pocas y se cachean en el cliente.
+         */
+        get: operations["listZones"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/search": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Buscar eventos y lugares (lista agrupada por franja)
+         * @description Búsqueda en el servidor (B-5). Devuelve eventos y lugares mezclados, ordenados por franja horaria y,
+         *     dentro de cada franja, por distancia al origen (B-9). Sin origen (`z` ni `lat`/`lon`) busca en toda
+         *     la ciudad, sin distancia, y ordena por horario.
+         *
+         *     Origen: `z` (zona, usa su propio radio, E-8) **o** `lat`+`lon` (radio `radio_m`, 500 a 10000, default 2000).
+         *     `z` y `lat`/`lon` a la vez es un 400, igual que `lat` sin `lon`, o `cuando=fecha` sin `fecha`.
+         *     Un `z` que no existe es 404. Las coordenadas no se guardan ni se loguean (D-9).
+         *     Con origen (`z` o `lat`+`lon`) solo entran ítems con ubicación dentro del radio: los `location_known = false`
+         *     no se pueden ubicar y quedan afuera. Sin origen entran todos, y los sin ubicación van al final de su franja (E-1).
+         *
+         *     Paginación (D-7): el envelope obliga a que `data` sea el array, así que el total viaja en los headers
+         *     `X-Total-Count`, `X-Page` y `X-Per-Page`.
+         *
+         *     **Día y ventanas (E-5).** Todo se calcula en `America/Argentina/Buenos_Aires`. El «día» va de las 06:00 a las
+         *     06:00 del siguiente: un evento a las 00:30 de D+1 pertenece al día D y solo a ese (nunca se cuenta dos veces).
+         *     - «Hoy» es siempre el día de negocio (06:00 a 06:00): el lunes a las 02:00 todavía es domingo.
+         *     - `ahora`: eventos con horario que empezaron hace hasta 2 h o empiezan en la próxima hora, y lugares con `open_now = true`.
+         *     - `hoy`: el resto del día actual. `manana`: el día siguiente. `fecha`: el día indicado.
+         *     - `finde`: de `max(viernes 18:00, ahora)` hasta el lunes 06:00 siguiente. Entre el viernes 18:00 y el lunes 06:00
+         *       es el fin de semana en curso; el resto de la semana, el próximo (de lunes 06:00 a viernes 18:00 la ventana
+         *       es el viernes 18:00 próximo, así que nunca está vacía por el calendario). La tolerancia de 2 h hacia atrás es solo para
+         *       eventos; un lugar que ya cerró no cuenta por haber estado abierto antes de `ahora`.
+         *
+         *     **Franja (`band`).** Depende de cuándo ocurre el ítem por primera vez dentro de la ventana, no del valor de `cuando`.
+         *     Se evalúa en este orden:
+         *     1. Evento con rango de más de 7 días (días inclusivos: `end_date - start_date + 1 > 7`): `en_cartel`, con o sin
+         *        horario (E-3). Aparece en toda ventana que su rango superponga, salvo `ahora`.
+         *     2. Evento sin `start_time`: `a_confirmar`. Aparece solo con `cuando=hoy` o `finde`; nunca con `ahora`, `manana` ni `fecha` (E-4).
+         *     3. El resto, por día y hora de su primera ocurrencia: hoy entre 06:00 y 20:00 es `hoy`, hoy desde las 20:00 es
+         *        `esta_noche`, o `ahora` si cumple la definición de arriba; mañana es `manana`; después, `proximos`.
+         *        Con un rango de 2 a 7 días, `start_time` se repite cada día del rango; la primera ocurrencia es la
+         *        primera de esas con inicio mayor o igual a `ahora` menos 2 h dentro de la ventana. Una ocurrencia de hoy
+         *        que empezó hace más de 2 h no cuenta, y si era la última del rango el evento no aparece.
+         *     4. Lugares: aparecen si están abiertos en algún momento de la ventana (a partir de `ahora`). **`ahora` si y
+         *        solo si `open_now = true` y la ventana incluye el momento actual (`ahora`, `hoy`, o `finde` ya empezado).** Si no, toman `hoy` o `esta_noche` según su hora de apertura, aunque abran
+         *        dentro de la próxima hora; `manana` o `proximos` según el día de su primera apertura. Sin `opening_hours`:
+         *        `a_confirmar`, con las mismas ventanas que un evento sin horario. Un lugar que ya cerró por hoy no aparece en `hoy`.
+         *
+         *     **Orden.** Por `band` (`ahora`, `hoy`, `esta_noche`, `manana`, `proximos`, `en_cartel`, `a_confirmar`) y, dentro de
+         *     cada franja: (1) ítems con ubicación antes que los sin ubicación (E-1); (2) con `i`, más intenciones
+         *     coincidentes primero (E-7); (3) `distance_m` ascendente; (4) hora de inicio ascendente (evento: su primera
+         *     ocurrencia en la ventana; lugar: su primer momento abierto; en `en_cartel`, su `start_time` como hora del día;
+         *     sin hora al final); (5) título o nombre
+         *     normalizado; (6) `id` ascendente como desempate final, para que la paginación sea estable (B-9). Sin origen
+         *     el paso (3) no discrimina y sigue (4).
+         *
+         *     Eventos y lugares se comparan con la misma clave. Los eventos que dejan de verse vencen (E-9); los lugares no.
+         *
+         *     Vencimiento (E-9, solo eventos): un evento sin verse hace más de 7 días no aparece.
+         */
+        get: operations["searchItems"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/search/pins": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Pins para el mapa, con los mismos filtros que /search
+         * @description Mismos filtros y mismas validaciones que `searchItems`, sin paginación. Devuelve como máximo 100 pins
+         *     (D-7), en el mismo orden que la lista. Si hay más, `X-Truncated: true` y el cliente acota con `bbox`
+         *     al mover o hacer zoom en el mapa. Solo incluye ítems con coordenadas (los eventos sin ubicación, E-1,
+         *     no tienen pin).
+         */
+        get: operations["searchPins"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/events/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Detalle de un evento
+         * @description URL pública `/e/:id` (E-12). `lat`/`lon` opcionales para calcular distancia y minutos a pie (E-11: pueden
+         *     ser las del pin o la zona, no necesariamente las del GPS). Un evento sin verse hace más de 7 días
+         *     responde 404 (E-9).
+         */
+        get: operations["getEvent"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/places/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Detalle de un lugar
+         * @description URL pública `/l/:id` (E-12). Incluye los próximos eventos del lugar (lo que lo hace «sede de eventos»,
+         *     B-1). `lat`/`lon` opcionales, igual que en `getEvent`.
+         */
+        get: operations["getPlace"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/ingest": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Ingesta de un lote de eventos y lugares (scrapers de Python)
+         * @description Lo llama `ingestion/` desde GitHub Actions (ADR 0002). Auth: `Authorization: Bearer <INGEST_TOKEN>`.
+         *
+         *     **Lote parcial y solo-upsert** (cierra el pendiente del ADR 0002):
+         *     - Es *upsert* por `source_key`, que es **único globalmente**: lleva el prefijo de la fuente
+         *       (`<fuente>:<clave>`), así `place_source_key` no necesita otra referencia. Nunca borra ítems que el lote no
+         *       trae: una fuente caída no vacía el catálogo. Los eventos que dejan de verse vencen a los 7 días (E-9);
+         *       los lugares no vencen.
+         *     - La estructura del lote se valida entera (400 si está mal). Los ítems inválidos no tumban el lote:
+         *       se devuelven en `rejected` y el resto se guarda. Un `source_key` repetido dentro del lote se rechaza
+         *       desde la segunda aparición (`reason: duplicate_source_key`). Es idempotente: reenviar el mismo lote no duplica.
+         *     - Cada ítem aceptado actualiza `last_seen_at` a la hora de la request.
+         *     - Dentro de un lote se procesan primero los lugares y después los eventos. `place_source_key` se guarda en el
+         *       evento y se resuelve al leer, así que un evento cuyo lugar llega en un lote posterior queda vinculado solo.
+         *     - **Hora:** `start_date` y `start_time` se envían en hora local de Rosario (UTC-3, sin horario de verano).
+         *       El servidor guarda el instante en UTC y lo reconvierte al calcular franjas (E-5).
+         *     - **Fechas:** un evento con `end_date` anterior a `start_date` se rechaza con `reason: invalid_date_range`.
+         *     - **Duplicados de eventos (E-10):** dos eventos son el mismo si tienen igual título normalizado y
+         *       `start_date`, y además comparten sede: el mismo lugar resuelto, o el `venue_name` normalizado de uno igual
+         *       al `venue_name` o al nombre del lugar resuelto del otro, o la misma `address` normalizada. Si ninguno
+         *       tiene sede, no se deduplica. Dos sedes del mismo show difieren en la sede, así que nunca se fusionan (E-2).
+         *       El dedupe se evalúa al ingerir con el lugar resuelto en ese momento y no se repite después. Al fusionar,
+         *       gana la fuente de mayor prioridad (`source.tier`: `curated` > `official` > `aggregator`); a igual
+         *       prioridad, la que llegó primero. Las otras pasan a `sources` como «vía».
+         *     - **Duplicados de lugares:** un lugar `origin: curated` absorbe a uno `osm` con el mismo nombre normalizado a
+         *       50 m o menos. El `source_key` del `osm` absorbido queda como alias, para que los eventos que lo referencian
+         *       resuelvan al lugar vigente. El dedupe de lugares se evalúa solo cuando aparece un `source_key` nuevo;
+         *       actualizar una fila existente (por ejemplo, el curado reenviado con otro `name`, `lat` o `lon`) no dispara
+         *       fusiones ni las revierte. Dos lugares curados nunca se fusionan entre sí: un `osm` nuevo que coincide con
+         *       más de un curado (mismo nombre normalizado, a 50 m o menos) pasa a alias del curado insertado primero
+         *       (orden de inserción: no depende de `id` ni del reloj; dentro de un lote, el orden de índice) y los curados
+         *       quedan como filas aparte.
+         *     - **Clave canónica (lugares):** tras una fusión, la clave canónica de la fila es siempre el `source_key` del
+         *       lugar curado, sea cual sea el `id` que sobrevive (el de la fila existente, o el del `osm` insertado primero si
+         *       hay varios). El ítem curado reemplaza la fila por completo y `origin` pasa a `curated`, también cuando el
+         *       curado llega después del `osm`: los campos opcionales que el curado omite o manda en `null` quedan en
+         *       `null` y no se heredan del `osm`. Así `getPlace` devuelve los datos del curado y la fila sigue absorbiendo
+         *       `osm` posteriores a 50 m o menos. Los `source_key` `osm` pasan a alias y solo actualizan `last_seen_at`.
+         *       Observable desde el contrato: si el curado reenvía su `source_key` con un campo cambiado, el cambio se
+         *       aplica a la fila sobreviviente.
+         *     - **Clave canónica (eventos):** tras una fusión, la clave canónica de la fila es el `source_key` de la fuente
+         *       primaria (mayor `tier`; a igual `tier`, la primera en llegar), sea cual sea el `id` que sobrevive. Solo esa
+         *       clave actualiza los campos del evento; las demás son alias y solo actualizan `last_seen_at` y `sources`. Si
+         *       después llega una fuente de mayor `tier`, pasa a ser la canónica y la anterior pasa a alias.
+         *     - **Mismo lote:** los ítems ya procesados del mismo lote cuentan como filas existentes, en orden de índice,
+         *       tanto para el dedupe como para «Varios candidatos». Los conteos siguen las mismas reglas (`created` para
+         *       el primero, `updated` para cada fusión).
+         *     - **Varios candidatos:** si un ítem nuevo coincide con más de una fila existente (lugares, solo cuando el ítem
+         *       nuevo es curado: dos filas `osm`, por ejemplo nodo y way, a 50 m o menos; eventos: el criterio de sede no es transitivo), se fusionan
+         *       todos en la fila insertada primero (mismo orden de inserción de arriba). Las demás pasan a alias que
+         *       resuelven a ella, y la fusión cuenta como un solo `updated`.
+         *     - **Ids estables:** al fusionar, la fila ya existente conserva su `id` y los ids absorbidos resuelven al
+         *       vigente, así los links `/e/:id` y `/l/:id` ya compartidos (E-12) no pasan a 404. Un `source_key` que ya es
+         *       alias solo actualiza `last_seen_at`; nunca pisa los campos del lugar curado (E-10). Lo mismo vale para eventos: el `source_key` de un evento absorbido en una fusión solo actualiza `last_seen_at` y su entrada en `sources`, nunca los campos de la primaria, y reenviarlo no crea un evento nuevo.
+         *     - **Conteos:** una fusión por dedupe cuenta como `updated`.
+         *     - Un evento con varias sedes se envía como un ítem por sede, con el mismo `source_url` (E-2).
+         *     - Máximo 200 eventos y 200 lugares por lote. Presupuesto: las escrituras van con `D1.batch()` y una request
+         *       hace como máximo 10 llamadas a la API de D1 (`batch`, `run`, `all`), sea cual sea el tamaño del lote.
+         */
+        post: operations["ingestBatch"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -36,8 +266,334 @@ export interface components {
             success: false;
             error: string;
         };
+        /**
+         * @description Taxonomía de intenciones (B-3). La asigna la ingesta, no el cliente.
+         * @enum {string}
+         */
+        Intent: "comer" | "tomar_algo" | "espectaculo" | "musica_en_vivo" | "bailar" | "con_chicos";
+        /** @enum {string} */
+        MusicGenre: "jazz" | "rock" | "folklore" | "electronica";
+        /**
+         * @description Franja de la lista (B-9), en America/Argentina/Buenos_Aires (E-5). Reglas completas en la descripción de `searchItems`.
+         *     `ahora`: empezó hace hasta 2 h o empieza en la próxima hora (lugares: abierto ahora).
+         *     `hoy`: hoy entre 06:00 y 20:00. `esta_noche`: desde las 20:00 hasta las 06:00.
+         *     `manana`: el día siguiente. `proximos`: días posteriores a mañana.
+         *     `en_cartel`: rango de más de 7 días (E-3). `a_confirmar`: sin horario (E-4).
+         * @enum {string}
+         */
+        Band: "ahora" | "hoy" | "esta_noche" | "manana" | "proximos" | "en_cartel" | "a_confirmar";
+        /** @enum {string} */
+        ItemKind: "event" | "place";
+        /**
+         * @description E-6. `unknown` = «precio no informado», sin etiqueta.
+         * @enum {string}
+         */
+        PriceStatus: "free" | "paid" | "unknown";
+        /** @enum {string} */
+        PlaceKind: "restaurante" | "bar" | "cafe" | "heladeria" | "comida_rapida" | "sala" | "otro";
+        /** @enum {string} */
+        PlaceOffer: "musica_en_vivo" | "cena" | "baile";
+        /** @enum {string} */
+        PlaceOrigin: "curated" | "osm";
+        /**
+         * @description Prioridad de fuente para resolver duplicados (E-10), de mayor a menor.
+         * @enum {string}
+         */
+        SourceTier: "curated" | "official" | "aggregator";
+        Zone: {
+            /** @description Slug estable, el que va en `?z=` (E-12), ej. `pichincha`. */
+            id: string;
+            name: string;
+            /** @enum {string} */
+            kind: "barrio" | "localidad";
+            /** Format: double */
+            lat: number;
+            /** Format: double */
+            lon: number;
+            radius_m: number;
+        };
+        SourceLink: {
+            name: string;
+            /** Format: uri */
+            url: string;
+        };
+        OpeningPeriod: {
+            /** @description 0 = lunes, 6 = domingo */
+            day: number;
+            opens: string;
+            /** @description Si es menor que `opens`, cierra al día siguiente. Si es igual a `opens`, el lugar está abierto 24 h (ej. `00:00`–`00:00`). */
+            closes: string;
+        };
+        /** @description Todas las claves se devuelven siempre; «no aplica» o «no informado» es `null`, nunca una clave ausente. */
+        SearchItem: {
+            kind: components["schemas"]["ItemKind"];
+            /** Format: uuid */
+            id: string;
+            title: string;
+            intents: components["schemas"]["Intent"][];
+            band: components["schemas"]["Band"];
+            /** @description Solo `kind = place`. */
+            place_kind: components["schemas"]["PlaceKind"] | null;
+            /**
+             * Format: date
+             * @description Solo `kind = event`.
+             */
+            start_date: string | null;
+            /** Format: date */
+            end_date: string | null;
+            /** @description Hora local de 24 h. `null` = «horario no informado». */
+            start_time: components["schemas"]["TimeOfDay"];
+            /** @description Solo `kind = place`. `null` = «horario no informado». */
+            open_now: boolean | null;
+            venue_name: string | null;
+            address: string | null;
+            /** Format: double */
+            lat: number | null;
+            /** Format: double */
+            lon: number | null;
+            /** @description `false` = «ubicación no informada» (E-1): no hay distancia ni pin. */
+            location_known: boolean;
+            /** @description Desde el origen de la búsqueda (E-11). `null` si no hay origen o `location_known = false`. */
+            distance_m: number | null;
+            /** @description Estimación en línea recta a 80 m/min (B-8). */
+            walk_minutes: number | null;
+            price_status: components["schemas"]["PriceStatus"];
+            price_from_ars: number | null;
+            /** Format: uri */
+            image_url: string | null;
+        };
+        SearchPin: {
+            kind: components["schemas"]["ItemKind"];
+            /** Format: uuid */
+            id: string;
+            title: string;
+            /** Format: double */
+            lat: number;
+            /** Format: double */
+            lon: number;
+        };
+        /** @description Hora local de 24 h (`HH:MM`). `null` = «horario no informado». */
+        TimeOfDay: string | null;
+        /** @description Mismo evento en otra sede (E-2). `id` es el del evento hermano (`/e/:id`). */
+        EventSibling: {
+            /** Format: uuid */
+            id: string;
+            venue_name?: string | null;
+            address?: string | null;
+        };
+        /** @description Lugar vinculado. `id` es el del lugar (`/l/:id`). */
+        PlaceRef: {
+            /** Format: uuid */
+            id: string;
+            name: string;
+            address?: string | null;
+        };
+        /** @description Todas las claves se devuelven siempre; «no informado» es `null`, nunca una clave ausente. */
+        EventDetail: {
+            /** Format: uuid */
+            id: string;
+            title: string;
+            description: string | null;
+            intents: components["schemas"]["Intent"][];
+            music_genres: components["schemas"]["MusicGenre"][];
+            /** Format: date */
+            start_date: string;
+            /** Format: date */
+            end_date: string;
+            start_time: components["schemas"]["TimeOfDay"];
+            /** @description Texto original de la fuente, para mostrar cuando el parseo no alcanza. */
+            date_text: string | null;
+            venue_name: string | null;
+            address: string | null;
+            /** Format: double */
+            lat: number | null;
+            /** Format: double */
+            lon: number | null;
+            location_known: boolean;
+            distance_m: number | null;
+            walk_minutes: number | null;
+            /** @description Lugar vinculado, si la ingesta lo resolvió (hereda sus coordenadas, E-1). */
+            place: components["schemas"]["PlaceRef"] | null;
+            price_status: components["schemas"]["PriceStatus"];
+            price_from_ars: number | null;
+            /** Format: uri */
+            image_url: string | null;
+            /** @description La primera es la fuente primaria; las demás son «vía» (D-10, link siempre visible). */
+            sources: components["schemas"]["SourceLink"][];
+            /** @description Eventos hermanos (E-2), «También en…»: los que comparten cualquiera de los `source_url` recibidos por sus `source_key` (primario o alias) **y** el título normalizado, y están en otra sede (distinto lugar vinculado, o distinto `venue_name`/`address` normalizado). Dos eventos con el mismo título en la misma sede no son hermanos. El agrupado se conserva aunque un dedupe cambie la fuente primaria. Excluye eventos vencidos (E-9). */
+            also_at: components["schemas"]["EventSibling"][];
+            /** Format: date-time */
+            last_seen_at: string;
+            /** @description `true` si `last_seen_at` tiene más de 36 h (E-9): el Detalle avisa «datos de ayer». */
+            is_stale: boolean;
+        };
+        UpcomingEvent: {
+            /** Format: uuid */
+            id: string;
+            title: string;
+            /** Format: date */
+            start_date: string;
+            start_time: components["schemas"]["TimeOfDay"];
+            price_status: components["schemas"]["PriceStatus"];
+            price_from_ars: number | null;
+        };
+        /** @description Todas las claves se devuelven siempre; «no informado» es `null`, nunca una clave ausente. */
+        PlaceDetail: {
+            /** Format: uuid */
+            id: string;
+            name: string;
+            kind: components["schemas"]["PlaceKind"];
+            origin: components["schemas"]["PlaceOrigin"];
+            intents: components["schemas"]["Intent"][];
+            offers: components["schemas"]["PlaceOffer"][];
+            cuisine: string[];
+            address: string | null;
+            /** Format: double */
+            lat: number;
+            /** Format: double */
+            lon: number;
+            /**
+             * @description Un lugar siempre tiene coordenadas.
+             * @enum {boolean}
+             */
+            location_known: true;
+            distance_m: number | null;
+            walk_minutes: number | null;
+            opening_hours: components["schemas"]["OpeningPeriod"][] | null;
+            /** @description Horario crudo de la fuente (OSM `opening_hours`), por si no se pudo estructurar. */
+            hours_text: string | null;
+            open_now: boolean | null;
+            phone: string | null;
+            /** Format: uri */
+            website: string | null;
+            /** @description Usuario sin @. */
+            instagram: string | null;
+            outdoor: boolean | null;
+            note: string | null;
+            /** Format: uri */
+            image_url: string | null;
+            /** @description Próximos eventos en este lugar, más cercanos primero, máximo 20. Excluye los que ya pasaron y los vencidos (E-9). */
+            upcoming_events: components["schemas"]["UpcomingEvent"][];
+            /**
+             * Format: date-time
+             * @description Informativo. Los lugares no vencen ni tienen aviso de «datos de ayer».
+             */
+            last_seen_at: string;
+        };
+        IngestBatch: {
+            source: {
+                /** @description Nombre de la fuente, ej. `Agenda municipal`, `OpenStreetMap`. */
+                name: string;
+                tier: components["schemas"]["SourceTier"];
+            };
+            /** Format: date-time */
+            generated_at: string;
+            /** @description Cada ítem se valida por separado contra `IngestEvent`; uno inválido va a `rejected` y no tumba el lote. Por eso el lote solo exige que cada ítem sea un objeto. */
+            events?: (components["schemas"]["IngestEvent"] | {
+                [key: string]: unknown;
+            })[];
+            /** @description Cada ítem se valida por separado contra `IngestPlace`; uno inválido va a `rejected` y no tumba el lote. */
+            places?: (components["schemas"]["IngestPlace"] | {
+                [key: string]: unknown;
+            })[];
+        };
+        IngestEvent: {
+            /** @description Único globalmente: `<fuente>:<clave estable por URL + sede>`. Es la clave del upsert. */
+            source_key: string;
+            title: string;
+            description?: string | null;
+            intents: components["schemas"]["Intent"][];
+            music_genres?: components["schemas"]["MusicGenre"][];
+            /** Format: date */
+            start_date: string;
+            /** Format: date */
+            end_date: string;
+            /** @description Hora local de Rosario. `null` si la fuente no la informa (E-4). */
+            start_time?: components["schemas"]["TimeOfDay"];
+            date_text?: string | null;
+            venue_name?: string | null;
+            address?: string | null;
+            /** Format: double */
+            lat?: number | null;
+            /** Format: double */
+            lon?: number | null;
+            /** @description `source_key` (global) del lugar vinculado, de cualquier fuente. Si el lugar todavía no existe, el evento queda sin lugar hasta que llegue (se resuelve al leer). */
+            place_source_key?: string | null;
+            price_status: components["schemas"]["PriceStatus"];
+            price_from_ars?: number | null;
+            /** Format: uri */
+            image_url?: string | null;
+            /**
+             * Format: uri
+             * @description URL de la fuente primaria. El nombre y la prioridad salen del lote (`source`). Es también la clave de agrupado de sedes (E-2).
+             */
+            source_url: string;
+            /** @description Otras fuentes que mencionan el evento («vía»), si la ingesta las conoce. */
+            via?: components["schemas"]["SourceLink"][];
+        };
+        IngestPlace: {
+            /** @description Único globalmente: `<fuente>:<id>` (OSM: `osm:w1225024480`). */
+            source_key: string;
+            name: string;
+            kind: components["schemas"]["PlaceKind"];
+            origin: components["schemas"]["PlaceOrigin"];
+            intents: components["schemas"]["Intent"][];
+            offers?: components["schemas"]["PlaceOffer"][];
+            cuisine?: string[];
+            address?: string | null;
+            /** Format: double */
+            lat: number;
+            /** Format: double */
+            lon: number;
+            /** @description Horario estructurado por la ingesta. `null` = «horario no informado». Un array vacío es inválido (`reason: invalid_opening_hours`): si no se pudo estructurar, enviar `null`. */
+            opening_hours?: components["schemas"]["OpeningPeriod"][] | null;
+            hours_text?: string | null;
+            phone?: string | null;
+            /** Format: uri */
+            website?: string | null;
+            instagram?: string | null;
+            outdoor?: boolean | null;
+            note?: string | null;
+            /** Format: uri */
+            image_url?: string | null;
+        };
+        IngestCounts: {
+            received: number;
+            created: number;
+            updated: number;
+            rejected: number;
+        };
+        IngestRejection: {
+            kind: components["schemas"]["ItemKind"];
+            index: number;
+            source_key: string | null;
+            reason: string;
+        };
+        IngestResult: {
+            events: components["schemas"]["IngestCounts"];
+            places: components["schemas"]["IngestCounts"];
+            rejected: components["schemas"]["IngestRejection"][];
+        };
     };
     responses: {
+        /** @description Request inválido */
+        BadRequest: {
+            headers: {
+                [name: string]: unknown;
+            };
+            content: {
+                "application/json": components["schemas"]["ErrorEnvelope"];
+            };
+        };
+        /** @description Falta el token o es inválido */
+        Unauthorized: {
+            headers: {
+                [name: string]: unknown;
+            };
+            content: {
+                "application/json": components["schemas"]["ErrorEnvelope"];
+            };
+        };
         /** @description Resource not found */
         NotFound: {
             headers: {
@@ -57,7 +613,28 @@ export interface components {
             };
         };
     };
-    parameters: never;
+    parameters: {
+        IdPath: string;
+        /** @description Intenciones, separadas por coma. Unión (cualquiera), ordenada por cantidad de coincidencias (E-7). */
+        Intents: components["schemas"]["Intent"][];
+        /** @description Subtipos de música, por coma. Solo restringen a los ítems que coinciden por `musica_en_vivo` (los que coinciden por otra intención, ej. `comer`, no se filtran); sin esa intención se ignoran. Los lugares no tienen géneros: con `musica` activo no coinciden por `musica_en_vivo`. */
+        MusicGenres: components["schemas"]["MusicGenre"][];
+        /** @description `true` trae solo `price_status = free` (E-6). Los lugares no tienen precio: su `price_status` es siempre `unknown`, así que `gratis=true` los excluye. */
+        Gratis: boolean;
+        /** @description Ventana. `fecha` exige el parámetro `fecha`. */
+        Cuando: "ahora" | "hoy" | "manana" | "finde" | "fecha";
+        /** @description Día puntual (`cuando=fecha`; con otro `cuando` se ignora). Una fecha anterior al día de negocio actual es 400; igual a hoy se comporta como `hoy` (recortada a `ahora`); posterior, el día entero. */
+        Fecha: string;
+        /** @description Id de una zona de `/zones`. Excluyente con `lat`/`lon`. */
+        Zona: string;
+        /** @description Origen: latitud (GPS o pin del mapa). Va con `lon`. */
+        Lat: number;
+        Lon: number;
+        /** @description Radio en metros alrededor de `lat`/`lon`. Si se envía `z` se ignora: la zona usa su propio radio (E-8). */
+        RadioM: number;
+        /** @description Texto libre sobre título, lugar y dirección. */
+        TextoLibre: string;
+    };
     requestBodies: never;
     headers: never;
     pathItems: never;
@@ -86,6 +663,234 @@ export interface operations {
                     };
                 };
             };
+            500: components["responses"]["ServerError"];
+        };
+    };
+    listZones: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Lista de zonas */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @enum {boolean} */
+                        success: true;
+                        data: components["schemas"]["Zone"][];
+                    };
+                };
+            };
+            500: components["responses"]["ServerError"];
+        };
+    };
+    searchItems: {
+        parameters: {
+            query?: {
+                /** @description Intenciones, separadas por coma. Unión (cualquiera), ordenada por cantidad de coincidencias (E-7). */
+                i?: components["parameters"]["Intents"];
+                /** @description Subtipos de música, por coma. Solo restringen a los ítems que coinciden por `musica_en_vivo` (los que coinciden por otra intención, ej. `comer`, no se filtran); sin esa intención se ignoran. Los lugares no tienen géneros: con `musica` activo no coinciden por `musica_en_vivo`. */
+                musica?: components["parameters"]["MusicGenres"];
+                /** @description `true` trae solo `price_status = free` (E-6). Los lugares no tienen precio: su `price_status` es siempre `unknown`, así que `gratis=true` los excluye. */
+                gratis?: components["parameters"]["Gratis"];
+                /** @description Ventana. `fecha` exige el parámetro `fecha`. */
+                cuando?: components["parameters"]["Cuando"];
+                /** @description Día puntual (`cuando=fecha`; con otro `cuando` se ignora). Una fecha anterior al día de negocio actual es 400; igual a hoy se comporta como `hoy` (recortada a `ahora`); posterior, el día entero. */
+                fecha?: components["parameters"]["Fecha"];
+                /** @description Id de una zona de `/zones`. Excluyente con `lat`/`lon`. */
+                z?: components["parameters"]["Zona"];
+                /** @description Origen: latitud (GPS o pin del mapa). Va con `lon`. */
+                lat?: components["parameters"]["Lat"];
+                lon?: components["parameters"]["Lon"];
+                /** @description Radio en metros alrededor de `lat`/`lon`. Si se envía `z` se ignora: la zona usa su propio radio (E-8). */
+                radio_m?: components["parameters"]["RadioM"];
+                /** @description Texto libre sobre título, lugar y dirección. */
+                q?: components["parameters"]["TextoLibre"];
+                page?: number;
+                per_page?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Página de resultados */
+            200: {
+                headers: {
+                    /** @description Total de resultados que cumplen los filtros (todas las páginas) */
+                    "X-Total-Count"?: number;
+                    "X-Page"?: number;
+                    "X-Per-Page"?: number;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @enum {boolean} */
+                        success: true;
+                        data: components["schemas"]["SearchItem"][];
+                    };
+                };
+            };
+            400: components["responses"]["BadRequest"];
+            404: components["responses"]["NotFound"];
+            500: components["responses"]["ServerError"];
+        };
+    };
+    searchPins: {
+        parameters: {
+            query?: {
+                /** @description Intenciones, separadas por coma. Unión (cualquiera), ordenada por cantidad de coincidencias (E-7). */
+                i?: components["parameters"]["Intents"];
+                /** @description Subtipos de música, por coma. Solo restringen a los ítems que coinciden por `musica_en_vivo` (los que coinciden por otra intención, ej. `comer`, no se filtran); sin esa intención se ignoran. Los lugares no tienen géneros: con `musica` activo no coinciden por `musica_en_vivo`. */
+                musica?: components["parameters"]["MusicGenres"];
+                /** @description `true` trae solo `price_status = free` (E-6). Los lugares no tienen precio: su `price_status` es siempre `unknown`, así que `gratis=true` los excluye. */
+                gratis?: components["parameters"]["Gratis"];
+                /** @description Ventana. `fecha` exige el parámetro `fecha`. */
+                cuando?: components["parameters"]["Cuando"];
+                /** @description Día puntual (`cuando=fecha`; con otro `cuando` se ignora). Una fecha anterior al día de negocio actual es 400; igual a hoy se comporta como `hoy` (recortada a `ahora`); posterior, el día entero. */
+                fecha?: components["parameters"]["Fecha"];
+                /** @description Id de una zona de `/zones`. Excluyente con `lat`/`lon`. */
+                z?: components["parameters"]["Zona"];
+                /** @description Origen: latitud (GPS o pin del mapa). Va con `lon`. */
+                lat?: components["parameters"]["Lat"];
+                lon?: components["parameters"]["Lon"];
+                /** @description Radio en metros alrededor de `lat`/`lon`. Si se envía `z` se ignora: la zona usa su propio radio (E-8). */
+                radio_m?: components["parameters"]["RadioM"];
+                /** @description Texto libre sobre título, lugar y dirección. */
+                q?: components["parameters"]["TextoLibre"];
+                /** @description Recuadro visible del mapa: `min_lon,min_lat,max_lon,max_lat`. Con min mayor que max es 400. */
+                bbox?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Pins (máximo 100) */
+            200: {
+                headers: {
+                    /** @description Total de ítems con coordenadas que cumplen los filtros y caen dentro de `bbox` (si se envía) */
+                    "X-Total-Count"?: number;
+                    /** @description `true` si hay más pins de los devueltos */
+                    "X-Truncated"?: boolean;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @enum {boolean} */
+                        success: true;
+                        data: components["schemas"]["SearchPin"][];
+                    };
+                };
+            };
+            400: components["responses"]["BadRequest"];
+            404: components["responses"]["NotFound"];
+            500: components["responses"]["ServerError"];
+        };
+    };
+    getEvent: {
+        parameters: {
+            query?: {
+                /** @description Origen: latitud (GPS o pin del mapa). Va con `lon`. */
+                lat?: components["parameters"]["Lat"];
+                lon?: components["parameters"]["Lon"];
+            };
+            header?: never;
+            path: {
+                id: components["parameters"]["IdPath"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Detalle del evento */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @enum {boolean} */
+                        success: true;
+                        data: components["schemas"]["EventDetail"];
+                    };
+                };
+            };
+            400: components["responses"]["BadRequest"];
+            404: components["responses"]["NotFound"];
+            500: components["responses"]["ServerError"];
+        };
+    };
+    getPlace: {
+        parameters: {
+            query?: {
+                /** @description Origen: latitud (GPS o pin del mapa). Va con `lon`. */
+                lat?: components["parameters"]["Lat"];
+                lon?: components["parameters"]["Lon"];
+            };
+            header?: never;
+            path: {
+                id: components["parameters"]["IdPath"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Detalle del lugar */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @enum {boolean} */
+                        success: true;
+                        data: components["schemas"]["PlaceDetail"];
+                    };
+                };
+            };
+            400: components["responses"]["BadRequest"];
+            404: components["responses"]["NotFound"];
+            500: components["responses"]["ServerError"];
+        };
+    };
+    ingestBatch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["IngestBatch"];
+            };
+        };
+        responses: {
+            /** @description Lote procesado (puede incluir ítems rechazados) */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @enum {boolean} */
+                        success: true;
+                        data: components["schemas"]["IngestResult"];
+                    };
+                };
+            };
+            400: components["responses"]["BadRequest"];
+            401: components["responses"]["Unauthorized"];
             500: components["responses"]["ServerError"];
         };
     };
