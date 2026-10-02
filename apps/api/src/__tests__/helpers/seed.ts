@@ -66,3 +66,14 @@ export async function truncateCatalog(db = env.DB) {
     ),
   )
 }
+
+/** GET contra la API real con D1 real y el reloj fijado en `now`. */
+export async function get(path: string, now: Date = T0, db = env.DB) {
+  const { app: a, env: e } = app(now, db)
+  const res = await a.request(path, {}, e)
+  return {
+    res,
+    json: (await res.json()) as { success: boolean; data?: any; error?: string },
+    total: Number(res.headers.get('X-Total-Count')),
+  }
+}

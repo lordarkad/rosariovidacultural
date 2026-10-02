@@ -1,10 +1,11 @@
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { HTTPException } from 'hono/http-exception'
-import { logger } from 'hono/logger'
+import { requestLog } from './middleware/request-log'
 import type { StatusCode } from 'hono/utils/http-status'
 import type { AppEnv } from './types/app'
 import ingestRoute from './routes/ingest'
+import searchRoute from './routes/search'
 import zonesRoute from './routes/zones'
 
 /** `now` se inyecta en los tests para fijar el reloj (franjas, vencimientos, last_seen_at). */
@@ -12,7 +13,7 @@ export function createApp(opts: { now?: () => Date } = {}) {
   const now = opts.now ?? (() => new Date())
   const app = new Hono<AppEnv>()
 
-  app.use('*', logger())
+  app.use('*', requestLog)
   app.use('*', async (c, next) => {
     c.set('now', now)
     await next()
@@ -32,6 +33,7 @@ export function createApp(opts: { now?: () => Date } = {}) {
   )
 
   app.route('/api/zones', zonesRoute)
+  app.route('/api/search', searchRoute)
   app.route('/api/ingest', ingestRoute)
 
   app.notFound((c) => c.json({ success: false, error: 'Not found' }, 404))
