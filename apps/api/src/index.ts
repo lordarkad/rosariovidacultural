@@ -2,6 +2,7 @@ import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
 import type { Bindings } from './types/bindings'
+import zonesRoute from './routes/zones'
 
 const app = new Hono<{ Bindings: Bindings }>()
 
@@ -17,6 +18,8 @@ app.use(
 app.get('/api/health', (c) =>
   c.json({ success: true, data: { status: 'ok', ts: new Date().toISOString() } }),
 )
+
+app.route('/api/zones', zonesRoute)
 
 app.notFound((c) => c.json({ success: false, error: 'Not found' }, 404))
 
