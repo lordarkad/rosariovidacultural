@@ -8,7 +8,7 @@ export const ErrorEnvelopeSchema = z.object({ "success": z.literal(false), "erro
 export const EventDetailSchema = z.object({ "id": z.string().uuid(), "title": z.string(), "description": z.union([z.string(), z.null()]), "intents": z.array(z.enum(["comer","tomar_algo","espectaculo","musica_en_vivo","bailar","con_chicos"]).describe("Taxonomía de intenciones (B-3). La asigna la ingesta, no el cliente.")), "music_genres": z.array(z.enum(["jazz","rock","folklore","electronica"])), "start_date": z.string().date(), "end_date": z.string().date(), "start_time": z.union([z.string().regex(new RegExp("^([01]\\d|2[0-3]):[0-5]\\d$")).describe("Hora local de 24 h (`HH:MM`). `null` = «horario no informado»."), z.null().describe("Hora local de 24 h (`HH:MM`). `null` = «horario no informado».")]).describe("Hora local de 24 h (`HH:MM`). `null` = «horario no informado»."), "date_text": z.union([z.string().describe("Texto original de la fuente, para mostrar cuando el parseo no alcanza."), z.null().describe("Texto original de la fuente, para mostrar cuando el parseo no alcanza.")]).describe("Texto original de la fuente, para mostrar cuando el parseo no alcanza."), "venue_name": z.union([z.string(), z.null()]), "address": z.union([z.string(), z.null()]), "lat": z.union([z.number(), z.null()]), "lon": z.union([z.number(), z.null()]), "location_known": z.boolean(), "distance_m": z.union([z.number().int(), z.null()]), "walk_minutes": z.union([z.number().int(), z.null()]), "place": z.any().superRefine((x, ctx) => {
     const schemas = [z.object({ "id": z.string().uuid(), "name": z.string(), "address": z.union([z.string(), z.null()]).optional() }).describe("Lugar vinculado. `id` es el del lugar (`/l/:id`)."), z.null()];
     const { errors, failed } = schemas.reduce<{
-      errors: z.core.$ZodIssue[];
+      errors: z.ZodIssue[];
       failed: number;
     }>(
       ({ errors, failed }, schema) =>
@@ -27,13 +27,11 @@ export const EventDetailSchema = z.object({ "id": z.string().uuid(), "title": z.
     if (passed !== 1) {
       ctx.addIssue(errors.length ? {
         path: [],
-        code: "invalid_union",
-        errors: [errors],
+        code: "custom",
         message: "Invalid input: Should pass single schema. Passed " + passed,
       } : {
         path: [],
         code: "custom",
-        errors: [errors],
         message: "Invalid input: Should pass single schema. Passed " + passed,
       });
     }
@@ -78,7 +76,7 @@ export const PriceStatusSchema = z.enum(["free","paid","unknown"]).describe("E-6
 export const SearchItemSchema = z.object({ "kind": z.enum(["event","place"]), "id": z.string().uuid(), "title": z.string(), "intents": z.array(z.enum(["comer","tomar_algo","espectaculo","musica_en_vivo","bailar","con_chicos"]).describe("Taxonomía de intenciones (B-3). La asigna la ingesta, no el cliente.")), "band": z.enum(["ahora","hoy","esta_noche","manana","proximos","en_cartel","a_confirmar"]).describe("Franja de la lista (B-9), en America/Argentina/Buenos_Aires (E-5). Reglas completas en la descripción de `searchItems`.\n`ahora`: empezó hace hasta 2 h o empieza en la próxima hora (lugares: abierto ahora).\n`hoy`: hoy entre 06:00 y 20:00. `esta_noche`: desde las 20:00 hasta las 06:00.\n`manana`: el día siguiente. `proximos`: días posteriores a mañana.\n`en_cartel`: rango de más de 7 días (E-3). `a_confirmar`: sin horario (E-4).\n"), "place_kind": z.any().superRefine((x, ctx) => {
     const schemas = [z.enum(["restaurante","bar","cafe","heladeria","comida_rapida","sala","otro"]), z.null()];
     const { errors, failed } = schemas.reduce<{
-      errors: z.core.$ZodIssue[];
+      errors: z.ZodIssue[];
       failed: number;
     }>(
       ({ errors, failed }, schema) =>
@@ -97,13 +95,11 @@ export const SearchItemSchema = z.object({ "kind": z.enum(["event","place"]), "i
     if (passed !== 1) {
       ctx.addIssue(errors.length ? {
         path: [],
-        code: "invalid_union",
-        errors: [errors],
+        code: "custom",
         message: "Invalid input: Should pass single schema. Passed " + passed,
       } : {
         path: [],
         code: "custom",
-        errors: [errors],
         message: "Invalid input: Should pass single schema. Passed " + passed,
       });
     }
