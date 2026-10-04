@@ -1,0 +1,36 @@
+name: Deploy (production)
+
+# Manual gate: nada llega a producción automáticamente. Un humano corre este workflow desde la
+# pestaña Actions, después de revisar staging. Reemplaza a Environments → Required reviewers,
+# que no existe en repos privados con plan gratuito.
+#
+# `ref` por defecto es main; pasar un SHA para desplegar otra cosa (p. ej. re-correr un deploy previo).
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Commit SHA o rama a desplegar a producción (por defecto main)"
+        required: false
+        default: main
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  packages: read # techo que pide el workflow reusable (este repo no consume GitHub Packages hoy)
+
+jobs:
+  deploy-production:
+    # Sin filtro de paths (a diferencia de deploy.yml): corre a mano y rara vez, y no hay un commit
+    # base fijo contra el cual comparar un `ref` arbitrario. Despliega siempre todo.
+    uses: Triptongo/triptongo-ci-shared/.github/workflows/post-merge-deploy.yml@main
+    with:
+      environment: production
+      ref: ${{ inputs.ref }}
+      deploy_api: true
+      deploy_dashboard: true
+      d1_database_name: "rosariovidacultural-db"
+      api_health_url: "" # REPLACE once the production API domain is known — empty skips the smoke check
+    secrets: inherit
