@@ -30,7 +30,7 @@
   - `Componentes`: `Chip`, `Tab`, `Tag` (component sets con propiedad `Label`) y `EventCard`, `VenueCard`, `PlaceCard`. Todo enlazado a variables y estilos de texto (cero hex literal).
   - `Pantallas`: Eventos, Espacios y Lugares en desktop Light; Eventos en Dark y en mobile 390; y un tablero con los estados asíncronos.
 - **Desvíos respecto del playbook (a revisar):**
-  1. Sin remapeo contra `Triptongo UI Seed v1.0` (DoD §5 de `docs/11`): la librería no figura entre las disponibles para esta cuenta/archivo. Pendiente agregarla y remapear estilos/variables antes de aprobar.
+  1. ~~Sin remapeo contra `Triptongo UI Seed v1.0` (DoD §5 de `docs/11`)~~ — **no aplica** (2026-10-03): RVC es `Relación = personal`; la semilla es obligatoria solo para `interna`. No se agrega la librería ni se remapea.
   2. Tipografías: el prototipo usa Georgia (títulos) y `system-ui` (cuerpo). En Figma se sustituyeron por **Noto Serif Bold** e **Inter**, que están disponibles en el archivo. El look final se define con el preset de PrimeVue.
   3. Las miniaturas de las tarjetas de evento son placeholders (rectángulo 16:9): las imágenes reales vienen de las fuentes y no se importan a Figma.
   4. Datos de ejemplo tomados de `events.json` / `venues.json` / `places.json` del 2026-09-29.
@@ -53,4 +53,4 @@
 - **Prototipo y aprobación:**
   - Prototipo: Figma Make `en5jOAjdZvfWxOggie0jUt` (6 direcciones, A–F).
   - **Aprobación:** Daniel King, 2026-09-30, dirección **B · Ribera**.
-  - Pendiente: remapeo contra `Triptongo UI Seed v1.0` (DoD §5 de `docs/11`), como en la entrada anterior.
+  - Remapeo contra `Triptongo UI Seed v1.0`: **no aplica** (2026-10-03, RVC es `personal`; ver «Datos del Proyecto» en `CLAUDE.md`).
