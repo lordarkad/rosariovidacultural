@@ -358,6 +358,8 @@ No leas `src/` para entender el contrato — lee el spec. El código implementa 
 
 - **Nombre:** `rosariovidacultural`
 - **Track:** app
+- **Relación:** personal <!-- declarado 2026-10-03; fija la base de UI: preset PrimeVue propio, sin auditoría contra `Triptongo UI Seed v1.0` -->
+- **Tecnología de UI:** app
 - **Cuenta:** Triptongo
 - **Descripción:** Agregador de planes en Rosario (eventos, espacios, lugares): sitio público + panel admin.
 - **Creado:** 2026-09-29
