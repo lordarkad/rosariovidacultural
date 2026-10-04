@@ -30,6 +30,26 @@ Este proyecto usa exclusivamente:
 
 ---
 
+## Perfil del Proyecto
+
+La sección `## Datos del Proyecto` (al final de este archivo) declara dos campos que fijan la **base de UI**. No cambian el rigor de los gates: ese lo marcan el nivel 0–3 (`tracks/app/00-playbook.md` Fase 1A) y la elección del owner.
+
+- **Relación:** `interna` (la usa el equipo de Triptongo para operar la agencia) · `producto propio` · `cliente` · `personal`.
+- **Tecnología de UI:** se deriva del track (`app`, `data`, `wp-traditional`); un sitio estático sin framework es `static`.
+
+| Relación | Base de UI |
+|---|---|
+| `interna` | `Triptongo UI Seed v1.0` + `@triptongo/ui`, **obligatorios** (DoD `docs/11` §5) |
+| `cliente` | Escenario A–D de `docs/design-system/design-engagement-scenarios.md` |
+| `producto propio` / `personal` | Preset PrimeVue por defecto, un color de marca, una tipografía, dark mode sí/no |
+| Tecnología `static` | Archivo de tokens CSS, sin PrimeVue |
+
+El scaffold de `/new-track-app` sigue trayendo `@triptongo/ui` como punto de partida técnico (ADR 0003). «Obligatorio» para `interna` significa que la semilla es **la base y se audita** (DoD, remapeo en Figma); en las demás relaciones el paquete es reemplazable por un preset propio y **no se audita contra la semilla**.
+
+Un perfil por repo; si una app del monorepo difiere, se declara solo esa excepción. Si el repo no declara perfil, se asume `interna` y se le pregunta al owner (`/tript-wireframe-brief`, Fase A). El owner cambia el perfil editando esta sección con fecha y motivo. Detalle y origen: `docs/13-sop-figma-design-make-claude.md` §9b.
+
+---
+
 ## OpenSpec Gate — Reglas de Modificación de Archivos
 
 ### PROHIBIDO sin aprobación previa del spec:
@@ -101,7 +121,7 @@ Ejemplo:
 **Propósito:** Expandir un requisito con preguntas técnicas, edge cases, y decisiones de diseño.
 **Output esperado:** Lista de preguntas/decisiones, nunca código.
 **Regla:** Si el output contiene código fuente, el comando fue mal ejecutado.
-**Regla de wireframes:** si el requisito es Nivel 2/3 (página/vista nueva, rediseño estructural, componente interactivo nuevo — ver tabla de niveles en `tracks/app/00-playbook.md` §Fase 1A), el owner debe haber entregado ya un wireframe en `wireframes/` (más su validación con el cliente en `docs/`, si la hay). Si no existe, es un gap bloqueante. Nivel 0/1 y slices puramente backend sin superficie de UI están exceptuados.
+**Regla de wireframes:** si el requisito es Nivel 2/3 (página/vista nueva, rediseño estructural, componente interactivo nuevo — ver tabla de niveles en `tracks/app/00-playbook.md` §Fase 1A), debe existir ya un wireframe del owner en `wireframes/` (más su validación con el cliente en `docs/`, si la hay): o lo entregó el owner, o lo generó `/tript-wireframe-brief` (entrevista) y el owner lo aprobó explícitamente. Si no existe, es un gap bloqueante; los supuestos sin confirmar de una entrevista se listan como gaps (§D). Nivel 0/1 y slices puramente backend sin superficie de UI están exceptuados.
 
 ```
 Ejemplo de prompt interno:
@@ -112,12 +132,22 @@ No escribas código. Output: texto estructurado para review humano."
 
 ---
 
+### `/tript-wireframe-brief [slug opcional]`
+
+**Propósito:** (A) fijar la base de UI según el perfil del proyecto, y (B) si el owner no entrega los wireframes, generarlos con una entrevista de opciones concretas, con lista de supuestos.
+**Cuándo:** antes de `/enrich-us`, en cualquier requisito Nivel 2/3. Nivel 0/1 y slices solo backend no aplican.
+**Regla:** **siempre** le pregunta al owner si entrega los wireframes o prefiere la entrevista — en proyectos personales y en los que no lo son. Los wireframes generados solo cuentan como «del owner» con su aprobación explícita.
+**Output:** `wireframes/` (HTML en grises), `wireframes/README.md` (decisiones + supuestos), entrada «Baseline» y registro de aprobación en `docs/DESIGN.md`; opcionalmente `wireframes/make-prompt.md` para Figma Make.
+**Instalación:** copiar `commands/tript-wireframe-brief.md` de este playbook a `~/.claude/commands/` para uso global.
+
+---
+
 ### `/ff [descripción de cambio]`
 
 **Propósito:** Fast-forward — proponer cambios en `docs/api-spec.yml` dado un requisito ya enriquecido.
 **Output esperado:** Diff de `docs/api-spec.yml` con el nuevo endpoint/schema.
 **Regla:** Solo modifica archivos en `docs/`. Si el output toca `src/`, el comando fue mal ejecutado.
-**Regla de wireframes:** para slices Nivel 2/3 (ver `tracks/app/00-playbook.md` §Fase 1A), sin wireframe del owner (o su validación con el cliente) cubriendo la pantalla del slice, `/ff` no avanza. Nivel 0/1 no lo requieren. Excepción: slices puramente backend sin superficie de UI.
+**Regla de wireframes:** para slices Nivel 2/3 (ver `tracks/app/00-playbook.md` §Fase 1A), sin wireframe del owner (entregado por él, o generado con `/tript-wireframe-brief` y aprobado por él) o su validación con el cliente cubriendo la pantalla del slice, `/ff` no avanza. Nivel 0/1 no lo requieren. Excepción: slices puramente backend sin superficie de UI.
 
 **Script equivalente (post-edición):**
 ```bash
@@ -259,6 +289,38 @@ Instalar el agente: `cp agents/*.md ~/.claude/agents/` (ver guía de onboarding)
 
 ---
 
+## Hook `guard-gh-pr-merge` — enforcement técnico del gate de review
+
+La regla «no mergear sin `/code-review` sobre el diff exacto» (sección `/code-review`) tiene un enforcement técnico opcional: el hook `PreToolUse` `hooks/guard-gh-pr-merge.sh`. Bloquea cualquier `gh pr merge` que ejecute Claude Code si no existe un marcador de review para el **commit SHA exacto** del PR. Un commit nuevo en la rama deja el marcador viejo sin efecto: el review de una versión anterior no cubre el diff nuevo.
+
+**Qué NO cubre:** merges hechos desde la UI de GitHub o desde tu propia terminal — ahí el único gate es la disciplina de no ofrecer ni asumir el merge sin haber revisado antes. El hook tampoco corre `/code-review`: solo verifica que alguien lo corrió y dejó el marcador.
+
+**Instalación (una vez por máquina):**
+```bash
+mkdir -p ~/.claude/hooks && cp hooks/guard-gh-pr-merge.sh ~/.claude/hooks/
+```
+Y registrarlo en `~/.claude/settings.json` (mezclar con el bloque `hooks` si ya existe; usar la ruta absoluta si `$HOME` no se expande en tu shell):
+```json
+"hooks": {
+  "PreToolUse": [
+    { "matcher": "Bash", "hooks": [ { "type": "command", "command": "bash \"$HOME/.claude/hooks/guard-gh-pr-merge.sh\"" } ] }
+  ]
+}
+```
+Requiere `bash`, `node` y `gh` en el PATH (en Windows, git-bash). Los marcadores viven en `<carpeta del hook>/../review-log/<slug>/`, donde `<slug>` es la ruta de la raíz del repo con todo carácter no alfanumérico reemplazado por `_`.
+
+**Después de un review limpio**, escribir el marcador. No derivar el slug a mano: correr el `gh pr merge` y copiar el comando exacto del mensaje de bloqueo.
+
+**Cómo decide:** parsea el JSON del hook con `node` (no con `grep`), resuelve el repo desde un `cd` previo o `--repo`, y **bloquea ante la duda** (fail-closed): JSON ilegible, `gh` que no resuelve el PR, merge anidado en `bash -c`, o `node`/`gh` ausentes.
+
+**Limitación conocida — falso positivo por diseño:** el hook inspecciona el *texto* del comando, no su ejecución. Cualquier comando Bash que contenga `gh pr merge`, aunque solo lo mencione (un heredoc, un `echo`, un `grep`, un script de prueba inline, una nota o un commit message), se bloquea igual. Es el costo de ser fail-closed: distinguir «lo ejecuta» de «lo menciona» exige un parser de shell completo, y equivocarse en ese sentido deja pasar un merge sin review. **Si te bloquea algo que no es un merge real:** escribir ese texto con `Write`/`Edit` (no pasan por el hook) o guardarlo en un archivo y ejecutar el archivo. No aflojar el matcheo sin revisar la superficie de evasión (`bash -c`, subshells, variables, `cd` previo); el test `falso positivo por diseño` fija este comportamiento a propósito.
+
+**Tests:** `node --test hooks/guard-gh-pr-merge.test.mjs` (Node 24+, sin dependencias; usa un `gh` falso y un config dir temporal, nunca toca el real). Correrlos tras cualquier cambio al hook y **volver a copiar** `hooks/guard-gh-pr-merge.sh` a `~/.claude/hooks/` — la copia instalada no se actualiza sola.
+
+*(Origen: incidente real, 2026-10-04 — la primera versión sacaba el comando del JSON con `grep` y se cortaba en la primera comilla escapada, así que `cd "ruta" && gh pr merge N` pasaba sin bloqueo (fail-open). Cinco merges cross-repo se hicieron sin que el hook actuara, y nadie lo notó porque no había tests.)*
+
+---
+
 ## Post-Merge: Deploy y Migraciones (automatizado vía workflow reusable)
 
 **Mergear un PR de implementación a `main` no significa que está en producción por sí solo** — pero en cualquier repo que ya tenga instalado el workflow reusable de post-merge, mergear a `main` **sí** dispara automáticamente deploy a staging + migraciones D1 + verificación de esquema real, sin que el agente ni el humano tengan que acordarse de correr nada a mano. Esto reemplaza un incidente real: 3 semanas de dashboard desactualizado + 4 migraciones nunca aplicadas en producción rompieron el login, sin ningún error visible hasta que un usuario reportó no poder loguearse.
@@ -267,10 +329,10 @@ Instalar el agente: `cp agents/*.md ~/.claude/agents/` (ver guía de onboarding)
 
 1. Cada repo tiene un caller delgado en `.github/workflows/deploy.yml` (ver plantilla en `commands/new-track-app.md`) que referencia `Triptongo/triptongo-ci-shared/.github/workflows/post-merge-deploy.yml@main` — la lógica real vive en un solo lugar, nunca copiada por repo. Ese workflow vive en un repo **separado y público** (`triptongo-ci-shared`, no acá) porque un reusable workflow privado solo puede ser invocado por repos del mismo owner de GitHub — necesario para que Track Apps fuera de la org Triptongo (proyectos personales, repos de clientes bajo otra cuenta) puedan seguir usándolo. No tiene nada sensible: todo credential/valor de ambiente entra vía `secrets:`/`inputs:` del repo llamador (ver 2026-09-04, movido desde acá tras el caso OrbitalDash).
 2. Push a `main` → job `deploy-staging` corre solo: migraciones D1 contra la base de staging, verificación `PRAGMA table_info` por cada migración que declare una línea `-- verify: table=X column=Y` (ver `commands/apply.md` paso 4), y recién después el deploy del Worker/dashboard que cambiaron — en ese orden, para que el código nuevo nunca corra contra un schema que la migración todavía no aplicó.
-3. Job `deploy-production` corre después, **pausado** hasta aprobación manual en GitHub (`Settings → Environments → production → Required reviewers`, configuración de una sola vez por repo) — nada llega a producción sin ese click explícito.
+3. **Producción no es parte de este flujo automático.** Es un workflow aparte, `.github/workflows/deploy-production.yml`, de disparo manual (`workflow_dispatch`: `Actions → Deploy (production) → Run workflow`, con un `ref` opcional). Es la regla en todos los repos de Triptongo: `Required reviewers` de los Environments no existe en repos privados con plan gratuito, y el click explícito después de mirar staging es el gate. Nada llega a producción sin que una persona lo corra.
 4. Si la verificación PRAGMA falla en cualquiera de los dos ambientes, el job falla en rojo — visible en la pestaña Actions, no depende de que alguien lea un mensaje de chat.
 
-**Rol del agente:** al reportar el cierre de un `/apply`, recordar que el deploy a staging es automático y que producción espera aprobación manual (ver `commands/apply.md` paso 13) — no ejecutar deploy manualmente en un repo que ya tiene este workflow.
+**Rol del agente:** al reportar el cierre de un `/apply`, recordar que el deploy a staging es automático y que producción se despliega a mano corriendo `deploy-production.yml` (ver `commands/apply.md` paso 13) — no ejecutar deploy manualmente en un repo que ya tiene este workflow.
 
 **Si el repo todavía NO tiene el workflow instalado** (repos creados antes de esta convención, o migración pendiente — ver tarea de sync canónico entre repos): sigue aplicando el procedimiento manual. Apenas el usuario confirma que un PR se mergeó, el agente:
 1. Sincroniza `main` localmente y borra la rama (local + remota).
