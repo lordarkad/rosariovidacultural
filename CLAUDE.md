@@ -334,6 +334,8 @@ Requiere `bash`, `node` y `gh` en el PATH (en Windows, git-bash). Los marcadores
 
 **Rol del agente:** al reportar el cierre de un `/apply`, recordar que el deploy a staging es automático y que producción se despliega a mano corriendo `deploy-production.yml` (ver `commands/apply.md` paso 13) — no ejecutar deploy manualmente en un repo que ya tiene este workflow.
 
+**Desvío local — producción en este repo (verificado 2026-10-04):** lo anterior sobre producción describe el estado objetivo del playbook, no el de este repo. Acá **no existe `deploy-production.yml`** ni disparo manual: `.github/workflows/deploy.yml` todavía encadena el job `deploy-production` (`needs: [changes, deploy-staging]`, `environment: production`), y los Environments no tienen reglas de protección (sin `Required reviewers`). Mientras no se migre al modelo del playbook, **un merge a `main` despliega también a producción**: al reportar el cierre de un `/apply`, decirlo así, no «producción espera un click».
+
 **Si el repo todavía NO tiene el workflow instalado** (repos creados antes de esta convención, o migración pendiente — ver tarea de sync canónico entre repos): sigue aplicando el procedimiento manual. Apenas el usuario confirma que un PR se mergeó, el agente:
 1. Sincroniza `main` localmente y borra la rama (local + remota).
 2. Si tocó `apps/api/`: corre el deploy del Worker. Si tocó `apps/dashboard/`: corre el deploy del dashboard.
