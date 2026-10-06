@@ -15,7 +15,7 @@ ENVIRONMENT = "development"
 [[d1_databases]]
 binding = "DB"
 database_name = "rosariovidacultural-db"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_id = "c98b25d4-9391-4608-b831-96a33c207244"
 
 [env.staging]
 # `name` MUST be set explicitly on every named environment (otherwise Wrangler composes "<base>-<env>").
@@ -26,7 +26,7 @@ ENVIRONMENT = "staging"
 [[env.staging.d1_databases]]
 binding = "DB"
 database_name = "rosariovidacultural-db-staging"
-database_id = "REPLACE_WITH_D1_STAGING_DATABASE_ID"
+database_id = "2db23eaa-4e1b-464c-a7ff-a4f1e522c20a"
 
 [env.production]
 name = "rosariovidacultural-api"
@@ -36,7 +36,7 @@ ENVIRONMENT = "production"
 [[env.production.d1_databases]]
 binding = "DB"
 database_name = "rosariovidacultural-db"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_id = "c98b25d4-9391-4608-b831-96a33c207244"
 
 # Secrets — provision per environment via `wrangler secret put <NAME> --env staging` / `--env production`:
 # INGEST_TOKEN            — authenticates the Python ingestion job (GitHub Actions) -> POST /api/ingest
