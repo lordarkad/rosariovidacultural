@@ -3,14 +3,25 @@ name: Deploy
 # Staging only. Production is a SEPARATE workflow (deploy-production.yml), triggered manually via
 # workflow_dispatch — nothing reaches production automatically.
 #
-# Waits for CI to pass on main before deploying. Thin caller: deploy/migrate/verify logic lives in the
-# playbook's reusable workflow (post-merge-deploy.yml). Requiere squash-merge-only + branch protection
-# en main (ver tracks/app/00-playbook.md y la nota del skill /new-track-app).
+# Dos disparadores:
+#   - workflow_run: tras CI verde en main, despliega solo lo que cambió (filtro de paths contra el commit padre).
+#   - workflow_dispatch: a mano desde Actions, despliega TODO (api + dashboard) sin filtro de paths. Sirve para
+#     el primer deploy, para re-correr uno fallido, o cuando un merge no tocó apps/ y el filtro lo saltó.
+#
+# Thin caller: deploy/migrate/verify logic lives in the playbook's reusable workflow
+# (post-merge-deploy.yml). Requiere squash-merge-only + branch protection en main (ver
+# tracks/app/00-playbook.md y la nota del skill /new-track-app).
 on:
   workflow_run:
     workflows: [CI]
     types: [completed]
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Commit SHA o rama a desplegar a staging (por defecto main)"
+        required: false
+        default: main
 
 concurrency:
   group: deploy-${{ github.workflow }}
@@ -19,18 +30,22 @@ concurrency:
 jobs:
   changes:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     outputs:
-      api: ${{ steps.filter.outputs.api }}
-      dashboard: ${{ steps.filter.outputs.dashboard }}
+      # A mano no hay commit base contra el cual comparar: se despliega todo.
+      api: ${{ github.event_name == 'workflow_dispatch' && 'true' || steps.filter.outputs.api }}
+      dashboard: ${{ github.event_name == 'workflow_dispatch' && 'true' || steps.filter.outputs.dashboard }}
     steps:
-      - uses: actions/checkout@v4
+      - if: ${{ github.event_name == 'workflow_run' }}
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.event.workflow_run.head_sha }}
           fetch-depth: 2
-      - id: parent
+      - if: ${{ github.event_name == 'workflow_run' }}
+        id: parent
         run: echo "sha=$(git rev-parse HEAD^)" >> "$GITHUB_OUTPUT"
-      - uses: dorny/paths-filter@v3
+      - if: ${{ github.event_name == 'workflow_run' }}
+        uses: dorny/paths-filter@v3
         id: filter
         with:
           base: ${{ steps.parent.outputs.sha }}
@@ -42,11 +57,11 @@ jobs:
 
   deploy-staging:
     needs: changes
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     uses: Triptongo/triptongo-ci-shared/.github/workflows/post-merge-deploy.yml@main
     with:
       environment: staging
-      ref: ${{ github.event.workflow_run.head_sha }}
+      ref: ${{ github.event.workflow_run.head_sha || inputs.ref }}
       deploy_api: ${{ needs.changes.outputs.api == 'true' }}
       deploy_dashboard: ${{ needs.changes.outputs.dashboard == 'true' }}
       d1_database_name: "rosariovidacultural-db-staging"
