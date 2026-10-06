@@ -65,7 +65,7 @@ jobs:
       deploy_api: ${{ needs.changes.outputs.api == 'true' }}
       deploy_dashboard: ${{ needs.changes.outputs.dashboard == 'true' }}
       d1_database_name: "rosariovidacultural-db-staging"
-      api_health_url: "" # REPLACE once the staging API domain is known — empty skips the smoke check
+      api_health_url: "https://rosariovidacultural-api-staging.dry-brook-7eef.workers.dev/api/health"
     secrets:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
