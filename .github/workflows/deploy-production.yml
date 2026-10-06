@@ -32,7 +32,7 @@ jobs:
       deploy_api: true
       deploy_dashboard: true
       d1_database_name: "rosariovidacultural-db"
-      api_health_url: "" # REPLACE once the production API domain is known — empty skips the smoke check
+      api_health_url: "https://rosariovidacultural-api.dry-brook-7eef.workers.dev/api/health"
     secrets:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
