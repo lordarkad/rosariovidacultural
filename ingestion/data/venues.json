@@ -24,6 +24,20 @@
       "info_sources": [
         {"name": "La Noche de las Birrerías", "url": "https://lanochedelasbirrerias.com.ar/cerveceria/bon-scott/"}
       ]
+    },
+    {
+      "id": "casa-del-tango",
+      "name": "Centro Cultural La Casa del Tango",
+      "aliases": ["La Casa del Tango", "Casa del Tango"],
+      "address": "Av. Illia 1750",
+      "offers": ["musica_en_vivo", "baile"],
+      "genres": ["tango"],
+      "instagram": "",
+      "website": "",
+      "note": "Centro cultural municipal del tango: tertulias, Tango en Calle los domingos, peñas y talleres.",
+      "info_sources": [
+        {"name": "Rosario Turismo", "url": "https://www.rosario.tur.ar/donde-ir/cultura/centros-culturales/la-casa-del-tango"}
+      ]
     }
   ]
 }

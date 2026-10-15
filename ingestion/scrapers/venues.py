@@ -13,7 +13,7 @@ import statistics
 from pathlib import Path
 
 from . import geocode
-from .common import norm
+from .common import MUSIC_GENRES, norm
 
 SOURCE_FILE = Path(__file__).parent.parent / "data" / "venues.json"
 # Qué ofrece un espacio. Ampliar acá y en el sitio (se lee de venues.json, no está duplicado en el HTML).
@@ -42,6 +42,10 @@ def validate(raw: dict, seen: set[str]) -> dict:
     unknown = [o for o in raw.get("offers", []) if o not in OFFERS]
     if unknown or not raw.get("offers"):
         raise VenueError(f"{vid}: offers vacío o desconocido {unknown} (válidos: {sorted(OFFERS)})")
+    genres = list(dict.fromkeys(raw.get("genres") or []))
+    bad_genres = [g for g in genres if g not in MUSIC_GENRES]
+    if bad_genres:
+        raise VenueError(f"{vid}: genres desconocido {bad_genres} (válidos: {list(MUSIC_GENRES)})")
     handle = (raw.get("instagram") or "").strip().lstrip("@")
     if handle and not _HANDLE.match(handle):
         raise VenueError(f"{vid}: instagram debe ser solo el usuario, no {raw['instagram']!r}")
@@ -54,7 +58,7 @@ def validate(raw: dict, seen: set[str]) -> dict:
     aliases = {norm(a) for a in [name, *raw.get("aliases", [])] if norm(a)}
     return {
         "id": vid, "name": name, "aliases": sorted(aliases), "address": (raw.get("address") or "").strip(),
-        "offers": list(dict.fromkeys(raw["offers"])), "instagram": handle, "website": website,
+        "offers": list(dict.fromkeys(raw["offers"])), "genres": genres, "instagram": handle, "website": website,
         "note": (raw.get("note") or "").strip(), "info_sources": infos,
         "lat": raw.get("lat"), "lon": raw.get("lon"),
     }

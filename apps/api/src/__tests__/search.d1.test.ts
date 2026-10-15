@@ -140,6 +140,23 @@ describe('GET /api/search', () => {
     expect(solo.json.data.map((i: any) => i.title)).toEqual(['Jazz en vivo'])
   })
 
+  it('[AC-16b] tango con bailar contra datos reales (F-17)', async () => {
+    await ingest({
+      events: [
+        { source_key: 'f:tertulia', title: 'Tertulia', venue_name: 'A', intents: ['bailar'], music_genres: ['tango'] },
+        { source_key: 'f:tango', title: 'Concierto de tango', venue_name: 'B', intents: ['musica_en_vivo'], music_genres: ['tango'] },
+        { source_key: 'f:baile', title: 'Baile', venue_name: 'C', intents: ['bailar'], music_genres: [] },
+        { source_key: 'f:resto', title: 'Cena', venue_name: 'D', intents: ['comer'], music_genres: [] },
+      ],
+    })
+    const solo = await get('/api/search?cuando=hoy&i=bailar&musica=tango')
+    expect(solo.json.data.map((i: any) => i.title)).toEqual(['Tertulia'])
+    const ambos = await get('/api/search?cuando=hoy&i=bailar,musica_en_vivo&musica=tango')
+    expect(ambos.json.data.map((i: any) => i.title).sort()).toEqual(['Concierto de tango', 'Tertulia'])
+    const ignorado = await get('/api/search?cuando=hoy&i=comer&musica=tango')
+    expect(ignorado.json.data.map((i: any) => i.title)).toEqual(['Cena'])
+  })
+
   it('[AC-14] [AC-39] un evento sin coordenadas hereda las del lugar vinculado y su sede/dirección', async () => {
     await ingest({
       places: [{ source_key: 'p:sala', name: 'Teatro Mayor', address: 'Corrientes 100', ...PICHINCHA }],

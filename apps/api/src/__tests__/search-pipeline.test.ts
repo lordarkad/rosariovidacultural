@@ -249,6 +249,30 @@ describe('buildSearchResults', () => {
       expect(res.map((r) => r.id)).toEqual([doble.id, cenaShow.id])
     })
 
+    describe('[AC-16b] subgéneros y bailar (F-17)', () => {
+      const tertulia = ev({ title_norm: 'tertulia', intents: ['bailar'], music_genres: ['tango'] })
+      const conciertoTango = ev({ title_norm: 'concierto tango', intents: ['musica_en_vivo'], music_genres: ['tango'] })
+      const conciertoFolklore = ev({ title_norm: 'concierto folklore', intents: ['musica_en_vivo'], music_genres: ['folklore'] })
+      const baileSinGenero = ev({ title_norm: 'baile', intents: ['bailar'], music_genres: [] })
+      const restaurante = ev({ title_norm: 'restaurante', intents: ['comer'], music_genres: [] })
+      const todos = [tertulia, conciertoTango, conciertoFolklore, baileSinGenero, restaurante]
+
+      it('i=bailar&musica=tango: entra solo la tertulia', () => {
+        const res = run(todos, [resto], params({ intents: ['bailar'], musica: ['tango'] }))
+        expect(res.map((r) => r.id)).toEqual([tertulia.id])
+      })
+
+      it('i=bailar,musica_en_vivo&musica=tango: entran la tertulia y el concierto de tango', () => {
+        const res = run(todos, [], params({ intents: ['bailar', 'musica_en_vivo'], musica: ['tango'] }))
+        expect(res.map((r) => r.id).sort()).toEqual([tertulia.id, conciertoTango.id].sort())
+      })
+
+      it('i=comer&musica=tango: musica se ignora y entra el evento sin género', () => {
+        const res = run(todos, [], params({ intents: ['comer'], musica: ['tango'] }))
+        expect(res.map((r) => r.id)).toEqual([restaurante.id])
+      })
+    })
+
     it('i=musica_en_vivo&musica=jazz: la cena-show [jazz]/[comer] queda fuera', () => {
       const res = run(
         [cena, jazzVivo],
