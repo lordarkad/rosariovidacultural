@@ -271,8 +271,11 @@ export interface components {
          * @enum {string}
          */
         Intent: "comer" | "tomar_algo" | "espectaculo" | "musica_en_vivo" | "bailar" | "con_chicos";
-        /** @enum {string} */
-        MusicGenre: "jazz" | "rock" | "folklore" | "electronica";
+        /**
+         * @description Subgénero de música (B-3, F-17). Lo asigna la ingesta. Un evento puede tener varios.
+         * @enum {string}
+         */
+        MusicGenre: "jazz" | "rock" | "folklore" | "electronica" | "tango" | "cumbia" | "clasica" | "chamame";
         /**
          * @description Franja de la lista (B-9), en America/Argentina/Buenos_Aires (E-5). Reglas completas en la descripción de `searchItems`.
          *     `ahora`: empezó hace hasta 2 h o empieza en la próxima hora (lugares: abierto ahora).
@@ -615,9 +618,9 @@ export interface components {
     };
     parameters: {
         IdPath: string;
-        /** @description Intenciones, separadas por coma. Unión (cualquiera), ordenada por cantidad de coincidencias (E-7); con `musica_en_vivo` y `musica` activos el resultado se restringe a eventos de esos géneros (ver `musica`). */
+        /** @description Intenciones, separadas por coma. Unión (cualquiera), ordenada por cantidad de coincidencias (E-7); con `musica_en_vivo` o `bailar` y `musica` activos el resultado se restringe a eventos de esos géneros (ver `musica`). */
         Intents: components["schemas"]["Intent"][];
-        /** @description Subtipos de música, por coma. Con `musica_en_vivo` en `i`, el resultado queda restringido a eventos que tengan alguno de esos géneros (`music_genres`) y coincidan con al menos una intención de `i`; basta el género, no hace falta que el evento tenga `musica_en_vivo` en sus `intents`, pero el género no cuenta como coincidencia de intención (ni para el orden de E-7). Los lugares (no tienen géneros) y los eventos sin esos géneros quedan fuera. Sin `musica_en_vivo` en `i` se ignoran. */
+        /** @description Subtipos de música, por coma. Con `musica_en_vivo` o `bailar` en `i` (F-17), el resultado queda restringido a eventos que tengan alguno de esos géneros (`music_genres`) y coincidan con al menos una intención de `i`; basta el género, no hace falta que el evento tenga `musica_en_vivo` ni `bailar` en sus `intents`, pero el género no cuenta como coincidencia de intención (ni para el orden de E-7). Los lugares (no tienen géneros) y los eventos sin esos géneros quedan fuera. Sin `musica_en_vivo` ni `bailar` en `i` se ignoran. */
         MusicGenres: components["schemas"]["MusicGenre"][];
         /** @description `true` trae solo `price_status = free` (E-6). Los lugares no tienen precio: su `price_status` es siempre `unknown`, así que `gratis=true` los excluye. */
         Gratis: boolean;
@@ -694,9 +697,9 @@ export interface operations {
     searchItems: {
         parameters: {
             query?: {
-                /** @description Intenciones, separadas por coma. Unión (cualquiera), ordenada por cantidad de coincidencias (E-7); con `musica_en_vivo` y `musica` activos el resultado se restringe a eventos de esos géneros (ver `musica`). */
+                /** @description Intenciones, separadas por coma. Unión (cualquiera), ordenada por cantidad de coincidencias (E-7); con `musica_en_vivo` o `bailar` y `musica` activos el resultado se restringe a eventos de esos géneros (ver `musica`). */
                 i?: components["parameters"]["Intents"];
-                /** @description Subtipos de música, por coma. Con `musica_en_vivo` en `i`, el resultado queda restringido a eventos que tengan alguno de esos géneros (`music_genres`) y coincidan con al menos una intención de `i`; basta el género, no hace falta que el evento tenga `musica_en_vivo` en sus `intents`, pero el género no cuenta como coincidencia de intención (ni para el orden de E-7). Los lugares (no tienen géneros) y los eventos sin esos géneros quedan fuera. Sin `musica_en_vivo` en `i` se ignoran. */
+                /** @description Subtipos de música, por coma. Con `musica_en_vivo` o `bailar` en `i` (F-17), el resultado queda restringido a eventos que tengan alguno de esos géneros (`music_genres`) y coincidan con al menos una intención de `i`; basta el género, no hace falta que el evento tenga `musica_en_vivo` ni `bailar` en sus `intents`, pero el género no cuenta como coincidencia de intención (ni para el orden de E-7). Los lugares (no tienen géneros) y los eventos sin esos géneros quedan fuera. Sin `musica_en_vivo` ni `bailar` en `i` se ignoran. */
                 musica?: components["parameters"]["MusicGenres"];
                 /** @description `true` trae solo `price_status = free` (E-6). Los lugares no tienen precio: su `price_status` es siempre `unknown`, así que `gratis=true` los excluye. */
                 gratis?: components["parameters"]["Gratis"];
@@ -747,9 +750,9 @@ export interface operations {
     searchPins: {
         parameters: {
             query?: {
-                /** @description Intenciones, separadas por coma. Unión (cualquiera), ordenada por cantidad de coincidencias (E-7); con `musica_en_vivo` y `musica` activos el resultado se restringe a eventos de esos géneros (ver `musica`). */
+                /** @description Intenciones, separadas por coma. Unión (cualquiera), ordenada por cantidad de coincidencias (E-7); con `musica_en_vivo` o `bailar` y `musica` activos el resultado se restringe a eventos de esos géneros (ver `musica`). */
                 i?: components["parameters"]["Intents"];
-                /** @description Subtipos de música, por coma. Con `musica_en_vivo` en `i`, el resultado queda restringido a eventos que tengan alguno de esos géneros (`music_genres`) y coincidan con al menos una intención de `i`; basta el género, no hace falta que el evento tenga `musica_en_vivo` en sus `intents`, pero el género no cuenta como coincidencia de intención (ni para el orden de E-7). Los lugares (no tienen géneros) y los eventos sin esos géneros quedan fuera. Sin `musica_en_vivo` en `i` se ignoran. */
+                /** @description Subtipos de música, por coma. Con `musica_en_vivo` o `bailar` en `i` (F-17), el resultado queda restringido a eventos que tengan alguno de esos géneros (`music_genres`) y coincidan con al menos una intención de `i`; basta el género, no hace falta que el evento tenga `musica_en_vivo` ni `bailar` en sus `intents`, pero el género no cuenta como coincidencia de intención (ni para el orden de E-7). Los lugares (no tienen géneros) y los eventos sin esos géneros quedan fuera. Sin `musica_en_vivo` ni `bailar` en `i` se ignoran. */
                 musica?: components["parameters"]["MusicGenres"];
                 /** @description `true` trae solo `price_status = free` (E-6). Los lugares no tienen precio: su `price_status` es siempre `unknown`, así que `gratis=true` los excluye. */
                 gratis?: components["parameters"]["Gratis"];
