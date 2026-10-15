@@ -50,7 +50,7 @@ Aprobadas por el tech lead el 2026-09-30.
 | E-4 | Sin horario (147 de 363) | Aparecen solo en «Hoy» y «Finde», en la franja «Horario a confirmar» al final, con «horario no informado». Nunca en «Ahora». |
 | E-5 | Medianoche y zona horaria | La base guarda UTC. Franjas, «Hoy», «Ahora» y «Finde» se calculan en `America/Argentina/Buenos_Aires` (UTC-3, sin horario de verano). Un evento a las 00:30 cuenta como la noche del día anterior; «Esta noche» llega hasta las 06:00. |
 | E-6 | Precio | Tres estados: `free` (etiqueta GRATIS), `paid` (precio en ARS), `unknown` («precio no informado» en el Detalle, sin etiqueta). El filtro «Gratis» trae solo `free`. |
-| E-7 | Intenciones parciales | Con varias intenciones activas, unión (cualquiera), ordenada primero por cantidad de coincidencias. Los subtipos de música, con «Música en vivo» activa, restringen el resultado a eventos de esos géneros (F-16). |
+| E-7 | Intenciones parciales | Con varias intenciones activas, unión (cualquiera), ordenada primero por cantidad de coincidencias. Los subtipos de música, con «Música en vivo» o «Bailar» activa (F-17), restringen el resultado a eventos de esos géneros (F-16). |
 | E-8 | Radio máximo vs. localidades | El máximo de 10 km aplica a Cerca mío y Mapa. Las zonas (Funes, Roldán…) usan su propio radio fijo. |
 | E-9 | Frescura | Cada ítem guarda `last_seen_at`. **Solo eventos:** más de 36 h, el Detalle avisa «datos de ayer»; más de 7 días, sale de los resultados. **Los lugares no vencen** (decisión del tech lead, 2026-09-30: son negocios de larga vida y se importan poco). |
 | E-10 | Duplicados | Clave: título normalizado + fecha + lugar. (Operativa en F-11.) Fuente primaria, en orden: curado a mano, fuente oficial, agregador. En lugares, el curado pisa a OSM. |
@@ -110,7 +110,8 @@ Aprobados por el tech lead el 2026-09-30.
 | F-13 | `IngestEvent` trae `source_url` (+ `via` opcional); nombre y prioridad de la fuente salen del lote. | Evita la fuente duplicada y contradictoria. |
 | F-14 | Un rango de 2 a 7 días repite `start_time` cada día; `finde` arranca en `max(viernes 18:00, ahora)`; «hoy» es el día de negocio; `ahora` para un lugar es `open_now = true` y que la ventana incluya el momento actual. | Cierra los bordes que dejaba la definición de franjas. |
 | F-15 | Al fusionar, la fila existente conserva su `id` y los absorbidos resuelven al vigente; un alias reenviado solo actualiza `last_seen_at`. Presupuesto de ≤10 llamadas a D1 por request. | Los links compartidos no se rompen y el curado no lo pisa OSM. |
-| F-16 | Con `musica_en_vivo` en `i`, `musica` restringe el resultado a eventos que tengan alguno de esos géneros y coincidan con al menos una intención de `i`; basta el género (no se exige `musica_en_vivo` en las `intents` del evento), pero el género no cuenta como coincidencia de intención para el orden de E-7. Sin `musica_en_vivo` en `i`, `musica` se ignora. Decidido por Daniel el 2026-10-02 (antes: el filtro solo actuaba sobre lo que coincidía por música). | Un género pedido tiene que acotar el resultado; el género es un atributo del evento, independiente de sus intenciones. |
+| F-16 | Con `musica_en_vivo` o `bailar` en `i` (ampliado por F-17, 2026-10-14; antes solo `musica_en_vivo`), `musica` restringe el resultado a eventos que tengan alguno de esos géneros y coincidan con al menos una intención de `i`; basta el género (no se exige `musica_en_vivo` ni `bailar` en las `intents` del evento), pero el género no cuenta como coincidencia de intención para el orden de E-7. Sin `musica_en_vivo` ni `bailar` en `i`, `musica` se ignora. Decidido por Daniel el 2026-10-02 (antes: el filtro solo actuaba sobre lo que coincidía por música). | Un género pedido tiene que acotar el resultado; el género es un atributo del evento, independiente de sus intenciones. |
+| F-17 | Subgéneros de música (decidido por Daniel el 2026-10-14). `MusicGenre` suma `tango`, `cumbia`, `clasica` y `chamame` (`folklore` ya existía). F-16 pasa a regir con `musica_en_vivo` **o** `bailar` en `i`, para todos los géneros por igual (regla uniforme). Peñas y ciclos de folklore cuentan como `musica_en_vivo`; tertulias y milongas, como `bailar`. Un evento puede tener varios géneros y puede ser de categoría `danza` y tener género `tango`. | Las tertulias y milongas de la Casa del Tango son bailables y no entraban con la regla anterior. |
 
 Nota: E-4 se mantiene literal (sin horario solo en `hoy` y `finde`); con `manana` o `fecha` esos eventos no aparecen. Si se prefiere mostrarlos también ahí, es un cambio de E-4.
 
@@ -189,7 +190,7 @@ Nota: E-4 se mantiene literal (sin horario solo en `hoy` y `finde`); con `manana
 **AC-16:** Intenciones y música (E-7)
 - When: `?i=comer,bailar`
 - Then: unión; los que cumplen ambas van antes que los que cumplen una (dentro de la franja).
-- When: `?musica=jazz` sin `musica_en_vivo` en `i`
+- When: `?musica=jazz` sin `musica_en_vivo` ni `bailar` en `i`
 - Then: `musica` se ignora.
 - When: `?i=comer,musica_en_vivo&musica=jazz` (con `musica_en_vivo` en `i`, `musica` restringe todo el resultado a eventos de esos géneros)
 - Then:
@@ -201,8 +202,20 @@ Nota: E-4 se mantiene literal (sin horario solo en `hoy` y `finde`); con `manana
 - Then:
   - Entran solo los eventos de jazz que tienen `musica_en_vivo` en sus `intents`.
   - La cena-show `[jazz]/[comer]` queda fuera, porque `comer` no está en `i`.
-- When: `?musica=tango` (género fuera del enum)
-- Then: 400.
+- When: `?musica=vallenato` (género fuera del enum)
+- Then: 400. Vale para cualquier valor de `musica` que no esté en `MusicGenre`, aunque `i` no incluya `musica_en_vivo` ni `bailar`.
+
+**AC-16b:** Subgéneros y `bailar` (F-17)
+- Given: una tertulia con `intents: [bailar]` y `music_genres: [tango]`, un concierto con `intents: [musica_en_vivo]` y `music_genres: [tango]`, un concierto de folklore con `intents: [musica_en_vivo]` y `music_genres: [folklore]`, un evento de baile sin géneros con `intents: [bailar]`, y un restaurante-evento con `intents: [comer]` y `music_genres: []`
+- When: `?i=bailar&musica=tango`
+- Then: entra solo la tertulia. El concierto de tango no coincide con `bailar`, el de folklore no es tango y el evento de baile no tiene género.
+- When: `?i=bailar,musica_en_vivo&musica=tango`
+- Then: entran la tertulia y el concierto de tango (basta el género; cada uno coincide con una intención de `i`).
+- When: `?i=bailar&musica=cumbia,chamame,clasica`
+- Then: los tres valores nuevos se aceptan (200), igual que `tango`.
+- When: `?i=comer&musica=tango`
+- Then: `musica` se ignora, porque `i` no incluye `musica_en_vivo` ni `bailar`: entra el evento con `intents: [comer]` (sin género), que quedaría fuera si el filtro se aplicara.
+- Alcance: la misma regla rige en `searchPins` (comparte parámetros con `searchItems`).
 
 **AC-17:** Lugares: franja y `open_now` (F-9)
 - Given: reloj fijo a las 21:00; lugar abierto hasta las 23:00, lugar que abre a las 21:30, lugar que abre a las 22:30, lugar que cerró a las 20:00, y lugar con `opening_hours: null`
@@ -328,6 +341,7 @@ Nota: E-4 se mantiene literal (sin horario solo en `hoy` y `finde`); con `manana
 3. **Rutas Hono** en `apps/api/src/routes/`: `zones`, `search` (+ `/search/pins`), `events`, `places`, `ingest`. Lógica pura (ventanas y franjas, orden, distancia Haversine + bounding box, `open_now`, dedupe) en funciones testeables aparte, con reloj inyectado. Middleware de bearer para `/ingest` con `INGEST_TOKEN` (Wrangler Secret) y comparación en tiempo constante. La escritura del lote usa `D1.batch()`.
 4. **Tests:** desde el root con `npm test`. Endpoints con mock y, para `searchItems`, `getPlace` e `ingestBatch` (JOIN y lote en el límite), cobertura contra D1 real con `@cloudflare/vitest-pool-workers`.
 5. **`ingestion/` (Python), parte del slice:** clasificar `intents` (B-3), prefijar `source_key` con la fuente, estructurar `opening_hours` de OSM, vincular eventos con lugares (`place_source_key`), enviar `source_url`, y publicar a `/ingest` en lotes de hasta 200.
+5b. **Subgéneros (F-17), plan para `/apply`:** (a) `npm run generate:schemas` y `npm run generate:types` (este último regenera `openapi.d.ts`, que el CI verifica por drift) para regenerar `MusicGenre`; (b) `search-pipeline.ts`: el filtro de género se activa con `musica_en_vivo` o `bailar` en `i`; (c) tests: cambiar el ejemplo inválido de `search-validation.test.ts` (`tango` → `vallenato`, en AC-16 y en las validaciones de `searchPins`), y agregar AC-16b en `search-pipeline.test.ts` y `search.d1.test.ts`; (d) `ingestion/` Python: asignar `music_genres` (venues que fuerzan género + palabras clave en el título y en «Género:» de la descripción) y `intents` (peña/ciclo de folklore → `musica_en_vivo`, tertulia/milonga → `bailar`), sin tocar `guess_category`: «tango» sigue en `danza`; (e) `ingestion/data/venues.json`: alta de «Centro Cultural La Casa del Tango» (Illia 1750, sin web, solo redes) con `offers` `musica_en_vivo` y `baile`, y el género `tango` forzado para sus eventos; (f) wireframe `home.html`: chips Tango, Cumbia, Clásica y Chamamé junto a los existentes, y visibles cuando `Música en vivo` **o** `Bailar` está activa. La clasificación (d) depende de B-3.
 6. **Fuera de este slice:** stores y vistas del dashboard (Slice 2), Plan en secuencia (Slice 3).
 
 ## Decisiones de implementación (`/apply`, 2026-10-02)
