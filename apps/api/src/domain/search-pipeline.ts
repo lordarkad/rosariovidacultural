@@ -104,8 +104,8 @@ export function buildSearchResults(
 ): SearchItem[] {
   const { window: w, origin } = params
   const wanted = new Set(params.intents)
-  // F-16: con musica_en_vivo en `i`, `musica` restringe el resultado a eventos de esos géneros
-  const genreFilter = wanted.has('musica_en_vivo') && params.musica.length > 0
+  // F-16/F-17: con musica_en_vivo o bailar en `i`, `musica` restringe el resultado a eventos de esos géneros
+  const genreFilter = (wanted.has('musica_en_vivo') || wanted.has('bailar')) && params.musica.length > 0
   const q = params.q ? normalizeText(params.q) : ''
   const ranked: Ranked[] = []
 

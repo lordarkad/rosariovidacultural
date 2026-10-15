@@ -224,6 +224,34 @@ def guess_category(title: str, default: str = "eventos") -> str:
     return default
 
 
+# Subgéneros de música (MusicGenre del spec, F-17). Palabras ya normalizadas (sin tildes).
+MUSIC_GENRES = ("jazz", "rock", "folklore", "electronica", "tango", "cumbia", "clasica", "chamame")
+_GENRE_WORDS = {
+    "tango": ["tango", "tanguera", "tanguero", "milonga", "bandoneon"],
+    "folklore": ["folklore", "folclore", "folklorico", "folclorico", "zamba", "chacarera"],
+    "cumbia": ["cumbia"],
+    "chamame": ["chamame"],
+    "clasica": ["clasica", "sinfonica", "sinfonico", "opera"],
+    "jazz": ["jazz"],
+    "rock": ["rock"],
+    "electronica": ["electronica", "techno", "house"],
+}
+
+
+def guess_genres(title: str, description: str = "", forced: list[str] | None = None) -> list[str]:
+    """Subgéneros de música por el título, por el campo «Género:» de la descripción (ticketeras) y por los que
+    fuerza el espacio. El cuerpo libre de la descripción no cuenta: nombra de todo, igual que en guess_category."""
+    blob = f" {norm(title)} "
+    m = re.search(r"genero:?\s*([a-z ]{1,25})", norm(description))
+    if m:
+        blob += f" {m.group(1)} "
+    found = set(forced or [])
+    for genre, words in _GENRE_WORDS.items():
+        if any(w in blob for w in words):
+            found.add(genre)
+    return sorted(found)
+
+
 def coords_from_embed(html_text: str) -> tuple[float, float] | None:
     """(lat, lon) del iframe de Google Maps embebido ('...!2d<lon>!3d<lat>...'), o None."""
     m = re.search(r"!2d(-?\d+\.\d+)!3d(-?\d+\.\d+)", html_text or "")

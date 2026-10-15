@@ -36,7 +36,7 @@ describe('GET /api/search — parámetros inválidos (400)', () => {
     ['cuando desconocido', '/api/search?cuando=siempre'],
     ['q de 101 caracteres', `/api/search?q=${'a'.repeat(101)}`],
     ['intención desconocida', '/api/search?i=comer,volar'],
-    ['género fuera del enum', '/api/search?musica=tango'],
+    ['género fuera del enum', '/api/search?musica=vallenato'],
     ['gratis no booleano', '/api/search?gratis=quizas'],
     ['lat fuera de rango', '/api/search?lat=95&lon=-60'],
     ['lat no numérica', '/api/search?lat=abc&lon=-60'],
@@ -48,7 +48,11 @@ describe('GET /api/search — parámetros inválidos (400)', () => {
   })
 
   it('[AC-16] musica con género fuera del enum es 400 aunque musica_en_vivo no esté en i', async () => {
-    await bad('/api/search?i=comer&musica=tango')
+    await bad('/api/search?i=comer&musica=vallenato')
+  })
+
+  it('[AC-16b] los subgéneros nuevos (tango, cumbia, clasica, chamame) son válidos (no dan 400)', async () => {
+    await reachesDb('/api/search?i=bailar&musica=tango,cumbia,clasica,chamame')
   })
 
   it('[AC-5] cuando=fecha&fecha de hoy no es 400 (se comporta como hoy)', async () => {
@@ -70,6 +74,6 @@ describe('GET /api/search/pins — parámetros inválidos (400)', () => {
     ['bbox con 3 valores', '/api/search/pins?bbox=-60.7,-33,-60.6'],
     ['bbox con min mayor que max', '/api/search/pins?bbox=-60.6,-33,-60.7,-32.9'],
     ['mismas validaciones que search: z y lat/lon', '/api/search/pins?z=funes&lat=-32.9&lon=-60.6'],
-    ['mismas validaciones que search: género', '/api/search/pins?musica=tango'],
+    ['mismas validaciones que search: género', '/api/search/pins?musica=vallenato'],
   ])('[AC-23] %s', async (_name, path) => bad(path))
 })
