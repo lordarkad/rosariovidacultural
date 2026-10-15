@@ -27,6 +27,17 @@ class Palabras(unittest.TestCase):
     def test_puede_tener_varios(self):
         self.assertEqual(guess_genres("Tango y folklore en vivo"), ["folklore", "tango"])
 
+    def test_palabra_completa_en_el_titulo(self):
+        # Subcadenas dentro de otras palabras no clasifican
+        for titulo in ("Warehouse party", "Clubhouse", "Technology expo", "Cooperadora escolar", "Operativo verano",
+                       "Crock", "Rocket League", "Contango", "Tangible"):
+            self.assertEqual(guess_genres(titulo), [], msg=titulo)
+
+    def test_flexiones_de_plural(self):
+        self.assertEqual(guess_genres("Noche de tangos y milongas"), ["tango"])
+        self.assertEqual(guess_genres("Bandas rockeras"), ["rock"])
+        self.assertEqual(guess_genres("Fiesta House"), ["electronica"])
+
     def test_sin_genero(self):
         self.assertEqual(guess_genres("Stand up"), [])
 

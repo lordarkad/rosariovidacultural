@@ -227,27 +227,28 @@ def guess_category(title: str, default: str = "eventos") -> str:
 # Subgéneros de música (MusicGenre del spec, F-17). Palabras ya normalizadas (sin tildes).
 MUSIC_GENRES = ("jazz", "rock", "folklore", "electronica", "tango", "cumbia", "clasica", "chamame")
 _GENRE_WORDS = {
-    "tango": ["tango", "tanguera", "tanguero", "milonga", "bandoneon"],
-    "folklore": ["folklore", "folclore", "folklorico", "folclorico", "zamba", "chacarera"],
-    "cumbia": ["cumbia"],
-    "chamame": ["chamame"],
+    "tango": ["tango", "tangos", "tanguera", "tangueras", "tanguero", "tangueros", "milonga", "milongas", "bandoneon"],
+    "folklore": ["folklore", "folclore", "folklorico", "folclorico", "zamba", "zambas", "chacarera", "chacareras"],
+    "cumbia": ["cumbia", "cumbias"],
+    "chamame": ["chamame", "chamames"],
     "clasica": ["clasica", "sinfonica", "sinfonico", "opera"],
     "jazz": ["jazz"],
-    "rock": ["rock"],
+    "rock": ["rock", "rockero", "rockera", "rockeros", "rockeras"],
     "electronica": ["electronica", "techno", "house"],
 }
 
 
 def guess_genres(title: str, description: str = "", forced: list[str] | None = None) -> list[str]:
-    """Subgéneros de música por el título, por el campo «Género:» de la descripción (ticketeras) y por los que
-    fuerza el espacio. El cuerpo libre de la descripción no cuenta: nombra de todo, igual que en guess_category."""
-    blob = f" {norm(title)} "
+    """Subgéneros de música por el título (palabra completa), por el campo «Género:» de la descripción
+    (ticketeras) y por los que fuerza el espacio. El cuerpo libre de la descripción no cuenta: nombra de todo,
+    igual que en guess_category. El campo «Género:» sí admite subcadena: las ticketeras lo pegan con el campo
+    siguiente («FolcloreDestinatarios») y su contenido es un nombre de género, no texto libre."""
+    words_in_title = f" {norm(title)} "
     m = re.search(r"genero:?\s*([a-z ]{1,25})", norm(description))
-    if m:
-        blob += f" {m.group(1)} "
+    genre_field = m.group(1) if m else ""
     found = set(forced or [])
     for genre, words in _GENRE_WORDS.items():
-        if any(w in blob for w in words):
+        if any(f" {w} " in words_in_title for w in words) or any(w in genre_field for w in words):
             found.add(genre)
     return sorted(found)
 
