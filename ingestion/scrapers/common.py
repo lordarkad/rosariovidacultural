@@ -253,6 +253,56 @@ def guess_genres(title: str, description: str = "", forced: list[str] | None = N
     return sorted(found)
 
 
+# Intenciones del spec (Intent, B-3), en el orden del enum. Se asignan por categoría y palabras del título.
+INTENTS = ("comer", "tomar_algo", "espectaculo", "musica_en_vivo", "bailar", "con_chicos")
+_DANCE_WORDS = ["milonga", "milongas", "tertulia", "tertulias", "baile", "bailes", "bailanta", "bailantas"]
+_DRINK_WORDS = ["vino", "vinos", "cerveza", "cervezas", "cafe", "cafes", "coctel", "cocteles", "cata", "catas",
+                "trago", "tragos"]
+
+
+_FOOD_WORDS = ["chef", "chefs", "brunch", "brunchs", "cocina", "cocinas", "food", "almuerzo", "almuerzos",
+              "cena", "cenas"]
+
+
+def guess_intents(title: str, description: str, categories: list[str], plan: str) -> list[str]:
+    """Intenciones del evento. Conservador: ante la duda, ninguna. `bailar` solo por palabras del título
+    (el cuerpo nombra de todo); `tango` a secas no alcanza, es ambiguo. Muestras, arte, deporte y eventos sin
+    señal no responden a ninguna intención."""
+    cats = set(categories)
+    words = f" {norm(title)} "
+    dance_words = words.replace(" la tertulia ", " ")  # «La Tertulia» es un espacio, no una actividad
+    found: set[str] = set()
+    if "musica" in cats:
+        found.add("musica_en_vivo")
+    if any(f" {w} " in dance_words for w in _DANCE_WORDS):
+        found.add("bailar")
+    elif "danza" in cats:
+        found.add("espectaculo")
+    if cats & {"teatro", "cine"}:
+        found.add("espectaculo")
+    if "chicos" in cats:
+        found.add("con_chicos")
+    if plan == "gastronomia":
+        blob = f" {norm(title)} {norm(description)} "
+        drinks = any(f" {w} " in blob for w in _DRINK_WORDS)
+        eats = "gastronom" in blob or any(f" {w} " in blob for w in _FOOD_WORDS)
+        if drinks:
+            found.add("tomar_algo")
+        if eats:
+            found.add("comer")
+    return [i for i in INTENTS if i in found]
+
+
+def feed_of(record: dict) -> str:
+    """Scraper que trajo el evento. Con fuentes agregadoras la primera fuente citada ya no lo identifica."""
+    return record.get("feed") or record["sources"][0]["name"]
+
+
+def split_venues(venue: str) -> list[str]:
+    """Sedes de un evento: `A · B` son dos sedes. Sin sede, una lista con '' para que haya siempre al menos una."""
+    return [v.strip() for v in venue.split(" · ")] if venue else [""]
+
+
 def coords_from_embed(html_text: str) -> tuple[float, float] | None:
     """(lat, lon) del iframe de Google Maps embebido ('...!2d<lon>!3d<lat>...'), o None."""
     m = re.search(r"!2d(-?\d+\.\d+)!3d(-?\d+\.\d+)", html_text or "")

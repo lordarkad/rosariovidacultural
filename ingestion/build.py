@@ -14,7 +14,7 @@ from pathlib import Path
 from scrapers import (broadway, cartel, cinemark, comedia, disfrutarosario, mil_tickets, muni, noticias,
                       quehacemos, showcase, turboentrada)
 from scrapers import geocode, venues
-from scrapers.common import norm
+from scrapers.common import feed_of, norm, split_venues
 
 ROOT = Path(__file__).parent
 OUT = ROOT / "site" / "events.json"
@@ -115,16 +115,11 @@ def add_coords(events: list[dict]) -> None:
     for ev in events:
         if ev.get("coords"):
             continue  # la fuente ya trae coordenadas (p. ej. Qué Hacemos): no se geocodifica
-        parts = [v.strip() for v in ev["venue"].split(" · ")] if ev["venue"] else [""]
+        parts = split_venues(ev["venue"])
         addr = ev["address"] if len(parts) == 1 else ""
         found = [geocode.locate(p, addr if i == 0 else "", cache) for i, p in enumerate(parts)]
         ev["coords"] = [list(c) for c in found if c]
     geocode.save_cache(cache)
-
-
-def feed_of(record: dict) -> str:
-    """Scraper que trajo el evento. Con fuentes agregadoras la primera fuente citada ya no lo identifica."""
-    return record.get("feed") or record["sources"][0]["name"]
 
 
 def build_news(only: str | None) -> dict:
