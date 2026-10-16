@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-16T03:58:05+00:00",
+ "generated_at": "2026-10-16T13:45:50+00:00",
  "offers": {
   "musica_en_vivo": "Música en vivo",
   "cena": "Cena",
@@ -89,7 +89,7 @@
      "url": "https://www.rosario.tur.ar/donde-ir/cultura/centros-culturales/la-casa-del-tango"
     }
    ],
-   "upcoming_count": 6,
+   "upcoming_count": 7,
    "upcoming": [
     {
      "id": "1c12a10718",
@@ -114,6 +114,17 @@
      "price_from": null
     },
     {
+     "id": "19b71b40bf",
+     "title": "Masterclass con el violinista Rafael Marrero",
+     "start": "2026-10-17",
+     "date_text": "Sábado · a 12 horas",
+     "time": "",
+     "url": "https://www.rosario.gob.ar/inicio/masterclass-con-el-violinista-rafael-marrero",
+     "source": "Agenda municipal",
+     "free": false,
+     "price_from": null
+    },
+    {
      "id": "d829bd08d9",
      "title": "Tango en Calle",
      "start": "2026-10-18",
@@ -125,25 +136,14 @@
      "price_from": null
     },
     {
-     "id": "292c57659c",
+     "id": "933bf4ec65",
      "title": "Taller de Técnicas de Danza y Composición Instantánea",
      "start": "2026-10-21",
      "date_text": "Del 21 de octubre al 25 de noviembre · Miércoles · De 16:30 a 18 horas",
      "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/index.php/taller-de-tecnicas-de-danza-y-composicion-instantanea",
+     "url": "https://www.rosario.gob.ar/inicio/taller-de-tecnicas-de-danza-y-composicion-instantanea",
      "source": "Agenda municipal",
      "free": true,
-     "price_from": null
-    },
-    {
-     "id": "cc71e54549",
-     "title": "Rubén Gómez y Julián Cicerchia presentan Doce Retratos",
-     "start": "2026-10-24",
-     "date_text": "Sábado · a 23 horas",
-     "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/index.php/ruben-gomez-y-julian-cicerchia-presentan-doce-retratos",
-     "source": "Agenda municipal",
-     "free": false,
      "price_from": null
     }
    ]

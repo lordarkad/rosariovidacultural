@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-16T04:13:46+00:00",
+ "generated_at": "2026-10-16T13:57:51+00:00",
  "incomplete_tiles": 1,
  "attribution": "© colaboradores de OpenStreetMap (ODbL)",
  "places": [
@@ -7342,14 +7342,22 @@
    "id": "n7472421485",
    "name": "Metrópolis",
    "kind": "Restaurante",
-   "cuisine": [],
+   "cuisine": [
+    "argentinian",
+    "breakfast",
+    "burger",
+    "chicken",
+    "coffee shop",
+    "diner",
+    "local"
+   ],
    "address": "Avenida Guillermo Wheelwright 1543",
    "lat": -32.93637,
    "lon": -60.64215,
    "hours": "",
-   "phone": "",
+   "phone": "+54 341 243 3589",
    "website": "",
-   "instagram": "",
+   "instagram": "metropolisrestobar",
    "outdoor": false
   },
   {
