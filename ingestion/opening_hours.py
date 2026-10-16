@@ -8,15 +8,39 @@ informado» es mejor que un horario inventado.
 from __future__ import annotations
 
 import re
+from datetime import date
 
 _DAYS = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
 _M = r"(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"
-# Solo feriados fijos (`Jan 1 off`, `Dec 24-25 off`). Un cierre de temporada (`Jun-Aug off`, `Dec Mo-Fr off`) no se
-# ignora: el parser devuelve None, porque un horario semanal completo mentiría durante esos meses.
-_MONTH_RULE = re.compile(rf"^{_M}\s+\d{{1,2}}(?:\s*-\s*(?:{_M}\s+)?\d{{1,2}})?:?\s+off\b", re.I)
+# Solo feriados fijos (`Jan 1 off`, `Dec 24-25 off`): hasta MAX_HOLIDAY_DAYS días seguidos. Un cierre de temporada
+# (`Jun-Aug off`, `Dec Mo-Fr off`, `Jan 2-Feb 28 off`) no se ignora: el parser devuelve None, porque un horario
+# semanal completo mentiría durante esos días.
+_MONTH_RULE = re.compile(
+    rf"^({_M})\s+(\d{{1,2}})(?:\s*-\s*(?:({_M})\s+)?(\d{{1,2}}))?:?\s+off\b", re.I)
+_MONTHS = {m: i for i, m in enumerate(["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov",
+                                       "dec"], 1)}
+MAX_HOLIDAY_DAYS = 3
 _DAY = r"(?:Mo|Tu|We|Th|Fr|Sa|Su)"
 _SELECTOR = re.compile(rf"^{_DAY}(?:-{_DAY})?(?:\s*,\s*(?:{_DAY}(?:-{_DAY})?|PH))*$|^PH$")
 _SPAN = re.compile(r"^([01]?\d|2[0-3]):([0-5]\d)-(?:([01]?\d|2[0-3]):([0-5]\d)|24:00)$")
+
+
+def _is_holiday(rule: str) -> bool:
+    """`Jan 1 off`, `Dec 24-25 off`, `Dec 31-Jan 1 off`: un feriado fijo de pocos días, no un cierre de temporada."""
+    m = _MONTH_RULE.match(rule)
+    if not m:
+        return False
+    first, day1, last, day2 = m.groups()
+    if day2 is None:
+        return True
+    start_month = _MONTHS[first.lower()]
+    end_month = _MONTHS[(last or first).lower()]
+    try:
+        start = date(2023, start_month, int(day1))
+        end = date(2023 if end_month >= start_month else 2024, end_month, int(day2))
+    except ValueError:
+        return False
+    return 0 <= (end - start).days < MAX_HOLIDAY_DAYS
 
 
 def _days(selector: str) -> list[int] | None:
@@ -53,7 +77,7 @@ def parse(text: str) -> list[dict] | None:
         return [{"day": d, "opens": "00:00", "closes": "00:00"} for d in range(7)]
     by_day: dict[int, list[tuple[str, str]]] = {}
     for rule in (r.strip() for r in text.split(";") if r.strip()):
-        if _MONTH_RULE.match(rule):
+        if _is_holiday(rule):
             continue
         selector, _, rest = rule.partition(" ")
         if not _SELECTOR.match(selector) and re.match(r"^\d", rule):

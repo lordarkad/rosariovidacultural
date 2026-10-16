@@ -61,7 +61,9 @@ class Horarios(unittest.TestCase):
         for text in ("We-Su 19:00+", "Sa,Su,PH 12:00+", "sunrise-sunset", "Mo-Fr 09:00-18:00; Sa [1] 10:00-12:00",
                      "Mo-Fr 25:00-26:00", "Mo 08:00-08:00", "por turnos", "Mo-Fr 09:00-18:00 open",
                      "Mo-Su 10:00-20:00; Jun-Aug off", "Mo-Fr 10:00-20:00; Dec off",
-                     "Mo-Su 10:00-20:00; Dec Mo-Fr off"):
+                     "Mo-Su 10:00-20:00; Dec Mo-Fr off", "Mo-Su 10:00-20:00; Jan 2-Feb 28 off",
+                     "Mo-Su 10:00-20:00; Dec 1-15 off", "Mo-Su 10:00-20:00; Jan 1-Dec 31 off",
+                     "Mo-Su 10:00-20:00; Dec 25-20 off"):
             self.assertIsNone(parse(text), msg=text)
 
     def test_horas_de_un_digito(self):
