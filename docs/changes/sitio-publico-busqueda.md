@@ -363,3 +363,23 @@ Interpretaciones que el contrato no contradice y que el código toma. Si alguna 
 - **Logs (D-9):** se reemplazó el `logger()` de Hono, que imprime el query string, por un log que solo registra el path.
 - **Riesgo conocido, no de contrato:** F-11 fusiona por título, fecha y sede sin considerar la hora, así que dos funciones del mismo día en la misma sede se fusionan.
 - **Concurrencia de la ingesta:** dos requests simultáneas con el mismo `source_key` nuevo pueden hacer fallar la segunda por `UNIQUE`. El job de scraping debe enviar los lotes en serie (`concurrency:` en el workflow) cuando se conecte a `/ingest`.
+
+## Decisiones de implementación (B-3a, clasificador de la ingesta, 2026-10-16)
+
+Confirmadas por Daniel el 2026-10-16. Viven en `ingestion/scrapers/common.py::guess_intents` y `ingestion/ingest_payload.py`. No cambian el contrato de `/ingest`.
+
+| Categoría o señal | Intención | Nota |
+|---|---|---|
+| `musica` | `musica_en_vivo` | El género no cambia la intención (`music_genres` es un atributo aparte). |
+| `milonga`, `tertulia`, `baile`, `bailanta` como palabra del título | `bailar` | Solo el título: el cuerpo nombra de todo. Va en cualquier categoría. |
+| `danza` sin esas palabras | `espectaculo` | «Tango» a secas no alcanza: es ambiguo. |
+| `teatro`, `cine` | `espectaculo` | |
+| `chicos` | `con_chicos` | Se suma a las demás. |
+| plan `gastronomia` | `tomar_algo` (vino, cerveza, café, cóctel, cata, trago), `comer` (chef, brunch, cocina…; también si no hay palabra clara) | Pueden ir las dos. |
+| `muestras`, `arte`, `deporte`, `eventos`, `otros` sin señal | ninguna | Con `intents: []` el evento no aparece al elegir un chip. |
+
+- **Géneros:** `music_genres` solo se asigna a eventos de categoría `musica` o `danza` (un `House of Gucci` de cine no es electrónica); la sede puede forzar un género.
+- **Sedes:** un registro con varias sedes (`A · B`) da un `IngestEvent` por sede, con `source_key` distinto y la misma `source_url` (E-2). Las coordenadas se asignan solo si hay una por sede.
+- **`source_key`:** `<fuente>:<sha256(url primaria + sede)[:12]>`. `place_source_key` queda en `null` hasta B-3c.
+- **Precio:** `free` si la fuente lo marca gratis; `paid` si hay `price_from` mayor que 0; si no, `unknown`.
+- **Medición sobre `events.json` (390 registros → 400 `IngestEvent`):** 152 quedan sin intención (todos `eventos`, `otros`, `muestras`, `deporte`, `arte`); solo 1 es `bailar` y 14 traen género. Ampliar las palabras clave es un ajuste posterior.
