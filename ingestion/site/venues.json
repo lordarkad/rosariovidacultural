@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-09-29T23:21:47+00:00",
+ "generated_at": "2026-10-16T03:58:05+00:00",
  "offers": {
   "musica_en_vivo": "Música en vivo",
   "cena": "Cena",
@@ -21,30 +21,8 @@
    "website": "",
    "note": "Bandas en vivo; también hay cena y se baila.",
    "info_sources": [],
-   "upcoming_count": 4,
+   "upcoming_count": 2,
    "upcoming": [
-    {
-     "id": "fc5cffa2cf",
-     "title": "AnEspil",
-     "start": "2026-10-01",
-     "date_text": "1 oct",
-     "time": "20:30",
-     "url": "https://www.bandsintown.com/e/108861934-anespil-at-casa-brava",
-     "source": "Bandsintown",
-     "free": false,
-     "price_from": null
-    },
-    {
-     "id": "32c17b3254",
-     "title": "Los Espiritus",
-     "start": "2026-10-09",
-     "date_text": "9 oct",
-     "time": "20:00",
-     "url": "https://www.bandsintown.com/e/108876706-los-espiritus-at-casa-brava",
-     "source": "Bandsintown",
-     "free": false,
-     "price_from": null
-    },
     {
      "id": "6f80e12a9a",
      "title": "Paz Carrara",
@@ -73,8 +51,8 @@
    "id": "bon-scott",
    "name": "Bon Scott",
    "address": "Pichincha 131",
-   "lat": -32.93427,
-   "lon": -60.66071,
+   "lat": -32.93431,
+   "lon": -60.66072,
    "offers": [
     "musica_en_vivo",
     "cena",
@@ -89,16 +67,82 @@
      "url": "https://lanochedelasbirrerias.com.ar/cerveceria/bon-scott/"
     }
    ],
-   "upcoming_count": 1,
+   "upcoming_count": 0,
+   "upcoming": []
+  },
+  {
+   "id": "casa-del-tango",
+   "name": "Centro Cultural La Casa del Tango",
+   "address": "Av. Illia 1750",
+   "lat": -32.93097,
+   "lon": -60.65497,
+   "offers": [
+    "musica_en_vivo",
+    "baile"
+   ],
+   "instagram": "",
+   "website": "",
+   "note": "Centro cultural municipal del tango: tertulias, Tango en Calle los domingos, peñas y talleres.",
+   "info_sources": [
+    {
+     "name": "Rosario Turismo",
+     "url": "https://www.rosario.tur.ar/donde-ir/cultura/centros-culturales/la-casa-del-tango"
+    }
+   ],
+   "upcoming_count": 6,
    "upcoming": [
     {
-     "id": "9e6d49375d",
-     "title": "⚔️ LvRod & Juana Maidagan en Bon Scott (Rosario)",
-     "start": "2026-10-15",
-     "date_text": "15 oct",
-     "time": "21:00",
-     "url": "https://alpogo.com/evento/lvrod-juana-maidagan-en-bon-scott-rosario-28927",
-     "source": "Alpogo",
+     "id": "1c12a10718",
+     "title": "Peña de Cantores y Cantoras",
+     "start": "2026-10-16",
+     "date_text": "Viernes · a 23:59 horas",
+     "time": "",
+     "url": "https://www.rosario.gob.ar/inicio/pena-de-cantores-y-cantoras-0",
+     "source": "Agenda municipal",
+     "free": true,
+     "price_from": null
+    },
+    {
+     "id": "eab6d41868",
+     "title": "Tertulias Tangueras",
+     "start": "2026-10-16",
+     "date_text": "Del 16 de octubre al 27 de noviembre · Viernes · De 17 a 18:30 horas",
+     "time": "",
+     "url": "https://www.rosario.gob.ar/inicio/tertulias-tangueras-1",
+     "source": "Agenda municipal",
+     "free": true,
+     "price_from": null
+    },
+    {
+     "id": "d829bd08d9",
+     "title": "Tango en Calle",
+     "start": "2026-10-18",
+     "date_text": "Del 18 de octubre al 29 de noviembre · Domingo · De 10 a 12 horas",
+     "time": "",
+     "url": "https://www.rosario.gob.ar/inicio/tango-en-calle",
+     "source": "Agenda municipal",
+     "free": true,
+     "price_from": null
+    },
+    {
+     "id": "292c57659c",
+     "title": "Taller de Técnicas de Danza y Composición Instantánea",
+     "start": "2026-10-21",
+     "date_text": "Del 21 de octubre al 25 de noviembre · Miércoles · De 16:30 a 18 horas",
+     "time": "",
+     "url": "https://www.rosario.gob.ar/inicio/index.php/taller-de-tecnicas-de-danza-y-composicion-instantanea",
+     "source": "Agenda municipal",
+     "free": true,
+     "price_from": null
+    },
+    {
+     "id": "cc71e54549",
+     "title": "Rubén Gómez y Julián Cicerchia presentan Doce Retratos",
+     "start": "2026-10-24",
+     "date_text": "Sábado · a 23 horas",
+     "time": "",
+     "url": "https://www.rosario.gob.ar/inicio/index.php/ruben-gomez-y-julian-cicerchia-presentan-doce-retratos",
+     "source": "Agenda municipal",
      "free": false,
      "price_from": null
     }

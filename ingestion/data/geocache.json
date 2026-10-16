@@ -32,6 +32,10 @@
   -32.95795,
   -60.62241
  ],
+ "area de servicios urbanos distrito sur de la quintana hilarion 45": [
+  -33.00053,
+  -60.6352
+ ],
  "auditorio fundacion": [
   -32.94557,
   -60.63967
@@ -45,6 +49,7 @@
   -32.96277,
   -60.6215
  ],
+ "bar rosario blend martes": null,
  "biblioteca argentina dr juan alvarez roca pte julio argentino 731": [
   -32.94429,
   -60.64474
@@ -57,6 +62,14 @@
   -32.94026,
   -60.66996
  ],
+ "bon scott pichincha 131": [
+  -32.93431,
+  -60.66072
+ ],
+ "cafferata 729": [
+  -32.93989,
+  -60.67038
+ ],
  "calle recreativa orono nicasio y lopez estanislao": null,
  "capi club": null,
  "capitan bar s2000bht": [
@@ -67,6 +80,7 @@
   -32.97965,
   -60.68011
  ],
+ "ccpe sarmiento y el rio": null,
  "centre catala de rosario": null,
  "centro cuidar tio rolo avellaneda nicolas 6915": [
   -33.01891,
@@ -76,7 +90,16 @@
   -32.92522,
   -60.67838
  ],
+ "centro cultural la casa del tango av illia 1750": [
+  -32.93097,
+  -60.65497
+ ],
  "centro cultural la casa del tango illia pte arturo u 1750": null,
+ "centro cultural la trama paga": null,
+ "centro cultural parque alem nansen 100": [
+  -32.90841,
+  -60.67907
+ ],
  "centro cultural parque de espana": null,
  "centro cultural parque de espana aeci sarmiento domingo faustin 101": null,
  "centro de expresiones contemporaneas paseo de las artes 310": [
@@ -99,6 +122,10 @@
   -32.93655,
   -60.64136
  ],
+ "centro municipal de distrito noroeste olga y leticia cossettini provincias unidas 150 bis": [
+  -32.92817,
+  -60.71237
+ ],
  "centro municipal de distrito oeste felipe more peron presidente juan dom 4602": null,
  "centro municipal de distrito sudoeste emilia bertole francia 4435": [
   -32.98344,
@@ -117,12 +144,21 @@
   -33.01121,
   -60.66248
  ],
+ "club atletico horizonte": null,
  "club atletico provincial": [
   -32.97208,
   -60.66261
  ],
  "club el luchador": null,
+ "club el torito medrano 2110": [
+  -32.89237,
+  -60.70712
+ ],
  "club mercury": null,
+ "club torito": [
+  -32.89237,
+  -60.70712
+ ],
  "cmd villa hortensia": [
   -32.8956,
   -60.69425
@@ -132,16 +168,26 @@
   -60.62474
  ],
  "complejo cultural atlas": null,
+ "complejo cultural atlas mitre general bartolome 645": null,
  "concejo municipal de rosario cordoba 501": [
   -32.94829,
   -60.6301
  ],
  "corcovado estudio": null,
  "crema": null,
+ "cultural fontanarrosa": [
+  -32.94991,
+  -60.63797
+ ],
+ "cultural fontanarrosa san martin gral jose 1080": [
+  -32.94991,
+  -60.63797
+ ],
  "diario la capital 1602": [
   -32.95969,
   -60.62351
  ],
+ "diferentes ambitos de rosario": null,
  "distrito 7": [
   -32.99366,
   -60.71085
@@ -156,6 +202,11 @@
   -32.93437,
   -60.67127
  ],
+ "espacio cultural expresiones paga": null,
+ "estacion rosario 300 av c c estevez boero 640 sabado": [
+  -32.94582,
+  -60.62898
+ ],
  "estadio central cordoba": [
   -32.97077,
   -60.63619
@@ -167,9 +218,19 @@
   -32.93878,
   -60.66309
  ],
+ "feuer": null,
  "floyd bar": null,
+ "floyd bar dorrego 1362": [
+  -32.95146,
+  -60.65102
+ ],
  "gallo rojo": null,
+ "galpon 11 estevez boero guillermo 980": [
+  -32.94252,
+  -60.63241
+ ],
  "garcia bar": null,
+ "garcia bar y rock": null,
  "hi fi studio": null,
  "hotel riviera": [
   -32.943,
@@ -180,11 +241,22 @@
   -60.64271
  ],
  "hum club de musica": null,
+ "instituto de la tradicion martin fierro paga": null,
+ "jueves viernes": null,
  "la felipa pellegrini 800 paga": null,
+ "la granja de la infancia peron presidente juan dom 8000": [
+  -32.97666,
+  -60.72548
+ ],
  "la playa de la musica": null,
  "la segunda seguros arena": null,
+ "la surfera beach": null,
  "lecoin": null,
  "lumvra club": null,
+ "mercado del patio": [
+  -32.9399,
+  -60.66957
+ ],
  "mercado zarpado": null,
  "metropolitano": [
   -32.92898,
@@ -207,6 +279,16 @@
   -60.77574
  ],
  "mi tierra bar mercado del patio paga": null,
+ "monumento historico nacional a la bandera argentina santa fe 581": [
+  -32.94759,
+  -60.63082
+ ],
+ "mostra albertina carri presenta su libro cine vivo proyeccion de cortos": null,
+ "mostra apertura adolescencia sexo y muerte en camp miasma": null,
+ "mostra barbara forever funcion de cierre estreno en rosario": null,
+ "mostra cortos rosarinos fuera de la norma": null,
+ "mostra memoria queer en vhs": null,
+ "mostra pelicula invitada bombacha": null,
  "museo castagnino pellegrini carlos 2202": [
   -32.95387,
   -60.65659
@@ -232,6 +314,10 @@
   -32.93991,
   -60.63516
  ],
+ "pasaje pan cordoba 954": [
+  -32.94642,
+  -60.63593
+ ],
  "plataforma lavarden": [
   -32.95172,
   -60.63923
@@ -241,6 +327,11 @@
   -60.63923
  ],
  "plataforma lavarden terraza": null,
+ "playa de la musica": null,
+ "plaza 25 de mayo": [
+  -32.94703,
+  -60.63318
+ ],
  "puerto norte design hotel": null,
  "riobamba 7691": [
   -32.96528,
@@ -254,6 +345,7 @@
   -32.94177,
   -60.65635
  ],
+ "sabado": null,
  "sala cultural de abajo": null,
  "sala hum": null,
  "sala tandava nueve de julio 754": null,
@@ -270,6 +362,7 @@
   -32.97142,
   -60.64326
  ],
+ "switch": null,
  "teatro astengo": [
   -32.94557,
   -60.63967
@@ -290,13 +383,26 @@
   -32.95258,
   -60.63507
  ],
+ "teatro la comedia": [
+  -32.94806,
+  -60.64021
+ ],
  "teatro la escalera paga": null,
+ "teatro la morada": null,
  "teatro la morada san martin gral jose 771 pa": null,
+ "teatro mateo booz paga": [
+  -32.9414,
+  -60.65361
+ ],
  "teatro municipal la comedia mitre 958": [
   -32.94806,
   -60.64021
  ],
  "teatro municipal la comedia mitre general bartolome 958": null,
+ "teatro plataforma lavarden": [
+  -32.95172,
+  -60.63923
+ ],
  "teatro vigil": null,
  "uca rosario qeo rosario santa fe ar": [
   -32.95126,

@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-09-29T18:33:16+00:00",
- "incomplete_tiles": 4,
+ "generated_at": "2026-10-16T04:13:46+00:00",
+ "incomplete_tiles": 1,
  "attribution": "© colaboradores de OpenStreetMap (ODbL)",
  "places": [
   {
@@ -4668,20 +4668,6 @@
    "outdoor": false
   },
   {
-   "id": "n8280366794",
-   "name": "Hanks",
-   "kind": "Restaurante",
-   "cuisine": [],
-   "address": "",
-   "lat": -32.93529,
-   "lon": -60.65199,
-   "hours": "",
-   "phone": "",
-   "website": "",
-   "instagram": "",
-   "outdoor": false
-  },
-  {
    "id": "w1311142020",
    "name": "Hanks",
    "kind": "Comida rápida",
@@ -4694,6 +4680,20 @@
    "website": "",
    "instagram": "",
    "outdoor": true
+  },
+  {
+   "id": "n8280366794",
+   "name": "Hanks",
+   "kind": "Restaurante",
+   "cuisine": [],
+   "address": "",
+   "lat": -32.93529,
+   "lon": -60.65199,
+   "hours": "",
+   "phone": "",
+   "website": "",
+   "instagram": "",
+   "outdoor": false
   },
   {
    "id": "n7468275285",
@@ -6627,6 +6627,20 @@
    "outdoor": false
   },
   {
+   "id": "n4736566772",
+   "name": "Mal de Archivo",
+   "kind": "Café",
+   "cuisine": [],
+   "address": "Mariano Moreno 477",
+   "lat": -32.94,
+   "lon": -60.64938,
+   "hours": "",
+   "phone": "",
+   "website": "http://maldearchivo.com/",
+   "instagram": "maldearchivo",
+   "outdoor": false
+  },
+  {
    "id": "n6435920672",
    "name": "Málaga",
    "kind": "Restaurante",
@@ -8166,20 +8180,6 @@
    "outdoor": false
   },
   {
-   "id": "w1036374590",
-   "name": "Paradiso",
-   "kind": "Bar",
-   "cuisine": [],
-   "address": "",
-   "lat": -32.89067,
-   "lon": -60.68584,
-   "hours": "",
-   "phone": "",
-   "website": "",
-   "instagram": "",
-   "outdoor": true
-  },
-  {
    "id": "n13002769861",
    "name": "Parador Sudestada",
    "kind": "Restaurante",
@@ -9187,6 +9187,20 @@
    "outdoor": false
   },
   {
+   "id": "w1311142021",
+   "name": "Ronnie",
+   "kind": "Comida rápida",
+   "cuisine": [],
+   "address": "Santa Fe 3329",
+   "lat": -32.93997,
+   "lon": -60.66831,
+   "hours": "",
+   "phone": "",
+   "website": "",
+   "instagram": "",
+   "outdoor": true
+  },
+  {
    "id": "n5711929035",
    "name": "Ronnie",
    "kind": "Comida rápida",
@@ -9197,20 +9211,6 @@
    "lat": -32.92303,
    "lon": -60.66358,
    "hours": "Mo-Th 08:00-23:00; Fr-Su 08:00-24:00",
-   "phone": "",
-   "website": "",
-   "instagram": "",
-   "outdoor": true
-  },
-  {
-   "id": "w1311142021",
-   "name": "Ronnie",
-   "kind": "Comida rápida",
-   "cuisine": [],
-   "address": "Santa Fe 3329",
-   "lat": -32.93997,
-   "lon": -60.66831,
-   "hours": "",
    "phone": "",
    "website": "",
    "instagram": "",
