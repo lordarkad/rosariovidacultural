@@ -383,3 +383,14 @@ Confirmadas por Daniel el 2026-10-16. Viven en `ingestion/scrapers/common.py::gu
 - **`source_key`:** `<fuente>:<sha256(url de esa fuente + sede)[:12]>`, anclada a la fuente que trajo el evento (`feed`) y no a `sources[0]`, para que fusionar duplicados no la cambie. `place_source_key` queda en `null` hasta B-3c. **`start_time`:** con varias funciones («15:10 / 17:55») se conserva la primera; `La Tertulia` en el título es un espacio, no `bailar`.
 - **Precio:** `free` si la fuente lo marca gratis; `paid` si hay `price_from` mayor que 0; si no, `unknown`.
 - **Medición sobre `events.json` (390 registros → 400 `IngestEvent`):** 152 quedan sin intención (todos `eventos`, `otros`, `muestras`, `deporte`, `arte`); solo 1 es `bailar` y 14 traen género. Ampliar las palabras clave es un ajuste posterior.
+
+## Decisiones de implementación (B-3b, publicación a /ingest, 2026-10-16)
+
+Confirmadas por Daniel el 2026-10-16. Vive en `ingestion/publish.py` y en el paso «Publicar a la API» de `.github/workflows/scrape.yml`. No cambia el contrato de `/ingest`.
+
+- **Destino:** staging. El paso apunta a `https://rosariovidacultural-api-staging…/api/ingest`; pasar a producción es cambiar esa URL y cargar el `INGEST_TOKEN` de producción.
+- **Lotes:** uno por fuente (`source.name` = `feed`, el contrato fija una fuente por lote), de hasta 200 eventos, **en serie**. `tier`: `official` para la agenda municipal y las salas (La Comedia, Broadway, Showcase, Cinemark); `aggregator` para el resto.
+- **Errores:** reintenta 5xx y fallas de red (3 intentos con espera creciente); un 4xx no se reintenta. Un lote fallido no frena los demás, salvo 401/403 (con el token mal, todos fallarían). El script sale con error si algún lote falló, y el paso corre con `continue-on-error`: un fallo de la API no frena la actualización del sitio legacy.
+- **Sin configurar:** si falta `INGEST_URL` o `INGEST_TOKEN`, avisa con un `::warning::` y no publica (no rompe forks ni corridas sin el secret).
+- **Solo eventos:** los lugares (OSM) se publican en B-3c.
+- `python ingestion/publish.py --dry-run` arma los lotes y los cuenta sin enviar (hoy: 390 registros → 400 eventos en 10 lotes).
