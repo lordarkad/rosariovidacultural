@@ -8,6 +8,7 @@ presupuesto de llamadas a D1 por request y el dedupe (E-10) depende del orden de
 from __future__ import annotations
 
 import argparse
+import http.client
 import json
 import os
 import sys
@@ -72,7 +73,7 @@ def post_batch(url: str, token: str, batch: dict, timeout: int = 60, sleep=time.
             last = IngestError(f"HTTP {exc.code}: {detail}", exc.code)
             if exc.code < 500:
                 raise last from exc
-        except (urllib.error.URLError, TimeoutError, ValueError) as exc:
+        except (urllib.error.URLError, OSError, http.client.HTTPException, ValueError) as exc:
             last = IngestError(f"{type(exc).__name__}: {exc}")
     assert last is not None
     raise last

@@ -1,4 +1,5 @@
 import json
+import socket
 import threading
 import unittest
 from http.server import BaseHTTPRequestHandler, HTTPServer
@@ -107,6 +108,32 @@ class Envio(unittest.TestCase):
         with self.assertRaises(IngestError):
             post_batch(self.url, "t", self.batch, sleep=lambda s: None)
         self.assertEqual(len(Servidor.seen), publish.RETRIES)
+
+    def test_conexion_cortada_sin_respuesta_se_reintenta_y_falla_como_IngestError(self):
+        # RemoteDisconnected sale de getresponse(), no se envuelve en URLError
+        srv = socket.socket()
+        srv.bind(("127.0.0.1", 0))
+        srv.listen(5)
+        stop = threading.Event()
+
+        def drop():
+            srv.settimeout(0.2)
+            while not stop.is_set():
+                try:
+                    conn, _ = srv.accept()
+                    conn.recv(65536)
+                    conn.close()
+                except OSError:
+                    pass
+
+        threading.Thread(target=drop, daemon=True).start()
+        try:
+            with self.assertRaises(IngestError):
+                post_batch(f"http://127.0.0.1:{srv.getsockname()[1]}/api/ingest", "t", self.batch,
+                           sleep=lambda s: None)
+        finally:
+            stop.set()
+            srv.close()
 
     def test_publish_suma_totales_y_sigue_ante_un_lote_roto(self):
         batches = [{**self.batch, "events": [{}] * n} for n in (3, 2, 1)]
