@@ -62,8 +62,14 @@ class Gastronomia(unittest.TestCase):
     def test_comer(self):
         self.assertEqual(intents("Brunch del domingo", ["eventos"], plan="gastronomia"), ["comer"])
 
-    def test_sin_palabra_clara_es_comer(self):
-        self.assertEqual(intents("Feria de productores", ["eventos"], plan="gastronomia"), ["comer"])
+    def test_sin_palabra_clara_no_hay_intent(self):
+        # guess_plan es ruidoso: «feria de» y «mercado» también marcan ferias de libros y de artesanías
+        for titulo in ("Feria de productores", "Feria del libro en Rosario", "Mercado de las Artes"):
+            self.assertEqual(intents(titulo, ["eventos"], plan="gastronomia"), [], msg=titulo)
+
+    def test_cena_es_palabra_completa(self):
+        self.assertEqual(intents("Feria de la escena local", ["eventos"], plan="gastronomia"), [])
+        self.assertEqual(intents("Cena de gala", ["eventos"], plan="gastronomia"), ["comer"])
 
     def test_ambos(self):
         self.assertEqual(intents("Brunch con café de especialidad", ["eventos"], plan="gastronomia"),

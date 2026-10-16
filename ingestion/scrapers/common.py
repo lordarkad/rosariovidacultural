@@ -281,10 +281,10 @@ def guess_intents(title: str, description: str, categories: list[str], plan: str
     if plan == "gastronomia":
         blob = f" {norm(title)} {norm(description)} "
         drinks = any(f" {w} " in blob for w in _DRINK_WORDS)
-        eats = any(w in blob for w in ("chef", "brunch", "cocina", "food", "gastronom", "almuerzo", "cena"))
+        eats = "gastronom" in blob or any(f" {w} " in blob for w in ("chef", "brunch", "cocina", "food", "almuerzo", "cena"))
         if drinks:
             found.add("tomar_algo")
-        if eats or not drinks:
+        if eats:
             found.add("comer")
     return [i for i in INTENTS if i in found]
 

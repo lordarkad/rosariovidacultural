@@ -375,7 +375,7 @@ Confirmadas por Daniel el 2026-10-16. Viven en `ingestion/scrapers/common.py::gu
 | `danza` sin esas palabras | `espectaculo` | «Tango» a secas no alcanza: es ambiguo. |
 | `teatro`, `cine` | `espectaculo` | |
 | `chicos` | `con_chicos` | Se suma a las demás. |
-| plan `gastronomia` | `tomar_algo` (vino, cerveza, café, cóctel, cata, trago), `comer` (chef, brunch, cocina…; también si no hay palabra clara) | Pueden ir las dos. |
+| plan `gastronomia` | `tomar_algo` (vino, cerveza, café, cóctel, cata, trago), `comer` (chef, brunch, cocina, almuerzo, cena…) | Pueden ir las dos. Sin palabra clara, ninguna (decidido el 2026-10-16: `guess_plan` es ruidoso y marcaba como gastronomía una feria del libro o un salón del automóvil). |
 | `muestras`, `arte`, `deporte`, `eventos`, `otros` sin señal | ninguna | Con `intents: []` el evento no aparece al elegir un chip. |
 
 - **Géneros:** `music_genres` solo se asigna a eventos de categoría `musica` o `danza` (un `House of Gucci` de cine no es electrónica); la sede puede forzar un género.
