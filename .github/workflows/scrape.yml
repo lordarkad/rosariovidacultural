@@ -26,6 +26,12 @@ jobs:
       - name: Lugares (OpenStreetMap)
         run: python ingestion/build_places.py
         continue-on-error: true  # el servidor público de Overpass falla seguido: se conserva el archivo anterior
+      - name: Publicar a la API (staging)
+        run: python ingestion/publish.py
+        continue-on-error: true  # un fallo de la API no frena la actualización del sitio legacy
+        env:
+          INGEST_URL: https://rosariovidacultural-api-staging.dry-brook-7eef.workers.dev/api/ingest
+          INGEST_TOKEN: ${{ secrets.INGEST_TOKEN }}
       - name: Publicar events.json
         run: |
           git config user.name "agenda-bot"
