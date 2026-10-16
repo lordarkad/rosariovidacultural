@@ -266,10 +266,11 @@ def guess_intents(title: str, description: str, categories: list[str], plan: str
     señal no responden a ninguna intención."""
     cats = set(categories)
     words = f" {norm(title)} "
+    dance_words = words.replace(" la tertulia ", " ")  # «La Tertulia» es un espacio, no una actividad
     found: set[str] = set()
     if "musica" in cats:
         found.add("musica_en_vivo")
-    if any(f" {w} " in words for w in _DANCE_WORDS):
+    if any(f" {w} " in dance_words for w in _DANCE_WORDS):
         found.add("bailar")
     elif "danza" in cats:
         found.add("espectaculo")
@@ -286,6 +287,16 @@ def guess_intents(title: str, description: str, categories: list[str], plan: str
         if eats or not drinks:
             found.add("comer")
     return [i for i in INTENTS if i in found]
+
+
+def feed_of(record: dict) -> str:
+    """Scraper que trajo el evento. Con fuentes agregadoras la primera fuente citada ya no lo identifica."""
+    return record.get("feed") or record["sources"][0]["name"]
+
+
+def split_venues(venue: str) -> list[str]:
+    """Sedes de un evento: `A · B` son dos sedes. Sin sede, una lista con '' para que haya siempre al menos una."""
+    return [v.strip() for v in venue.split(" · ")] if venue else [""]
 
 
 def coords_from_embed(html_text: str) -> tuple[float, float] | None:

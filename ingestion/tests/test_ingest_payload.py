@@ -51,6 +51,12 @@ class Campos(unittest.TestCase):
         self.assertIsNone(ev["place_source_key"])
 
 
+    def test_varios_horarios_conservan_el_primero(self):
+        # Cinemark/Showcase informan «15:10 / 17:55»
+        [ev] = to_ingest_events(record(time="15:10 / 17:55"), [])
+        self.assertEqual(ev["start_time"], "15:10")
+
+
 class Precio(unittest.TestCase):
     def test_estados(self):
         [free] = to_ingest_events(record(free=True, price_from=None), [])
@@ -71,6 +77,15 @@ class SourceKey(unittest.TestCase):
         [b] = to_ingest_events(record(title="Otro título"), [])
         self.assertTrue(re.fullmatch(r"agenda-municipal:[0-9a-f]{12}", a["source_key"]), a["source_key"])
         self.assertEqual(a["source_key"], b["source_key"])  # depende de URL + sede, no del título
+
+    def test_agregar_u_ordenar_fuentes_no_cambia_la_clave(self):
+        # merge_duplicates puede sumar una ticketera y sort_sources la pone primera: la clave sigue anclada al feed
+        [a] = to_ingest_events(record(), [])
+        extra = {"name": "Passline", "url": "https://passline.example/1"}
+        r = record()
+        r["sources"] = [extra, *r["sources"]]
+        [b] = to_ingest_events(r, [])
+        self.assertEqual(a["source_key"], b["source_key"])
 
     def test_sin_feed_usa_la_primera_fuente(self):
         r = record()

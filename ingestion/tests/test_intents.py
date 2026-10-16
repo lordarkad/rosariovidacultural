@@ -35,6 +35,10 @@ class Danza(unittest.TestCase):
         self.assertEqual(intents("Ballet", ["danza"], description="Después hay baile y tertulia para todos"),
                          ["espectaculo"])
 
+    def test_la_tertulia_como_nombre_de_sede_no_es_bailar(self):
+        self.assertEqual(intents("Muestras en La Tertulia", ["muestras"]), [])
+        self.assertEqual(intents("Tertulias Tangueras", ["danza"]), ["bailar"])
+
 
 class Espectaculo(unittest.TestCase):
     def test_teatro_y_cine(self):

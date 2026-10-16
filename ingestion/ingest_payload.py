@@ -9,20 +9,19 @@ import hashlib
 import re
 
 from scrapers import venues as venues_mod
-from scrapers.common import guess_genres, guess_intents, norm
+from scrapers.common import feed_of, guess_genres, guess_intents, norm, split_venues
 
-_TIME = re.compile(r"^([01]\d|2[0-3]):[0-5]\d$")
+_TIME = re.compile(r"^([01]\d|2[0-3]):[0-5]\d")  # «15:10 / 17:55» (varias funciones) conserva la primera
 _MUSIC_CATEGORIES = {"musica", "danza"}
 
 
-def _feed(record: dict) -> str:
-    return record.get("feed") or record["sources"][0]["name"]
-
-
 def _source_key(record: dict, venue: str) -> str:
-    """`<fuente>:<hash de URL primaria + sede>`: estable entre corridas y distinta por sede (E-2)."""
-    digest = hashlib.sha256(f'{record["sources"][0]["url"]}|{norm(venue)}'.encode()).hexdigest()[:12]
-    return f'{norm(_feed(record)).replace(" ", "-")}:{digest}'
+    """`<fuente>:<hash de la URL de esa fuente + sede>`. Se ancla a la fuente que trajo el evento (`feed`), no a
+    `sources[0]`: al fusionar duplicados la ticketera pasa primera y la clave cambiaría, duplicando la fila."""
+    feed = feed_of(record)
+    url = next((s["url"] for s in record["sources"] if s["name"] == feed), record["sources"][0]["url"])
+    digest = hashlib.sha256(f"{url}|{norm(venue)}".encode()).hexdigest()[:12]
+    return f'{norm(feed).replace(" ", "-")}:{digest}'
 
 
 def _price(record: dict) -> tuple[str, int | None]:
@@ -36,7 +35,7 @@ def _price(record: dict) -> tuple[str, int | None]:
 
 def to_ingest_events(record: dict, venues: list[dict]) -> list[dict]:
     """Un `IngestEvent` por sede: una película en 2 cines da 2 eventos con la misma `source_url` (E-2)."""
-    parts = [p.strip() for p in record["venue"].split(" · ")] if record.get("venue") else [""]
+    parts = split_venues(record.get("venue") or "")
     coords = record.get("coords") or []
     description = record.get("description") or ""
     categories = record.get("categories") or [record["category"]]
@@ -59,7 +58,7 @@ def to_ingest_events(record: dict, venues: list[dict]) -> list[dict]:
             "music_genres": genres,
             "start_date": record["start"],
             "end_date": record["end"],
-            "start_time": time if _TIME.match(time) else None,
+            "start_time": time[:5] if _TIME.match(time) else None,
             "date_text": record.get("date_text") or None,
             "venue_name": part or None,
             "address": (record.get("address") or None) if len(parts) == 1 else None,

@@ -380,6 +380,6 @@ Confirmadas por Daniel el 2026-10-16. Viven en `ingestion/scrapers/common.py::gu
 
 - **Géneros:** `music_genres` solo se asigna a eventos de categoría `musica` o `danza` (un `House of Gucci` de cine no es electrónica); la sede puede forzar un género.
 - **Sedes:** un registro con varias sedes (`A · B`) da un `IngestEvent` por sede, con `source_key` distinto y la misma `source_url` (E-2). Las coordenadas se asignan solo si hay una por sede.
-- **`source_key`:** `<fuente>:<sha256(url primaria + sede)[:12]>`. `place_source_key` queda en `null` hasta B-3c.
+- **`source_key`:** `<fuente>:<sha256(url de esa fuente + sede)[:12]>`, anclada a la fuente que trajo el evento (`feed`) y no a `sources[0]`, para que fusionar duplicados no la cambie. `place_source_key` queda en `null` hasta B-3c. **`start_time`:** con varias funciones («15:10 / 17:55») se conserva la primera; `La Tertulia` en el título es un espacio, no `bailar`.
 - **Precio:** `free` si la fuente lo marca gratis; `paid` si hay `price_from` mayor que 0; si no, `unknown`.
 - **Medición sobre `events.json` (390 registros → 400 `IngestEvent`):** 152 quedan sin intención (todos `eventos`, `otros`, `muestras`, `deporte`, `arte`); solo 1 es `bailar` y 14 traen género. Ampliar las palabras clave es un ajuste posterior.
