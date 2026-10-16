@@ -5,7 +5,8 @@ import unittest
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 import publish
-from publish import IngestError, build_batches, post_batch, publish as publish_all, tier_of
+from publish import (IngestError, build_batches, build_place_batches, post_batch, publish as publish_all,
+                     tier_of)
 
 
 def record(i, feed="Agenda municipal", venue="Teatro El Círculo"):
@@ -39,6 +40,36 @@ class Lotes(unittest.TestCase):
     def test_tier(self):
         self.assertEqual(tier_of("Agenda municipal"), "official")
         self.assertEqual(tier_of("Disfruta Rosario"), "aggregator")
+
+
+def osm(i):
+    return {"id": f"n{i}", "name": f"Lugar {i}", "kind": "Bar", "cuisine": [], "address": "", "lat": -32.9,
+            "lon": -60.6, "hours": "", "phone": "", "website": "", "instagram": "", "outdoor": False}
+
+
+CURADO = {"id": "casa-brava", "name": "Casa Brava", "kind": "bar", "address": "Pichincha 120", "lat": -32.93,
+          "lon": -60.66, "offers": ["musica_en_vivo"], "instagram": "", "website": "", "note": ""}
+
+
+class LotesDeLugares(unittest.TestCase):
+    def test_curados_primero_y_osm_en_lotes_de_200(self):
+        batches = build_place_batches([CURADO, {**CURADO, "id": "sin-coords", "lat": None, "lon": None}],
+                                      [osm(i) for i in range(450)], "t")
+        self.assertEqual([(b["source"]["name"], b["source"]["tier"], len(b["places"])) for b in batches],
+                         [("Curados", "curated", 1), ("OpenStreetMap", "aggregator", 200),
+                          ("OpenStreetMap", "aggregator", 200), ("OpenStreetMap", "aggregator", 50)])
+        self.assertTrue(all("events" not in b for b in batches))
+
+    def test_sin_lugares_no_hay_lotes(self):
+        self.assertEqual(build_place_batches([], [], "t"), [])
+
+    def test_publish_cuenta_lugares(self):
+        batches = build_place_batches([CURADO], [osm(1)], "t")
+        calls = iter([ok(1)[1]["data"] | {"places": {"received": 1, "created": 1, "updated": 0, "rejected": 0}},
+                      {"places": {"received": 1, "created": 0, "updated": 1, "rejected": 0}, "events": {},
+                       "rejected": []}])
+        totals, failures = publish_all("u", "t", batches, post=lambda *a: next(calls))
+        self.assertEqual((totals, failures), ({"created": 1, "updated": 1, "rejected": 0}, []))
 
 
 class Servidor(BaseHTTPRequestHandler):
@@ -149,7 +180,7 @@ class Envio(unittest.TestCase):
         totals, failures = publish_all("u", "t", batches, post=fake)
         self.assertEqual(totals, {"created": 3, "updated": 1, "rejected": 1})
         self.assertEqual(len(failures), 1)
-        self.assertIn("Agenda municipal (2)", failures[0])
+        self.assertIn("Agenda municipal (2 eventos)", failures[0])
 
     def test_publish_corta_con_401(self):
         seen = []

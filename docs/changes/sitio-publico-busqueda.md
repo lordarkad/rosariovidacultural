@@ -388,9 +388,26 @@ Confirmadas por Daniel el 2026-10-16. Viven en `ingestion/scrapers/common.py::gu
 
 Confirmadas por Daniel el 2026-10-16. Vive en `ingestion/publish.py` y en el paso «Publicar a la API» de `.github/workflows/scrape.yml`. No cambia el contrato de `/ingest`.
 
-- **Destino:** staging. El paso apunta a `https://rosariovidacultural-api-staging…/api/ingest`; pasar a producción es cambiar esa URL y cargar el `INGEST_TOKEN` de producción.
+- **Destino:** staging. El paso apunta a `https://rosariovidacultural-api-staging…/api/ingest`; pasar a producción es cambiar esa URL y usar el secret `INGEST_TOKEN_PRODUCTION`.
 - **Lotes:** uno por fuente (`source.name` = `feed`, el contrato fija una fuente por lote), de hasta 200 eventos, **en serie**. `tier`: `official` para la agenda municipal y las salas (La Comedia, Broadway, Showcase, Cinemark); `aggregator` para el resto.
 - **Errores:** reintenta 5xx y fallas de red (3 intentos con espera creciente); un 4xx no se reintenta. Un lote fallido no frena los demás, salvo 401/403 (con el token mal, todos fallarían). El script sale con error si algún lote falló, y el paso corre con `continue-on-error`: un fallo de la API no frena la actualización del sitio legacy.
 - **Sin configurar:** si falta `INGEST_URL` o `INGEST_TOKEN`, avisa con un `::warning::` y no publica (no rompe forks ni corridas sin el secret).
-- **Solo eventos:** los lugares (OSM) se publican en B-3c.
+- **Solo eventos:** los lugares se publican desde B-3c.
 - `python ingestion/publish.py --dry-run` arma los lotes y los cuenta sin enviar (hoy: 390 registros → 400 eventos en 10 lotes).
+
+## Decisiones de implementación (B-3c, lugares y vínculo evento–lugar, 2026-10-16)
+
+Confirmadas por Daniel el 2026-10-16. Viven en `ingestion/ingest_places.py`, `ingestion/opening_hours.py` y `ingestion/publish.py`. No cambian el contrato de `/ingest`.
+
+| Tipo de lugar (OSM) | `kind` | Intenciones |
+|---|---|---|
+| Restaurante, comida rápida | `restaurante`, `comida_rapida` | `comer` |
+| Bar, pub | `bar` | `tomar_algo` |
+| Café, heladería | `cafe`, `heladeria` | `comer` + `tomar_algo` |
+
+- **Espacios curados** (`data/venues.json`): `origin: curated`, `source_key` `curated:<id>`. Campo nuevo opcional `kind` (por defecto `sala`; Casa Brava y Bon Scott son `bar`). Sus intenciones salen de `offers` (`musica_en_vivo`→`musica_en_vivo`, `cena`→`comer`, `baile`→`bailar`) y un `bar` suma `tomar_algo`. Sin coordenadas no se publican (`lat` y `lon` son obligatorios).
+- **OSM:** `source_key` `osm:<id>` (ej. `osm:w1225024480`). `outdoor` es `true` o `null` (el archivo no distingue «no» de «sin dato»). `instagram` se reduce al usuario.
+- **Vínculo evento–lugar:** `place_source_key` = `curated:<id>` cuando la sede coincide con un espacio curado (por sede, si el evento tiene varias). Los eventos no se vinculan a lugares de OSM: emparejar por nombre daría falsos positivos; si un curado absorbe a un `osm`, el servidor ya resuelve el alias.
+- **`opening_hours`:** se estructura el subconjunto habitual de OSM (días y rangos, varios tramos, `off`, `24/7`, `24:00`, cierre pasada la medianoche, reglas que se pisan entre sí). Se ignoran los feriados fijos (`Jan 1 off`, `PH`). Lo que no se entiende (`19:00+`, `sunrise`, semanas) va como `null` y `hours_text` conserva el texto original. Sobre `places.json`: 131 lugares traen horario y 117 se estructuran; los 14 restantes son feriados sueltos, `closed` o formatos no soportados.
+- **Orden de publicación:** lugares curados, lugares OSM (lotes de ≤200) y eventos, en serie. Con los datos de hoy: 738 lugares (3 curados + 735 OSM) y 401 eventos en 14 lotes. Se validó el payload completo contra `IngestPlaceSchema` e `IngestEventSchema`: 0 inválidos.
+- **Pendiente:** `image_url` de lugares y `outdoor` explícito para `no`.

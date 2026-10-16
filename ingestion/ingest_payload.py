@@ -1,7 +1,6 @@
 """Arma los `IngestEvent` del contrato de /ingest (docs/api-spec.yml) a partir de los registros de events.json.
 
-Solo transforma datos: no hace red ni escribe archivos. El envío a /ingest y el vínculo con lugares
-(`place_source_key`) son pasos posteriores del slice.
+Solo transforma datos: no hace red ni escribe archivos. El envío a /ingest lo hace publish.py.
 """
 from __future__ import annotations
 
@@ -64,7 +63,7 @@ def to_ingest_events(record: dict, venues: list[dict]) -> list[dict]:
             "address": (record.get("address") or None) if len(parts) == 1 else None,
             "lat": located[0] if located else None,
             "lon": located[1] if located else None,
-            "place_source_key": None,
+            "place_source_key": f'curated:{place["id"]}' if place else None,
             "price_status": price_status,
             "price_from_ars": price_from,
             "image_url": record.get("image") or None,

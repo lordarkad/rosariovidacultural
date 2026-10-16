@@ -17,6 +17,7 @@ from .common import MUSIC_GENRES, norm
 
 SOURCE_FILE = Path(__file__).parent.parent / "data" / "venues.json"
 # Qué ofrece un espacio. Ampliar acá y en el sitio (se lee de venues.json, no está duplicado en el HTML).
+PLACE_KINDS = ("restaurante", "bar", "cafe", "heladeria", "comida_rapida", "sala", "otro")  # PlaceKind del contrato
 OFFERS = {"musica_en_vivo": "Música en vivo", "cena": "Cena", "baile": "Baile"}
 UPCOMING = 5  # próximos eventos que se muestran por espacio
 _ID = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -42,6 +43,9 @@ def validate(raw: dict, seen: set[str]) -> dict:
     unknown = [o for o in raw.get("offers", []) if o not in OFFERS]
     if unknown or not raw.get("offers"):
         raise VenueError(f"{vid}: offers vacío o desconocido {unknown} (válidos: {sorted(OFFERS)})")
+    kind = raw.get("kind") or "sala"
+    if kind not in PLACE_KINDS:
+        raise VenueError(f"{vid}: kind desconocido {kind!r} (válidos: {list(PLACE_KINDS)})")
     genres = list(dict.fromkeys(raw.get("genres") or []))
     bad_genres = [g for g in genres if g not in MUSIC_GENRES]
     if bad_genres:
@@ -58,7 +62,7 @@ def validate(raw: dict, seen: set[str]) -> dict:
     aliases = {norm(a) for a in [name, *raw.get("aliases", [])] if norm(a)}
     return {
         "id": vid, "name": name, "aliases": sorted(aliases), "address": (raw.get("address") or "").strip(),
-        "offers": list(dict.fromkeys(raw["offers"])), "genres": genres, "instagram": handle, "website": website,
+        "kind": kind, "offers": list(dict.fromkeys(raw["offers"])), "genres": genres, "instagram": handle, "website": website,
         "note": (raw.get("note") or "").strip(), "info_sources": infos,
         "lat": raw.get("lat"), "lon": raw.get("lon"),
     }
@@ -117,7 +121,7 @@ def build(events: list[dict], venues: list[dict] | None = None, cache: dict | No
         evs = sorted(by_venue[v["id"]], key=lambda e: (e["start"], e["title"]))
         pos = _coords(v, evs, cache)
         out.append({
-            "id": v["id"], "name": v["name"], "address": v["address"],
+            "id": v["id"], "name": v["name"], "kind": v["kind"], "address": v["address"],
             "lat": pos[0] if pos else None, "lon": pos[1] if pos else None,
             "offers": v["offers"], "instagram": v["instagram"], "website": v["website"], "note": v["note"],
             "info_sources": v["info_sources"],

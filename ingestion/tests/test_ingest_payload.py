@@ -45,10 +45,16 @@ class Campos(unittest.TestCase):
         [ev] = to_ingest_events(record(time="25:99"), [])
         self.assertIsNone(ev["start_time"])
 
-    def test_place_source_key_queda_vacio(self):
-        # El vínculo con lugares llega con B-3c
-        [ev] = to_ingest_events(record(), [])
-        self.assertIsNone(ev["place_source_key"])
+    def test_place_source_key_solo_con_espacio_curado(self):
+        [ev] = to_ingest_events(record(), [CASA_TANGO])
+        self.assertIsNone(ev["place_source_key"])  # «Teatro El Círculo» no es un espacio curado
+        [ev] = to_ingest_events(record(venue="Centro Cultural La Casa del Tango"), [CASA_TANGO])
+        self.assertEqual(ev["place_source_key"], "curated:casa-del-tango")
+
+    def test_place_source_key_por_sede(self):
+        r = record(venue="Teatro El Círculo · Centro Cultural La Casa del Tango", coords=[])
+        evs = to_ingest_events(r, [CASA_TANGO])
+        self.assertEqual([e["place_source_key"] for e in evs], [None, "curated:casa-del-tango"])
 
 
     def test_varios_horarios_conservan_el_primero(self):
