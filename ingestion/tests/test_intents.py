@@ -70,6 +70,8 @@ class Gastronomia(unittest.TestCase):
     def test_cena_es_palabra_completa(self):
         self.assertEqual(intents("Feria de la escena local", ["eventos"], plan="gastronomia"), [])
         self.assertEqual(intents("Cena de gala", ["eventos"], plan="gastronomia"), ["comer"])
+        for titulo in ("Cenas de gala", "Cocinas del mundo", "Almuerzos solidarios", "Chefs invitados", "Brunchs"):
+            self.assertEqual(intents(titulo, ["eventos"], plan="gastronomia"), ["comer"], msg=titulo)
 
     def test_ambos(self):
         self.assertEqual(intents("Brunch con café de especialidad", ["eventos"], plan="gastronomia"),

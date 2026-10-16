@@ -260,6 +260,10 @@ _DRINK_WORDS = ["vino", "vinos", "cerveza", "cervezas", "cafe", "cafes", "coctel
                 "trago", "tragos"]
 
 
+_FOOD_WORDS = ["chef", "chefs", "brunch", "brunchs", "cocina", "cocinas", "food", "almuerzo", "almuerzos",
+              "cena", "cenas"]
+
+
 def guess_intents(title: str, description: str, categories: list[str], plan: str) -> list[str]:
     """Intenciones del evento. Conservador: ante la duda, ninguna. `bailar` solo por palabras del título
     (el cuerpo nombra de todo); `tango` a secas no alcanza, es ambiguo. Muestras, arte, deporte y eventos sin
@@ -281,7 +285,7 @@ def guess_intents(title: str, description: str, categories: list[str], plan: str
     if plan == "gastronomia":
         blob = f" {norm(title)} {norm(description)} "
         drinks = any(f" {w} " in blob for w in _DRINK_WORDS)
-        eats = "gastronom" in blob or any(f" {w} " in blob for w in ("chef", "brunch", "cocina", "food", "almuerzo", "cena"))
+        eats = "gastronom" in blob or any(f" {w} " in blob for w in _FOOD_WORDS)
         if drinks:
             found.add("tomar_algo")
         if eats:
