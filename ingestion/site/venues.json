@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-16T13:45:50+00:00",
+ "generated_at": "2026-10-16T19:18:22+00:00",
  "offers": {
   "musica_en_vivo": "Música en vivo",
   "cena": "Cena",
@@ -103,23 +103,23 @@
      "price_from": null
     },
     {
-     "id": "eab6d41868",
+     "id": "a5fd1eab69",
      "title": "Tertulias Tangueras",
      "start": "2026-10-16",
      "date_text": "Del 16 de octubre al 27 de noviembre · Viernes · De 17 a 18:30 horas",
      "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/tertulias-tangueras-1",
+     "url": "https://www.rosario.gob.ar/inicio/index.php/tertulias-tangueras-1",
      "source": "Agenda municipal",
      "free": true,
      "price_from": null
     },
     {
-     "id": "19b71b40bf",
+     "id": "83137078fe",
      "title": "Masterclass con el violinista Rafael Marrero",
      "start": "2026-10-17",
      "date_text": "Sábado · a 12 horas",
      "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/masterclass-con-el-violinista-rafael-marrero",
+     "url": "https://www.rosario.gob.ar/inicio/index.php/masterclass-con-el-violinista-rafael-marrero",
      "source": "Agenda municipal",
      "free": false,
      "price_from": null
