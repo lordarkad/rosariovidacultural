@@ -48,6 +48,7 @@ class Horarios(unittest.TestCase):
         self.assertEqual(parse('Mo-Su 09:00-23:00; May 1 off "Día del trabajador"; Dec 8 off "Inmaculada"'),
                          [p(d, "09:00", "23:00") for d in range(7)])
         self.assertEqual(parse('Mo 09:00-12:00; Jan 01: off "Nuevo Año"'), [p(0, "09:00", "12:00")])
+        self.assertEqual(parse("Mo 09:00-12:00; Dec 24-25 off; Dec 31-Jan 1 off"), [p(0, "09:00", "12:00")])
 
     def test_ph_se_ignora_pero_los_demas_dias_valen(self):
         self.assertEqual(parse("Fr,Sa,PH 10:00-01:00"), [p(4, "10:00", "01:00"), p(5, "10:00", "01:00")])
@@ -58,7 +59,9 @@ class Horarios(unittest.TestCase):
 
     def test_lo_que_no_entiende_es_null(self):
         for text in ("We-Su 19:00+", "Sa,Su,PH 12:00+", "sunrise-sunset", "Mo-Fr 09:00-18:00; Sa [1] 10:00-12:00",
-                     "Mo-Fr 25:00-26:00", "Mo 08:00-08:00", "por turnos", "Mo-Fr 09:00-18:00 open"):
+                     "Mo-Fr 25:00-26:00", "Mo 08:00-08:00", "por turnos", "Mo-Fr 09:00-18:00 open",
+                     "Mo-Su 10:00-20:00; Jun-Aug off", "Mo-Fr 10:00-20:00; Dec off",
+                     "Mo-Su 10:00-20:00; Dec Mo-Fr off"):
             self.assertIsNone(parse(text), msg=text)
 
     def test_horas_de_un_digito(self):

@@ -10,7 +10,10 @@ from __future__ import annotations
 import re
 
 _DAYS = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
-_MONTH_RULE = re.compile(r"^(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b[^;]*\boff\b", re.I)
+_M = r"(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"
+# Solo feriados fijos (`Jan 1 off`, `Dec 24-25 off`). Un cierre de temporada (`Jun-Aug off`, `Dec Mo-Fr off`) no se
+# ignora: el parser devuelve None, porque un horario semanal completo mentiría durante esos meses.
+_MONTH_RULE = re.compile(rf"^{_M}\s+\d{{1,2}}(?:\s*-\s*(?:{_M}\s+)?\d{{1,2}})?:?\s+off\b", re.I)
 _DAY = r"(?:Mo|Tu|We|Th|Fr|Sa|Su)"
 _SELECTOR = re.compile(rf"^{_DAY}(?:-{_DAY})?(?:\s*,\s*(?:{_DAY}(?:-{_DAY})?|PH))*$|^PH$")
 _SPAN = re.compile(r"^([01]?\d|2[0-3]):([0-5]\d)-(?:([01]?\d|2[0-3]):([0-5]\d)|24:00)$")

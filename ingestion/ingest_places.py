@@ -15,12 +15,13 @@ _KIND_INTENTS = {"restaurante": ["comer"], "comida_rapida": ["comer"], "bar": ["
                  "cafe": ["comer", "tomar_algo"], "heladeria": ["comer", "tomar_algo"]}
 _OFFER_INTENTS = {"musica_en_vivo": "musica_en_vivo", "cena": "comer", "baile": "bailar"}
 _INTENT_ORDER = ("comer", "tomar_algo", "espectaculo", "musica_en_vivo", "bailar", "con_chicos")
-_HANDLE = re.compile(r"(?:instagram\.com/)?@?([A-Za-z0-9._]{1,30})/?(?:\?.*)?$")
+_HANDLE = re.compile(r"^(?:https?://(?:www\.)?instagram\.com/)?@?([A-Za-z0-9._]{1,30})/?(?:\?.*)?$")
+_NOT_HANDLES = {"p", "reel", "reels", "explore", "stories", "tv"}  # rutas de instagram.com que no son un perfil
 
 
 def _handle(raw: str) -> str | None:
-    m = _HANDLE.search((raw or "").strip())
-    return m.group(1) if m else None
+    m = _HANDLE.match((raw or "").strip())
+    return m.group(1) if m and m.group(1) not in _NOT_HANDLES else None
 
 
 def _ordered(intents: set[str]) -> list[str]:

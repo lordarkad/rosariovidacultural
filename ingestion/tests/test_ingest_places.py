@@ -46,6 +46,8 @@ class Osm(unittest.TestCase):
     def test_instagram_solo_el_usuario(self):
         for raw in ("https://www.instagram.com/lacafeteria/", "@lacafeteria", "lacafeteria"):
             self.assertEqual(osm_place(osm(instagram=raw))["instagram"], "lacafeteria", msg=raw)
+        for raw in ("https://www.instagram.com/p/XYZ123/", "https://facebook.com/lacafeteria", "dos palabras"):
+            self.assertIsNone(osm_place(osm(instagram=raw))["instagram"], msg=raw)
 
 
 CURADO = {"id": "casa-brava", "name": "Casa Brava", "kind": "bar", "address": "Pichincha 120", "lat": -32.93415,
