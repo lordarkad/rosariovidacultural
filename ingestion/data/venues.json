@@ -41,6 +41,20 @@
       "info_sources": [
         {"name": "Rosario Turismo", "url": "https://www.rosario.tur.ar/donde-ir/cultura/centros-culturales/la-casa-del-tango"}
       ]
+    },
+    {
+      "id": "mercado-del-patio",
+      "kind": "otro",
+      "name": "Mercado del Patio",
+      "aliases": ["Mercado del Patio"],
+      "address": "Cafferata 729",
+      "offers": ["cena"],
+      "instagram": "",
+      "website": "",
+      "note": "Paseo con gastronomía, espectáculos y comercios; mezcla de espacios al aire libre y techados.",
+      "info_sources": [
+        {"name": "Gobierno de Santa Fe", "url": "https://www.santafe.gov.ar/noticias/noticia/259112/"}
+      ]
     }
   ]
 }
