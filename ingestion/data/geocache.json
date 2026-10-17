@@ -40,6 +40,7 @@
   -32.94557,
   -60.63967
  ],
+ "auditorio redil": null,
  "autodromo de rosario": [
   -32.9038,
   -60.74483
@@ -72,13 +73,22 @@
  ],
  "calle recreativa orono nicasio y lopez estanislao": null,
  "capi club": null,
+ "capitan bar": [
+  -32.95174,
+  -60.63705
+ ],
  "capitan bar s2000bht": [
   -32.95174,
   -60.63705
  ],
+ "capitan club": null,
  "casa de cultura barrio alvear lett francisco n 4253": [
   -32.97965,
   -60.68011
+ ],
+ "casona": [
+  -32.95613,
+  -60.66951
  ],
  "ccpe sarmiento y el rio": null,
  "centre catala de rosario": null,
@@ -173,6 +183,7 @@
  ],
  "complejo cultural atlas": null,
  "complejo cultural atlas mitre general bartolome 645": null,
+ "complejo forest": null,
  "concejo municipal de rosario cordoba 501": [
   -32.94829,
   -60.6301
@@ -187,6 +198,7 @@
   -32.94991,
   -60.63797
  ],
+ "decada disco": null,
  "diario la capital 1602": [
   -32.95969,
   -60.62351
@@ -195,6 +207,10 @@
  "distrito 7": [
   -32.99366,
   -60.71085
+ ],
+ "el aserradero montevideo 1518": [
+  -32.95503,
+  -60.64647
  ],
  "el jardin de los ninos lugones leopoldo 2290": [
   -32.85787,
@@ -211,6 +227,10 @@
   -60.67127
  ],
  "espacio bravo paga": null,
+ "espacio cultural expresiones entre rios 1437": [
+  -32.95381,
+  -60.64285
+ ],
  "espacio cultural expresiones paga": null,
  "estacion rosario 300 av c c estevez boero 640 sabado": [
   -32.94582,
@@ -228,11 +248,16 @@
   -60.66309
  ],
  "feuer": null,
+ "ficha av francia 811": [
+  -32.94174,
+  -60.66541
+ ],
  "floyd bar": null,
  "floyd bar dorrego 1362": [
   -32.95146,
   -60.65102
  ],
+ "free pass": null,
  "gallo rojo": null,
  "galpon 11 estevez boero guillermo 980": [
   -32.94252,
@@ -250,6 +275,7 @@
   -60.64271
  ],
  "hum club de musica": null,
+ "humano estacion": null,
  "instituto de la tradicion martin fierro paga": null,
  "jueves viernes": null,
  "la felipa pellegrini 800 paga": null,
@@ -263,6 +289,10 @@
  ],
  "la playa de la musica": null,
  "la segunda seguros arena": null,
+ "la segunda seguros arena av cordoba 3475": [
+  -32.91826,
+  -60.83152
+ ],
  "la surfera beach": null,
  "lecoin": null,
  "lumvra club": null,
@@ -323,9 +353,14 @@
   -60.65101
  ],
  "nomade": null,
+ "ov lagos esquina brown": null,
  "parque espana sarmiento domingo faustino 100": [
   -32.93991,
   -60.63516
+ ],
+ "pasaje pan": [
+  -32.94642,
+  -60.63593
  ],
  "pasaje pan cordoba 954": [
   -32.94642,
@@ -346,6 +381,10 @@
   -60.63318
  ],
  "puerto norte design hotel": null,
+ "que sea rock": [
+  -32.94483,
+  -60.63887
+ ],
  "riobamba 7691": [
   -32.96528,
   -60.62969
@@ -412,6 +451,7 @@
   -60.64021
  ],
  "teatro municipal la comedia mitre general bartolome 958": null,
+ "teatro nuevo monumental": null,
  "teatro plataforma lavarden": [
   -32.95172,
   -60.63923

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-16T19:18:22+00:00",
+ "generated_at": "2026-10-17T03:12:48+00:00",
  "offers": {
   "musica_en_vivo": "Música en vivo",
   "cena": "Cena",
@@ -9,6 +9,7 @@
   {
    "id": "casa-brava",
    "name": "Casa Brava",
+   "kind": "bar",
    "address": "Pichincha 120",
    "lat": -32.93415,
    "lon": -60.66093,
@@ -50,6 +51,7 @@
   {
    "id": "bon-scott",
    "name": "Bon Scott",
+   "kind": "bar",
    "address": "Pichincha 131",
    "lat": -32.93431,
    "lon": -60.66072,
@@ -73,6 +75,7 @@
   {
    "id": "casa-del-tango",
    "name": "Centro Cultural La Casa del Tango",
+   "kind": "sala",
    "address": "Av. Illia 1750",
    "lat": -32.93097,
    "lon": -60.65497,
@@ -89,37 +92,26 @@
      "url": "https://www.rosario.tur.ar/donde-ir/cultura/centros-culturales/la-casa-del-tango"
     }
    ],
-   "upcoming_count": 7,
+   "upcoming_count": 5,
    "upcoming": [
     {
-     "id": "1c12a10718",
-     "title": "Peña de Cantores y Cantoras",
-     "start": "2026-10-16",
-     "date_text": "Viernes · a 23:59 horas",
-     "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/pena-de-cantores-y-cantoras-0",
-     "source": "Agenda municipal",
-     "free": true,
-     "price_from": null
-    },
-    {
-     "id": "a5fd1eab69",
+     "id": "eab6d41868",
      "title": "Tertulias Tangueras",
      "start": "2026-10-16",
-     "date_text": "Del 16 de octubre al 27 de noviembre · Viernes · De 17 a 18:30 horas",
+     "date_text": "Del 23 de octubre al 27 de noviembre · Viernes · De 17 a 18:30 horas",
      "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/index.php/tertulias-tangueras-1",
+     "url": "https://www.rosario.gob.ar/inicio/tertulias-tangueras-1",
      "source": "Agenda municipal",
      "free": true,
      "price_from": null
     },
     {
-     "id": "83137078fe",
+     "id": "19b71b40bf",
      "title": "Masterclass con el violinista Rafael Marrero",
      "start": "2026-10-17",
      "date_text": "Sábado · a 12 horas",
      "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/index.php/masterclass-con-el-violinista-rafael-marrero",
+     "url": "https://www.rosario.gob.ar/inicio/masterclass-con-el-violinista-rafael-marrero",
      "source": "Agenda municipal",
      "free": false,
      "price_from": null
@@ -144,6 +136,17 @@
      "url": "https://www.rosario.gob.ar/inicio/taller-de-tecnicas-de-danza-y-composicion-instantanea",
      "source": "Agenda municipal",
      "free": true,
+     "price_from": null
+    },
+    {
+     "id": "05e470a06f",
+     "title": "Rubén Gómez y Julián Cicerchia presentan Doce Retratos",
+     "start": "2026-10-24",
+     "date_text": "Sábado · a 23 horas",
+     "time": "",
+     "url": "https://www.rosario.gob.ar/inicio/ruben-gomez-y-julian-cicerchia-presentan-doce-retratos",
+     "source": "Agenda municipal",
+     "free": false,
      "price_from": null
     }
    ]
