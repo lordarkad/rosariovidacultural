@@ -1,9 +1,10 @@
-"""Publica los eventos de site/events.json a POST /api/ingest (docs/api-spec.yml, operationId ingestBatch).
+"""Publica lugares (site/venues.json, site/places.json) y eventos (site/events.json) a POST /api/ingest (docs/api-spec.yml, operationId ingestBatch).
 
 Uso:  INGEST_URL=https://…/api/ingest INGEST_TOKEN=… python publish.py [--dry-run]
 
 Un lote por fuente (el contrato fija `source` por lote) y de a 200 como máximo, en serie: el Worker tiene un
-presupuesto de llamadas a D1 por request y el dedupe (E-10) depende del orden de llegada.
+presupuesto de llamadas a D1 por request y el dedupe (E-10) depende del orden de llegada. Van primero los lugares
+curados, después los de OSM (el curado absorbe al OSM equivalente) y al final los eventos.
 """
 from __future__ import annotations
 
@@ -19,11 +20,14 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from ingest_payload import to_ingest_events
+from ingest_places import curated_place, osm_place
 from scrapers import venues as venues_mod
 from scrapers.common import feed_of
 
 ROOT = Path(__file__).parent
 EVENTS = ROOT / "site" / "events.json"
+PLACES = ROOT / "site" / "places.json"
+VENUES = ROOT / "site" / "venues.json"
 MAX_BATCH = 200  # maxItems del contrato
 SALAS = {"Teatro La Comedia", "Teatro Broadway", "Showcase Rosario", "Cinemark Rosario", "Agenda municipal"}
 RETRIES = 3  # solo ante 5xx o red; 4xx no se reintenta
@@ -45,6 +49,19 @@ def build_batches(records: list[dict], venues: list[dict], generated_at: str) ->
             batches.append({"source": {"name": feed, "tier": tier_of(feed)}, "generated_at": generated_at,
                             "events": events[i:i + MAX_BATCH]})
     return batches
+
+
+def _chunks(key: str, source: dict, items: list[dict], generated_at: str) -> list[dict]:
+    return [{"source": source, "generated_at": generated_at, key: items[i:i + MAX_BATCH]}
+            for i in range(0, len(items), MAX_BATCH)]
+
+
+def build_place_batches(curated: list[dict], osm: list[dict], generated_at: str) -> list[dict]:
+    """Lotes de lugares: primero los curados (tier `curated`), después los de OpenStreetMap."""
+    curated_items = [p for p in (curated_place(v) for v in curated) if p]
+    osm_items = [osm_place(p) for p in osm]
+    return (_chunks("places", {"name": "Curados", "tier": "curated"}, curated_items, generated_at)
+            + _chunks("places", {"name": "OpenStreetMap", "tier": "aggregator"}, osm_items, generated_at))
 
 
 class IngestError(Exception):
@@ -84,7 +101,8 @@ def publish(url: str, token: str, batches: list[dict], post=post_batch) -> tuple
     totals = {"created": 0, "updated": 0, "rejected": 0}
     failures: list[str] = []
     for batch in batches:
-        label = f'{batch["source"]["name"]} ({len(batch["events"])})'
+        kind = "places" if "places" in batch else "events"
+        label = f'{batch["source"]["name"]} ({len(batch[kind])} {"lugares" if kind == "places" else "eventos"})'
         try:
             data = post(url, token, batch)
         except IngestError as exc:
@@ -93,7 +111,7 @@ def publish(url: str, token: str, batches: list[dict], post=post_batch) -> tuple
             if exc.status in (401, 403):
                 break
             continue
-        counts = data.get("events", {})
+        counts = data.get(kind, {})
         totals["created"] += counts.get("created", 0)
         totals["updated"] += counts.get("updated", 0)
         rejected = data.get("rejected", [])
@@ -111,9 +129,13 @@ def main() -> int:
 
     data = json.loads(EVENTS.read_text(encoding="utf-8"))
     generated_at = data.get("generated_at") or datetime.now(timezone.utc).isoformat(timespec="seconds")
-    batches = build_batches(data["events"], venues_mod.load(), generated_at)
-    total = sum(len(b["events"]) for b in batches)
-    print(f"{len(data['events'])} registros -> {total} eventos en {len(batches)} lotes")
+    curated = json.loads(VENUES.read_text(encoding="utf-8")).get("venues", []) if VENUES.exists() else []
+    osm = json.loads(PLACES.read_text(encoding="utf-8")).get("places", []) if PLACES.exists() else []
+    batches = build_place_batches(curated, osm, generated_at) + build_batches(data["events"], venues_mod.load(),
+                                                                              generated_at)
+    n_places = sum(len(b.get("places", [])) for b in batches)
+    n_events = sum(len(b.get("events", [])) for b in batches)
+    print(f"{len(data['events'])} registros -> {n_events} eventos y {n_places} lugares en {len(batches)} lotes")
     if args.dry_run:
         return 0
 

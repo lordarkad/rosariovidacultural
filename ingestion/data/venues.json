@@ -3,6 +3,7 @@
   "venues": [
     {
       "id": "casa-brava",
+      "kind": "bar",
       "name": "Casa Brava",
       "aliases": ["Casa Brava"],
       "address": "Pichincha 120",
@@ -14,6 +15,7 @@
     },
     {
       "id": "bon-scott",
+      "kind": "bar",
       "name": "Bon Scott",
       "aliases": ["Bon Scott", "Bon Scott Bar"],
       "address": "Pichincha 131",
@@ -27,6 +29,7 @@
     },
     {
       "id": "casa-del-tango",
+      "kind": "sala",
       "name": "Centro Cultural La Casa del Tango",
       "aliases": ["La Casa del Tango", "Casa del Tango"],
       "address": "Av. Illia 1750",

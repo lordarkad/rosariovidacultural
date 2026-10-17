@@ -18,10 +18,12 @@ class Validacion(unittest.TestCase):
         v = validate(CASA, set())
         self.assertEqual(v["instagram"], "casabrava")  # sin @
         self.assertEqual(v["aliases"], ["casa brava", "casa brava bar"])
+        self.assertEqual(v["kind"], "sala")  # sin `kind` en el archivo
+        self.assertEqual(validate({**CASA, "kind": "bar"}, set())["kind"], "bar")
 
     def test_rechaza_datos_invalidos(self):
         for bad in ({"id": "Casa Brava"}, {"offers": []}, {"offers": ["karaoke"]}, {"name": " "},
-                    {"instagram": "https://instagram.com/x"}, {"website": "javascript:alert(1)"},
+                    {"instagram": "https://instagram.com/x"}, {"website": "javascript:alert(1)"}, {"kind": "boliche"},
                     {"info_sources": [{"name": "x", "url": "ftp://x"}]}):
             with self.assertRaises(VenueError, msg=bad):
                 validate({**CASA, **bad}, set())
