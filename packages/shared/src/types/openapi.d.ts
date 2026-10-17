@@ -227,8 +227,17 @@ export interface paths {
          *       aplica a la fila sobreviviente.
          *     - **Clave canónica (eventos):** tras una fusión, la clave canónica de la fila es el `source_key` de la fuente
          *       primaria (mayor `tier`; a igual `tier`, la primera en llegar), sea cual sea el `id` que sobrevive. Solo esa
-         *       clave actualiza los campos del evento; las demás son alias y solo actualizan `last_seen_at` y `sources`. Si
-         *       después llega una fuente de mayor `tier`, pasa a ser la canónica y la anterior pasa a alias.
+         *       clave actualiza los campos del evento; las demás son alias y solo actualizan `last_seen_at` y `sources` (salvo el
+         *       lugar heredado, abajo). Si después llega una fuente de mayor `tier`, pasa a ser la canónica y la anterior pasa a alias.
+         *     - **Lugar heredado (eventos, E-10):** el `place_source_key` es la única excepción a «solo la canónica
+         *       actualiza los campos». Cada fuente conserva el `place_source_key` que trajo (o `null`). El de la fila es el
+         *       de la canónica si no es `null`, aunque su lugar todavía no se haya cargado; si es `null`, hereda el del alias
+         *       de mayor `tier` que sí trae uno (a igual `tier`, el primero en llegar). Nunca pisa un `place_source_key` que
+         *       la canónica ya tiene: gana la canónica. Se recalcula en cada ingesta que toca la fila, también cuando llega
+         *       un alias, y es lo que usa `getEvent` para resolver `place`. No dispara fusiones nuevas: el dedupe sigue
+         *       evaluándose solo al ingerir un `source_key` nuevo, pero la clave heredada sí cuenta como sede de la fila
+         *       para los ítems nuevos que lleguen después, también dentro del mismo lote. Una fuente que reenvía su `source_key` sin
+         *       `place_source_key` deja de aportarlo.
          *     - **Mismo lote:** los ítems ya procesados del mismo lote cuentan como filas existentes, en orden de índice,
          *       tanto para el dedupe como para «Varios candidatos». Los conteos siguen las mismas reglas (`created` para
          *       el primero, `updated` para cada fusión).
@@ -238,7 +247,7 @@ export interface paths {
          *       resuelven a ella, y la fusión cuenta como un solo `updated`.
          *     - **Ids estables:** al fusionar, la fila ya existente conserva su `id` y los ids absorbidos resuelven al
          *       vigente, así los links `/e/:id` y `/l/:id` ya compartidos (E-12) no pasan a 404. Un `source_key` que ya es
-         *       alias solo actualiza `last_seen_at`; nunca pisa los campos del lugar curado (E-10). Lo mismo vale para eventos: el `source_key` de un evento absorbido en una fusión solo actualiza `last_seen_at` y su entrada en `sources`, nunca los campos de la primaria, y reenviarlo no crea un evento nuevo.
+         *       alias solo actualiza `last_seen_at`; nunca pisa los campos del lugar curado (E-10). Lo mismo vale para eventos: el `source_key` de un evento absorbido en una fusión solo actualiza `last_seen_at` y su entrada en `sources`, nunca los campos de la primaria (salvo el lugar heredado, arriba), y reenviarlo no crea un evento nuevo.
          *     - **Conteos:** una fusión por dedupe cuenta como `updated`.
          *     - Un evento con varias sedes se envía como un ítem por sede, con el mismo `source_url` (E-2).
          *     - Máximo 200 eventos y 200 lugares por lote. Presupuesto: las escrituras van con `D1.batch()` y una request
