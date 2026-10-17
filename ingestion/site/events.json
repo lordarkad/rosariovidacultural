@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-17T03:12:50+00:00",
+ "generated_at": "2026-10-17T03:51:59+00:00",
  "sources": {
   "Agenda municipal": {
    "ok": true,
@@ -6175,13 +6175,13 @@
      "url": "https://www.quehacemos.com.ar/eventos/cumbion-del-parana-los-lirios-el-mago-y-la-nueva-69817"
     }
    ],
-   "feed": "Qué Hacemos",
    "coords": [
     [
      -32.91826,
      -60.83152
     ]
-   ]
+   ],
+   "feed": "Qué Hacemos"
   },
   {
    "id": "cd348a00e6",
@@ -7051,8 +7051,13 @@
      "url": "https://www.quehacemos.com.ar/eventos/rocio-quiroz-la-vanidosa-decada-disco-69919"
     }
    ],
-   "feed": "Qué Hacemos",
-   "coords": []
+   "coords": [
+    [
+     -32.93662,
+     -60.6699
+    ]
+   ],
+   "feed": "Qué Hacemos"
   },
   {
    "id": "6a2f742360",
@@ -7534,8 +7539,13 @@
      "url": "https://www.quehacemos.com.ar/eventos/santiago-molina-64652"
     }
    ],
-   "feed": "Qué Hacemos",
-   "coords": []
+   "coords": [
+    [
+     -32.94427,
+     -60.63905
+    ]
+   ],
+   "feed": "Qué Hacemos"
   },
   {
    "id": "19f99ce320",
@@ -8379,8 +8389,13 @@
      "url": "https://www.quehacemos.com.ar/eventos/sergio-moran-la-cruzada-decada-disco-69949"
     }
    ],
-   "feed": "Qué Hacemos",
-   "coords": []
+   "coords": [
+    [
+     -32.93662,
+     -60.6699
+    ]
+   ],
+   "feed": "Qué Hacemos"
   },
   {
    "id": "9c9d80d3fa",
@@ -8984,13 +8999,13 @@
      "url": "https://www.quehacemos.com.ar/eventos/isla-mujeres-69508"
     }
    ],
-   "feed": "Qué Hacemos",
    "coords": [
     [
      -32.95174,
      -60.63705
     ]
-   ]
+   ],
+   "feed": "Qué Hacemos"
   },
   {
    "id": "717e1bd718",
@@ -9754,8 +9769,13 @@
      "url": "https://www.quehacemos.com.ar/eventos/6-11-mario-pereyra-decada-disco-70013"
     }
    ],
-   "feed": "Qué Hacemos",
-   "coords": []
+   "coords": [
+    [
+     -32.93662,
+     -60.6699
+    ]
+   ],
+   "feed": "Qué Hacemos"
   },
   {
    "id": "c4cc6e81c0",
@@ -10541,8 +10561,13 @@
      "url": "https://www.quehacemos.com.ar/eventos/onda-sabanera-decada-disco-70040"
     }
    ],
-   "feed": "Qué Hacemos",
-   "coords": []
+   "coords": [
+    [
+     -32.93662,
+     -60.6699
+    ]
+   ],
+   "feed": "Qué Hacemos"
   },
   {
    "id": "4df88f7207",
@@ -11141,13 +11166,13 @@
      "url": "https://www.quehacemos.com.ar/eventos/chamuyando-standup-rosario-70073"
     }
    ],
-   "feed": "Qué Hacemos",
    "coords": [
     [
      -32.95174,
      -60.63705
     ]
-   ]
+   ],
+   "feed": "Qué Hacemos"
   },
   {
    "id": "7ee7b5a4ea",
@@ -11659,8 +11684,13 @@
      "url": "https://www.quehacemos.com.ar/eventos/victoria-engel-clossing-underground-70103"
     }
    ],
-   "feed": "Qué Hacemos",
-   "coords": []
+   "coords": [
+    [
+     -32.93192,
+     -60.66438
+    ]
+   ],
+   "feed": "Qué Hacemos"
   },
   {
    "id": "0e45b0b5f7",
@@ -12121,13 +12151,13 @@
      "url": "https://www.quehacemos.com.ar/eventos/buenos-aires-nu-metal-fest-en-rosario-69464"
     }
    ],
-   "feed": "Qué Hacemos",
    "coords": [
     [
-     -32.94483,
-     -60.63887
+     -32.94486,
+     -60.63884
     ]
-   ]
+   ],
+   "feed": "Qué Hacemos"
   },
   {
    "id": "e40f6b044e",
@@ -13373,13 +13403,13 @@
      "url": "https://www.quehacemos.com.ar/eventos/bon-jovi-x-valentinos-en-rosario-despide-el-ano-70205"
     }
    ],
-   "feed": "Qué Hacemos",
    "coords": [
     [
-     -32.94483,
-     -60.63887
+     -32.94486,
+     -60.63884
     ]
-   ]
+   ],
+   "feed": "Qué Hacemos"
   },
   {
    "id": "d8b498b242",

@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-17T03:12:48+00:00",
+ "generated_at": "2026-10-17T03:51:58+00:00",
  "offers": {
   "musica_en_vivo": "Música en vivo",
   "cena": "Cena",
@@ -150,6 +150,28 @@
      "price_from": null
     }
    ]
+  },
+  {
+   "id": "mercado-del-patio",
+   "name": "Mercado del Patio",
+   "kind": "otro",
+   "address": "Cafferata 729",
+   "lat": -32.9399,
+   "lon": -60.66957,
+   "offers": [
+    "cena"
+   ],
+   "instagram": "",
+   "website": "",
+   "note": "Paseo con gastronomía, espectáculos y comercios; mezcla de espacios al aire libre y techados.",
+   "info_sources": [
+    {
+     "name": "Gobierno de Santa Fe",
+     "url": "https://www.santafe.gov.ar/noticias/noticia/259112/"
+    }
+   ],
+   "upcoming_count": 0,
+   "upcoming": []
   }
  ]
 }
