@@ -35,7 +35,9 @@ const EVENT_COLUMNS = [
   'place_source_key', 'price_status', 'price_from_ars', 'image_url', 'created_at', 'last_seen_at',
 ] as const
 
-const SOURCE_COLUMNS = ['source_key', 'event_id', 'source_name', 'source_tier', 'source_url', 'via_json'] as const
+const SOURCE_COLUMNS = [
+  'source_key', 'event_id', 'source_name', 'source_tier', 'source_url', 'via_json', 'place_source_key',
+] as const
 
 /** `INSERT ... SELECT ... FROM json_each(?1) ON CONFLICT(key) DO UPDATE`: un solo parámetro, N filas. */
 function bulkUpsert(
@@ -143,6 +145,7 @@ export function buildWriteStatements(
       source_tier: s.tier,
       source_url: s.url,
       via_json: JSON.stringify(s.via),
+      place_source_key: s.place_source_key,
     })),
   )
   add(SQL.eventRedirectsUpsert, events.redirects)

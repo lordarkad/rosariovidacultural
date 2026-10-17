@@ -53,6 +53,7 @@ function batch(
   const extra = [
     ...events.map((e) => e.place_source_key),
     ...estate.candidates.map((c) => c.fields.place_source_key),
+    ...estate.candidates.flatMap((c) => c.sources.map((s) => s.place_source_key)),
   ].filter((k): k is string => !!k)
   const pplan = planPlaces(places, cat.placeState(places, extra), { now, newId })
   cat.applyPlaces(pplan, now)

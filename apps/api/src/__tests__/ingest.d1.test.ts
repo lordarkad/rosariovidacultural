@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest'
 import { env } from 'cloudflare:workers'
 import { IngestResultSchema } from '@tript/shared'
 import { countingDb } from './helpers/counting-d1'
-import { event, ingest, place, T0, truncateCatalog } from './helpers/seed'
+import { event, get, ingest, place, T0, truncateCatalog } from './helpers/seed'
 
 const count = async (table: string) =>
   (await env.DB.prepare(`SELECT COUNT(*) AS n FROM ${table}`).first<{ n: number }>())!.n
@@ -174,6 +174,63 @@ describe('POST /api/ingest', () => {
       })
       const e = await env.DB.prepare('SELECT lat, lon FROM events').first<any>()
       expect(e).toEqual({ lat: null, lon: null })
+    })
+  })
+
+  describe('[AC-40] lugar heredado de un alias (F-18)', () => {
+    const OFICIAL = { name: 'Municipalidad', tier: 'official' as const }
+    const AGREGADOR = { name: 'Agregador', tier: 'aggregator' as const }
+
+    it('[AC-40] caso A: getEvent devuelve el lugar del alias cuando la canónica no trae uno', async () => {
+      await ingest({ places: [{ source_key: 'casa:p1', name: 'La Casa del Tango' }] })
+      await ingest({ source: OFICIAL, events: [{ source_key: 'ofi:a', title: 'Show' }] })
+      const { json } = await ingest({
+        source: AGREGADOR,
+        events: [{ source_key: 'agg:a', title: 'Show', place_source_key: 'casa:p1' }],
+      })
+      expect(json.data.events).toMatchObject({ created: 0, updated: 1 })
+      expect(await count('events')).toBe(1)
+      const row = await env.DB.prepare('SELECT id, source_key, place_source_key FROM events').first<any>()
+      expect(row).toMatchObject({ source_key: 'ofi:a', place_source_key: 'casa:p1' })
+      const sources = await env.DB.prepare('SELECT source_key, place_source_key FROM event_sources ORDER BY source_key').all<any>()
+      expect(sources.results).toEqual([
+        { source_key: 'agg:a', place_source_key: 'casa:p1' },
+        { source_key: 'ofi:a', place_source_key: null },
+      ])
+      const placeId = (await env.DB.prepare("SELECT place_id FROM place_keys WHERE source_key = 'casa:p1'").first<any>()).place_id
+      const { json: detail } = await get(`/api/events/${row.id}`)
+      expect(detail.data.place.id).toBe(placeId)
+    })
+
+    it('[AC-40] caso A: reenviar el alias con el lugar cuando la fila quedó sin lugar (reenvío completa)', async () => {
+      await ingest({ places: [{ source_key: 'casa:p1', name: 'La Casa del Tango' }] })
+      await ingest({ source: OFICIAL, events: [{ source_key: 'ofi:a', title: 'Show' }] })
+      await ingest({ source: AGREGADOR, events: [{ source_key: 'agg:a', title: 'Show' }] })
+      expect((await env.DB.prepare('SELECT place_source_key FROM events').first<any>()).place_source_key).toBeNull()
+      const { json } = await ingest({
+        source: AGREGADOR,
+        events: [{ source_key: 'agg:a', title: 'Show', place_source_key: 'casa:p1' }],
+      })
+      expect(json.data.events).toMatchObject({ created: 0, updated: 1 })
+      expect((await env.DB.prepare('SELECT place_source_key FROM events').first<any>()).place_source_key).toBe('casa:p1')
+    })
+
+    it('[AC-40] el backfill de 0002 copia el lugar a la fuente canónica, deja los alias en NULL y es idempotente', async () => {
+      await ingest({ places: [{ source_key: 'casa:p1', name: 'La Casa del Tango' }] })
+      await ingest({ source: OFICIAL, events: [{ source_key: 'ofi:a', title: 'Show', place_source_key: 'casa:p1' }] })
+      await ingest({ source: AGREGADOR, events: [{ source_key: 'agg:a', title: 'Show', place_source_key: 'casa:p1' }] })
+      await env.DB.prepare('UPDATE event_sources SET place_source_key = NULL').run() // estado previo a la migración
+      const migration = env.TEST_MIGRATIONS.find((m) => m.name.startsWith('0002_'))!
+      const updates = migration.queries.filter((q) => /^\s*(--[^\n]*\n\s*)*UPDATE\s+event_sources/i.test(q))
+      expect(updates.length).toBeGreaterThan(0)
+      for (let i = 0; i < 2; i++) {
+        for (const q of updates) await env.DB.prepare(q).run()
+        const rows = await env.DB.prepare('SELECT source_key, place_source_key FROM event_sources ORDER BY source_key').all<any>()
+        expect(rows.results).toEqual([
+          { source_key: 'agg:a', place_source_key: null },
+          { source_key: 'ofi:a', place_source_key: 'casa:p1' },
+        ])
+      }
     })
   })
 })

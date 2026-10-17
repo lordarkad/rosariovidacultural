@@ -16,6 +16,26 @@ export function pickPrimarySource(sources: SourceEntry[]): string {
   return best.source_key
 }
 
+/**
+ * Lugar de la fila (F-18): el `place_source_key` propio de la canónica; si no tiene, el del alias de mayor
+ * `tier` que trae uno (a igual `tier`, el primero en llegar).
+ */
+export function effectivePlaceKey(sources: SourceEntry[], canonical: string): string | null {
+  let best: SourceEntry | null = null
+  for (const s of sources) {
+    if (!s.place_source_key) continue
+    if (s.source_key === canonical) return s.place_source_key
+    if (
+      !best ||
+      TIER_RANK[s.tier] > TIER_RANK[best.tier] ||
+      (TIER_RANK[s.tier] === TIER_RANK[best.tier] && s.arrival < best.arrival)
+    ) {
+      best = s
+    }
+  }
+  return best?.place_source_key ?? null
+}
+
 interface Sede {
   placeId: string | null
   placeName: string | null

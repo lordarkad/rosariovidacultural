@@ -31,6 +31,8 @@ export async function runIngest(db: D1Database, batch: IngestBatch, now: Date): 
   const extraKeys = [
     ...events.map((e) => e.place_source_key),
     ...eventState.candidates.map((c) => c.fields.place_source_key),
+    // F-18: la clave heredada de un alias también tiene que resolver al comparar sedes del mismo lote
+    ...eventState.candidates.flatMap((c) => c.sources.map((s) => s.place_source_key)),
   ].filter((k): k is string => !!k)
   const placeState = await readPlaceState(db, places, extraKeys)
 

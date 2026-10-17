@@ -1,7 +1,7 @@
 import type { IngestEvent } from '@tript/shared'
 import { normalizeText } from '../domain/normalize'
 import { localToInstant } from '../domain/time'
-import { isSameSede, pickPrimarySource, sedeOf } from './dedupe'
+import { effectivePlaceKey, isSameSede, pickPrimarySource, sedeOf } from './dedupe'
 import type {
   BatchSource,
   EventFields,
@@ -85,6 +85,15 @@ export function planEvents(
   let created = 0
   let updated = 0
 
+  /** F-18: el lugar de la fila sale de las fuentes; si cambió, la fila se reescribe (no basta con `touched`). */
+  const inheritPlace = (w: Work): void => {
+    const key = effectivePlaceKey(w.sources, w.canonical)
+    if (key !== w.fields.place_source_key) {
+      w.fields = { ...w.fields, place_source_key: key }
+      w.dirty = true
+    }
+  }
+
   const live = (id: string): Work => {
     let w = work.get(id)!
     while (w.absorbedInto) w = work.get(w.absorbedInto)!
@@ -94,7 +103,13 @@ export function planEvents(
   for (const item of items) {
     const key = item.source_key
     const fields = toEventFields(item)
-    const entryData = { name: source.name, tier: source.tier, url: item.source_url, via: item.via ?? [] }
+    const entryData = {
+      name: source.name,
+      tier: source.tier,
+      url: item.source_url,
+      via: item.via ?? [],
+      place_source_key: fields.place_source_key,
+    }
 
     const knownId = keyToId.get(key)
     if (knownId) {
@@ -105,8 +120,9 @@ export function planEvents(
         w.fields = fields
         w.dirty = true
       } else {
-        w.touched = true // alias: solo last_seen_at y `sources`, nunca los campos de la primaria
+        w.touched = true // alias: solo last_seen_at y `sources`, nunca los campos de la primaria (salvo el lugar heredado)
       }
+      inheritPlace(w)
       updated++
       continue
     }
@@ -161,6 +177,7 @@ export function planEvents(
       survivor.fields = owned
     }
     survivor.dirty = true
+    inheritPlace(survivor)
     updated++
   }
 
