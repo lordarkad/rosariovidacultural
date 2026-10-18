@@ -49,6 +49,12 @@ class Osm(unittest.TestCase):
         for raw in ("https://www.instagram.com/p/XYZ123/", "https://facebook.com/lacafeteria", "dos palabras"):
             self.assertIsNone(osm_place(osm(instagram=raw))["instagram"], msg=raw)
 
+    def test_image_url_solo_http(self):
+        self.assertEqual(osm_place(osm(image="https://x.example/f.jpg"))["image_url"], "https://x.example/f.jpg")
+        self.assertIsNone(osm_place(osm())["image_url"])
+        for raw in ("", "File:Foto.jpg", "javascript:alert(1)", "//x.example/f.jpg", "http://", "http://[::1"):
+            self.assertIsNone(osm_place(osm(image=raw))["image_url"], msg=raw)
+
 
 CURADO = {"id": "casa-brava", "name": "Casa Brava", "kind": "bar", "address": "Pichincha 120", "lat": -32.93415,
           "lon": -60.66093, "offers": ["musica_en_vivo", "cena", "baile"], "instagram": "casabrava", "website": "",
@@ -67,6 +73,12 @@ class Curados(unittest.TestCase):
     def test_sala_no_suma_tomar_algo(self):
         pl = curated_place({**CURADO, "kind": "sala", "offers": ["musica_en_vivo", "baile"]})
         self.assertEqual(pl["intents"], ["musica_en_vivo", "bailar"])
+
+    def test_image_url_del_espacio_curado(self):
+        self.assertEqual(curated_place({**CURADO, "image_url": "https://x.example/f.jpg"})["image_url"],
+                         "https://x.example/f.jpg")
+        self.assertIsNone(curated_place(CURADO)["image_url"])
+        self.assertIsNone(curated_place({**CURADO, "image_url": "File:Foto.jpg"})["image_url"])
 
     def test_sin_coordenadas_no_se_publica(self):
         self.assertIsNone(curated_place({**CURADO, "lat": None, "lon": None}))

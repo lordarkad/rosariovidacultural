@@ -21,9 +21,14 @@ class Validacion(unittest.TestCase):
         self.assertEqual(v["kind"], "sala")  # sin `kind` en el archivo
         self.assertEqual(validate({**CASA, "kind": "bar"}, set())["kind"], "bar")
 
+    def test_image_url(self):
+        self.assertEqual(validate({**CASA, "image_url": " https://x.example/f.jpg "}, set())["image_url"],
+                         "https://x.example/f.jpg")
+        self.assertEqual(validate(CASA, set())["image_url"], "")
+
     def test_rechaza_datos_invalidos(self):
         for bad in ({"id": "Casa Brava"}, {"offers": []}, {"offers": ["karaoke"]}, {"name": " "},
-                    {"instagram": "https://instagram.com/x"}, {"website": "javascript:alert(1)"}, {"kind": "boliche"},
+                    {"instagram": "https://instagram.com/x"}, {"website": "javascript:alert(1)"}, {"image_url": "File:Foto.jpg"}, {"image_url": "https://"}, {"image_url": "http://[::1"}, {"kind": "boliche"},
                     {"info_sources": [{"name": "x", "url": "ftp://x"}]}):
             with self.assertRaises(VenueError, msg=bad):
                 validate({**CASA, **bad}, set())

@@ -1,5 +1,5 @@
 {
-  "_comment": "Espacios curados a mano. 'aliases' son los nombres con que las fuentes escriben la sede (se comparan sin tildes ni mayúsculas). 'offers' viene de scrapers/venues.py::OFFERS. Coordenadas: si no se cargan lat/lon salen de los eventos de la sede o se geocodifican por dirección. Instagram: solo el usuario, sin @ ni URL.",
+  "_comment": "Espacios curados a mano. 'aliases' son los nombres con que las fuentes escriben la sede (se comparan sin tildes ni mayúsculas). 'offers' viene de scrapers/venues.py::OFFERS. Coordenadas: si no se cargan lat/lon salen de los eventos de la sede o se geocodifican por dirección. Instagram: solo el usuario, sin @ ni URL. image_url: URL directa (http/https) de una foto que tengas derecho a usar; opcional.",
   "venues": [
     {
       "id": "casa-brava",
