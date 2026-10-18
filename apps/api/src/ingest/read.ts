@@ -57,6 +57,7 @@ interface SourceDbRow {
   source_tier: SourceTier
   source_url: string
   via_json: string
+  place_source_key: string | null
 }
 
 /** Fase 1: eventos del lote y sus candidatos a duplicado, con todas sus fuentes. Una llamada a D1. */
@@ -93,6 +94,7 @@ export async function readEventState(db: D1Database, items: IngestEvent[]): Prom
       tier: s.source_tier,
       url: s.source_url,
       via: parse(s.via_json, []),
+      place_source_key: s.place_source_key ?? null,
     })
     sourcesByEvent.set(s.event_id, list)
   }

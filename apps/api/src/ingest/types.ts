@@ -112,6 +112,8 @@ export interface SourceEntry {
   tier: SourceTier
   url: string
   via: SourceLink[]
+  /** Lugar que trajo esta fuente (propio, no el heredado): la fila usa el de la canónica o hereda el de un alias (F-18). */
+  place_source_key: string | null
   /** Hay que escribir esta entrada en `event_sources`. */
   dirty?: boolean
 }
