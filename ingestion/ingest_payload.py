@@ -14,11 +14,16 @@ _TIME = re.compile(r"^([01]\d|2[0-3]):[0-5]\d")  # «15:10 / 17:55» (varias fun
 _MUSIC_CATEGORIES = {"musica", "danza"}
 
 
+_VOLATILE_PARAM = re.compile(r"[?&]cHashValidacion=[^&#]*")  # TurboEntrada firma cada link y la firma rota
+
+
 def _source_key(record: dict, venue: str) -> str:
     """`<fuente>:<hash de la URL de esa fuente + sede>`. Se ancla a la fuente que trajo el evento (`feed`), no a
-    `sources[0]`: al fusionar duplicados la ticketera pasa primera y la clave cambiaría, duplicando la fila."""
+    `sources[0]`: al fusionar duplicados la ticketera pasa primera y la clave cambiaría, duplicando la fila.
+    La URL se normaliza sin parámetros que cambian entre corridas; el link publicado (`source_url`) no se toca."""
     feed = feed_of(record)
     url = next((s["url"] for s in record["sources"] if s["name"] == feed), record["sources"][0]["url"])
+    url = _VOLATILE_PARAM.sub("", url)
     digest = hashlib.sha256(f"{url}|{norm(venue)}".encode()).hexdigest()[:12]
     return f'{norm(feed).replace(" ", "-")}:{digest}'
 
