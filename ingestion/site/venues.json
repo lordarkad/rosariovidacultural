@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-17T12:41:16+00:00",
+ "generated_at": "2026-10-18T12:58:59+00:00",
  "offers": {
   "musica_en_vivo": "Música en vivo",
   "cena": "Cena",
@@ -92,30 +92,8 @@
      "url": "https://www.rosario.tur.ar/donde-ir/cultura/centros-culturales/la-casa-del-tango"
     }
    ],
-   "upcoming_count": 6,
+   "upcoming_count": 5,
    "upcoming": [
-    {
-     "id": "eab6d41868",
-     "title": "Tertulias Tangueras",
-     "start": "2026-10-16",
-     "date_text": "Del 23 de octubre al 27 de noviembre · Viernes · De 17 a 18:30 horas",
-     "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/tertulias-tangueras-1",
-     "source": "Agenda municipal",
-     "free": true,
-     "price_from": null
-    },
-    {
-     "id": "19b71b40bf",
-     "title": "Masterclass con el violinista Rafael Marrero",
-     "start": "2026-10-17",
-     "date_text": "Sábado · a 12 horas",
-     "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/masterclass-con-el-violinista-rafael-marrero",
-     "source": "Agenda municipal",
-     "free": false,
-     "price_from": null
-    },
     {
      "id": "d829bd08d9",
      "title": "Tango en Calle",
@@ -139,6 +117,17 @@
      "price_from": null
     },
     {
+     "id": "eab6d41868",
+     "title": "Tertulias Tangueras",
+     "start": "2026-10-23",
+     "date_text": "Del 23 de octubre al 27 de noviembre · Viernes · De 17 a 18:30 horas",
+     "time": "",
+     "url": "https://www.rosario.gob.ar/inicio/tertulias-tangueras-1",
+     "source": "Agenda municipal",
+     "free": true,
+     "price_from": null
+    },
+    {
      "id": "05e470a06f",
      "title": "Rubén Gómez y Julián Cicerchia presentan Doce Retratos",
      "start": "2026-10-24",
@@ -147,6 +136,17 @@
      "url": "https://www.rosario.gob.ar/inicio/ruben-gomez-y-julian-cicerchia-presentan-doce-retratos",
      "source": "Agenda municipal",
      "free": false,
+     "price_from": null
+    },
+    {
+     "id": "bb2f51015f",
+     "title": "Fueye Solo: concierto acústico de bandoneón",
+     "start": "2026-10-31",
+     "date_text": "Sábado · a 23 horas",
+     "time": "",
+     "url": "https://www.rosario.gob.ar/inicio/fueye-solo-concierto-acustico-de-bandoneon",
+     "source": "Agenda municipal",
+     "free": true,
      "price_from": null
     }
    ]

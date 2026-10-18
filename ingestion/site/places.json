@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-17T12:54:46+00:00",
- "incomplete_tiles": 2,
+ "generated_at": "2026-10-18T13:09:41+00:00",
+ "incomplete_tiles": 0,
  "attribution": "© colaboradores de OpenStreetMap (ODbL)",
  "places": [
   {
@@ -9945,6 +9945,20 @@
    "phone": "",
    "website": "",
    "instagram": "",
+   "outdoor": false
+  },
+  {
+   "id": "n14294518501",
+   "name": "Suipacha Pool",
+   "kind": "Bar",
+   "cuisine": [],
+   "address": "Avenida Ovidio Lagos 98 Bis",
+   "lat": -32.93181,
+   "lon": -60.65885,
+   "hours": "Mo-Su 17:00-06:00",
+   "phone": "+54 9 3417789241",
+   "website": "",
+   "instagram": "suipachapool",
    "outdoor": false
   },
   {
