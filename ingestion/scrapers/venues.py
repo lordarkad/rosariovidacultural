@@ -13,7 +13,7 @@ import statistics
 from pathlib import Path
 
 from . import geocode
-from .common import MUSIC_GENRES, norm
+from .common import MUSIC_GENRES, http_url, norm
 
 SOURCE_FILE = Path(__file__).parent.parent / "data" / "venues.json"
 # Qué ofrece un espacio. Ampliar acá y en el sitio (se lee de venues.json, no está duplicado en el HTML).
@@ -29,7 +29,7 @@ class VenueError(ValueError):
 
 
 def _http(url: str) -> bool:
-    return isinstance(url, str) and url.startswith(("https://", "http://"))
+    return bool(http_url(url))
 
 
 def validate(raw: dict, seen: set[str]) -> dict:
@@ -56,6 +56,9 @@ def validate(raw: dict, seen: set[str]) -> dict:
     website = (raw.get("website") or "").strip()
     if website and not _http(website):
         raise VenueError(f"{vid}: website debe ser http(s)")
+    image_url = (raw.get("image_url") or "").strip()
+    if image_url and not _http(image_url):
+        raise VenueError(f"{vid}: image_url debe ser http(s)")
     infos = raw.get("info_sources") or []
     if any(not _http(s.get("url")) or not s.get("name") for s in infos):
         raise VenueError(f"{vid}: info_sources necesita name y url http(s)")
@@ -63,7 +66,7 @@ def validate(raw: dict, seen: set[str]) -> dict:
     return {
         "id": vid, "name": name, "aliases": sorted(aliases), "address": (raw.get("address") or "").strip(),
         "kind": kind, "offers": list(dict.fromkeys(raw["offers"])), "genres": genres, "instagram": handle, "website": website,
-        "note": (raw.get("note") or "").strip(), "info_sources": infos,
+        "image_url": image_url, "note": (raw.get("note") or "").strip(), "info_sources": infos,
         "lat": raw.get("lat"), "lon": raw.get("lon"),
     }
 
@@ -123,7 +126,7 @@ def build(events: list[dict], venues: list[dict] | None = None, cache: dict | No
         out.append({
             "id": v["id"], "name": v["name"], "kind": v["kind"], "address": v["address"],
             "lat": pos[0] if pos else None, "lon": pos[1] if pos else None,
-            "offers": v["offers"], "instagram": v["instagram"], "website": v["website"], "note": v["note"],
+            "offers": v["offers"], "instagram": v["instagram"], "website": v["website"], "image_url": v["image_url"], "note": v["note"],
             "info_sources": v["info_sources"],
             "upcoming_count": len(evs), "upcoming": [_summary(e) for e in evs[:UPCOMING]],
         })

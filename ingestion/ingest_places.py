@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 
 import opening_hours
-from scrapers.common import norm
+from scrapers.common import http_url, norm
 
 # places_osm.KIND guarda el nombre para mostrar; acá se pasa al PlaceKind del contrato
 _OSM_KINDS = {"restaurante": "restaurante", "bar": "bar", "cafe": "cafe", "heladeria": "heladeria",
@@ -22,6 +22,10 @@ _NOT_HANDLES = {"p", "reel", "reels", "explore", "stories", "tv"}  # rutas de in
 def _handle(raw: str) -> str | None:
     m = _HANDLE.match((raw or "").strip())
     return m.group(1) if m and m.group(1) not in _NOT_HANDLES else None
+
+
+def _image(raw: str) -> str | None:
+    return http_url(raw) or None  # sin host la API lo rechaza (format: uri)
 
 
 def _ordered(intents: set[str]) -> list[str]:
@@ -49,7 +53,7 @@ def osm_place(raw: dict) -> dict:
         "instagram": _handle(raw.get("instagram", "")),
         "outdoor": True if raw.get("outdoor") else None,  # OSM no distingue «no» de «sin dato» en places.json
         "note": None,
-        "image_url": None,
+        "image_url": _image(raw.get("image", "")),
     }
 
 
@@ -79,5 +83,5 @@ def curated_place(raw: dict) -> dict | None:
         "instagram": raw.get("instagram") or None,
         "outdoor": None,
         "note": raw.get("note") or None,
-        "image_url": None,
+        "image_url": _image(raw.get("image_url", "")),
     }

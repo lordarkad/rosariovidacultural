@@ -10,7 +10,7 @@ import time
 import urllib.parse
 import urllib.request
 
-from .common import USER_AGENT, clean, norm
+from .common import USER_AGENT, clean, http_url, norm
 
 HOSTS = ["https://overpass-api.de/api/interpreter"]  # kumi.systems y private.coffee daban timeout en las pruebas
 # Rosario: sur, oeste, norte, este
@@ -69,6 +69,7 @@ def to_place(el: dict) -> dict | None:
         "phone": clean(tags.get("phone") or tags.get("contact:phone") or ""),
         "website": site if site.startswith(("http://", "https://")) else "",
         "instagram": clean(tags.get("contact:instagram", "")),
+        "image": http_url(clean(tags.get("image", ""))),  # el tag también guarda nombres de archivo
         "outdoor": tags.get("outdoor_seating") == "yes",
     }
 

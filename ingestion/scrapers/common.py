@@ -6,6 +6,7 @@ import codecs
 import re
 import time
 import unicodedata
+from urllib.parse import urlparse
 import urllib.request
 from dataclasses import dataclass, field
 from datetime import date, timedelta
@@ -60,6 +61,16 @@ def norm(text: str) -> str:
     text = unicodedata.normalize("NFKD", text or "")
     text = "".join(c for c in text if not unicodedata.combining(c)).lower()
     return re.sub(r"\s+", " ", re.sub(r"[^a-z0-9 ]+", " ", text)).strip()
+
+
+def http_url(raw: object) -> str:
+    """La URL recortada si es http(s) con host; si no, vacío. Nunca lanza: `urlparse` falla con corchetes sueltos."""
+    url = raw.strip() if isinstance(raw, str) else ""
+    try:
+        parts = urlparse(url)
+    except ValueError:
+        return ""
+    return url if parts.scheme in ("http", "https") and parts.netloc else ""
 
 
 def clean(text: str) -> str:
