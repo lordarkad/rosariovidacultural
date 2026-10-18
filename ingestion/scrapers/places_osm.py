@@ -70,7 +70,7 @@ def to_place(el: dict) -> dict | None:
         "website": site if site.startswith(("http://", "https://")) else "",
         "instagram": clean(tags.get("contact:instagram", "")),
         "image": http_url(clean(tags.get("image", ""))),  # el tag también guarda nombres de archivo
-        "outdoor": tags.get("outdoor_seating") == "yes",
+        "outdoor": {"yes": True, "no": False}.get(tags.get("outdoor_seating")),  # None = sin dato
     }
 
 
@@ -89,7 +89,9 @@ def scrape(previous: list[dict] | None = None) -> tuple[list[dict], int]:
             elements = _query(tile)
         except RuntimeError as exc:
             failed += 1
-            kept = [p for p in (previous or []) if in_tile(p, tile)]
+            # El archivo viejo guardaba `False` para «no» y «sin dato»: solo se arrastra el `True`
+            kept = [{**p, "outdoor": True if p.get("outdoor") is True else None}
+                    for p in (previous or []) if in_tile(p, tile)]
             seen.update({p["id"]: p for p in kept})
             print(f"  [osm] mosaico {i}: {exc} (se conservan {len(kept)} previos)")
             continue

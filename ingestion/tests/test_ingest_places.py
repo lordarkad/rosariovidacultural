@@ -26,9 +26,13 @@ class Osm(unittest.TestCase):
         self.assertTrue(pl["outdoor"])
 
     def test_vacios_son_null(self):
-        pl = osm_place(osm(address="", hours="", outdoor=False))
+        pl = osm_place(osm(address="", hours="", outdoor=None))
         for key in ("address", "hours_text", "opening_hours", "phone", "website", "instagram", "outdoor"):
             self.assertIsNone(pl[key], msg=key)
+
+    def test_outdoor_no_explicito_se_publica_como_false(self):
+        self.assertIs(osm_place(osm(outdoor=False))["outdoor"], False)  # OSM dice `outdoor_seating=no`
+        self.assertIsNone(osm_place({k: v for k, v in osm().items() if k != "outdoor"})["outdoor"])
 
     def test_horario_que_no_se_entiende_conserva_el_texto(self):
         pl = osm_place(osm(hours="We-Su 19:00+"))

@@ -21,6 +21,11 @@ class Danza(unittest.TestCase):
         self.assertEqual(intents("Milonga del viernes", ["danza"]), ["bailar"])
         self.assertEqual(intents("Gran baile popular", ["danza"]), ["bailar"])
 
+    def test_estilos_de_baile_sin_ambiguedad(self):
+        self.assertEqual(intents("Noche de bachata", ["danza"]), ["bailar"])
+        self.assertEqual(intents("Kizomba social", ["danza"]), ["bailar"])
+        self.assertEqual(intents("Fiesta bailable", ["musica"]), ["musica_en_vivo", "bailar"])
+
     def test_tango_solo_es_espectaculo(self):
         # «tango» a secas es ambiguo: puede ser un espectáculo para mirar
         self.assertEqual(intents("Tango para ver", ["danza"]), ["espectaculo"])

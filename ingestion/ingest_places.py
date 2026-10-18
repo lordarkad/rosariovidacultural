@@ -51,7 +51,7 @@ def osm_place(raw: dict) -> dict:
         "phone": raw.get("phone") or None,
         "website": raw.get("website") or None,
         "instagram": _handle(raw.get("instagram", "")),
-        "outdoor": True if raw.get("outdoor") else None,  # OSM no distingue «no» de «sin dato» en places.json
+        "outdoor": raw["outdoor"] if isinstance(raw.get("outdoor"), bool) else None,  # False = OSM dice «no»
         "note": None,
         "image_url": _image(raw.get("image", "")),
     }
