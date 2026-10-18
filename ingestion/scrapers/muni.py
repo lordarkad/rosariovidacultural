@@ -93,7 +93,8 @@ def enrich(ev: dict) -> None:
         print(f"  [muni] detalle {ev['url']}: {exc}")
         return
     ev["free"] = d["free"]
-    ev["venue"] = ev["venue"] or d.get("venue", "")
+    # El detalle es estructurado; lo que sigue a «|» en la tarjeta es texto libre (a veces el programa, no la sede)
+    ev["venue"] = d.get("venue") or ev["venue"]
     ev["address"] = d.get("address", "")
     ev["description"] = d.get("description", "")
     if d.get("date_text"):

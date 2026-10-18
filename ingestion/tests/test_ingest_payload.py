@@ -93,6 +93,18 @@ class SourceKey(unittest.TestCase):
         [b] = to_ingest_events(r, [])
         self.assertEqual(a["source_key"], b["source_key"])
 
+    def test_el_hash_de_validacion_de_turboentrada_no_cambia_la_clave(self):
+        # TurboEntrada firma cada link con `cHashValidacion`; si rota entre corridas la fila se duplicaría
+        def turbo(h):
+            url = f"https://www.turboentrada.com/landing/coti?idEspectaculoCartel=17097&cHashValidacion={h}"
+            return record(feed="TurboEntrada", sources=[{"name": "TurboEntrada", "url": url}])
+        [a], [b] = to_ingest_events(turbo("aaaa"), []), to_ingest_events(turbo("bbbb"), [])
+        self.assertEqual(a["source_key"], b["source_key"])
+        self.assertIn("cHashValidacion=aaaa", a["source_url"])  # el link que ve la gente conserva el hash
+        [otro] = to_ingest_events(record(feed="TurboEntrada", sources=[{"name": "TurboEntrada", "url":
+                                  "https://www.turboentrada.com/landing/coti?idEspectaculoCartel=99&cHashValidacion=aaaa"}]), [])
+        self.assertNotEqual(a["source_key"], otro["source_key"])  # otro show sigue siendo otra fila
+
     def test_sin_feed_usa_la_primera_fuente(self):
         r = record()
         del r["feed"]
