@@ -41,7 +41,7 @@ class Osm(unittest.TestCase):
 
     def test_kind_e_intents(self):
         casos = {"Restaurante": ("restaurante", ["comer"]), "Comida rápida": ("comida_rapida", ["comer"]),
-                 "Bar": ("bar", ["tomar_algo"]), "Café": ("cafe", ["comer", "tomar_algo"]),
+                 "Bar": ("bar", ["comer", "tomar_algo"]), "Café": ("cafe", ["comer", "tomar_algo"]),
                  "Heladería": ("heladeria", ["comer", "tomar_algo"]), "Otro": ("otro", [])}
         for display, (kind, intents) in casos.items():
             pl = osm_place(osm(kind=display))
@@ -73,6 +73,10 @@ class Curados(unittest.TestCase):
         self.assertEqual(pl["offers"], ["musica_en_vivo", "cena", "baile"])
         self.assertEqual((pl["instagram"], pl["website"], pl["note"]), ("casabrava", None, "Bandas en vivo."))
         self.assertIsNone(pl["opening_hours"])
+
+    def test_bar_curado_suma_comer_y_tomar_algo(self):
+        pl = curated_place({**CURADO, "offers": ["musica_en_vivo"]})  # sin «cena»: igual es un bar
+        self.assertEqual(pl["intents"], ["comer", "tomar_algo", "musica_en_vivo"])
 
     def test_sala_no_suma_tomar_algo(self):
         pl = curated_place({**CURADO, "kind": "sala", "offers": ["musica_en_vivo", "baile"]})
