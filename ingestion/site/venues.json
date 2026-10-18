@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T12:58:59+00:00",
+ "generated_at": "2026-10-18T21:33:40+00:00",
  "offers": {
   "musica_en_vivo": "Música en vivo",
   "cena": "Cena",
@@ -20,6 +20,7 @@
    ],
    "instagram": "",
    "website": "",
+   "image_url": "",
    "note": "Bandas en vivo; también hay cena y se baila.",
    "info_sources": [],
    "upcoming_count": 2,
@@ -62,6 +63,7 @@
    ],
    "instagram": "barbonscott",
    "website": "",
+   "image_url": "",
    "note": "Bar de Pichincha con bandas y música electrónica; pizzas y cerveza artesanal.",
    "info_sources": [
     {
@@ -85,6 +87,7 @@
    ],
    "instagram": "",
    "website": "",
+   "image_url": "",
    "note": "Centro cultural municipal del tango: tertulias, Tango en Calle los domingos, peñas y talleres.",
    "info_sources": [
     {
@@ -98,7 +101,7 @@
      "id": "d829bd08d9",
      "title": "Tango en Calle",
      "start": "2026-10-18",
-     "date_text": "Del 18 de octubre al 29 de noviembre · Domingo · De 10 a 12 horas",
+     "date_text": "Del 25 de octubre al 29 de noviembre · Domingo · De 10 a 12 horas",
      "time": "",
      "url": "https://www.rosario.gob.ar/inicio/tango-en-calle",
      "source": "Agenda municipal",
@@ -163,6 +166,7 @@
    ],
    "instagram": "",
    "website": "",
+   "image_url": "",
    "note": "Paseo con gastronomía, espectáculos y comercios; mezcla de espacios al aire libre y techados.",
    "info_sources": [
     {
