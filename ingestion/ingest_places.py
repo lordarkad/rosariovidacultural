@@ -10,8 +10,8 @@ from scrapers.common import http_url, norm
 # places_osm.KIND guarda el nombre para mostrar; acá se pasa al PlaceKind del contrato
 _OSM_KINDS = {"restaurante": "restaurante", "bar": "bar", "cafe": "cafe", "heladeria": "heladeria",
               "comida rapida": "comida_rapida"}
-# Decidido por Daniel (2026-10-16): un café o una heladería sirven para comer y para tomar algo.
-_KIND_INTENTS = {"restaurante": ["comer"], "comida_rapida": ["comer"], "bar": ["tomar_algo"],
+# Decidido por Daniel (2026-10-16): un café o una heladería sirven para comer y para tomar algo; (2026-10-18) un bar también.
+_KIND_INTENTS = {"restaurante": ["comer"], "comida_rapida": ["comer"], "bar": ["comer", "tomar_algo"],
                  "cafe": ["comer", "tomar_algo"], "heladeria": ["comer", "tomar_algo"]}
 _OFFER_INTENTS = {"musica_en_vivo": "musica_en_vivo", "cena": "comer", "baile": "bailar"}
 _INTENT_ORDER = ("comer", "tomar_algo", "espectaculo", "musica_en_vivo", "bailar", "con_chicos")
@@ -64,7 +64,7 @@ def curated_place(raw: dict) -> dict | None:
     kind = raw.get("kind") or "sala"
     intents = {_OFFER_INTENTS[o] for o in raw.get("offers", []) if o in _OFFER_INTENTS}
     if kind == "bar":
-        intents.add("tomar_algo")
+        intents.update(_KIND_INTENTS["bar"])
     return {
         "source_key": f'curated:{raw["id"]}',
         "name": raw["name"],

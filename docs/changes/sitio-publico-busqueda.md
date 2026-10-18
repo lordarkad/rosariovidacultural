@@ -416,10 +416,10 @@ Confirmadas por Daniel el 2026-10-16. Viven en `ingestion/ingest_places.py`, `in
 | Tipo de lugar (OSM) | `kind` | Intenciones |
 |---|---|---|
 | Restaurante, comida rápida | `restaurante`, `comida_rapida` | `comer` |
-| Bar, pub | `bar` | `tomar_algo` |
+| Bar, pub | `bar` | `comer`, `tomar_algo` (2026-10-18; antes solo `tomar_algo`) |
 | Café, heladería | `cafe`, `heladeria` | `comer` + `tomar_algo` |
 
-- **Espacios curados** (`data/venues.json`): `origin: curated`, `source_key` `curated:<id>`. Campo nuevo opcional `kind` (por defecto `sala`; Casa Brava y Bon Scott son `bar`). Sus intenciones salen de `offers` (`musica_en_vivo`→`musica_en_vivo`, `cena`→`comer`, `baile`→`bailar`) y un `bar` suma `tomar_algo`. Sin coordenadas no se publican (`lat` y `lon` son obligatorios).
+- **Espacios curados** (`data/venues.json`): `origin: curated`, `source_key` `curated:<id>`. Campo nuevo opcional `kind` (por defecto `sala`; Casa Brava y Bon Scott son `bar`). Sus intenciones salen de `offers` (`musica_en_vivo`→`musica_en_vivo`, `cena`→`comer`, `baile`→`bailar`) y un `bar` suma `comer` y `tomar_algo`. Sin coordenadas no se publican (`lat` y `lon` son obligatorios).
 - **OSM:** `source_key` `osm:<id>` (ej. `osm:w1225024480`). `outdoor` es `true` con `outdoor_seating=yes`, `false` con `outdoor_seating=no` y `null` sin dato (2026-10-18; antes el archivo no distinguía «no» de «sin dato»). `instagram` se reduce al usuario.
 - **Vínculo evento–lugar:** `place_source_key` = `curated:<id>` cuando la sede coincide con un espacio curado (por sede, si el evento tiene varias). Los eventos no se vinculan a lugares de OSM: emparejar por nombre daría falsos positivos; si un curado absorbe a un `osm`, el servidor ya resuelve el alias.
 - **`opening_hours`:** se estructura el subconjunto habitual de OSM (días y rangos, varios tramos, `off`, `24/7`, `24:00`, cierre pasada la medianoche, reglas que se pisan entre sí). Se ignoran los feriados fijos (`Jan 1 off`, `PH`). Un cierre por temporada (`Jun-Aug off`, `Dec off`) no es un feriado: va como `null`, porque un horario semanal completo mentiría esos meses. Lo que no se entiende (`19:00+`, `sunrise`, semanas) también va como `null` y `hours_text` conserva el texto original. Sobre `places.json`: 131 lugares traen horario y 117 se estructuran; los 14 restantes son feriados sueltos, `closed` o formatos no soportados.
