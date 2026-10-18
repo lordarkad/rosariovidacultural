@@ -38,6 +38,15 @@ class Palabras(unittest.TestCase):
         self.assertEqual(guess_genres("Bandas rockeras"), ["rock"])
         self.assertEqual(guess_genres("Fiesta House"), ["electronica"])
 
+    def test_palabras_que_faltaban(self):
+        # títulos reales de la agenda que quedaban sin género
+        self.assertEqual(guess_genres("Peña Folclórica día de la Independencia"), ["folklore"])
+        self.assertEqual(guess_genres("Pre Cosquín 2027 Sede Rosario en el Galpón 11"), ["folklore"])
+        self.assertEqual(guess_genres("Buenos Aires Nu Metal Fest en Rosario"), ["rock"])
+        self.assertEqual(guess_genres("Piedra y camino. Cantata a la Luna en el CAM"), ["clasica"])
+        self.assertEqual(guess_genres("Orquesta Filarmónica de Rosario"), ["clasica"])
+        self.assertEqual(guess_genres("Noche punk"), ["rock"])
+
     def test_sin_genero(self):
         self.assertEqual(guess_genres("Stand up"), [])
 

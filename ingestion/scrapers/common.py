@@ -239,12 +239,13 @@ def guess_category(title: str, default: str = "eventos") -> str:
 MUSIC_GENRES = ("jazz", "rock", "folklore", "electronica", "tango", "cumbia", "clasica", "chamame")
 _GENRE_WORDS = {
     "tango": ["tango", "tangos", "tanguera", "tangueras", "tanguero", "tangueros", "milonga", "milongas", "bandoneon"],
-    "folklore": ["folklore", "folclore", "folklorico", "folclorico", "zamba", "zambas", "chacarera", "chacareras"],
+    "folklore": ["folklore", "folclore", "folklorico", "folclorico", "folklorica", "folclorica", "zamba", "zambas",
+                 "chacarera", "chacareras", "cosquin"],
     "cumbia": ["cumbia", "cumbias"],
     "chamame": ["chamame", "chamames"],
-    "clasica": ["clasica", "sinfonica", "sinfonico", "opera"],
+    "clasica": ["clasica", "sinfonica", "sinfonico", "opera", "cantata", "filarmonica", "camerata"],
     "jazz": ["jazz"],
-    "rock": ["rock", "rockero", "rockera", "rockeros", "rockeras"],
+    "rock": ["rock", "rockero", "rockera", "rockeros", "rockeras", "metal", "punk"],
     "electronica": ["electronica", "techno", "house"],
 }
 
@@ -266,7 +267,8 @@ def guess_genres(title: str, description: str = "", forced: list[str] | None = N
 
 # Intenciones del spec (Intent, B-3), en el orden del enum. Se asignan por categoría y palabras del título.
 INTENTS = ("comer", "tomar_algo", "espectaculo", "musica_en_vivo", "bailar", "con_chicos")
-_DANCE_WORDS = ["milonga", "milongas", "tertulia", "tertulias", "baile", "bailes", "bailanta", "bailantas"]
+_DANCE_WORDS = ["milonga", "milongas", "tertulia", "tertulias", "baile", "bailes", "bailanta", "bailantas",
+                "bailable", "bailables", "bachata", "kizomba"]
 _DRINK_WORDS = ["vino", "vinos", "cerveza", "cervezas", "cafe", "cafes", "coctel", "cocteles", "cata", "catas",
                 "trago", "tragos"]
 
