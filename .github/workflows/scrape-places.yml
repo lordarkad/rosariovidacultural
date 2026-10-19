@@ -1,0 +1,51 @@
+name: Actualizar lugares
+
+on:
+  schedule:
+    - cron: "0 6 * * 0" # domingo 03:00 hora de Rosario (UTC-3)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Los dos workflows de datos (este y «Actualizar agenda») commitean a main: se hacen de a uno.
+concurrency:
+  group: agenda
+  cancel-in-progress: false
+
+jobs:
+  places:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45  # tope de costo/cuelgue (ADR 0002); Overpass tarda 12-16 min, con reintentos hasta ~30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main  # la última versión: el otro workflow pudo haber commiteado mientras esperaba su turno
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: ingestion/requirements.txt
+      - run: pip install -r ingestion/requirements.txt
+      - run: python -m unittest discover -s tests
+        working-directory: ingestion
+      - name: Lugares (OpenStreetMap)
+        id: osm
+        run: python ingestion/build_places.py
+        timeout-minutes: 30  # si Overpass se arrastra se corta solo este paso y se conserva places.json
+        continue-on-error: true  # el servidor público de Overpass falla seguido: se conserva el archivo anterior
+      - name: Publicar lugares a la API (staging)
+        if: steps.osm.outcome == 'success'  # sin lugares nuevos no hay nada que reenviar
+        run: python ingestion/publish.py --only places
+        continue-on-error: true  # un fallo de la API no frena la actualización del sitio legacy
+        env:
+          INGEST_URL: https://rosariovidacultural-api-staging.dry-brook-7eef.workers.dev/api/ingest
+          INGEST_TOKEN: ${{ secrets.INGEST_TOKEN_STAGING }}
+      - name: Publicar places.json
+        run: |
+          git config user.name "agenda-bot"
+          git config user.email "agenda-bot@users.noreply.github.com"
+          git add ingestion/site
+          git diff --staged --quiet || git commit -m "chore: actualizar lugares"
+          git pull --rebase origin main
+          git push

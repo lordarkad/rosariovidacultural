@@ -8,12 +8,19 @@ on:
 permissions:
   contents: write
 
+# Los dos workflows de datos (este y «Actualizar lugares») commitean a main: se hacen de a uno.
+concurrency:
+  group: agenda
+  cancel-in-progress: false
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 30  # tope de costo/cuelgue (ADR 0002)
+    timeout-minutes: 20  # tope de costo/cuelgue (ADR 0002); los eventos tardan ~8 min, los lugares van en su propio workflow
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main  # la última versión: el otro workflow pudo haber commiteado mientras esperaba su turno
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -23,11 +30,8 @@ jobs:
       - run: python -m unittest discover -s tests
         working-directory: ingestion
       - run: python ingestion/build.py
-      - name: Lugares (OpenStreetMap)
-        run: python ingestion/build_places.py
-        continue-on-error: true  # el servidor público de Overpass falla seguido: se conserva el archivo anterior
       - name: Publicar a la API (staging)
-        run: python ingestion/publish.py
+        run: python ingestion/publish.py --skip-osm  # eventos y espacios curados; los lugares de OpenStreetMap, 1 vez por semana
         continue-on-error: true  # un fallo de la API no frena la actualización del sitio legacy
         env:
           INGEST_URL: https://rosariovidacultural-api-staging.dry-brook-7eef.workers.dev/api/ingest
@@ -38,4 +42,5 @@ jobs:
           git config user.email "agenda-bot@users.noreply.github.com"
           git add ingestion/site ingestion/data/geocache.json
           git diff --staged --quiet || git commit -m "chore: actualizar agenda"
+          git pull --rebase origin main
           git push

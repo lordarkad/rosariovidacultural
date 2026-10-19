@@ -1,6 +1,6 @@
 """Publica lugares (site/venues.json, site/places.json) y eventos (site/events.json) a POST /api/ingest (docs/api-spec.yml, operationId ingestBatch).
 
-Uso:  INGEST_URL=https://…/api/ingest INGEST_TOKEN=… python publish.py [--dry-run]
+Uso:  INGEST_URL=https://…/api/ingest INGEST_TOKEN=… python publish.py [--dry-run] [--only events|places] [--skip-osm]
 
 Un lote por fuente (el contrato fija `source` por lote) y de a 200 como máximo, en serie: el Worker tiene un
 presupuesto de llamadas a D1 por request y el dedupe (E-10) depende del orden de llegada. Van primero los lugares
@@ -65,6 +65,26 @@ def build_place_batches(curated: list[dict], osm: list[dict], generated_at: str)
             + _chunks("places", {"name": "OpenStreetMap", "tier": "aggregator"}, osm_items, generated_at))
 
 
+def select_batches(data: dict, curated: list[dict], osm: list[dict], venues: list[dict], generated_at: str,
+                   only: str | None = None, skip_osm: bool = False) -> list[dict]:
+    """Qué se publica. Sin flags, todo. `only` limita a `events` o `places`; `skip_osm` deja afuera los lugares de
+    OpenStreetMap (el workflow diario publica eventos y curados; el semanal, los lugares)."""
+    batches: list[dict] = []
+    if only != "events":
+        batches += build_place_batches(curated, [] if skip_osm else osm, generated_at)
+    if only != "places":
+        batches += build_batches(data["events"], venues, generated_at)
+    return batches
+
+
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dry-run", action="store_true", help="arma los lotes y los cuenta, sin enviar")
+    parser.add_argument("--only", choices=("events", "places"), help="publica solo eventos o solo lugares")
+    parser.add_argument("--skip-osm", action="store_true", help="no publica los lugares de OpenStreetMap")
+    return parser.parse_args(argv)
+
+
 class IngestError(Exception):
     def __init__(self, message: str, status: int | None = None):
         super().__init__(message)
@@ -124,21 +144,19 @@ def publish(url: str, token: str, batches: list[dict], post=post_batch) -> tuple
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--dry-run", action="store_true", help="arma los lotes y los cuenta, sin enviar")
-    args = parser.parse_args()
+    args = parse_args()
 
     data = json.loads(EVENTS.read_text(encoding="utf-8"))
     generated_at = data.get("generated_at") or datetime.now(timezone.utc).isoformat(timespec="seconds")
     curated = json.loads(VENUES.read_text(encoding="utf-8")).get("venues", []) if VENUES.exists() else []
     osm = json.loads(PLACES.read_text(encoding="utf-8")).get("places", []) if PLACES.exists() else []
-    batches = build_place_batches(curated, osm, generated_at) + build_batches(data["events"], venues_mod.load(),
-                                                                              generated_at)
+    batches = select_batches(data, curated, osm, venues_mod.load(), generated_at, args.only, args.skip_osm)
     n_places = sum(len(b.get("places", [])) for b in batches)
     n_events = sum(len(b.get("events", [])) for b in batches)
     print(f"{len(data['events'])} registros -> {n_events} eventos y {n_places} lugares en {len(batches)} lotes")
-    if untranslated := cuisine.warning([p.get("cuisine") or [] for p in osm]):
-        print(untranslated)
+    if not args.skip_osm and args.only != "events":
+        if untranslated := cuisine.warning([p.get("cuisine") or [] for p in osm]):
+            print(untranslated)
     if args.dry_run:
         return 0
 
