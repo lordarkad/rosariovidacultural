@@ -211,6 +211,39 @@ describe('GET /api/places/:id', () => {
     expect(json.data).not.toHaveProperty('is_stale')
   })
 
+  describe('[4b-1] next_change_at', () => {
+    const MIE_21 = new Date('2026-10-21T21:00:00-03:00')
+    const sala = (opening_hours: Array<{ day: number; opens: string; closes: string }> | null) => ({
+      places: [{ source_key: 'p:1', opening_hours }],
+    })
+
+    it('[AC-1] abierto: el cierre en el instante UTC', async () => {
+      await ingest(sala([{ day: 2, opens: '12:00', closes: '23:00' }]), MIE_21)
+      const { json } = await get(`/api/places/${await idOf('places', 'p:1')}`, MIE_21)
+      expect(json.data).toMatchObject({ open_now: true, next_change_at: '2026-10-22T02:00:00.000Z' })
+    })
+
+    it('[AC-2] cerrado: la próxima apertura', async () => {
+      await ingest(sala([{ day: 2, opens: '22:30', closes: '23:30' }]), MIE_21)
+      const { json } = await get(`/api/places/${await idOf('places', 'p:1')}`, MIE_21)
+      expect(json.data).toMatchObject({ open_now: false, next_change_at: '2026-10-22T01:30:00.000Z' })
+    })
+
+    it('[AC-5] 24 h todos los días: next_change_at null con open_now true', async () => {
+      await ingest(sala([0, 1, 2, 3, 4, 5, 6].map((day) => ({ day, opens: '00:00', closes: '00:00' }))), MIE_21)
+      const { json } = await get(`/api/places/${await idOf('places', 'p:1')}`, MIE_21)
+      expect(json.data).toMatchObject({ open_now: true, next_change_at: null })
+    })
+
+    it('[AC-7][AC-8] sin horario: la clave está y es null; valida contra PlaceDetail', async () => {
+      await ingest({ places: [{ source_key: 'p:1', hours_text: 'a convenir' }] }, MIE_21)
+      const { json } = await get(`/api/places/${await idOf('places', 'p:1')}`, MIE_21)
+      expect(json.data).toHaveProperty('next_change_at', null)
+      expect(json.data).toMatchObject({ open_now: null, hours_text: 'a convenir' })
+      expect(PlaceDetailSchema.safeParse(json.data), JSON.stringify(json.data)).toMatchObject({ success: true })
+    })
+  })
+
   it('[AC-17] sin horario: open_now null', async () => {
     await ingest({ places: [{ source_key: 'p:1' }] })
     const { json } = await get(`/api/places/${await idOf('places', 'p:1')}`)
@@ -249,10 +282,30 @@ describe('GET /api/places/:id', () => {
         id: expect.any(String),
         title: 'Hoy',
         start_date: '2026-10-06',
+        end_date: '2026-10-06',
         start_time: '23:00',
         price_status: 'unknown',
         price_from_ars: null,
       })
+    })
+
+    it('[AC-9] trae end_date: un evento en curso conserva su rango y uno de un día repite la fecha', async () => {
+      const MIE_21 = new Date('2026-10-21T21:00:00-03:00')
+      await ingest(
+        {
+          places: [{ source_key: 'p:sala', name: 'Sala' }],
+          events: [
+            { source_key: 'e:ciclo', title: 'Ciclo', venue_name: 'Sala', place_source_key: 'p:sala', start_date: '2026-10-20', end_date: '2026-10-23', start_time: '23:00' },
+            { source_key: 'e:jueves', title: 'Jueves', venue_name: 'Sala', place_source_key: 'p:sala', start_date: '2026-10-22', end_date: '2026-10-22', start_time: '21:00' },
+          ],
+        },
+        MIE_21,
+      )
+      const { json } = await get(`/api/places/${await idOf('places', 'p:sala')}`, MIE_21)
+      expect(json.data.upcoming_events).toMatchObject([
+        { title: 'Ciclo', start_date: '2026-10-20', end_date: '2026-10-23' },
+        { title: 'Jueves', start_date: '2026-10-22', end_date: '2026-10-22' },
+      ])
     })
 
     it('máximo 20 eventos', async () => {

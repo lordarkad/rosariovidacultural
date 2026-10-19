@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import re
 
+import cuisine
 import opening_hours
 from scrapers.common import http_url, norm
 
@@ -42,7 +43,7 @@ def osm_place(raw: dict) -> dict:
         "origin": "osm",
         "intents": _KIND_INTENTS.get(kind, []),
         "offers": [],
-        "cuisine": raw.get("cuisine") or [],
+        "cuisine": cuisine.translate(raw.get("cuisine") or []),
         "address": raw.get("address") or None,
         "lat": raw["lat"],
         "lon": raw["lon"],

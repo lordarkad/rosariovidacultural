@@ -1,7 +1,7 @@
 import type { D1Database } from '@cloudflare/workers-types'
 import type { EventDetail, Intent, MusicGenre, PlaceDetail, SourceLink } from '@tript/shared'
 import { distanceInfo } from '../domain/geo'
-import { isOpenAt, type OpeningPeriod } from '../domain/opening-hours'
+import { isOpenAt, nextStateChange, type OpeningPeriod } from '../domain/opening-hours'
 import { nextOccurrence } from '../domain/occurrences'
 import { addDays, businessDate, HOUR_MS } from '../domain/time'
 import { parse } from './json'
@@ -240,6 +240,7 @@ export async function getPlaceDetail(
       id: e.id,
       title: e.title,
       start_date: e.start_date,
+      end_date: e.end_date,
       start_time: e.start_time,
       price_status: e.price_status,
       price_from_ars: e.price_from_ars,
@@ -261,6 +262,7 @@ export async function getPlaceDetail(
     opening_hours: hours,
     hours_text: r.hours_text,
     open_now: isOpenAt(hours, now),
+    next_change_at: nextStateChange(hours, now)?.toISOString() ?? null,
     phone: r.phone,
     website: r.website,
     instagram: r.instagram,

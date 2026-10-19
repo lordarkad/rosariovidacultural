@@ -19,7 +19,7 @@ class Osm(unittest.TestCase):
         self.assertEqual((pl["source_key"], pl["origin"], pl["kind"]), ("osm:w1225024480", "osm", "cafe"))
         self.assertEqual((pl["lat"], pl["lon"]), (-32.92891, -60.79804))
         self.assertEqual((pl["phone"], pl["website"], pl["cuisine"]), ("+54 341 424-2454", "https://x.example",
-                                                                       ["coffee shop"]))
+                                                                       ["café"]))
         self.assertEqual(pl["hours_text"], "Mo-Sa 08:00-21:00")
         self.assertEqual(len(pl["opening_hours"]), 6)
         self.assertTrue(all(HOURS.match(x["opens"]) and HOURS.match(x["closes"]) for x in pl["opening_hours"]))

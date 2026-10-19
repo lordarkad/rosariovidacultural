@@ -63,8 +63,8 @@ Reloj fijo en los tests; Buenos Aires es UTC−3 sin horario de verano. «Mié 2
   - Given: un lugar OSM con `cuisine: ["coffee shop", "italian pizza"]`.
   - Then: `osm_place` devuelve `["café", "pizza italiana"]`.
 - **[AC-11]** Valor desconocido.
-  - Given: `cuisine: ["coffee shop", "peruvian"]`.
-  - Then: `["café", "peruvian"]` (se conserva crudo). Un valor ya en español del diccionario (`café`) pasa sin contarse como desconocido. Al terminar el run se emite **un solo resumen** con los valores distintos sin traducir (por `print`/`::warning::`, como el resto de `publish.py`); la función que arma ese resumen devuelve la lista y se testea sin depender del mecanismo de salida.
+  - Given: `cuisine: ["coffee shop", "thai"]` (`thai` no está en `places.json`, así que el diccionario no lo conoce).
+  - Then: `["café", "thai"]` (se conserva crudo). Un valor ya en español del diccionario (`café`) pasa sin contarse como desconocido. Al terminar el run se emite **un solo resumen** con los valores distintos sin traducir (por `print`/`::warning::`, como el resto de `publish.py`); la función que arma ese resumen devuelve la lista y se testea sin depender del mecanismo de salida.
 - **[AC-12]** Normalización y duplicados.
   - Given: `["Coffee_Shop", " coffee shop "]` y `["coffee shop", "café"]`.
   - Then: `["café"]` en ambos (mayúsculas, guiones bajos y espacios se normalizan; dos valores que traducen igual se reducen a uno, conservando el orden).

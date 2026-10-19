@@ -43,6 +43,15 @@ describe('POST /api/ingest', () => {
     expect(await count('place_keys')).toBe(1)
   })
 
+  it('[AC-13] reenviar un lugar con la cocina ya traducida: updated, sin duplicar y con la cocina nueva', async () => {
+    await ingest({ places: [{ source_key: 'osm:c1', origin: 'osm', cuisine: ['coffee shop'] }] })
+    const { json } = await ingest({ places: [{ source_key: 'osm:c1', origin: 'osm', cuisine: ['café', 'pizza italiana'] }] })
+    expect(json.data.places).toMatchObject({ created: 0, updated: 1 })
+    expect(await count('places')).toBe(1)
+    const row = await env.DB.prepare('SELECT cuisine FROM places').first<{ cuisine: string }>()
+    expect(JSON.parse(row!.cuisine)).toEqual(['café', 'pizza italiana'])
+  })
+
   it('[AC-33] 200 eventos y 200 lugares: se guardan los 400 con a lo sumo 10 llamadas a D1', async () => {
     const places = Array.from({ length: 200 }, (_, i) => ({
       source_key: `osm:${i}`,
