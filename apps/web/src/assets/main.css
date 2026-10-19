@@ -1,0 +1,36 @@
+@import './tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    margin: 0;
+    background: var(--rq-surface-0);
+    color: var(--rq-text);
+    font-family: var(--rq-font-body);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--rq-font-display);
+    font-weight: var(--rq-display-weight);
+    letter-spacing: var(--rq-display-tracking);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--rq-focus);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .rq-meta {
+    font-size: var(--rq-meta-size);
+    letter-spacing: var(--rq-meta-tracking);
+    text-transform: var(--rq-meta-transform);
+    color: var(--rq-text-muted);
+  }
+}

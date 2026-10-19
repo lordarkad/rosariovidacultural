@@ -7,6 +7,7 @@ export default defineConfig({
       'apps/api/vitest.config.ts',
       'apps/api/vitest.d1.config.mts',
       'apps/dashboard/vitest.config.ts',
+      'apps/web/vitest.config.ts',
     ],
   },
 })
