@@ -19,6 +19,7 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
+import cuisine
 from ingest_payload import to_ingest_events
 from ingest_places import curated_place, osm_place
 from scrapers import venues as venues_mod
@@ -136,6 +137,8 @@ def main() -> int:
     n_places = sum(len(b.get("places", [])) for b in batches)
     n_events = sum(len(b.get("events", [])) for b in batches)
     print(f"{len(data['events'])} registros -> {n_events} eventos y {n_places} lugares en {len(batches)} lotes")
+    if untranslated := cuisine.warning([p.get("cuisine") or [] for p in osm]):
+        print(untranslated)
     if args.dry_run:
         return 0
 
