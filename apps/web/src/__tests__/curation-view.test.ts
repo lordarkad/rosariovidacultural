@@ -227,6 +227,32 @@ describe('Curación · eventos', () => {
     expect(router.currentRoute.value.query).toEqual({ estado: 'pasado' })
   })
 
+  it('[AC-24] el buscador no pisa lo que se escribe: el espacio final sobrevive a la pausa del debounce', async () => {
+    vi.mocked(listEvents).mockResolvedValue(evPage([ev('e1')]))
+    await mount('/curacion/eventos', CuracionEventosView, () => expect(root.querySelector('table')).not.toBeNull())
+    vi.useFakeTimers()
+    try {
+      const input = root.querySelector<HTMLInputElement>('input[type="search"]')!
+      input.value = 'foo '
+      input.dispatchEvent(new Event('input'))
+      await vi.advanceTimersByTimeAsync(400)
+      expect(router.currentRoute.value.query).toEqual({ q: 'foo' })
+      expect(input.value).toBe('foo ')
+    } finally {
+      vi.useRealTimers()
+    }
+  })
+
+  it('[AC-24] Atrás y «Limpiar filtros» sí actualizan el buscador', async () => {
+    vi.mocked(listEvents).mockResolvedValue(evPage([], 0))
+    await mount('/curacion/eventos?q=zzz', CuracionEventosView, () => expect(text()).toContain('Sin resultados'))
+    const input = root.querySelector<HTMLInputElement>('input[type="search"]')!
+    expect(input.value).toBe('zzz')
+    byText('button', 'Limpiar filtros')!.click()
+    await flush()
+    expect(input.value).toBe('')
+  })
+
   it('[AC-24] los valores inválidos de la URL se ignoran', async () => {
     vi.mocked(listEvents).mockResolvedValue(evPage([ev('e1')]))
     await mount('/curacion/eventos?estado=nada&page=abc')
