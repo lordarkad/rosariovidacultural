@@ -35,6 +35,7 @@ jobs:
       # A mano no hay commit base contra el cual comparar: se despliega todo.
       api: ${{ github.event_name == 'workflow_dispatch' && 'true' || steps.filter.outputs.api }}
       dashboard: ${{ github.event_name == 'workflow_dispatch' && 'true' || steps.filter.outputs.dashboard }}
+      web: ${{ github.event_name == 'workflow_dispatch' && 'true' || steps.filter.outputs.web }}
     steps:
       - if: ${{ github.event_name == 'workflow_run' }}
         uses: actions/checkout@v4
@@ -54,6 +55,9 @@ jobs:
               - 'apps/api/**'
             dashboard:
               - 'apps/dashboard/**'
+            web:
+              - 'apps/web/**'
+              - 'packages/shared/**'
 
   deploy-staging:
     needs: changes
