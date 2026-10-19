@@ -142,8 +142,8 @@ export interface paths {
         /**
          * Listado completo de eventos para curación (vigentes y pasados)
          * @description Alimenta `/curacion/eventos` del sitio (revisar la ingesta con un equipo de voluntarios). **No es la búsqueda**:
-         *     no filtra por intención, ventana ni ubicación, y **incluye los eventos pasados y los vencidos**, que `searchItems`
-         *     y `getEvent` ocultan. Sin autenticación, datos ya públicos. Solo lectura.
+         *     no filtra por intención, ventana ni ubicación, y **incluye los eventos pasados y los vencidos**: `searchItems` oculta los
+         *     pasados y los vencidos, y `getEvent` solo los vencidos (`sin_ver`). Sin autenticación, datos ya públicos. Solo lectura.
          *
          *     **Estado (`estado`).** Se calcula en `America/Argentina/Buenos_Aires` con el día de negocio de `searchItems`
          *     (de 06:00 a 06:00) y se evalúa en este orden:
@@ -162,16 +162,19 @@ export interface paths {
          *     efectivas. `lugar`: sin lugar vinculado **y** sin `venue_name`, dirección ni coordenadas efectivas (no se puede
          *     decir dónde es). Cada ítem trae `missing` con todos los campos que le faltan, haya o no filtro.
          *
-         *     **Orden fijo.** Primero `vigente`, después `pasado` y `sin_ver`; dentro de cada grupo `start_date` ascendente,
+         *     **Orden fijo.** Tres grupos en el orden de `EventState` (`vigente`, `pasado`, `sin_ver`); dentro de cada grupo `start_date` ascendente,
          *     `start_time` ascendente (sin hora al final), título normalizado e `id` como desempate final (la paginación es
          *     estable). No hay parámetro de orden.
          *
-         *     **Búsqueda (`q`).** Texto libre normalizado igual que en `searchItems` (sin tildes ni mayúsculas) sobre título,
-         *     nombre de sede, dirección y nombre de la fuente.
+         *     **Búsqueda (`q`).** Se normaliza igual que en `searchItems` (sin tildes, mayúsculas ni signos) y busca como
+         *     subcadena sobre título, sede, dirección y nombre de la fuente; sede y dirección son las efectivas (ver arriba).
+         *     Si `q` normalizado queda vacío (por ejemplo `%` o `!!!`) se ignora, igual que en `searchItems`: equivale a no enviarlo.
          *
          *     Paginación: el envelope obliga a que `data` sea el array, así que el total viaja en `X-Total-Count`, `X-Page` y
          *     `X-Per-Page`. Una página más allá de la última es 200 con `data: []`. El cliente que exporta todo lo filtrado
-         *     (CSV) recorre las páginas con `per_page=100`.
+         *     (CSV) recorre las páginas con `per_page=100`. El orden depende de `estado`, que se recalcula con la hora de
+         *     cada pedido: si la ingesta o el cambio de día de negocio mueven un evento de grupo entre dos páginas, el
+         *     recorrido puede repetir u omitir filas. Por eso el cliente que recorre debe verificar `X-Total-Count` entre páginas.
          */
         get: operations["listEvents"];
         put?: never;
@@ -192,7 +195,7 @@ export interface paths {
         /**
          * Fuentes primarias de eventos con su cantidad (opciones del filtro `fuente`)
          * @description Una fila por `source_name` presente en `events`, con la cantidad de eventos que la tienen como fuente primaria
-         *     (todos los estados, incluidos pasados y vencidos), ordenadas por nombre. Sin paginación: son pocas (hoy 10).
+         *     (todos los estados, incluidos pasados y vencidos, y cualquiera sea el tier con que entraron), ordenadas por nombre. Sin paginación: son pocas (hoy 10).
          *     Sirve para llenar el filtro de `listEvents` sin mantener la lista de fuentes a mano en el cliente, y para ver de un
          *     vistazo cuántos eventos aporta cada fuente.
          */
@@ -215,8 +218,9 @@ export interface paths {
         /**
          * Listado completo de lugares para curación
          * @description Alimenta `/curacion/lugares`. Devuelve **todos** los lugares cargados (los lugares no vencen), sin filtro de
-         *     intención, ventana ni ubicación. Sin autenticación, datos ya públicos. Solo lectura. Un lugar curado sin
-         *     `lat`/`lon` no se publica (la ingesta lo descarta, `curated_place`), así que no aparece acá.
+         *     intención, ventana ni ubicación. Sin autenticación, datos ya públicos. Solo lectura. `lat`/`lon` de un lugar
+         *     curado sin coordenadas cargadas a mano las deriva la ingesta (mediana de las de sus eventos, o geocodificación) y
+         *     cambian entre corridas; la API hoy no distingue esas coordenadas de las cargadas.
          *
          *     **Faltantes (`faltan`).** Unión: devuelve los lugares a los que les falta **cualquiera** de los campos pedidos.
          *     `imagen`: sin `image_url`. `horario`: sin `opening_hours` estructurado (aunque tenga `hours_text` crudo; sin
@@ -226,7 +230,7 @@ export interface paths {
          *
          *     **Orden fijo.** Nombre normalizado ascendente e `id` como desempate final. No hay parámetro de orden.
          *
-         *     **Búsqueda (`q`).** Texto libre normalizado igual que en `searchItems` sobre nombre y dirección.
+         *     **Búsqueda (`q`).** Igual que en `listEvents`, sobre nombre y dirección.
          *
          *     Paginación y página fuera de rango: igual que `listEvents`.
          */
@@ -638,7 +642,6 @@ export interface components {
         EventSourceCount: {
             /** @description Valor de `source_name`, el que acepta el filtro `fuente`. */
             name: string;
-            tier: components["schemas"]["SourceTier"];
             count: number;
         };
         /** @description Todas las claves se devuelven siempre; «no informado» es `null`, nunca una clave ausente. */
@@ -1050,8 +1053,6 @@ export interface operations {
                 q?: components["parameters"]["TextoLibre"];
                 /** @description Nombres de fuente primaria (`CurationEvent.source_name`, los de `listEventSources`), separados por coma. Unión. Coincidencia exacta. */
                 fuente?: string[];
-                /** @description Prioridad de la fuente primaria, separada por coma. Unión. */
-                tier?: components["schemas"]["SourceTier"][];
                 /** @description Estados, separados por coma. Unión. Sin el parámetro, todos. */
                 estado?: components["schemas"]["EventState"][];
                 /** @description Campos faltantes, separados por coma. Unión: al evento le falta cualquiera de ellos. */
