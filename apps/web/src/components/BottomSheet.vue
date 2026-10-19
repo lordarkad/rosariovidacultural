@@ -22,19 +22,26 @@
       <span class="h-1.5 w-12 rounded-full bg-line-strong" aria-hidden="true" />
     </button>
     <!-- Colapsada, la lista no se alcanza con Tab ni con lector de pantalla (S2-17). -->
-    <div class="min-h-0 flex-1 overflow-y-auto" :inert="state === 'collapsed' ? true : undefined">
+    <div class="min-h-0 flex-1 overflow-y-auto" :inert="state === 'collapsed' && !desktop ? true : undefined">
       <slot />
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, onBeforeUnmount, ref } from 'vue'
 
 export type SheetState = 'collapsed' | 'half' | 'full'
 
 const ORDER: SheetState[] = ['collapsed', 'half', 'full']
 const state = defineModel<SheetState>({ default: 'half' })
+
+// Desde md la lista es un panel fijo sin asa: aunque haya quedado «colapsada» en mobile, tiene que seguir alcanzable.
+const wide = window.matchMedia('(min-width: 768px)')
+const desktop = ref(wide.matches)
+const onWide = (e: MediaQueryListEvent) => (desktop.value = e.matches)
+wide.addEventListener('change', onWide)
+onBeforeUnmount(() => wide.removeEventListener('change', onWide))
 
 const sheet = ref<HTMLElement | null>(null)
 const dragging = ref(false)

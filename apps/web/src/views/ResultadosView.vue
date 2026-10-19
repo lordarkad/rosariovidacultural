@@ -19,6 +19,7 @@
           :radius-m="origin?.radiusM"
           :selected-key="selectedKey"
           :fit-key="pins.version"
+          :padding="fitPadding"
           @select="selectPin"
           @bounds="onBounds"
         />
@@ -153,6 +154,13 @@ const hasOrigin = computed(() => Boolean(query.value.z || query.value.lat !== un
 
 // Sin clave de MapTiler no hay mapa: la lista ocupa todo el alto.
 const sheet = ref<SheetState>(import.meta.env.VITE_MAPTILER_KEY ? 'half' : 'full')
+
+// En mobile la hoja tapa la parte baja del mapa: el encuadre deja ese lugar libre.
+const fitPadding = computed(() => {
+  const desktop = window.matchMedia('(min-width: 768px)').matches
+  const bottom = desktop ? 48 : sheet.value === 'half' ? Math.round(window.innerHeight * 0.4) : sheet.value === 'collapsed' ? 72 : 48
+  return { top: 48, bottom, left: 48, right: 48 }
+})
 
 const selectedKey = ref<string | null>(null)
 const selectedPin = computed(() => pins.pins.find((p) => `${p.kind}:${p.id}` === selectedKey.value))

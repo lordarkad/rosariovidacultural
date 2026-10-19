@@ -29,6 +29,8 @@ const props = defineProps<{
   selectedKey?: string | null
   /** Cada vez que cambia, el mapa se vuelve a encuadrar (búsqueda nueva, no mover el mapa). */
   fitKey?: string | number
+  /** Margen del encuadre en px (p. ej. para no quedar bajo la hoja inferior). */
+  padding?: { top: number; bottom: number; left: number; right: number }
 }>()
 
 const emit = defineEmits<{
@@ -125,7 +127,9 @@ function syncMarker(): void {
 }
 
 function syncData(): void {
-  if (!map?.isStyleLoaded()) return
+  // `isStyleLoaded()` es falso mientras el mapa base baja teselas: se mira si las fuentes existen (si no,
+  // `addLayers` ya toma los datos actuales al crearlas).
+  if (!map) return
   ;(map.getSource(PINS) as GeoJSONSource | undefined)?.setData(pinsGeoJson())
   ;(map.getSource(RADIUS) as GeoJSONSource | undefined)?.setData(radiusGeoJson())
   if (map.getLayer('pins-selected')) map.setFilter('pins-selected', ['==', ['get', 'key'], props.selectedKey ?? ''])
@@ -147,7 +151,7 @@ function fit(): void {
   }
   const b = new maplibre.LngLatBounds(points[0]!, points[0]!)
   for (const p of points) b.extend(p)
-  map.fitBounds(b as LngLatBoundsLike, { padding: 48, maxZoom: 16, duration })
+  map.fitBounds(b as LngLatBoundsLike, { padding: props.padding ?? 48, maxZoom: 16, duration })
 }
 
 function apply(): void {

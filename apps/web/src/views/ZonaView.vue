@@ -44,10 +44,10 @@
           />
         </section>
         <RadiusSlider v-model="radius" />
-        <Button label="Buscar cerca mío →" size="large" fluid :disabled="!point" @click="go" />
+        <Button label="Buscar cerca mío →" size="large" fluid :disabled="!gpsPoint" @click="go" />
       </div>
       <div class="mt-5 h-64 overflow-hidden rounded-card border border-line md:mt-0 md:h-[calc(100dvh-14rem)]">
-        <MapView :center="point" :radius-m="radius" :fit-key="fitKey" />
+        <MapView :center="gpsPoint" :radius-m="radius" :fit-key="fitKey" />
       </div>
     </div>
 
@@ -121,6 +121,8 @@ const mode = ref<Mode>(current.z ? 'barrios' : current.lat !== undefined ? 'mapa
 const point = ref<{ lat: number; lon: number } | null>(
   current.lat !== undefined && current.lon !== undefined ? { lat: current.lat, lon: current.lon } : null,
 )
+// Cerca mío solo busca con una ubicación obtenida por GPS; el pin de «En el mapa» no la reemplaza.
+const gpsPoint = ref<{ lat: number; lon: number } | null>(null)
 const radius = ref(clampRadius(current.radio_m ?? RADIO_DEFAULT))
 const gps = ref<Gps>('idle')
 // Cambia cuando el punto salta (GPS, barrio elegido) para que el mapa se reencuadre; arrastrar el pin no lo cambia.
@@ -139,7 +141,8 @@ watch(mode, (m) => {
 async function locate(): Promise<void> {
   gps.value = 'asking'
   try {
-    point.value = await getPosition()
+    gpsPoint.value = await getPosition()
+    point.value = gpsPoint.value
     gps.value = 'ok'
     fitKey.value++
   } catch (e) {
@@ -154,10 +157,11 @@ function pickZone(z: Zone): void {
 
 /** Vuelve a Resultados con la misma búsqueda y el origen elegido (punto + radio; la zona se descarta, E-8). */
 function go(): void {
-  if (!point.value) return
+  const origin = mode.value === 'cerca' ? gpsPoint.value : point.value
+  if (!origin) return
   void router.push({
     path: '/resultados',
-    query: toRouteQuery({ ...parseSearch(route.query), z: undefined, ...point.value, radio_m: radius.value }),
+    query: toRouteQuery({ ...parseSearch(route.query), z: undefined, ...origin, radio_m: radius.value }),
   })
 }
 
