@@ -1,5 +1,6 @@
 <template>
   <main class="mx-auto max-w-xl px-4 py-4">
+    <h1 class="sr-only">Resultados</h1>
     <nav aria-label="Tu búsqueda" class="flex flex-wrap items-center gap-x-1 gap-y-2">
       <RouterLink :to="edit('/')" class="rounded-chip border border-line bg-surface-card px-3 py-1.5 text-sm font-semibold">{{ phrase.que }}</RouterLink>
       <span aria-hidden="true">·</span>
@@ -41,7 +42,7 @@
       <h2 class="text-xl">Sin resultados</h2>
       <p class="mt-1 text-ink-muted">No encontramos nada con esta búsqueda. Probá:</p>
       <div class="mt-3 flex flex-wrap gap-2">
-        <Button v-if="hasFilters" label="Quitar filtros" severity="secondary" @click="clearFilters" />
+        <Button v-if="hasFilters" label="Quitar filtros" variant="outlined" @click="clearFilters" />
         <RouterLink :to="edit('/')" class="inline-flex min-h-11 items-center rounded-button border border-line-strong px-4 font-semibold">Cambiar día</RouterLink>
         <RouterLink v-if="query.z" :to="edit('/zona')" class="inline-flex min-h-11 items-center rounded-button border border-line-strong px-4 font-semibold">Cambiar zona</RouterLink>
       </div>
@@ -63,7 +64,7 @@
         v-if="search.hasMore"
         :label="search.error ? 'Reintentar' : 'Ver más'"
         :loading="search.loadingMore"
-        severity="secondary"
+        variant="outlined"
         class="mt-4"
         fluid
         @click="search.loadMore()"
@@ -110,8 +111,7 @@ function clearFilters(): void {
 watch(() => route.fullPath, () => {
   if (route.path === '/resultados') load()
 })
-onMounted(() => {
-  load()
-  void zones.fetchZones()
-})
+// Se busca en el setup (no en onMounted) para no mostrar un frame con los ítems de la búsqueda anterior.
+load()
+onMounted(() => void zones.fetchZones())
 </script>

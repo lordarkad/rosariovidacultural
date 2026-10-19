@@ -9,8 +9,8 @@
       </div>
       <div class="min-w-0 flex-1">
         <div class="flex items-center gap-2">
-          <span class="rq-meta" :class="item.kind === 'event' ? '!text-evento' : '!text-lugar'">
-            {{ item.kind === 'event' ? 'Evento' : 'Lugar' }}
+          <span v-if="kindLabel" class="rq-meta" :class="item.kind === 'event' ? '!text-evento' : '!text-lugar'">
+            {{ kindLabel }}
           </span>
           <span v-if="price" class="rq-meta !text-ink">{{ price }}</span>
         </div>
@@ -37,7 +37,9 @@ import {
 
 const props = defineProps<{ item: SearchItem }>()
 
+// Un `kind` que la UI no conoce se trata como lugar solo para el link; el rótulo no se inventa (S2).
 const to = computed(() => (props.item.kind === 'event' ? `/e/${props.item.id}` : `/l/${props.item.id}`))
+const kindLabel = computed(() => ({ event: 'Evento', place: 'Lugar' })[props.item.kind as string] ?? null)
 const price = computed(() => formatPrice(props.item.price_status, props.item.price_from_ars))
 
 /** Eventos: día y hora. Lugares: abierto/cerrado. Siempre dice «horario no informado» si no se sabe. */
