@@ -23,8 +23,12 @@ describe('coordenadas compartidas', () => {
 })
 
 describe('detailLink', () => {
-  it('[AC-2] los lugares no tienen enlace (S4-2)', () => {
-    expect(detailLink('place', 'p1', { lat: -32.9, lon: -60.6 })).toBeNull()
+  it('[AC-2] lugar: path /l/:id y origen en el state; un kind desconocido no tiene enlace', () => {
+    expect(detailLink('place', 'p1', { lat: -32.946821234, lon: -60.639 })).toEqual({
+      path: '/l/p1',
+      state: { origin: { lat: -32.94682, lon: -60.639 } },
+    })
+    expect(detailLink('place', 'p1')).toEqual({ path: '/l/p1', state: {} })
     expect(detailLink('otro', 'x')).toBeNull()
   })
 
@@ -65,24 +69,41 @@ describe('origen de la navegación', () => {
 })
 
 describe('backTarget', () => {
-  it('[AC-14] router.back() solo si venimos de /resultados', () => {
-    expect(backTarget({ back: '/resultados?i=comer' })).toBe('back')
-    expect(backTarget({ back: '/resultados' })).toBe('back')
+  const back = { action: 'back', label: 'resultados' }
+  const push = { action: 'push', label: 'resultados' }
+
+  it('[AC-14] evento: router.back() y «resultados» si venimos de /resultados', () => {
+    expect(backTarget({ back: '/resultados?i=comer' }, 'evento')).toEqual(back)
+    expect(backTarget({ back: '/resultados' }, 'evento')).toEqual(back)
   })
 
-  it('[AC-14] link directo, Home, Zona o evento hermano: va a /resultados', () => {
-    expect(backTarget(null)).toBe('/resultados')
-    expect(backTarget({ back: null })).toBe('/resultados')
-    expect(backTarget({ back: '/' })).toBe('/resultados')
-    expect(backTarget({ back: '/zona?z=centro' })).toBe('/resultados')
-    expect(backTarget({ back: '/e/otro' })).toBe('/resultados')
-    expect(backTarget({ back: '/resultadosx' })).toBe('/resultados')
+  it('[AC-14] evento: router.back() y «lugar» si venimos de /l/:id', () => {
+    expect(backTarget({ back: '/l/abc' }, 'evento')).toEqual({ action: 'back', label: 'lugar' })
+  })
+
+  it('[AC-14] evento: link directo, Home, Zona, evento hermano o ruta parecida: push a /resultados', () => {
+    expect(backTarget(null, 'evento')).toEqual(push)
+    expect(backTarget({ back: null }, 'evento')).toEqual(push)
+    expect(backTarget({ back: '/' }, 'evento')).toEqual(push)
+    expect(backTarget({ back: '/zona?z=centro' }, 'evento')).toEqual(push)
+    expect(backTarget({ back: '/e/otro' }, 'evento')).toEqual(push)
+    expect(backTarget({ back: '/resultadosx' }, 'evento')).toEqual(push)
+    expect(backTarget({ back: '/l/' }, 'evento')).toEqual(push)
+    expect(backTarget({ back: '/lx/abc' }, 'evento')).toEqual(push)
+  })
+
+  it('[AC-14] lugar: solo se vuelve con back a /resultados; desde un evento o directo, push a /resultados', () => {
+    expect(backTarget({ back: '/resultados?z=centro' }, 'lugar')).toEqual(back)
+    expect(backTarget({ back: '/e/abc' }, 'lugar')).toEqual(push)
+    expect(backTarget({ back: '/l/otro' }, 'lugar')).toEqual(push)
+    expect(backTarget(null, 'lugar')).toEqual(push)
   })
 })
 
 describe('activeTab', () => {
-  it('[AC-15] /e/:id marca Resultados vía meta.tab', () => {
+  it('[AC-15][AC-16] /e/:id y /l/:id marcan Resultados vía meta.tab', () => {
     expect(activeTab({ path: '/e/abc', meta: { tab: 'resultados' } })).toBe('resultados')
+    expect(activeTab({ path: '/l/abc', meta: { tab: 'resultados' } })).toBe('resultados')
   })
 
   it('[AC-15] las demás rutas se resuelven por path', () => {

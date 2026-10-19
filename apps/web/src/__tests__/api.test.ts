@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { ApiError, getEvent, listZones, searchItems, searchPins, toQueryString } from '@/services/api'
+import { ApiError, getEvent, getPlace, listZones, searchItems, searchPins, toQueryString } from '@/services/api'
 
 const json = (body: unknown, init: ResponseInit = {}) =>
   new Response(JSON.stringify(body), { status: 200, headers: { 'Content-Type': 'application/json' }, ...init })
@@ -72,6 +72,24 @@ describe('cliente de la API', () => {
     const fn = mockFetch(json({ success: true, data: { id: 'e1' } }))
     const ctrl = new AbortController()
     await getEvent('e1', undefined, { signal: ctrl.signal })
+    expect(fn.mock.calls[0]![1].signal).toBe(ctrl.signal)
+  })
+
+  it('[AC-3] getPlace envía lat/lon solo cuando están ambos', async () => {
+    const fn = vi.fn().mockImplementation(async () => json({ success: true, data: { id: 'p1' } }))
+    vi.stubGlobal('fetch', fn)
+    await getPlace('p1', { lat: -32.9, lon: -60.6 })
+    expect(fn.mock.calls[0]![0]).toBe('/api/places/p1?lat=-32.9&lon=-60.6')
+    await getPlace('p1', { lat: -32.9 } as { lat: number; lon: number })
+    expect(fn.mock.calls[1]![0]).toBe('/api/places/p1')
+    await getPlace('p1')
+    expect(fn.mock.calls[2]![0]).toBe('/api/places/p1')
+  })
+
+  it('[AC-3] getPlace propaga el AbortSignal en el tercer argumento', async () => {
+    const fn = mockFetch(json({ success: true, data: { id: 'p1' } }))
+    const ctrl = new AbortController()
+    await getPlace('p1', undefined, { signal: ctrl.signal })
     expect(fn.mock.calls[0]![1].signal).toBe(ctrl.signal)
   })
 

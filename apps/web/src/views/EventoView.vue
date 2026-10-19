@@ -3,7 +3,7 @@
     <div class="hidden shrink-0 items-center justify-between border-b border-line px-8 py-3 md:flex">
       <span class="font-display text-lg">Rosario, qué hacer</span>
       <button type="button" class="min-h-11 rounded-button border border-line-strong px-4 font-semibold text-ink" @click="goBack">
-        ← Volver a resultados
+        ← {{ backLabel }}
       </button>
     </div>
 
@@ -30,6 +30,7 @@
         <button
           type="button"
           class="absolute left-3 top-3 z-[1] min-h-11 rounded-button border border-line-strong bg-surface-card px-3 text-sm font-semibold text-ink md:hidden"
+          :aria-label="backLabel"
           @click="goBack"
         >
           ← Volver
@@ -37,7 +38,7 @@
       </div>
       <!-- Sin evento (no disponible / error) la imagen no tiene sentido, pero en mobile «volver» sigue haciendo falta. -->
       <div v-else class="px-4 pt-4 md:hidden">
-        <button type="button" class="min-h-11 rounded-button border border-line-strong px-3 text-sm font-semibold text-ink" @click="goBack">
+        <button type="button" class="min-h-11 rounded-button border border-line-strong px-3 text-sm font-semibold text-ink" :aria-label="backLabel" @click="goBack">
           ← Volver
         </button>
       </div>
@@ -90,7 +91,10 @@
             </div>
             <div class="px-4 py-3">
               <dt class="rq-meta">Dónde</dt>
-              <dd>{{ event.venue_name ?? '' }}</dd>
+              <dd>
+                <RouterLink v-if="placeLink" :to="placeLink" class="font-semibold underline">{{ event.place?.name }}</RouterLink>
+                <template v-else>{{ event.venue_name ?? '' }}</template>
+              </dd>
               <dd v-if="event.address" class="text-ink-muted">{{ event.address }}</dd>
               <dd v-if="!maps" class="text-sm text-ink-muted">ubicación no informada</dd>
             </div>
@@ -140,31 +144,33 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onBeforeUnmount, ref, shallowRef, watch } from 'vue'
-import { RouterLink, useRoute, useRouter } from 'vue-router'
+import { computed, ref } from 'vue'
+import { RouterLink } from 'vue-router'
 import Button from 'primevue/button'
 import Skeleton from 'primevue/skeleton'
 import AlsoAt from '@/components/AlsoAt.vue'
 import SourceCard from '@/components/SourceCard.vue'
-import { backTarget, mapsUrl, originFromState, truncateDescription } from '@/lib/detail'
+import { useDetailPage } from '@/composables/useDetailPage'
+import { detailLink, mapsUrl, truncateDescription } from '@/lib/detail'
 import { formatDistance, formatPrice, formatWalk, formatWhen } from '@/lib/format'
 import { GENRES } from '@/lib/search-query'
 import { useDetailStore } from '@/stores/detail.store'
 
-const route = useRoute()
-const router = useRouter()
 const store = useDetailStore()
 
 const event = computed(() => store.event)
-const heading = ref<HTMLElement | null>(null)
-const scroller = ref<HTMLElement | null>(null)
 const expanded = ref(false)
 const imageFailed = ref(false)
-// El origen de la distancia vive en `history.state` de esta entrada: sobrevive a la recarga (S4-3).
-// shallowRef: el origen va al `state` del router y `history.replaceState` no clona un Proxy reactivo.
-const origin = shallowRef(originFromState(history.state))
 
-const id = computed(() => String(route.params.id ?? ''))
+const { heading, scroller, origin, backLabel, load, goBack } = useDetailPage({
+  desde: 'evento',
+  fetch: (id, o) => store.load(id, o),
+  title: () => event.value?.title,
+  reset: () => {
+    expanded.value = false
+    imageFailed.value = false
+  },
+})
 
 const genre = computed(() => {
   const g = event.value?.music_genres[0]
@@ -181,39 +187,6 @@ const description = computed(() =>
 )
 const primary = computed(() => event.value?.sources[0])
 const others = computed(() => event.value?.sources.slice(1) ?? [])
-
-async function load(): Promise<void> {
-  const mine = id.value
-  expanded.value = false
-  imageFailed.value = false
-  origin.value = originFromState(history.state)
-  await store.load(mine, origin.value)
-  // Una carga más nueva (otro id) ya tomó el control: no se roba el foco.
-  if (mine !== id.value) return
-  await nextTick()
-  scroller.value?.scrollTo({ top: 0 })
-  window.scrollTo({ top: 0 })
-  heading.value?.focus()
-}
-
-function goBack(): void {
-  if (backTarget(history.state) === 'back') router.back()
-  else void router.push('/resultados')
-}
-
-// El router reutiliza este componente entre `/e/A` y `/e/B` (S4-15).
-// Al salir del Detalle `route.params.id` queda vacío antes de desmontar: no hay nada que cargar.
-watch(id, (v) => { if (v) void load() }, { immediate: true })
-
-// El título original se captura una sola vez y se restaura al salir (S4-4).
-const originalTitle = document.title
-watch(
-  () => event.value?.title,
-  (title) => {
-    document.title = title ? `${title} · Rosario, qué hacer` : originalTitle
-  },
-)
-onBeforeUnmount(() => {
-  document.title = originalTitle
-})
+// El nombre del lugar enlaza a su ficha (L-13); sin `place` queda como texto.
+const placeLink = computed(() => (event.value?.place ? detailLink('place', event.value.place.id, origin.value) : null))
 </script>
