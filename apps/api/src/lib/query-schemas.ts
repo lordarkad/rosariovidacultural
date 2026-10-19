@@ -1,4 +1,12 @@
-import { IntentSchema, MusicGenreSchema } from '@tript/shared'
+import {
+  EventMissingFieldSchema,
+  EventStateSchema,
+  IntentSchema,
+  MusicGenreSchema,
+  PlaceKindSchema,
+  PlaceMissingFieldSchema,
+  PlaceOriginSchema,
+} from '@tript/shared'
 import type { Intent, MusicGenre } from '@tript/shared'
 import { z } from 'zod'
 import { parseBbox, type Bbox } from '../domain/geo'
@@ -9,7 +17,7 @@ const RADIO_DEFAULT = 2000
 const RADIO_MIN = 500
 const RADIO_MAX = 10000
 
-const csv = <T extends z.ZodTypeAny>(item: T) =>
+const csv = <T extends z.ZodTypeAny>(item: T, max?: number) =>
   z
     .string()
     .transform((s) =>
@@ -18,7 +26,7 @@ const csv = <T extends z.ZodTypeAny>(item: T) =>
         .map((x) => x.trim())
         .filter((x) => x.length > 0),
     )
-    .pipe(z.array(item))
+    .pipe(max === undefined ? z.array(item) : z.array(item).max(max))
     .optional()
 
 const decimal = z
@@ -126,3 +134,68 @@ export const DetailQuerySchema = z
   })
 
 export const IdParamSchema = z.object({ id: z.string().uuid('id debe ser un UUID') })
+
+/** Paginación del listado de curación (spec `CurationPage`/`CurationPerPage`). */
+const CURATION_PAGE_MAX = 10000
+const curationPage = {
+  page: int.pipe(z.number().int().min(1).max(CURATION_PAGE_MAX)).optional(),
+  per_page: int.pipe(z.number().int().min(1).max(100)).optional(),
+}
+
+export interface CurationEventsQuery {
+  q: string | null
+  fuente: string[]
+  estado: z.infer<typeof EventStateSchema>[]
+  faltan: z.infer<typeof EventMissingFieldSchema>[]
+  page: number
+  per_page: number
+}
+
+/** Query params de `listEvents`. Los filtros vacíos (`estado=`) equivalen a no filtrar. */
+export const CurationEventsQuerySchema = z
+  .object({
+    q: z.string().max(100, 'q admite hasta 100 caracteres').optional(),
+    fuente: csv(z.string().max(100), 20),
+    estado: csv(EventStateSchema),
+    faltan: csv(EventMissingFieldSchema),
+    ...curationPage,
+  })
+  .transform(
+    (v): CurationEventsQuery => ({
+      q: v.q ? v.q : null,
+      fuente: v.fuente ?? [],
+      estado: v.estado ?? [],
+      faltan: v.faltan ?? [],
+      page: v.page ?? 1,
+      per_page: v.per_page ?? 50,
+    }),
+  )
+
+export interface CurationPlacesQuery {
+  q: string | null
+  origen: z.infer<typeof PlaceOriginSchema>[]
+  tipo: z.infer<typeof PlaceKindSchema>[]
+  faltan: z.infer<typeof PlaceMissingFieldSchema>[]
+  page: number
+  per_page: number
+}
+
+/** Query params de `listPlaces`. */
+export const CurationPlacesQuerySchema = z
+  .object({
+    q: z.string().max(100, 'q admite hasta 100 caracteres').optional(),
+    origen: csv(PlaceOriginSchema),
+    tipo: csv(PlaceKindSchema),
+    faltan: csv(PlaceMissingFieldSchema),
+    ...curationPage,
+  })
+  .transform(
+    (v): CurationPlacesQuery => ({
+      q: v.q ? v.q : null,
+      origen: v.origen ?? [],
+      tipo: v.tipo ?? [],
+      faltan: v.faltan ?? [],
+      page: v.page ?? 1,
+      per_page: v.per_page ?? 50,
+    }),
+  )

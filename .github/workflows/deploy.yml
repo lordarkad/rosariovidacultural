@@ -93,6 +93,7 @@ jobs:
         run: npm -w apps/web run build
         env:
           VITE_API_URL: https://rosariovidacultural-api-staging.dry-brook-7eef.workers.dev/api
+          VITE_ENV_LABEL: staging
           VITE_MAPTILER_KEY: ${{ secrets.MAPTILER_KEY }}
       - name: Deploy (Pages)
         run: npx wrangler pages deploy apps/web/dist --project-name rosariovidacultural-web-staging --branch main
