@@ -1,0 +1,29 @@
+<template>
+  <nav aria-label="Secciones" class="fixed inset-x-0 bottom-0 z-10 border-t border-line bg-surface-card">
+    <ul class="mx-auto flex max-w-xl">
+      <li v-for="tab in tabs" :key="tab.to" class="flex-1">
+        <RouterLink
+          :to="tab.to"
+          class="flex min-h-14 items-center justify-center text-sm font-semibold"
+          :class="isActive(tab.to) ? 'text-ink underline decoration-primary decoration-4 underline-offset-8' : 'text-ink-muted'"
+          :aria-current="isActive(tab.to) ? 'page' : undefined"
+        >
+          {{ tab.label }}
+        </RouterLink>
+      </li>
+    </ul>
+  </nav>
+</template>
+
+<script setup lang="ts">
+import { RouterLink, useRoute } from 'vue-router'
+
+const tabs = [
+  { to: '/', label: 'Buscar' },
+  { to: '/zona', label: 'Zona' },
+  { to: '/resultados', label: 'Resultados' },
+]
+
+const route = useRoute()
+const isActive = (to: string): boolean => (to === '/' ? route.path === '/' : route.path.startsWith(to))
+</script>

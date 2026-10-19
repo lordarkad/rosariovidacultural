@@ -58,3 +58,17 @@ const BAND_LABELS: Record<string, string> = {
 export function bandLabel(band: string): string {
   return BAND_LABELS[band] ?? 'Más'
 }
+
+const PLACE_KIND_LABELS: Record<string, string> = {
+  restaurante: 'Restaurante',
+  bar: 'Bar',
+  cafe: 'Café',
+  heladeria: 'Heladería',
+  comida_rapida: 'Comida rápida',
+  sala: 'Sala',
+}
+
+/** Tipo de lugar para la meta («Bar · 850 m», S2-11); uno desconocido o «otro» no se rotula. */
+export function placeKindLabel(kind: string | null | undefined): string | null {
+  return kind ? (PLACE_KIND_LABELS[kind] ?? null) : null
+}
