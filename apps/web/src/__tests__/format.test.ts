@@ -6,6 +6,7 @@ import {
   formatPrice,
   formatTime,
   formatWalk,
+  placeKindLabel,
   todayInBuenosAires,
 } from '@/lib/format'
 
@@ -44,5 +45,12 @@ describe('formateadores es-AR', () => {
     expect(bandLabel('esta_noche')).toBe('Esta noche')
     expect(bandLabel('a_confirmar')).toBe('Horario a confirmar')
     expect(bandLabel('inventada')).toBe('Más')
+  })
+
+  it('tipo de lugar: rótulo conocido, nada para «otro» o desconocido (S2-11)', () => {
+    expect(placeKindLabel('bar')).toBe('Bar')
+    expect(placeKindLabel('comida_rapida')).toBe('Comida rápida')
+    expect(placeKindLabel('otro')).toBeNull()
+    expect(placeKindLabel(null)).toBeNull()
   })
 })
