@@ -1,10 +1,20 @@
 import { Hono } from 'hono'
+import { listPlaces } from '../db/curation.repo'
 import { getPlaceDetail } from '../db/detail.repo'
-import { DetailQuerySchema, IdParamSchema } from '../lib/query-schemas'
+import { CurationPlacesQuerySchema, DetailQuerySchema, IdParamSchema } from '../lib/query-schemas'
 import { validate } from '../lib/validate'
 import type { AppEnv } from '../types/app'
 
 const router = new Hono<AppEnv>()
+
+router.get('/', validate('query', CurationPlacesQuerySchema), async (c) => {
+  const q = c.req.valid('query')
+  const { rows, total } = await listPlaces(c.env.DB, q)
+  c.header('X-Total-Count', String(total))
+  c.header('X-Page', String(q.page))
+  c.header('X-Per-Page', String(q.per_page))
+  return c.json({ success: true, data: rows })
+})
 
 router.get('/:id', validate('param', IdParamSchema), validate('query', DetailQuerySchema), async (c) => {
   const { id } = c.req.valid('param')

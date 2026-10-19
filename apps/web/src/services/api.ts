@@ -1,8 +1,16 @@
 import type {
+  CurationEvent,
+  CurationPlace,
   EventDetail,
+  EventMissingField,
+  EventSourceCount,
+  EventState,
   Intent,
   MusicGenre,
   PlaceDetail,
+  PlaceKind,
+  PlaceMissingField,
+  PlaceOrigin,
   SearchItem,
   SearchPin,
   Zone,
@@ -156,4 +164,51 @@ export async function getPlace(
   const hasOrigin = origin?.lat !== undefined && origin.lon !== undefined
   const qs = hasOrigin ? toQueryString({ lat: origin.lat, lon: origin.lon }) : ''
   return (await getEnvelope<PlaceDetail>(`/places/${encodeURIComponent(id)}${qs}`, opts)).data
+}
+
+/** Parámetros de `/events` (listEvents). */
+export interface CurationEventsQuery {
+  q?: string
+  fuente?: string[]
+  estado?: EventState[]
+  faltan?: EventMissingField[]
+  page?: number
+  per_page?: number
+}
+
+/** Parámetros de `/places` (listPlaces). */
+export interface CurationPlacesQuery {
+  q?: string
+  origen?: PlaceOrigin[]
+  tipo?: PlaceKind[]
+  faltan?: PlaceMissingField[]
+  page?: number
+  per_page?: number
+}
+
+export interface ListPage<T> {
+  items: T[]
+  total: number
+  page: number
+  perPage: number
+}
+
+async function getList<T>(path: string, query: { page?: number; per_page?: number }, opts?: RequestOptions): Promise<ListPage<T>> {
+  const { data, headers } = await getEnvelope<T[]>(`${path}${toQueryString(query)}`, opts)
+  return {
+    items: data,
+    total: intHeader(headers, 'X-Total-Count', data.length),
+    page: intHeader(headers, 'X-Page', query.page ?? 1),
+    perPage: intHeader(headers, 'X-Per-Page', query.per_page ?? 50),
+  }
+}
+
+export const listEvents = (query: CurationEventsQuery, opts?: RequestOptions): Promise<ListPage<CurationEvent>> =>
+  getList<CurationEvent>('/events', query, opts)
+
+export const listPlaces = (query: CurationPlacesQuery, opts?: RequestOptions): Promise<ListPage<CurationPlace>> =>
+  getList<CurationPlace>('/places', query, opts)
+
+export async function listEventSources(opts?: RequestOptions): Promise<EventSourceCount[]> {
+  return (await getEnvelope<EventSourceCount[]>('/events/sources', opts)).data
 }

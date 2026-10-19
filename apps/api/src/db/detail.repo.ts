@@ -55,7 +55,7 @@ interface EventDbRow {
   place_lon: number | null
 }
 
-interface SourceDbRow {
+export interface SourceDbRow {
   source_key: string
   source_name: string
   source_url: string
@@ -72,6 +72,27 @@ interface SiblingDbRow {
   place_id: string | null
   place_name: string | null
   place_address: string | null
+}
+
+/**
+ * Links de fuente de un evento: la primaria primero, después las demás fuentes y los «vía», sin repetir URL.
+ * Lo comparten el detalle y el listado de curación para que digan lo mismo.
+ */
+export function buildSourceLinks(primaryKey: string, sources: SourceDbRow[]): SourceLink[] {
+  const ordered = [...sources].sort(
+    (a, b) => Number(b.source_key === primaryKey) - Number(a.source_key === primaryKey) || a.arrival - b.arrival,
+  )
+  const links: SourceLink[] = []
+  const seen = new Set<string>()
+  const push = (l: SourceLink) => {
+    if (!seen.has(l.url)) {
+      seen.add(l.url)
+      links.push(l)
+    }
+  }
+  for (const s of ordered) push({ name: s.source_name, url: s.source_url })
+  for (const s of ordered) for (const v of parse<SourceLink[]>(s.via_json, [])) push(v)
+  return links
 }
 
 /** Dos eventos están en otra sede si difiere el lugar vinculado, o el `venue_name`/`address` normalizado (E-2). */
@@ -126,21 +147,7 @@ export async function getEventDetail(
 
   const lat = r.lat ?? r.place_lat
   const lon = r.lon ?? r.place_lon
-  const sources = sourcesRes!.results as unknown as SourceDbRow[]
-  // la primaria va primero; las demás fuentes y los links «vía» después, sin repetir URL
-  const ordered = [...sources].sort(
-    (a, b) => Number(b.source_key === r.source_key) - Number(a.source_key === r.source_key) || a.arrival - b.arrival,
-  )
-  const links: SourceLink[] = []
-  const seen = new Set<string>()
-  const push = (l: SourceLink) => {
-    if (!seen.has(l.url)) {
-      seen.add(l.url)
-      links.push(l)
-    }
-  }
-  for (const s of ordered) push({ name: s.source_name, url: s.source_url })
-  for (const s of ordered) for (const v of parse<SourceLink[]>(s.via_json, [])) push(v)
+  const links = buildSourceLinks(r.source_key, sourcesRes!.results as unknown as SourceDbRow[])
 
   const mine = sedeKey(r)
   const also_at = (siblingsRes!.results as unknown as SiblingDbRow[])
