@@ -147,6 +147,13 @@ export async function getEvent(
   return (await getEnvelope<EventDetail>(`/events/${encodeURIComponent(id)}${qs}`, opts)).data
 }
 
-export async function getPlace(id: string, opts?: RequestOptions): Promise<PlaceDetail> {
-  return (await getEnvelope<PlaceDetail>(`/places/${encodeURIComponent(id)}`, opts)).data
+/** Igual que `getEvent`: sin el par completo `lat`/`lon` no se envía ninguno y no hay distancia (L-2). */
+export async function getPlace(
+  id: string,
+  origin?: { lat?: number; lon?: number } | null,
+  opts?: RequestOptions,
+): Promise<PlaceDetail> {
+  const hasOrigin = origin?.lat !== undefined && origin.lon !== undefined
+  const qs = hasOrigin ? toQueryString({ lat: origin.lat, lon: origin.lon }) : ''
+  return (await getEnvelope<PlaceDetail>(`/places/${encodeURIComponent(id)}${qs}`, opts)).data
 }

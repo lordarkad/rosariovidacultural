@@ -41,7 +41,7 @@ import {
 
 const props = defineProps<{ item: SearchItem; selected?: boolean; origin?: Origin | null }>()
 
-// Solo los eventos tienen Detalle por ahora (S4-2): un lugar se ve igual pero sin enlace.
+// Eventos y lugares tienen Detalle (S4-2, L-1); un `kind` desconocido se ve igual pero sin enlace.
 const to = computed(() => detailLink(props.item.kind, props.item.id, props.origin))
 const kindLabel = computed(() => ({ event: 'Evento', place: 'Lugar' })[props.item.kind as string] ?? null)
 const price = computed(() => formatPrice(props.item.price_status, props.item.price_from_ars))

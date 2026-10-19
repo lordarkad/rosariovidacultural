@@ -8,7 +8,7 @@ const asOrigin = (lat: unknown, lon: unknown): Origin | null =>
   validCoord(lat, 90) && validCoord(lon, 180) ? { lat: round5n(lat), lon: round5n(lon) } : null
 
 /**
- * Destino del enlace al Detalle (S4-2, S4-3). Los lugares no tienen Detalle todavía: `null`.
+ * Destino del enlace al Detalle (S4-2, S4-3, L-1): `/e/:id` para eventos y `/l/:id` para lugares; otro `kind`, `null`.
  * La URL es siempre canónica; el origen de la distancia viaja en el `state`, nunca en la URL.
  */
 export function detailLink(
@@ -16,9 +16,9 @@ export function detailLink(
   id: string,
   origin?: Partial<Origin> | null,
 ): { path: string; state: { origin?: Origin } } | null {
-  if (kind !== 'event') return null
+  if (kind !== 'event' && kind !== 'place') return null
   const o = origin ? asOrigin(origin.lat, origin.lon) : null
-  return { path: `/e/${id}`, state: o ? { origin: o } : {} }
+  return { path: `${kind === 'event' ? '/e' : '/l'}/${id}`, state: o ? { origin: o } : {} }
 }
 
 /** Origen de referencia desde la búsqueda: el centro de la zona o las coordenadas (S4-3). */
@@ -33,10 +33,23 @@ export function originFromState(state: unknown): Origin | null {
   return o ? asOrigin(o.lat, o.lon) : null
 }
 
-/** «Volver»: `router.back()` solo si la entrada anterior es Resultados (S4-5); si no, va a Resultados. */
-export function backTarget(historyState: { back?: string | null } | null): 'back' | '/resultados' {
+export interface BackTarget {
+  /** `back` = `router.back()`; `push` = ir a `/resultados`. */
+  action: 'back' | 'push'
+  label: 'lugar' | 'resultados'
+}
+
+/**
+ * «Volver» (S4-5, L-3): `router.back()` solo si la entrada anterior es Resultados o, desde un evento, un lugar.
+ * Cualquier otro origen (entrada directa, Home, Zona, otro evento) va a Resultados.
+ */
+export function backTarget(historyState: { back?: string | null } | null, desde: 'evento' | 'lugar'): BackTarget {
   const back = historyState?.back
-  return typeof back === 'string' && /^\/resultados(?:[?#]|$)/.test(back) ? 'back' : '/resultados'
+  if (typeof back === 'string') {
+    if (/^\/resultados(?:[?#]|$)/.test(back)) return { action: 'back', label: 'resultados' }
+    if (desde === 'evento' && /^\/l\/[^/?#]+(?:[?#]|$)/.test(back)) return { action: 'back', label: 'lugar' }
+  }
+  return { action: 'push', label: 'resultados' }
 }
 
 export type TabId = 'buscar' | 'zona' | 'resultados'

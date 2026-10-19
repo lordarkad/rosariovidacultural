@@ -10,7 +10,7 @@ vi.mock('@/services/api', async () => {
   return { ...actual, getEvent: vi.fn() }
 })
 
-import { getEvent } from '@/services/api'
+import { ApiError, getEvent } from '@/services/api'
 import { originFromState } from '@/lib/detail'
 import EventoView from '@/views/EventoView.vue'
 
@@ -25,6 +25,7 @@ const ev = (id: string, extra: Partial<EventDetail> = {}) =>
     start_time: '21:00',
     date_text: null,
     venue_name: 'Sala A',
+    place: null,
     address: null,
     lat: -32.9,
     lon: -60.6,
@@ -49,6 +50,7 @@ async function mount(path: string): Promise<void> {
     history: createMemoryHistory(),
     routes: [
       { path: '/e/:id', component: EventoView, meta: { tab: 'resultados' } },
+      { path: '/l/:id', component: { template: '<div />' } },
       { path: '/resultados', component: { template: '<div />' } },
     ],
   })
@@ -87,6 +89,63 @@ describe('EventoView', () => {
     vi.mocked(getEvent).mockResolvedValue(ev('b', { is_stale: false }))
     await mount('/e/b')
     expect(root.textContent).not.toContain('Datos de ayer')
+  })
+
+  it('[AC-15] con place el nombre del lugar enlaza a /l/:id con el origen en el state; sin place es texto', async () => {
+    history.replaceState({ origin: { lat: -32.9, lon: -60.6 } }, '')
+    vi.mocked(getEvent).mockResolvedValue(ev('a', { place: { id: 'p1', name: 'Bar Uno' } }))
+    await mount('/e/a')
+    const link = [...root.querySelectorAll<HTMLAnchorElement>('a')].find((a) => a.textContent?.trim() === 'Bar Uno')!
+    expect(link.getAttribute('href')).toBe('/l/p1')
+    const spy = vi.spyOn(router, 'push')
+    link.click()
+    await vi.waitFor(() => expect(spy).toHaveBeenCalled())
+    expect((spy.mock.calls[0]![0] as { state?: { origin?: unknown } }).state?.origin).toEqual({ lat: -32.9, lon: -60.6 })
+    app.unmount()
+    root.remove()
+
+    vi.mocked(getEvent).mockResolvedValue(ev('b', { place: null }))
+    await mount('/e/b')
+    expect([...root.querySelectorAll('a')].some((a) => a.getAttribute('href')?.startsWith('/l/'))).toBe(false)
+    expect(root.textContent).toContain('Sala A')
+  })
+
+  it('[AC-14] «Volver» rotula «a resultados» en una entrada directa y los tres estados lo ofrecen', async () => {
+    vi.mocked(getEvent).mockResolvedValue(ev('a'))
+    await mount('/e/a')
+    expect([...root.querySelectorAll('button')].some((b) => b.textContent?.includes('Volver a resultados'))).toBe(true)
+    app.unmount()
+    root.remove()
+
+    vi.mocked(getEvent).mockRejectedValue(new ApiError(404, 'x'))
+    await mount('/e/x')
+    expect([...root.querySelectorAll('button')].some((b) => b.textContent?.includes('Volver'))).toBe(true)
+  })
+
+  it('[AC-14] llegado desde un lugar, «Volver» se rotula «Volver al lugar» y hace router.back()', async () => {
+    vi.mocked(getEvent).mockResolvedValue(ev('a'))
+    // `backTarget` lee `window.history.state`, que la memory history no escribe
+    router = createRouter({
+      history: createWebHistory(),
+      routes: [
+        { path: '/e/:id', component: EventoView, meta: { tab: 'resultados' } },
+        { path: '/l/:id', component: { template: '<div />' } },
+        { path: '/resultados', component: { template: '<div />' } },
+      ],
+    })
+    app = createApp({ template: '<RouterView />' })
+    app.use(createPinia()).use(PrimeVue).use(router)
+    root = document.createElement('div')
+    document.body.appendChild(root)
+    await router.push('/l/p1')
+    await router.push('/e/a')
+    app.mount(root)
+    await vi.waitFor(() => expect(root.querySelector('h1')).not.toBeNull())
+    const back = [...root.querySelectorAll('button')].find((b) => b.textContent?.includes('Volver al lugar'))!
+    expect(back).toBeDefined()
+    const spy = vi.spyOn(router, 'back')
+    back.click()
+    expect(spy).toHaveBeenCalled()
   })
 
   it('[AC-11] sin hermanos no hay bloque; con hermanos enlazan a su /e/:id y «Otra sede» sin nombre', async () => {
