@@ -11,7 +11,7 @@
 - `npm test` → ✅ (500 tests, 45 archivos)
 - Smoke local con `wrangler dev` (Paso 4.5): no ejecutado. Las queries con `JOIN` se ejercitan contra D1 real con las migraciones aplicadas (`curation.d1.test.ts`, pool `@cloudflare/vitest-pool-workers`), que es el equivalente de [AC-21]
 - Stores (Paso 6): `curation.store` con `loading`/`error` obligatorios, `loading = false` en `finally`, errores capturados, sin `throw` → ✅
-- Snyk Code: no ejecutado (el MCP pide autenticación interactiva)
+- Snyk Code (`snyk code test apps --severity-threshold=medium`, CLI) → ✅ 0 issues
 
 ## Cobertura de AC
 | AC | Test(s) que lo citan | Resultado |
@@ -41,4 +41,4 @@ Un agente `tript-code-reviewer` sobre el diff: sin hallazgos críticos. Cuatro i
 - Lectura de los filtros y del CSV en un navegador real y en Excel.
 
 ## Resultado
-⚠️ verificado con excepciones documentadas arriba (QA visual, Excel y Snyk pendientes). El review aplicado sobre sus propios hallazgos no se re-ejecutó.
+⚠️ verificado con excepciones documentadas arriba (QA visual y Excel pendientes). El review aplicado sobre sus propios hallazgos no se re-ejecutó.
