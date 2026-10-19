@@ -139,6 +139,12 @@ function syncData(): void {
 function fit(): void {
   if (!map || !maplibre) return
   const duration = reducedMotion() ? 0 : 400
+  const { clientWidth: w, clientHeight: h } = map.getContainer()
+  // Sin tamaño todavía (layout en curso): se reintenta apenas el mapa se mide.
+  if (!w || !h) {
+    map.once('resize', fit)
+    return
+  }
   const c = props.center
   const points: [number, number][] =
     c && props.radiusM
@@ -151,7 +157,19 @@ function fit(): void {
   }
   const b = new maplibre.LngLatBounds(points[0]!, points[0]!)
   for (const p of points) b.extend(p)
-  map.fitBounds(b as LngLatBoundsLike, { padding: props.padding ?? 48, maxZoom: 16, duration })
+  map.fitBounds(b as LngLatBoundsLike, { padding: fitPadding(w, h), maxZoom: 16, duration })
+}
+
+/** El margen pedido no puede comerse el lienzo: si no entra, se reduce en proporción (MapLibre avisa y no encuadra). */
+function fitPadding(w: number, h: number): { top: number; bottom: number; left: number; right: number } {
+  const p = props.padding ?? { top: 48, bottom: 48, left: 48, right: 48 }
+  const scale = (a: number, b: number, size: number): [number, number] => {
+    const max = size * 0.7
+    return a + b > max ? [(a / (a + b)) * max, (b / (a + b)) * max] : [a, b]
+  }
+  const [top, bottom] = scale(p.top, p.bottom, h)
+  const [left, right] = scale(p.left, p.right, w)
+  return { top, bottom, left, right }
 }
 
 function apply(): void {
@@ -192,6 +210,10 @@ onMounted(async () => {
     // Clave inválida o sin red: se muestra el aviso en vez de un mapa gris.
     const status = (e.error as { status?: number } | undefined)?.status
     if (status === 401 || status === 403) unavailable.value = true
+  })
+  // El estilo pide algún ícono de sprite sin nombre que no existe: se registra uno transparente en vez de avisar.
+  m.on('styleimagemissing', (e) => {
+    if (!m.hasImage(e.id)) m.addImage(e.id, { width: 1, height: 1, data: new Uint8Array(4) })
   })
   m.on('style.load', () => {
     addLayers(m)
