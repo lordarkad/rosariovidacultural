@@ -13,6 +13,8 @@ tags:
     description: Zonas, eventos y lugares
   - name: search
     description: Búsqueda para el sitio público
+  - name: curation
+    description: Listados completos de eventos y lugares para revisar la ingesta (sin filtros de intención ni ubicación)
   - name: ingest
     description: Ingesta desde `ingestion/` (autenticada)
 
@@ -225,6 +227,220 @@ paths:
           $ref: "#/components/responses/BadRequest"
         "404":
           $ref: "#/components/responses/NotFound"
+        "500":
+          $ref: "#/components/responses/ServerError"
+
+  /events:
+    get:
+      operationId: listEvents
+      summary: Listado completo de eventos para curación (vigentes y pasados)
+      description: |
+        Alimenta `/curacion/eventos` del sitio (revisar la ingesta con un equipo de voluntarios). **No es la búsqueda**:
+        no filtra por intención, ventana ni ubicación, y **incluye los eventos pasados y los vencidos**: `searchItems` oculta los
+        pasados y los vencidos, y `getEvent` solo los vencidos (`sin_ver`). Sin autenticación, datos ya públicos. Solo lectura.
+
+        **Estado (`estado`).** Se calcula en `America/Argentina/Buenos_Aires` con el día de negocio de `searchItems`
+        (de 06:00 a 06:00) y se evalúa en este orden:
+        1. `sin_ver`: `last_seen_at` de hace más de 7 días (vencimiento E-9). `getEvent` responde 404 para estos.
+        2. `pasado`: no está `sin_ver` y `end_date` es anterior al día de negocio actual.
+        3. `vigente`: el resto (incluye eventos en curso y futuros).
+        Un evento `pasado` todavía abre en `/e/:id` hasta que pasan 7 días sin verse.
+
+        **Lugar y datos efectivos.** Como en `getEvent`, el lugar vinculado es el que resuelve `place_source_key`
+        contra las claves de los lugares; `venue_name`, `address`, `lat` y `lon` devueltos son los del evento y, si
+        faltan, los del lugar vinculado (los propios del evento tienen prioridad).
+
+        **Faltantes (`faltan`).** Filtro de unión: devuelve los eventos a los que les falta **cualquiera** de los campos
+        pedidos. `imagen`: sin `image_url`. `hora`: sin `start_time`. `precio`: `price_status = unknown`.
+        `descripcion`: sin descripción o vacía. `direccion`: sin dirección efectiva. `coordenadas`: sin `lat`/`lon`
+        efectivas. `lugar`: sin lugar vinculado **y** sin `venue_name`, dirección ni coordenadas efectivas (no se puede
+        decir dónde es). Cada ítem trae `missing` con todos los campos que le faltan, haya o no filtro.
+
+        **Orden fijo.** Tres grupos en el orden de `EventState` (`vigente`, `pasado`, `sin_ver`); dentro de cada grupo `start_date` ascendente,
+        `start_time` ascendente (sin hora al final), título normalizado e `id` como desempate final (la paginación es
+        estable). No hay parámetro de orden.
+
+        **Búsqueda (`q`).** Se normaliza igual que en `searchItems` (sin tildes, mayúsculas ni signos) y busca como
+        subcadena sobre título, sede, dirección y nombre de la fuente; sede y dirección son las efectivas (ver arriba).
+        Si `q` normalizado queda vacío (por ejemplo `%` o `!!!`) se ignora, igual que en `searchItems`: equivale a no enviarlo.
+
+        Paginación: el envelope obliga a que `data` sea el array, así que el total viaja en `X-Total-Count`, `X-Page` y
+        `X-Per-Page`. Una página más allá de la última es 200 con `data: []`. El cliente que exporta todo lo filtrado
+        (CSV) recorre las páginas con `per_page=100`. El orden depende de `estado`, que se recalcula con la hora de
+        cada pedido: si la ingesta o el cambio de día de negocio mueven un evento de grupo entre dos páginas, el
+        recorrido puede repetir u omitir filas. Por eso el cliente que recorre debe deduplicar por `id` y verificar que las filas únicas igualen `X-Total-Count`; un total distinto entre páginas o un conteo final distinto invalidan el recorrido.
+      tags: [curation]
+      security: []
+      parameters:
+        - $ref: "#/components/parameters/TextoLibre"
+        - name: fuente
+          in: query
+          description: "Nombres de fuente primaria (`CurationEvent.source_name`, los de `listEventSources`), separados por coma. Unión. Coincidencia exacta."
+          style: form
+          explode: false
+          schema:
+            type: array
+            items: { type: string, maxLength: 100 }
+            maxItems: 20
+        - name: estado
+          in: query
+          description: "Estados, separados por coma. Unión. Sin el parámetro, todos."
+          style: form
+          explode: false
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/EventState"
+        - name: faltan
+          in: query
+          description: "Campos faltantes, separados por coma. Unión: al evento le falta cualquiera de ellos."
+          style: form
+          explode: false
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/EventMissingField"
+        - $ref: "#/components/parameters/CurationPage"
+        - $ref: "#/components/parameters/CurationPerPage"
+      responses:
+        "200":
+          description: Página de eventos
+          headers:
+            X-Total-Count:
+              description: Total de eventos que cumplen los filtros (todas las páginas)
+              schema: { type: integer, minimum: 0 }
+            X-Page:
+              schema: { type: integer, minimum: 1 }
+            X-Per-Page:
+              schema: { type: integer, minimum: 1 }
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [success, data]
+                properties:
+                  success:
+                    type: boolean
+                    enum: [true]
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/CurationEvent"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/ServerError"
+
+  /events/sources:
+    get:
+      operationId: listEventSources
+      summary: Fuentes primarias de eventos con su cantidad (opciones del filtro `fuente`)
+      description: |
+        Una fila por `source_name` presente en `events`, con la cantidad de eventos que la tienen como fuente primaria
+        (todos los estados, incluidos pasados y vencidos, y cualquiera sea el tier con que entraron), ordenadas por nombre. Sin paginación: son pocas (hoy 10).
+        Sirve para llenar el filtro de `listEvents` sin mantener la lista de fuentes a mano en el cliente, y para ver de un
+        vistazo cuántos eventos aporta cada fuente.
+      tags: [curation]
+      security: []
+      responses:
+        "200":
+          description: Fuentes
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [success, data]
+                properties:
+                  success:
+                    type: boolean
+                    enum: [true]
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/EventSourceCount"
+        "500":
+          $ref: "#/components/responses/ServerError"
+
+  /places:
+    get:
+      operationId: listPlaces
+      summary: Listado completo de lugares para curación
+      description: |
+        Alimenta `/curacion/lugares`. Devuelve **todos** los lugares cargados (los lugares no vencen), sin filtro de
+        intención, ventana ni ubicación. Sin autenticación, datos ya públicos. Solo lectura. `lat`/`lon` de un lugar
+        curado sin coordenadas cargadas a mano las deriva la ingesta (mediana de las de sus eventos, o geocodificación) y
+        cambian entre corridas; la API hoy no distingue esas coordenadas de las cargadas.
+
+        **Faltantes (`faltan`).** Unión: devuelve los lugares a los que les falta **cualquiera** de los campos pedidos.
+        `imagen`: sin `image_url`. `horario`: sin `opening_hours` estructurado (aunque tenga `hours_text` crudo; sin
+        estructura no se puede calcular «abierto ahora»). `direccion`: sin `address`. `telefono`: sin `phone`. `web`:
+        sin `website`. `cocina`: `cuisine` vacío. `nota`: sin `note`. Cada ítem trae `missing` con todos los que le
+        faltan, haya o no filtro.
+
+        **Orden fijo.** Nombre normalizado ascendente e `id` como desempate final. No hay parámetro de orden.
+
+        **Búsqueda (`q`).** Igual que en `listEvents`, sobre nombre y dirección.
+
+        Paginación y página fuera de rango: igual que `listEvents`.
+      tags: [curation]
+      security: []
+      parameters:
+        - $ref: "#/components/parameters/TextoLibre"
+        - name: origen
+          in: query
+          description: "Origen de los datos, separado por coma. Unión."
+          style: form
+          explode: false
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/PlaceOrigin"
+        - name: tipo
+          in: query
+          description: "Tipo de lugar, separado por coma. Unión."
+          style: form
+          explode: false
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/PlaceKind"
+        - name: faltan
+          in: query
+          description: "Campos faltantes, separados por coma. Unión: al lugar le falta cualquiera de ellos."
+          style: form
+          explode: false
+          schema:
+            type: array
+            items:
+              $ref: "#/components/schemas/PlaceMissingField"
+        - $ref: "#/components/parameters/CurationPage"
+        - $ref: "#/components/parameters/CurationPerPage"
+      responses:
+        "200":
+          description: Página de lugares
+          headers:
+            X-Total-Count:
+              description: Total de lugares que cumplen los filtros (todas las páginas)
+              schema: { type: integer, minimum: 0 }
+            X-Page:
+              schema: { type: integer, minimum: 1 }
+            X-Per-Page:
+              schema: { type: integer, minimum: 1 }
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [success, data]
+                properties:
+                  success:
+                    type: boolean
+                    enum: [true]
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/CurationPlace"
+        "400":
+          $ref: "#/components/responses/BadRequest"
         "500":
           $ref: "#/components/responses/ServerError"
 
@@ -480,6 +696,16 @@ components:
       in: query
       description: "Texto libre sobre título, lugar y dirección."
       schema: { type: string, maxLength: 100 }
+
+    CurationPage:
+      name: page
+      in: query
+      schema: { type: integer, minimum: 1, maximum: 10000, default: 1 }
+    CurationPerPage:
+      name: per_page
+      in: query
+      description: "Filas por página. Default 50 (el listado de curación); máximo 100."
+      schema: { type: integer, minimum: 1, maximum: 100, default: 50 }
 
   schemas:
     HealthData:
@@ -901,6 +1127,176 @@ components:
           type: string
           format: date-time
           description: Informativo. Los lugares no vencen ni tienen aviso de «datos de ayer».
+
+    EventState:
+      type: string
+      enum: [vigente, pasado, sin_ver]
+      description: "Estado de un evento en el listado de curación. Reglas y precedencia en la descripción de `listEvents`: `sin_ver` (más de 7 días sin verse), `pasado` (`end_date` anterior al día de negocio) y `vigente`."
+
+    EventMissingField:
+      type: string
+      enum: [imagen, lugar, hora, precio, descripcion, direccion, coordenadas]
+      description: Campo faltante de un evento. Definiciones en la descripción de `listEvents`.
+
+    PlaceMissingField:
+      type: string
+      enum: [imagen, horario, direccion, telefono, web, cocina, nota]
+      description: Campo faltante de un lugar. Definiciones en la descripción de `listPlaces`.
+
+    EventSourceCount:
+      type: object
+      required: [name, count]
+      properties:
+        name:
+          type: string
+          description: Valor de `source_name`, el que acepta el filtro `fuente`.
+        count:
+          type: integer
+          minimum: 1
+
+    CurationEvent:
+      type: object
+      required: [id, title, description, intents, music_genres, estado, start_date, end_date, start_time, date_text, venue_name, address, lat, lon, place, price_status, price_from_ars, image_url, source_name, source_tier, sources, last_seen_at, missing]
+      description: Todas las claves se devuelven siempre; «no informado» es `null`, nunca una clave ausente.
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Abre en `/e/:id` mientras el evento no esté `sin_ver`.
+        title:
+          type: string
+        description:
+          type: [string, "null"]
+        intents:
+          type: array
+          items:
+            $ref: "#/components/schemas/Intent"
+        music_genres:
+          type: array
+          items:
+            $ref: "#/components/schemas/MusicGenre"
+        estado:
+          $ref: "#/components/schemas/EventState"
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        start_time:
+          $ref: "#/components/schemas/TimeOfDay"
+        date_text:
+          type: [string, "null"]
+          description: Texto original de la fuente.
+        venue_name:
+          type: [string, "null"]
+          description: El del evento o, si falta, el del lugar vinculado.
+        address:
+          type: [string, "null"]
+          description: La del evento o, si falta, la del lugar vinculado.
+        lat:
+          type: [number, "null"]
+          format: double
+          description: La del evento o, si falta, la del lugar vinculado.
+        lon:
+          type: [number, "null"]
+          format: double
+        place:
+          description: Lugar vinculado por la ingesta, si lo resolvió.
+          oneOf:
+            - $ref: "#/components/schemas/PlaceRef"
+            - type: "null"
+        price_status:
+          $ref: "#/components/schemas/PriceStatus"
+        price_from_ars:
+          type: [integer, "null"]
+          minimum: 0
+        image_url:
+          type: [string, "null"]
+          format: uri
+        source_name:
+          type: string
+          description: Fuente primaria (la misma que `sources[0].name`).
+        source_tier:
+          $ref: "#/components/schemas/SourceTier"
+        sources:
+          type: array
+          minItems: 1
+          description: Misma regla que `EventDetail.sources`. La primera es la fuente primaria; el resto son las vías (`sources.length - 1`).
+          items:
+            $ref: "#/components/schemas/SourceLink"
+        last_seen_at:
+          type: string
+          format: date-time
+        missing:
+          type: array
+          description: Todos los campos faltantes del evento, en el orden de `EventMissingField`.
+          items:
+            $ref: "#/components/schemas/EventMissingField"
+
+    CurationPlace:
+      type: object
+      required: [id, name, kind, origin, intents, offers, cuisine, address, lat, lon, has_opening_hours, hours_text, phone, website, instagram, outdoor, note, image_url, last_seen_at, missing]
+      description: Todas las claves se devuelven siempre; «no informado» es `null`, nunca una clave ausente.
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Abre en `/l/:id`.
+        name:
+          type: string
+        kind:
+          $ref: "#/components/schemas/PlaceKind"
+        origin:
+          $ref: "#/components/schemas/PlaceOrigin"
+        intents:
+          type: array
+          items:
+            $ref: "#/components/schemas/Intent"
+        offers:
+          type: array
+          items:
+            $ref: "#/components/schemas/PlaceOffer"
+        cuisine:
+          type: array
+          items:
+            type: string
+        address:
+          type: [string, "null"]
+        lat:
+          type: number
+          format: double
+        lon:
+          type: number
+          format: double
+        has_opening_hours:
+          type: boolean
+          description: "`true` si hay `opening_hours` estructurado (el detalle público puede decir si está abierto). El detalle de los períodos queda en `getPlace`."
+        hours_text:
+          type: [string, "null"]
+        phone:
+          type: [string, "null"]
+        website:
+          type: [string, "null"]
+          format: uri
+        instagram:
+          type: [string, "null"]
+          description: Usuario sin @.
+        outdoor:
+          type: [boolean, "null"]
+        note:
+          type: [string, "null"]
+        image_url:
+          type: [string, "null"]
+          format: uri
+        last_seen_at:
+          type: string
+          format: date-time
+        missing:
+          type: array
+          description: Todos los campos faltantes del lugar, en el orden de `PlaceMissingField`.
+          items:
+            $ref: "#/components/schemas/PlaceMissingField"
 
     IngestBatch:
       type: object

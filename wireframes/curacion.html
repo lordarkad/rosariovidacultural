@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rosario, qué hacer — Curación (wireframe)</title>
+<link rel="stylesheet" href="shared.css">
+<style>
+  .cur { font-size: 13px; }
+  .cur .env { background: #e8e8e8; border-bottom: 1px solid var(--box-b); padding: 6px 20px; font: 10px ui-monospace, Menlo, Consolas, monospace; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); display: flex; justify-content: space-between; }
+  .cur .head { padding: 16px 24px 0; display: flex; align-items: flex-end; justify-content: space-between; border-bottom: 1px solid var(--hair); }
+  .cur h2 { font: 600 22px system-ui, sans-serif; padding-bottom: 12px; }
+  .cur .tabs { display: flex; gap: 4px; }
+  .cur .tabs span { padding: 10px 18px; border: 1px solid var(--hair); border-bottom: 0; font: 10px ui-monospace, Menlo, Consolas, monospace; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+  .cur .tabs span.on { background: #fff; color: var(--ink); border-color: var(--ink); font-weight: 700; }
+  .cur .bar { display: flex; gap: 8px; align-items: center; padding: 14px 24px; flex-wrap: wrap; }
+  .cur .in { border: 1.5px solid #aaa; padding: 0 12px; height: 36px; display: flex; align-items: center; font: 11px ui-monospace, Menlo, Consolas, monospace; color: var(--muted); min-width: 120px; }
+  .cur .in.s { width: 280px; }
+  .cur .in.on { border-color: var(--ink); color: var(--ink); background: #eee; }
+  .cur .meta { padding: 0 24px 8px; font: 11px ui-monospace, Menlo, Consolas, monospace; color: var(--muted); display: flex; justify-content: space-between; }
+  .cur table { border-collapse: collapse; width: calc(100% - 48px); margin: 0 24px; }
+  .cur th { text-align: left; font: 10px ui-monospace, Menlo, Consolas, monospace; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); padding: 8px 10px; border-bottom: 2px solid var(--ink); white-space: nowrap; }
+  .cur th.sort::after { content: " \25BC"; }
+  .cur td { padding: 9px 10px; border-bottom: 1px solid var(--hair); vertical-align: middle; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 260px; }
+  .cur tr.past td { color: #aaa; }
+  .cur td a { color: var(--ink); text-decoration: underline; }
+  .cur .none { color: #bbb; }
+  .cur .pager { display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; font: 11px ui-monospace, Menlo, Consolas, monospace; color: var(--muted); }
+  .cur .miss { display: inline-block; border: 1px dashed #777; color: #555; font: 9px ui-monospace, Menlo, Consolas, monospace; text-transform: uppercase; padding: 1px 5px; margin-right: 3px; }
+  .cur .st { display: inline-block; border: 1px solid #444; font: 9px ui-monospace, Menlo, Consolas, monospace; text-transform: uppercase; letter-spacing: .06em; padding: 2px 6px; }
+  .cur .st.old { border-color: #aaa; color: #999; }
+  .cur .st.stale { border: 2px solid #444; font-weight: 700; }
+  .cur .card2 { border: 1px solid var(--hair); padding: 12px; display: flex; flex-direction: column; gap: 6px; margin: 0 16px 10px; }
+  .cur .card2.past { color: #aaa; }
+  .cur .state-box { margin: 60px auto; max-width: 360px; text-align: center; border: 1px dashed #aaa; padding: 28px 20px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+  .cur .state-box b { display: block; color: var(--ink); font-size: 15px; margin-bottom: 6px; }
+  .cur .sk { height: 14px; background: var(--line-d); margin: 14px 24px; border-radius: 2px; }
+  .legend { font: 11px ui-monospace, Menlo, Consolas, monospace; color: var(--muted); margin: 8px 0 0; }
+</style>
+</head>
+<body>
+<div class="draft-banner">BORRADOR — WIREFRAME GENERADO CON /tript-wireframe-brief <span>· aprobado por el owner · 2026-10-19 · grayscale, sin tokens de marca · no representa diseño final</span></div>
+<nav class="screens" aria-label="Pantallas"><a href="index.html">Índice</a><span class="grp">Herramienta interna</span><a href="curacion.html" class="active">Curación (eventos y lugares)</a></nav>
+<main class="page">
+<h1>Curación · Eventos y Lugares</h1>
+<div class="subtitle">Rutas ocultas <code>/curacion/eventos</code> y <code>/curacion/lugares</code>. Solo lectura, con filtros en la URL y exportación CSV. Desktop primero; en móvil la tabla pasa a tarjetas apiladas.</div>
+
+<div class="frames">
+
+<figure><figcaption>Desktop · Eventos (tabla densa)</figcaption>
+<div class="dwrap"><div class="d cur" style="background:#fff">
+  <div class="env"><span>Entorno: STAGING · datos de prueba, no es producción</span><span>noindex · herramienta interna</span></div>
+  <div class="head"><h2>Curación</h2><div class="tabs"><span class="on">Eventos</span><span>Lugares</span></div></div>
+  <div class="bar">
+    <div class="in s">Buscar por título, sede o fuente…</div>
+    <div class="in">Fuente ▾</div>
+    <div class="in on">Estado: Todos ▾</div>
+    <div class="in">Faltan ▾</div>
+    <div class="in">Limpiar filtros</div>
+    <div style="flex:1"></div>
+    <div class="btn pri" style="--h:36">Exportar CSV (312)</div>
+  </div>
+  <div class="meta"><span>312 eventos · filtros activos: ninguno</span><span>Orden: Fecha ▲ (próximos primero)</span></div>
+  <table>
+    <thead><tr><th class="sort">Fecha</th><th>Hora</th><th>Título</th><th>Lugar</th><th>Fuente (+vías)</th><th>Precio</th><th>Estado</th><th>Visto</th><th>Faltan</th></tr></thead>
+    <tbody>
+      <tr><td>mar 21 oct</td><td>22:00</td><td><a>Tango en la Casa del Tango</a></td><td>Casa del Tango</td><td>Rosario en Cartel (+1)</td><td>$ 8.000</td><td><span class="st">Vigente</span></td><td>hoy</td><td><span class="miss">precio</span></td></tr>
+      <tr><td>mié 22 oct</td><td>20:30</td><td><a>Película en cartelera</a></td><td class="none">— sin lugar</td><td>Cinemark Rosario</td><td class="none">—</td><td><span class="st">Vigente</span></td><td>hoy</td><td><span class="miss">lugar</span><span class="miss">precio</span><span class="miss">imagen</span></td></tr>
+      <tr><td>jue 23 oct</td><td class="none">—</td><td><a>Feria de diseño</a></td><td>Mercado del Patio</td><td>Qué Hacemos</td><td>Gratis</td><td><span class="st">Vigente</span></td><td>hoy</td><td><span class="miss">hora</span></td></tr>
+      <tr><td>vie 24 oct</td><td>21:00</td><td><a>Obra de teatro</a></td><td>Teatro Broadway</td><td>Teatro Broadway</td><td class="none">—</td><td><span class="st stale">Sin ver hace +7 d</span></td><td>9 d</td><td><span class="miss">descripción</span></td></tr>
+      <tr class="past"><td>vie 10 oct</td><td>21:00</td><td><a>Recital (pasado)</a></td><td>Showcase Rosario</td><td>Showcase Rosario</td><td>$ 12.000</td><td><span class="st old">Pasado</span></td><td>11 d</td><td>—</td></tr>
+    </tbody>
+  </table>
+  <div class="pager"><span>Mostrando 1–50 de 312</span><span>‹ Anterior · 1 2 3 4 5 6 7 · Siguiente ›</span></div>
+</div></div>
+</figure>
+
+<figure><figcaption>Desktop · Lugares (misma estructura)</figcaption>
+<div class="dwrap"><div class="d cur" style="background:#fff">
+  <div class="env"><span>Entorno: STAGING · datos de prueba, no es producción</span><span>noindex · herramienta interna</span></div>
+  <div class="head"><h2>Curación</h2><div class="tabs"><span>Eventos</span><span class="on">Lugares</span></div></div>
+  <div class="bar">
+    <div class="in s">Buscar por nombre o dirección…</div>
+    <div class="in">Origen: Todos ▾</div>
+    <div class="in">Tipo ▾</div>
+    <div class="in on">Faltan: horario ▾</div>
+    <div class="in">Limpiar filtros</div>
+    <div style="flex:1"></div>
+    <div class="btn pri" style="--h:36">Exportar CSV (1.204)</div>
+  </div>
+  <div class="meta"><span>1.204 lugares · filtros activos: faltan horario</span><span>Orden: Nombre ▲</span></div>
+  <table>
+    <thead><tr><th class="sort">Nombre</th><th>Tipo</th><th>Origen</th><th>Dirección</th><th>Coords</th><th>Cocina / ofrece</th><th>Visto</th><th>Faltan</th></tr></thead>
+    <tbody>
+      <tr><td><a>1965 Café</a></td><td>café</td><td><span class="st old">osm</span></td><td>Mitre 1200</td><td>-32.94, -60.64</td><td>café</td><td>6 d</td><td><span class="miss">horario</span><span class="miss">teléfono</span></td></tr>
+      <tr><td><a>Avgvstvs</a></td><td>restaurante</td><td><span class="st old">osm</span></td><td>Córdoba 1500</td><td>-32.94, -60.65</td><td>sándwiches</td><td>6 d</td><td><span class="miss">horario</span><span class="miss">imagen</span></td></tr>
+      <tr><td><a>Casa Brava</a></td><td>bar</td><td><span class="st">curado</span></td><td class="none">—</td><td>derivadas ⚠</td><td>música, baile</td><td>hoy</td><td><span class="miss">horario</span><span class="miss">dirección</span></td></tr>
+      <tr><td><a>Bon Scott</a></td><td>bar</td><td><span class="st">curado</span></td><td>Laprida 800</td><td>derivadas ⚠</td><td>música en vivo</td><td>hoy</td><td><span class="miss">horario</span></td></tr>
+    </tbody>
+  </table>
+  <div class="pager"><span>Mostrando 1–50 de 1.204</span><span>‹ Anterior · 1 2 3 … 25 · Siguiente ›</span></div>
+</div></div>
+<div class="legend">⚠ «derivadas»: coordenadas de un lugar curado sin lat/lon manual (mediana de eventos o geocode); cambian entre corridas. Supuesto — confirmar.</div>
+</figure>
+
+<figure><figcaption>Mobile · Eventos (tarjetas apiladas)</figcaption>
+  <div class="m cur">
+    <div class="env"><span>STAGING</span><span>interna</span></div>
+    <div class="head"><h2>Curación</h2><div class="tabs"><span class="on">Eventos</span><span>Lugares</span></div></div>
+    <div class="grow scroll">
+      <div class="bar"><div class="in" style="flex:1">Buscar…</div><div class="in" style="min-width:0">Filtros (2) ▾</div></div>
+      <div class="meta"><span>312 eventos</span><span>CSV ⇩</span></div>
+      <div class="card2"><b>Tango en la Casa del Tango</b><span>mar 21 oct · 22:00 · Casa del Tango</span><span><span class="st">Vigente</span> Cartel (+1) · visto hoy</span><span><span class="miss">precio</span></span></div>
+      <div class="card2"><b>Película en cartelera</b><span>mié 22 oct · 20:30 · sin lugar</span><span><span class="st">Vigente</span> Cinemark · visto hoy</span><span><span class="miss">lugar</span><span class="miss">precio</span><span class="miss">imagen</span></span></div>
+      <div class="card2"><b>Obra de teatro</b><span>vie 24 oct · 21:00 · Teatro Broadway</span><span><span class="st stale">Sin ver hace +7 d</span> visto 9 d</span><span><span class="miss">descripción</span></span></div>
+      <div class="card2 past"><b>Recital (pasado)</b><span>vie 10 oct · Showcase</span><span><span class="st old">Pasado</span></span></div>
+      <div class="pager"><span>1–50 de 312</span><span>Siguiente ›</span></div>
+    </div>
+  </div>
+</figure>
+
+<figure><figcaption>Estados (desktop, recorte de la zona de tabla)</figcaption>
+  <div class="cur" style="width:864px;border:1px solid #d0d0d0;background:#fff;padding-bottom:12px">
+    <div class="meta" style="padding-top:12px"><span>Cargando</span></div>
+    <div class="sk" style="width:90%"></div><div class="sk" style="width:80%"></div><div class="sk" style="width:85%"></div>
+    <div class="meta" style="padding-top:12px"><span>Sin resultados (filtros que no coinciden)</span></div>
+    <div class="state-box"><b>Ningún evento coincide con estos filtros</b>Probá quitar un filtro o buscar otro texto.<br><span class="in" style="display:inline-flex;margin-top:12px">Limpiar filtros</span></div>
+    <div class="meta" style="padding-top:12px"><span>Error de carga</span></div>
+    <div class="state-box"><b>No pudimos cargar el listado</b>Revisá tu conexión e intentá de nuevo.<br><span class="in" style="display:inline-flex;margin-top:12px">Reintentar</span></div>
+    <div class="meta" style="padding-top:12px"><span>Catálogo vacío (primera vez / sin ingesta)</span></div>
+    <div class="state-box"><b>Todavía no hay eventos cargados</b>La ingesta diaria no publicó nada en este entorno.</div>
+  </div>
+</figure>
+
+</div>
+</main>
+</body>
+</html>
