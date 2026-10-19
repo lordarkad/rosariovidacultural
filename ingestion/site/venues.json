@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-18T21:33:40+00:00",
+ "generated_at": "2026-10-19T16:08:16+00:00",
  "offers": {
   "musica_en_vivo": "Música en vivo",
   "cena": "Cena",
@@ -98,17 +98,6 @@
    "upcoming_count": 5,
    "upcoming": [
     {
-     "id": "d829bd08d9",
-     "title": "Tango en Calle",
-     "start": "2026-10-18",
-     "date_text": "Del 25 de octubre al 29 de noviembre · Domingo · De 10 a 12 horas",
-     "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/tango-en-calle",
-     "source": "Agenda municipal",
-     "free": true,
-     "price_from": null
-    },
-    {
      "id": "933bf4ec65",
      "title": "Taller de Técnicas de Danza y Composición Instantánea",
      "start": "2026-10-21",
@@ -139,6 +128,17 @@
      "url": "https://www.rosario.gob.ar/inicio/ruben-gomez-y-julian-cicerchia-presentan-doce-retratos",
      "source": "Agenda municipal",
      "free": false,
+     "price_from": null
+    },
+    {
+     "id": "d829bd08d9",
+     "title": "Tango en Calle",
+     "start": "2026-10-25",
+     "date_text": "Del 25 de octubre al 29 de noviembre · Domingo · De 10 a 12 horas",
+     "time": "",
+     "url": "https://www.rosario.gob.ar/inicio/tango-en-calle",
+     "source": "Agenda municipal",
+     "free": true,
      "price_from": null
     },
     {
