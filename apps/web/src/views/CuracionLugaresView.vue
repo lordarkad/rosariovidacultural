@@ -6,11 +6,11 @@
           Buscar
           <input
             type="search"
-            :value="filters.q ?? ''"
+            v-model="draft"
             maxlength="100"
             placeholder="Nombre o dirección"
             class="mt-1 block w-full rounded-input border border-line-strong bg-surface-card px-3 py-2 font-normal"
-            @input="onSearch(($event.target as HTMLInputElement).value)"
+            @input="onSearch(draft)"
           />
         </label>
         <Button label="Exportar CSV" :disabled="store.total === 0 || store.exporting" @click="exportCsv">
@@ -109,7 +109,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import Button from 'primevue/button'
 import Skeleton from 'primevue/skeleton'
@@ -156,6 +156,15 @@ function toggle(key: ListKey, value: string): void {
   const next = current.includes(value) ? current.filter((v) => v !== value) : [...current, value]
   apply({ [key]: next } as Partial<PlacesFilters>)
 }
+
+// El texto que se está escribiendo vive acá: la URL lo recibe con retraso y recortado, y no debe pisar el input.
+const draft = ref(filters.value.q ?? '')
+watch(
+  () => filters.value.q,
+  (q) => {
+    if ((q ?? '') !== draft.value.trim()) draft.value = q ?? ''
+  },
+)
 
 let timer: ReturnType<typeof setTimeout> | undefined
 function onSearch(value: string): void {
