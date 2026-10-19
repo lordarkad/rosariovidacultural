@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-// La URL es la fuente de verdad de la búsqueda (S2-3); el Detalle (`/e/:id`, `/l/:id`) se suma con su slice.
+// La URL es la fuente de verdad de la búsqueda (S2-3). `/e/:id` es el Detalle de evento; `/l/:id` (lugar) llega en el slice 4b.
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     { path: '/', component: () => import('../views/HomeView.vue') },
     { path: '/resultados', component: () => import('../views/ResultadosView.vue') },
+    // El Detalle no es una pestaña: la tab bar marca Resultados (S4-7).
+    { path: '/e/:id', component: () => import('../views/EventoView.vue'), meta: { tab: 'resultados' } },
     { path: '/zona', component: () => import('../views/ZonaView.vue') },
     { path: '/:pathMatch(.*)*', component: () => import('../views/NotFoundView.vue') },
   ],

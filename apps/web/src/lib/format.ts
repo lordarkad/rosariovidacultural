@@ -21,6 +21,43 @@ export function formatDate(date: string): string {
     .replace(/[.,]/g, '')
 }
 
+const MONTHS = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic']
+
+const parts = (date: string): { y: number; m: number; d: number } | null => {
+  const [y, m, d] = date.split('-').map(Number)
+  return y && m && d ? { y, m, d } : null
+}
+
+export interface When {
+  text: string
+  note: string | null
+}
+
+/**
+ * «Cuándo» del Detalle (S4-9): fecha única con hora, o rango de fechas sin hora.
+ * `date_text` va aparte como nota; nunca reemplaza a la fecha.
+ */
+export function formatWhen(e: {
+  start_date: string
+  end_date: string
+  start_time: string | null
+  date_text: string | null
+}): When {
+  const note = e.date_text ? `Según la fuente: ${e.date_text}` : null
+  const a = parts(e.start_date)
+  const b = parts(e.end_date)
+  if (!a || !b) return { text: e.start_date, note }
+
+  if (e.start_date === e.end_date) {
+    const day = formatDate(e.start_date)
+    return { text: `${day.charAt(0).toUpperCase()}${day.slice(1)} · ${e.start_time ?? 'Horario a confirmar'}`, note }
+  }
+
+  const from = `${a.d}${a.m !== b.m || a.y !== b.y ? ` ${MONTHS[a.m - 1]}` : ''}${a.y !== b.y ? ` ${a.y}` : ''}`
+  const to = `${b.d} ${MONTHS[b.m - 1]}${a.y !== b.y ? ` ${b.y}` : ''}`
+  return { text: `Del ${from} al ${to}`, note }
+}
+
 /** `HH:MM` o `null` («horario no informado») → «21:30 h» o `null`. */
 export function formatTime(time: string | null | undefined): string | null {
   return time ? `${time} h` : null

@@ -136,8 +136,15 @@ export async function searchPins(
   }
 }
 
-export async function getEvent(id: string, opts?: RequestOptions): Promise<EventDetail> {
-  return (await getEnvelope<EventDetail>(`/events/${encodeURIComponent(id)}`, opts)).data
+/** `origin` (lat+lon) calcula la distancia; si falta alguno de los dos no se envía ninguno (E-11). */
+export async function getEvent(
+  id: string,
+  origin?: { lat?: number; lon?: number } | null,
+  opts?: RequestOptions,
+): Promise<EventDetail> {
+  const hasOrigin = origin?.lat !== undefined && origin.lon !== undefined
+  const qs = hasOrigin ? toQueryString({ lat: origin.lat, lon: origin.lon }) : ''
+  return (await getEnvelope<EventDetail>(`/events/${encodeURIComponent(id)}${qs}`, opts)).data
 }
 
 export async function getPlace(id: string, opts?: RequestOptions): Promise<PlaceDetail> {

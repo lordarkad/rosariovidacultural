@@ -57,6 +57,24 @@ describe('cliente de la API', () => {
     expect(err).toMatchObject({ status: 502, message: 'Error 502' })
   })
 
+  it('[AC-4] getEvent envía lat/lon solo cuando están ambos', async () => {
+    const fn = vi.fn().mockImplementation(async () => json({ success: true, data: { id: 'e1' } }))
+    vi.stubGlobal('fetch', fn)
+    await getEvent('e1', { lat: -32.9, lon: -60.6 })
+    expect(fn.mock.calls[0]![0]).toBe('/api/events/e1?lat=-32.9&lon=-60.6')
+    await getEvent('e1', { lat: -32.9 } as { lat: number; lon: number })
+    expect(fn.mock.calls[1]![0]).toBe('/api/events/e1')
+    await getEvent('e1')
+    expect(fn.mock.calls[2]![0]).toBe('/api/events/e1')
+  })
+
+  it('[AC-4] getEvent propaga el AbortSignal en el tercer argumento', async () => {
+    const fn = mockFetch(json({ success: true, data: { id: 'e1' } }))
+    const ctrl = new AbortController()
+    await getEvent('e1', undefined, { signal: ctrl.signal })
+    expect(fn.mock.calls[0]![1].signal).toBe(ctrl.signal)
+  })
+
   it('propaga el AbortSignal para cancelar la request anterior', async () => {
     const fn = mockFetch(json({ success: true, data: [] }))
     const ctrl = new AbortController()

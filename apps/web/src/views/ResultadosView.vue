@@ -40,7 +40,7 @@
                 {{ selectedPin.kind === 'event' ? 'Evento' : selectedPin.kind === 'place' ? 'Lugar' : '' }}
               </p>
               <p class="truncate font-semibold">{{ selectedPin.title }}</p>
-              <RouterLink :to="detailPath(selectedPin)" class="text-sm font-semibold underline">Ver detalle</RouterLink>
+              <RouterLink v-if="selectedPinLink" :to="selectedPinLink" class="text-sm font-semibold underline">Ver detalle</RouterLink>
             </div>
             <button type="button" class="flex h-11 w-11 shrink-0 items-center justify-center text-xl" aria-label="Cerrar" @click="selectedKey = null">
               ×
@@ -92,7 +92,7 @@
             <section v-for="g in groups" :key="g.band" class="mt-4">
               <h2 class="text-xl">{{ g.label }}</h2>
               <ul class="mt-2 space-y-2">
-                <ResultItem v-for="i in g.items" :key="`${i.kind}:${i.id}`" :item="i" :selected="selectedKey === `${i.kind}:${i.id}`" />
+                <ResultItem v-for="i in g.items" :key="`${i.kind}:${i.id}`" :item="i" :origin="detailOrigin" :selected="selectedKey === `${i.kind}:${i.id}`" />
               </ul>
             </section>
 
@@ -120,10 +120,10 @@ import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { RouterLink, useRoute, useRouter } from 'vue-router'
 import Button from 'primevue/button'
 import Skeleton from 'primevue/skeleton'
-import type { SearchPin } from '@tript/shared'
 import BottomSheet, { type SheetState } from '@/components/BottomSheet.vue'
 import MapView from '@/components/MapView.vue'
 import ResultItem from '@/components/ResultItem.vue'
+import { detailLink, searchOrigin } from '@/lib/detail'
 import { RADIO_DEFAULT } from '@/lib/geo'
 import { describeSearch, groupByBand, parseSearch, toRouteQuery } from '@/lib/search-query'
 import { usePinsStore } from '@/stores/pins.store'
@@ -164,7 +164,9 @@ const fitPadding = computed(() => {
 
 const selectedKey = ref<string | null>(null)
 const selectedPin = computed(() => pins.pins.find((p) => `${p.kind}:${p.id}` === selectedKey.value))
-const detailPath = (p: SearchPin) => (p.kind === 'event' ? `/e/${p.id}` : `/l/${p.id}`)
+// Origen de la distancia en el Detalle: viaja en el `state`, no en la URL (S4-3).
+const detailOrigin = computed(() => searchOrigin(query.value, zone.value))
+const selectedPinLink = computed(() => (selectedPin.value ? detailLink(selectedPin.value.kind, selectedPin.value.id, detailOrigin.value) : null))
 
 /** Editar una parte de la frase lleva a la pantalla que la cambia, conservando la búsqueda. */
 const edit = (path: string) => ({ path, query: route.query })
