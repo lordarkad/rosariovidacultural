@@ -165,6 +165,9 @@ export interface paths {
          * Detalle de un lugar
          * @description URL pública `/l/:id` (E-12). Incluye los próximos eventos del lugar (lo que lo hace «sede de eventos»,
          *     B-1). `lat`/`lon` opcionales, igual que en `getEvent`.
+         *
+         *     `next_change_at` dice cuándo cambia el estado abierto/cerrado (lo que la UI muestra como «cierra 23:00» o
+         *     «abre mañana 12:00»); `upcoming_events[].end_date` permite mostrar el rango de un evento en curso.
          */
         get: operations["getPlace"];
         put?: never;
@@ -443,8 +446,16 @@ export interface components {
             /** Format: uuid */
             id: string;
             title: string;
-            /** Format: date */
+            /**
+             * Format: date
+             * @description Inicio del rango del evento, no la próxima ocurrencia; un evento en curso trae una fecha ya pasada.
+             */
             start_date: string;
+            /**
+             * Format: date
+             * @description Fin del rango. Igual a `start_date` en un evento de un solo día; la UI muestra el rango cuando difieren.
+             */
+            end_date: string;
             start_time: components["schemas"]["TimeOfDay"];
             price_status: components["schemas"]["PriceStatus"];
             price_from_ars: number | null;
@@ -458,6 +469,7 @@ export interface components {
             origin: components["schemas"]["PlaceOrigin"];
             intents: components["schemas"]["Intent"][];
             offers: components["schemas"]["PlaceOffer"][];
+            /** @description Tipos de cocina en español; la ingesta traduce los de OpenStreetMap (`coffee shop` → `café`) y un valor sin traducción conocida se conserva tal cual. */
             cuisine: string[];
             address: string | null;
             /** Format: double */
@@ -475,6 +487,15 @@ export interface components {
             /** @description Horario crudo de la fuente (OSM `opening_hours`), por si no se pudo estructurar. */
             hours_text: string | null;
             open_now: boolean | null;
+            /**
+             * Format: date-time
+             * @description Primer instante posterior a «ahora» en que `open_now` cambia de valor: el cierre si está abierto, la próxima
+             *     apertura si está cerrado. Se calcula sobre `opening_hours` fusionando los tramos contiguos o superpuestos
+             *     (12:00–16:00 y 16:00–23:00 son un solo tramo abierto) y mira hasta 8 días adelante: si no hay un cambio
+             *     antes de «ahora + 8 días» es `null`, lo que incluye al lugar que abre las 24 h todos los días y a
+             *     `opening_hours` `null` (`open_now` también).
+             */
+            next_change_at: string | null;
             phone: string | null;
             /** Format: uri */
             website: string | null;
@@ -551,6 +572,7 @@ export interface components {
             origin: components["schemas"]["PlaceOrigin"];
             intents: components["schemas"]["Intent"][];
             offers?: components["schemas"]["PlaceOffer"][];
+            /** @description Tipos de cocina en español; la ingesta traduce los de OpenStreetMap (`coffee shop` → `café`) y un valor sin traducción conocida se conserva tal cual. */
             cuisine?: string[];
             address?: string | null;
             /** Format: double */

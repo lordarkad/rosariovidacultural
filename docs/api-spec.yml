@@ -270,6 +270,9 @@ paths:
       description: |
         URL pública `/l/:id` (E-12). Incluye los próximos eventos del lugar (lo que lo hace «sede de eventos»,
         B-1). `lat`/`lon` opcionales, igual que en `getEvent`.
+
+        `next_change_at` dice cuándo cambia el estado abierto/cerrado (lo que la UI muestra como «cierra 23:00» o
+        «abre mañana 12:00»); `upcoming_events[].end_date` permite mostrar el rango de un evento en curso.
       tags: [catalog]
       security: []
       parameters:
@@ -789,7 +792,7 @@ components:
 
     UpcomingEvent:
       type: object
-      required: [id, title, start_date, start_time, price_status, price_from_ars]
+      required: [id, title, start_date, end_date, start_time, price_status, price_from_ars]
       properties:
         id:
           type: string
@@ -799,6 +802,11 @@ components:
         start_date:
           type: string
           format: date
+          description: Inicio del rango del evento, no la próxima ocurrencia; un evento en curso trae una fecha ya pasada.
+        end_date:
+          type: string
+          format: date
+          description: Fin del rango. Igual a `start_date` en un evento de un solo día; la UI muestra el rango cuando difieren.
         start_time:
           $ref: "#/components/schemas/TimeOfDay"
         price_status:
@@ -809,7 +817,7 @@ components:
 
     PlaceDetail:
       type: object
-      required: [id, name, kind, origin, intents, offers, cuisine, address, lat, lon, location_known, distance_m, walk_minutes, opening_hours, hours_text, open_now, phone, website, instagram, outdoor, note, image_url, upcoming_events, last_seen_at]
+      required: [id, name, kind, origin, intents, offers, cuisine, address, lat, lon, location_known, distance_m, walk_minutes, opening_hours, hours_text, open_now, next_change_at, phone, website, instagram, outdoor, note, image_url, upcoming_events, last_seen_at]
       description: Todas las claves se devuelven siempre; «no informado» es `null`, nunca una clave ausente.
       properties:
         id:
@@ -831,6 +839,7 @@ components:
             $ref: "#/components/schemas/PlaceOffer"
         cuisine:
           type: array
+          description: Tipos de cocina en español; la ingesta traduce los de OpenStreetMap (`coffee shop` → `café`) y un valor sin traducción conocida se conserva tal cual.
           items:
             type: string
         address:
@@ -858,6 +867,15 @@ components:
           description: Horario crudo de la fuente (OSM `opening_hours`), por si no se pudo estructurar.
         open_now:
           type: [boolean, "null"]
+        next_change_at:
+          type: [string, "null"]
+          format: date-time
+          description: |
+            Primer instante posterior a «ahora» en que `open_now` cambia de valor: el cierre si está abierto, la próxima
+            apertura si está cerrado. Se calcula sobre `opening_hours` fusionando los tramos contiguos o superpuestos
+            (12:00–16:00 y 16:00–23:00 son un solo tramo abierto) y mira hasta 8 días adelante: si no hay un cambio
+            antes de «ahora + 8 días» es `null`, lo que incluye al lugar que abre las 24 h todos los días y a
+            `opening_hours` `null` (`open_now` también).
         phone:
           type: [string, "null"]
         website:
@@ -1010,6 +1028,7 @@ components:
             $ref: "#/components/schemas/PlaceOffer"
         cuisine:
           type: array
+          description: Tipos de cocina en español; la ingesta traduce los de OpenStreetMap (`coffee shop` → `café`) y un valor sin traducción conocida se conserva tal cual.
           items:
             type: string
         address:

@@ -54,3 +54,16 @@
   - Prototipo: Figma Make `en5jOAjdZvfWxOggie0jUt` (6 direcciones, A–F).
   - **Aprobación:** Daniel King, 2026-09-30, dirección **B · Ribera**.
   - Remapeo contra `Triptongo UI Seed v1.0`: **no aplica** (2026-10-03, RVC es `personal`; ver «Datos del Proyecto» en `CLAUDE.md`).
+
+---
+
+## Detalle de lugar (`/l/:id`, slice 4b) — 2026-10-19
+
+- **PR / rama:** pendiente (sin implementación todavía)
+- 🔹 **Nivel:** 2 (página nueva dentro del flujo del sitio público)
+- 🔹 **Arquetipo (`docs/12-page-archetypes.md`):** ficha de detalle, la misma que el Detalle de evento.
+- 🔹 **Qué cambia y por qué:** reemplaza el 404 de `/l/:id` (S4-2 de `docs/changes/sitio-publico-detalle-evento.md`) por la ficha del lugar: cabecera con tipo y servicios, horario con estado «abierto ahora», acciones de contacto y próximos eventos.
+- 🔹 **Estados asíncronos que toca:** cargando, no disponible (404/400) y error de red/5xx, con las mismas reglas que el Detalle de evento; variantes del bloque Horario (abierto, cerrado, 24 h, solo `hours_text`, sin dato).
+- **Base de UI:** dirección B · Ribera ya aprobada; perfil `personal` (sin auditoría contra la semilla de Triptongo).
+- **Wireframes:** generados con `/tript-wireframe-brief` (entrevista ligera, 8 decisiones del owner): `wireframes/detalle-lugar.html`; decisiones y supuestos en `wireframes/README.md`.
+- **Aprobación:** Daniel King, 2026-10-19 — wireframes generados con `/tript-wireframe-brief` y aprobados explícitamente por el owner. Los supuestos de `wireframes/README.md` siguen «confirmar» y pasan a `/enrich-us` como gaps (§D).
