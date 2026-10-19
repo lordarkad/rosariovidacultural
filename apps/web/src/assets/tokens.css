@@ -1,0 +1,115 @@
+/*
+ * Tokens de la dirección B · Ribera (copia 1:1 de docs/design-tokens-ribera.md, S2-9).
+ * Capas: primitivos → semánticos (claro/oscuro) → por componente. Los componentes leen solo `--rq-*`
+ * semánticos o de componente, nunca un primitivo. Es el único archivo con valores hex.
+ * `type-espacio` no existe a propósito (B-1b).
+ */
+:root {
+  color-scheme: light dark;
+
+  /* Tipografía */
+  --rq-font-display: 'Young Serif', Georgia, serif;
+  --rq-font-body: 'Schibsted Grotesk', system-ui, sans-serif;
+  --rq-display-weight: 400;
+  --rq-display-style: normal;
+  --rq-display-tracking: -0.01em;
+  --rq-meta-transform: uppercase;
+  --rq-meta-tracking: 0.1em;
+  --rq-meta-size: 11px;
+
+  /* Primitivos */
+  --rq-arena-50: #f5f1e6;
+  --rq-arena-100: #ece6d5;
+  --rq-arena-200: #ddd4bd;
+  --rq-arena-300: #c7bc9f;
+  --rq-rio-950: #0b1c15;
+  --rq-rio-900: #10261e;
+  --rq-rio-800: #173529;
+  --rq-rio-700: #22493a;
+  --rq-rio-500: #4a6a5b;
+  --rq-rio-300: #9dbdaa;
+  --rq-ladrillo-600: #a4472a;
+  --rq-ladrillo-300: #e7a588;
+  --rq-cielo-700: #2e5a76;
+  --rq-cielo-300: #9cc6e0;
+  --rq-sabalo-50: #fffbe8;
+  --rq-sabalo-100: #fff3c2;
+  --rq-sabalo-200: #ffe789;
+  --rq-sabalo-300: #fdda4f;
+  --rq-sabalo-400: #f7ce2d;
+  --rq-sabalo-500: #f2be00;
+  --rq-sabalo-600: #c99a00;
+  --rq-sabalo-700: #9c7600;
+  --rq-sabalo-800: #6b5200;
+  --rq-sabalo-900: #473600;
+  --rq-sabalo-950: #261d00;
+
+  /* Por componente */
+  --rq-radius-chip: 12px;
+  --rq-radius-card: 16px;
+  --rq-radius-sheet: 24px;
+  --rq-radius-button: 14px;
+  --rq-radius-tag: 8px;
+  --rq-radius-input: 14px;
+  --rq-chip-border-width: 1.5px;
+  --rq-space-unit: 4px;
+
+  /* Semánticos: claro */
+  --rq-surface-0: #f5f1e6;
+  --rq-surface-50: #ece6d5;
+  --rq-surface-100: #ddd4bd;
+  --rq-surface-card: #fffdf7;
+  --rq-surface-inverse: #10261e;
+  --rq-text: #10261e;
+  --rq-text-muted: #3f5549;
+  --rq-text-inverse: #f5f1e6;
+  --rq-text-on-primary: #10261e;
+  --rq-border: #c7bc9f;
+  --rq-border-strong: #10261e;
+  --rq-primary: #f2be00;
+  --rq-primary-hover: #f7ce2d;
+  --rq-primary-soft: #fff3c2;
+  --rq-focus: #10261e;
+  --rq-type-evento: #a4472a;
+  --rq-type-lugar: #2e5a76;
+  --rq-warn-bg: #fff3c2;
+  --rq-warn-text: #473600;
+  --rq-danger-bg: #f4d6c9;
+  --rq-danger-text: #6e2a14;
+  --rq-map-land: #e6dfcb;
+  --rq-map-water: #a9c3b4;
+  --rq-map-street: #f5f1e6;
+  --rq-map-park: #c9d7b5;
+  --rq-map-label: #3f5549;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --rq-surface-0: #0b1c15;
+    --rq-surface-50: #10261e;
+    --rq-surface-100: #173529;
+    --rq-surface-card: #10261e;
+    --rq-surface-inverse: #f5f1e6;
+    --rq-text: #f5f1e6;
+    --rq-text-muted: #b7c7bc;
+    --rq-text-inverse: #10261e;
+    --rq-text-on-primary: #10261e;
+    --rq-border: #2c5242;
+    --rq-border-strong: #f5f1e6;
+    --rq-primary: #f7ce2d;
+    --rq-primary-hover: #fdda4f;
+    --rq-primary-soft: #473600;
+    --rq-focus: #f7ce2d;
+    --rq-type-evento: #e7a588;
+    --rq-type-lugar: #9cc6e0;
+    --rq-warn-bg: #3a2f06;
+    --rq-warn-text: #ffe789;
+    --rq-danger-bg: #3e1c12;
+    --rq-danger-text: #f4b9a2;
+    --rq-map-land: #10261e;
+    --rq-map-water: #07130e;
+    --rq-map-street: #1e3e31;
+    --rq-map-park: #15392a;
+    --rq-map-label: #b7c7bc;
+  }
+}
