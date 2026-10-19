@@ -114,7 +114,7 @@ Aprobados por el tech lead el 2026-09-30.
 | F-17 | Subgéneros de música (decidido por Daniel el 2026-10-14). `MusicGenre` suma `tango`, `cumbia`, `clasica` y `chamame` (`folklore` ya existía). F-16 pasa a regir con `musica_en_vivo` **o** `bailar` en `i`, para todos los géneros por igual (regla uniforme). Peñas y ciclos de folklore cuentan como `musica_en_vivo`; tertulias y milongas, como `bailar`. Un evento puede tener varios géneros y puede ser de categoría `danza` y tener género `tango`. | Las tertulias y milongas de la Casa del Tango son bailables y no entraban con la regla anterior. |
 | F-18 | Lugar heredado en eventos fusionados (E-10, decidido por Daniel el 2026-10-17). Cada fuente guarda su propio `place_source_key`; la fila usa el de la canónica y, si ese es `null`, el del alias de mayor `tier` (a igual `tier`, el primero en llegar). Nunca pisa uno existente de la canónica. Alcance: solo `place_source_key`, no un relleno genérico de campos vacíos. | Un evento que llega de dos fuentes, donde la canónica no trae lugar y el alias sí, quedaba sin lugar para siempre (los alias no actualizan campos). |
 
-Nota: E-4 se mantiene literal (sin horario solo en `hoy` y `finde`); con `manana` o `fecha` esos eventos no aparecen. Si se prefiere mostrarlos también ahí, es un cambio de E-4.
+Nota: E-4 se mantiene literal (sin horario solo en `hoy` y `finde`); con `manana` o `fecha` esos eventos no aparecen, salvo que `fecha` sea hoy, que se comporta como `hoy` (corregido el 2026-10-18). Si se prefiere mostrarlos también ahí, es un cambio de E-4.
 
 ## listZones: lista de zonas
 
@@ -473,7 +473,7 @@ Aprobadas por Daniel el 2026-10-18.
 
 ## Hallazgos de backend (fixes aparte, fuera del slice de UI)
 
-1. `cuando=fecha` con la fecha de hoy no se comporta como `hoy` (el spec lo dice; `windows.ts:71` devuelve `fecha` y `bands.ts:80,100` excluye los sin horario).
+1. ~~`cuando=fecha` con la fecha de hoy no se comporta como `hoy`~~ — corregido el 2026-10-18 (`windows.ts` devuelve la ventana `hoy`; el contrato ya lo decía).
 2. `UpcomingEvent.start_date` del detalle de lugar devuelve el inicio del rango, no la próxima ocurrencia (`detail.repo.ts:242`).
 3. Ningún endpoint manda `Cache-Control`, aunque el spec dice que `/zones` se cachea en el cliente (sin `Cache-Control` ese cacheo queda a criterio del navegador).
 4. CORS solo permite `*.pages.dev` y `localhost:5173`: un dominio propio quedaría bloqueado; además `endsWith('.pages.dev')` acepta subdominios de cualquier cuenta, así que el fix debe acotarlo a los proyectos propios.

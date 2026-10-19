@@ -68,7 +68,8 @@ export function resolveWindow(cuando: Cuando, fecha: string | undefined, now: Da
       if (!fecha || fecha < today) {
         throw new InvalidWindowError('La fecha no puede ser anterior a hoy')
       }
-      return fecha === today ? restOfToday('fecha') : dayWindow('fecha', fecha)
+      // La fecha de hoy es `hoy` a todos los efectos (también E-4: los sin horario aparecen)
+      return fecha === today ? restOfToday('hoy') : dayWindow('fecha', fecha)
     }
     case 'finde': {
       const wd = weekdayMon0(today)

@@ -44,6 +44,7 @@ describe('resolveWindow', () => {
     expect(w.eventFrom.toISOString()).toBe(hoy.eventFrom.toISOString())
     expect(w.to.toISOString()).toBe(hoy.to.toISOString())
     expect(w.includesNow).toBe(true)
+    expect(w.cuando).toBe('hoy')
   })
 
   it('[AC-5] fecha anterior al día de negocio actual lanza InvalidWindowError', () => {

@@ -147,14 +147,15 @@ describe('classifyEvent', () => {
       for (const w of [
         resolveWindow('ahora', undefined, MARTES_21),
         resolveWindow('manana', undefined, MARTES_21),
-        resolveWindow('fecha', '2026-10-06', MARTES_21),
+        resolveWindow('fecha', '2026-10-07', MARTES_21),
       ]) {
         expect(classifyEvent(ev('2026-10-07', '2026-10-07', null), w, MARTES_21)).toBeNull()
       }
-      // fecha=hoy usa la ventana de hoy pero cuando sigue siendo "fecha": E-4 literal
+    })
+    it('[AC-13] fecha igual a hoy se comporta como hoy: aparece como a_confirmar', () => {
       expect(
-        classifyEvent(sinHora, resolveWindow('fecha', '2026-10-06', MARTES_21), MARTES_21),
-      ).toBeNull()
+        classifyEvent(sinHora, resolveWindow('fecha', '2026-10-06', MARTES_21), MARTES_21)?.band,
+      ).toBe('a_confirmar')
     })
   })
 
