@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rosario, qué hacer — Detalle de lugar (wireframe)</title>
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+<div class="draft-banner">BORRADOR — WIREFRAME GENERADO CON /tript-wireframe-brief <span>· aprobado por el owner · 2026-10-19 · grayscale, sin tokens de marca · no representa diseño final</span></div>
+<nav class="screens" aria-label="Pantallas"><a href="index.html">Índice</a><span class="grp">Flujo</span><a href="home.html">Home</a><a href="zona-cerca.html">Cerca mío</a><a href="zona-mapa.html">Elegir en el mapa</a><a href="zona-zonas.html">Zonas predefinidas</a><a href="resultados.html">mapa + lista</a><a href="detalle.html">Detalle de evento</a><a href="detalle-lugar.html" class="active">Detalle de lugar</a><span class="grp">Estados</span><a href="estado-sin-ubicacion.html">Primer uso sin ubicación</a><a href="estado-permiso-denegado.html">Permiso denegado</a><a href="estado-cargando.html">Cargando</a><a href="estado-sin-resultados.html">Sin resultados</a><a href="estado-error.html">Error de carga</a></nav>
+<main class="page">
+<h1>Detalle de lugar</h1>
+<div class="subtitle">Ficha de un lugar (bar, restaurante, café, sala…). Misma estructura que el Detalle de evento; cambian horario, contacto y próximos eventos.</div>
+<div class="frames">
+<figure><figcaption>Mobile</figcaption>
+  <div class="m">
+    <div class="status"><span>9:41</span><span><i style="width:12px"></i><i style="width:10px"></i><i style="width:8px"></i></span></div>
+    <div class="nav"><div class="back"><span class="sq"></span><i class="l d" style="--w:40px;--h:8"></i></div><div class="menu"><i></i><i></i></div></div>
+    <div class="grow scroll">
+      <div class="box" style="--h:220px"><span>Imagen o placeholder tipográfico
+(igual que el evento)</span></div>
+      <div class="col g4 p4">
+        <div class="row-f g2" style="align-items:center;flex-wrap:wrap"><span class="tag">LUGAR</span><span class="tag g">BAR</span><span class="tag g">MÚSICA EN VIVO</span><span class="tag g">CENA</span><span class="tag g">AIRE LIBRE</span></div>
+        <div class="col g2 rel"><i class="l" style="--w:80%;--h:22"></i><i class="l" style="--w:45%;--h:22"></i><span class="note" style="top:32px;left:calc(45% + 6px)">H2 display — nombre del lugar</span></div>
+        <div class="row-f g2" style="align-items:center;flex-wrap:wrap"><span class="mono" style="font-size:10px;color:var(--muted)">COCINA</span><span class="tag g">PARRILLA</span><span class="tag g">PIZZAS</span></div>
+        <div class="rel card" style="border-left:4px solid var(--ink);padding:10px 12px"><i class="l" style="--w:90%;--h:8"></i><i class="l d" style="--w:60%;--h:8"></i><span class="note in">Nota curada (`note`) — solo si existe</span></div>
+        <div class="meta">
+          <div class="rel" style="flex-direction:column;gap:6px"><i class="l d" style="--w:70px;--h:8"></i>
+            <span class="mono" style="font-size:11px">● ABIERTO AHORA · cierra 23:00 <span style="color:var(--muted)">(estado + semana plegada)</span></span>
+            <span class="mono" style="font-size:10px;color:var(--muted)">Ver horarios de la semana ▾</span></div>
+          <div><i class="l d" style="--w:60px;--h:8"></i><i class="l" style="--w:120px;--h:9"></i></div>
+          <div><i class="l d" style="--w:60px;--h:8"></i><i class="l" style="--w:90px;--h:9"></i></div>
+        </div>
+        <div class="btn pri full" style="--h:44">Cómo llegar →</div>
+        <div class="row-f g2 rel"><div class="btn grow" style="--h:40;min-width:0;padding:0">Llamar</div><div class="btn grow" style="--h:40;min-width:0;padding:0">Sitio</div><div class="btn grow" style="--h:40;min-width:0;padding:0">Instagram</div><span class="note top">Solo los datos que existen (tel / web / IG)</span></div>
+        <div class="col g2 rel" style="margin-top:8px">
+          <span class="mono" style="font-size:10px;color:var(--muted)">PRÓXIMOS EVENTOS</span>
+          <div class="card row-f g3" style="align-items:center;justify-content:space-between"><div class="col" style="gap:4px;flex:1"><i class="l d" style="--w:70px;--h:8"></i><i class="l" style="--w:80%;--h:10"></i></div><span class="tag ok">GRATIS</span></div>
+          <div class="card row-f g3" style="align-items:center;justify-content:space-between"><div class="col" style="gap:4px;flex:1"><i class="l d" style="--w:70px;--h:8"></i><i class="l" style="--w:65%;--h:10"></i></div><span class="mono" style="font-size:10px">$ 5.000</span></div>
+          <div class="btn full" style="--h:40">Ver más (12)</div>
+          <span class="note top">Cada fila enlaza a /e/:id · muestra 5 · el bloque se oculta si no hay eventos</span>
+        </div>
+        <div class="mono" style="font-size:9px;color:var(--muted);text-align:center;padding:8px 0">Datos de OpenStreetMap · contribuidores (ODbL) — solo origin = osm</div>
+      </div>
+    </div>
+    <div class="tabbar"><div><i></i><span>Buscar</span></div><div><i></i><span>Zona</span></div><div class="on"><i></i><span>Resultados</span></div></div>
+  </div>
+</figure>
+<figure><figcaption>Desktop</figcaption>
+  <div class="dwrap"><div class="d">
+    <div class="topnav"><i class="l" style="--w:160px;--h:14"></i><div class="btn" style="--h:36">← Volver a resultados</div></div>
+    <div class="row-f grow" style="overflow:hidden">
+      <div style="width:560px;flex:none"><div class="box"><span>Imagen o placeholder tipográfico</span></div></div>
+      <div class="grow scroll col g6" style="padding:40px 48px">
+        <div class="row-f g2" style="flex-wrap:wrap"><span class="tag">LUGAR</span><span class="tag g">BAR</span><span class="tag g">MÚSICA EN VIVO</span><span class="tag g">CENA</span><span class="tag g">AIRE LIBRE</span></div>
+        <div class="col g3"><i class="l" style="--w:80%;--h:36"></i><i class="l" style="--w:45%;--h:36"></i></div>
+        <div class="row-f g2" style="align-items:center"><span class="mono" style="font-size:10px;color:var(--muted)">COCINA</span><span class="tag g">PARRILLA</span><span class="tag g">PIZZAS</span></div>
+        <div class="card" style="border-left:4px solid var(--ink);padding:12px 16px"><i class="l" style="--w:90%;--h:9"></i><i class="l d" style="--w:55%;--h:9"></i></div>
+        <div class="meta">
+          <div style="gap:24px;padding:12px 20px;align-items:center"><i class="l d" style="--w:80px;--h:8"></i><span class="mono" style="font-size:11px">● ABIERTO AHORA · cierra 23:00 &nbsp; <span style="color:var(--muted)">Ver horarios de la semana ▾</span></span></div>
+          <div style="gap:24px;padding:12px 20px"><i class="l d" style="--w:80px;--h:8"></i><i class="l" style="--w:200px;--h:10"></i></div>
+          <div style="gap:24px;padding:12px 20px"><i class="l d" style="--w:80px;--h:8"></i><i class="l" style="--w:120px;--h:10"></i></div>
+        </div>
+        <div class="row-f g3"><div class="btn pri" style="--h:48">Cómo llegar →</div><div class="btn" style="--h:48">Llamar</div><div class="btn" style="--h:48">Sitio</div><div class="btn" style="--h:48">Instagram</div></div>
+        <div class="col g2">
+          <span class="mono" style="font-size:10px;color:var(--muted)">PRÓXIMOS EVENTOS</span>
+          <div class="card row-f g3" style="align-items:center;justify-content:space-between"><div class="col" style="gap:4px;flex:1"><i class="l d" style="--w:90px;--h:8"></i><i class="l" style="--w:60%;--h:10"></i></div><span class="tag ok">GRATIS</span></div>
+          <div class="card row-f g3" style="align-items:center;justify-content:space-between"><div class="col" style="gap:4px;flex:1"><i class="l d" style="--w:90px;--h:8"></i><i class="l" style="--w:50%;--h:10"></i></div><span class="mono" style="font-size:10px">$ 5.000</span></div>
+          <div class="btn" style="--h:40;align-self:flex-start">Ver más (12)</div>
+        </div>
+        <div class="mono" style="font-size:9px;color:var(--muted)">Datos de OpenStreetMap · contribuidores (ODbL) — solo origin = osm</div>
+      </div>
+    </div>
+  </div></div>
+</figure>
+</div>
+
+<div class="panel"><h2>Bloque «Horario» — variantes</h2>
+<ul>
+<li><b>Abierto:</b> «● ABIERTO AHORA · cierra 23:00» + «Ver horarios de la semana ▾» (al abrir: 7 filas, hoy resaltado).</li>
+<li><b>Cerrado:</b> «○ CERRADO AHORA · abre mañana 12:00» + la misma semana plegada.</li>
+<li><b>Sin dato estructurado, con texto de la fuente:</b> «Según la fuente: Mo-Sa 12:00-23:00». Sin semana plegada.</li>
+<li><b>Sin ningún dato:</b> «Horario no informado».</li>
+<li>Abierto 24 h (apertura = cierre): «● ABIERTO 24 H».</li>
+</ul></div>
+
+<div class="panel"><h2>Notas de la pantalla</h2><ul>
+<li>Mismo marco que el Detalle de evento: imagen o placeholder tipográfico, tab bar de 3 con Resultados marcada, «Volver a resultados», estados cargando / no disponible / error con las mismas reglas.</li>
+<li>Etiquetas: LUGAR, tipo (bar, café…), y lo que ofrece (música en vivo, cena, baile, aire libre); la cocina en una línea aparte. Solo las que existen.</li>
+<li>Nota curada (`note`) como cita destacada bajo la cabecera, solo si existe.</li>
+<li>«Cómo llegar» siempre (un lugar siempre tiene coordenadas); Llamar / Sitio / Instagram solo si hay dato.</li>
+<li>Próximos eventos: lista compacta, 5 y «Ver más»; cada fila lleva a su Detalle de evento. Sin eventos, no hay bloque.</li>
+<li>Distancia («850 m · 11 min a pie») como en el evento, solo si hay origen.</li>
+<li>Los lugares no tienen «datos de ayer» ni fuentes múltiples; los de origen OpenStreetMap llevan la atribución al pie.</li>
+</ul></div>
+<div class="flow"><span>← <a href="detalle.html">Detalle de evento</a></span><span><a href="estado-sin-ubicacion.html">Estado · Primer uso sin ubicación</a> →</span></div>
+</main>
+</body>
+</html>
