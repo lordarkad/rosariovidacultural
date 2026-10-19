@@ -1,6 +1,7 @@
 import type { Intent, MusicGenre, SearchItem } from '@tript/shared'
 import type { Cuando, SearchQuery } from '@/services/api'
 import { bandLabel, formatDate } from '@/lib/format'
+import { RADIO_DEFAULT, clampRadius, formatRadius } from '@/lib/geo'
 
 export const INTENTS: { value: Intent; label: string }[] = [
   { value: 'comer', label: 'Comer' },
@@ -75,11 +76,31 @@ export function parseSearch(raw: RawQuery): SearchQuery {
   const z = first(raw, 'z')
   if (z && ZONE.test(z)) q.z = z
 
+  // La zona y el origen por coordenadas son excluyentes (E-8): si vienen las dos, gana la zona.
+  if (!q.z) {
+    const lat = coord(first(raw, 'lat'), 90)
+    const lon = coord(first(raw, 'lon'), 180)
+    if (lat !== undefined && lon !== undefined) {
+      q.lat = lat
+      q.lon = lon
+      const radio = first(raw, 'radio_m')
+      if (radio !== undefined && radio !== '' && Number.isFinite(Number(radio))) q.radio_m = clampRadius(Number(radio))
+    }
+  }
+
   const text = first(raw, 'q')?.trim()
   if (text) q.q = text.slice(0, 80)
 
   return q
 }
+
+const coord = (v: string | undefined, max: number): number | undefined => {
+  if (v === undefined || v.trim() === '') return undefined
+  const n = Number(v)
+  return Number.isFinite(n) && Math.abs(n) <= max ? n : undefined
+}
+
+const round5 = (n: number): string => String(Math.round(n * 1e5) / 1e5)
 
 /** Inversa de `parseSearch`: el objeto que se le pasa al router. */
 export function toRouteQuery(q: SearchQuery): Record<string, string> {
@@ -90,6 +111,11 @@ export function toRouteQuery(q: SearchQuery): Record<string, string> {
   if (q.cuando) out.cuando = q.cuando
   if (q.cuando === 'fecha' && q.fecha) out.fecha = q.fecha
   if (q.z) out.z = q.z
+  else if (q.lat !== undefined && q.lon !== undefined) {
+    out.lat = round5(q.lat)
+    out.lon = round5(q.lon)
+    if (q.radio_m !== undefined) out.radio_m = String(q.radio_m)
+  }
   if (q.q) out.q = q.q
   return out
 }
@@ -128,7 +154,11 @@ export function describeSearch(q: SearchQuery, zoneName?: string): PhraseParts {
       : (CUANDO.find((c) => c.value === (q.cuando ?? 'hoy'))?.label ?? 'Hoy')
   return {
     que: que.length ? que.join(' + ') : 'Todo',
-    donde: q.z ? (zoneName ?? q.z) : 'Toda la ciudad',
+    donde: q.z
+      ? (zoneName ?? q.z)
+      : q.lat !== undefined && q.lon !== undefined
+        ? `Cerca · ${formatRadius(q.radio_m ?? RADIO_DEFAULT)}`
+        : 'Toda la ciudad',
     cuando,
   }
 }

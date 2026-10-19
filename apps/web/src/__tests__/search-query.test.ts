@@ -75,3 +75,38 @@ describe('describeSearch', () => {
     ).toEqual({ que: 'Comer + Bailar + Gratis', donde: 'Centro', cuando: 'sáb 17 oct' })
   })
 })
+
+describe('origen por coordenadas (lat, lon, radio_m)', () => {
+  it('[AC-1] lee el origen y lo acota al rango del contrato', () => {
+    expect(parseSearch({ lat: '-32.9468', lon: '-60.6393', radio_m: '3000' })).toEqual({
+      lat: -32.9468,
+      lon: -60.6393,
+      radio_m: 3000,
+    })
+    expect(parseSearch({ lat: '-32.9', lon: '-60.6', radio_m: '99999' })).toMatchObject({ radio_m: 10000 })
+    expect(parseSearch({ lat: '-32.9', lon: '-60.6', radio_m: '10' })).toMatchObject({ radio_m: 500 })
+  })
+
+  it('[AC-1] exige lat y lon juntas y válidas; sin radio queda el del servidor', () => {
+    expect(parseSearch({ lat: '-32.9' })).toEqual({})
+    expect(parseSearch({ lat: 'abc', lon: '-60.6' })).toEqual({})
+    expect(parseSearch({ lat: '120', lon: '-60.6' })).toEqual({})
+    expect(parseSearch({ lat: '-32.9', lon: '-60.6' })).toEqual({ lat: -32.9, lon: -60.6 })
+  })
+
+  it('[AC-1] la zona y el origen son excluyentes: gana la zona', () => {
+    expect(parseSearch({ z: 'centro', lat: '-32.9', lon: '-60.6', radio_m: '3000' })).toEqual({ z: 'centro' })
+  })
+
+  it('[AC-1] toRouteQuery es inversa, redondea a 5 decimales y descarta el origen si hay zona', () => {
+    const q = { lat: -32.946812, lon: -60.639312, radio_m: 2500 }
+    expect(toRouteQuery(q)).toEqual({ lat: '-32.94681', lon: '-60.63931', radio_m: '2500' })
+    expect(parseSearch(toRouteQuery(q))).toEqual({ lat: -32.94681, lon: -60.63931, radio_m: 2500 })
+    expect(toRouteQuery({ z: 'centro', lat: -32.9, lon: -60.6 })).toEqual({ z: 'centro' })
+  })
+
+  it('[AC-2] la frase dice «Cerca» con el radio', () => {
+    expect(describeSearch({ lat: -32.9, lon: -60.6, radio_m: 2500 }).donde).toBe('Cerca · 2,5 km')
+    expect(describeSearch({ lat: -32.9, lon: -60.6 }).donde).toBe('Cerca · 2 km')
+  })
+})

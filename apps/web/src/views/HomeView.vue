@@ -91,6 +91,9 @@ const form = reactive({
   cuando: (initial.cuando ?? 'hoy') as Cuando,
   fecha: initial.fecha ?? '',
   z: initial.z,
+  lat: initial.lat,
+  lon: initial.lon,
+  radio_m: initial.radio_m,
 })
 
 const showGenres = computed(() => hasMusicIntent(form.i))
@@ -110,6 +113,9 @@ function submit(): void {
     cuando: form.cuando,
     fecha: form.cuando === 'fecha' ? form.fecha : undefined,
     z: form.z,
+    lat: form.lat,
+    lon: form.lon,
+    radio_m: form.radio_m,
   })
   void router.push({ path: '/resultados', query })
 }
