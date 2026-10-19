@@ -1,6 +1,9 @@
 <template>
   <div class="relative h-full w-full overflow-hidden bg-[var(--rq-map-land)]">
-    <div ref="container" class="absolute inset-0" role="region" aria-label="Mapa de resultados" />
+    <!-- MapLibre le pone `position: relative` al contenedor, así que el tamaño sale de este envoltorio absoluto. -->
+    <div class="absolute inset-0">
+      <div ref="container" class="h-full w-full" role="region" aria-label="Mapa de resultados" />
+    </div>
     <p
       v-if="unavailable"
       class="absolute inset-0 flex items-center justify-center p-6 text-center text-sm text-ink-muted"
