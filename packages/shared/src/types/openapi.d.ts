@@ -469,7 +469,7 @@ export interface components {
             origin: components["schemas"]["PlaceOrigin"];
             intents: components["schemas"]["Intent"][];
             offers: components["schemas"]["PlaceOffer"][];
-            /** @description Tipos de cocina en español, traducidos por la ingesta (`coffee shop` → `café`). Un valor sin traducción conocida se conserva tal cual. */
+            /** @description Tipos de cocina en español; la ingesta traduce los de OpenStreetMap (`coffee shop` → `café`) y un valor sin traducción conocida se conserva tal cual. */
             cuisine: string[];
             address: string | null;
             /** Format: double */
@@ -490,9 +490,10 @@ export interface components {
             /**
              * Format: date-time
              * @description Primer instante posterior a «ahora» en que `open_now` cambia de valor: el cierre si está abierto, la próxima
-             *     apertura si está cerrado. Se calcula sobre `opening_hours` fusionando los tramos contiguos (12:00–16:00 y
-             *     16:00–23:00 son un solo tramo abierto) y mira hasta 8 días adelante. `null` si `opening_hours` es `null`
-             *     (`open_now` también) o si el lugar abre las 24 h todos los días (no hay cambio).
+             *     apertura si está cerrado. Se calcula sobre `opening_hours` fusionando los tramos contiguos o superpuestos
+             *     (12:00–16:00 y 16:00–23:00 son un solo tramo abierto) y mira hasta 8 días adelante: si no hay un cambio
+             *     antes de «ahora + 8 días» es `null`, lo que incluye al lugar que abre las 24 h todos los días y a
+             *     `opening_hours` `null` (`open_now` también).
              */
             next_change_at: string | null;
             phone: string | null;
@@ -571,7 +572,7 @@ export interface components {
             origin: components["schemas"]["PlaceOrigin"];
             intents: components["schemas"]["Intent"][];
             offers?: components["schemas"]["PlaceOffer"][];
-            /** @description Tipos de cocina en español, traducidos por la ingesta (`coffee shop` → `café`). Un valor sin traducción conocida se conserva tal cual. */
+            /** @description Tipos de cocina en español; la ingesta traduce los de OpenStreetMap (`coffee shop` → `café`) y un valor sin traducción conocida se conserva tal cual. */
             cuisine?: string[];
             address?: string | null;
             /** Format: double */

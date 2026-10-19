@@ -24,7 +24,7 @@ No generar contenido acá — es donde el owner deposita lo que ya trae armado.
 
 1. **Marco igual al Detalle de evento** — imagen/placeholder tipográfico, tab bar con Resultados marcada, «Volver», estados cargando / no disponible / error con las mismas reglas (S4-5, S4-7, S4-14). Supuesto — confirmar.
 2. **Cerrado ahora:** «○ CERRADO AHORA · abre mañana 12:00» con la misma semana plegada. Supuesto — confirmar.
-3. **Abierto 24 h** (apertura = cierre en `OpeningPeriod`): «● ABIERTO 24 H». Supuesto — confirmar.
+3. **Abierto 24 h:** solo cuando el lugar abre las 24 h todos los días (el servidor no informa cambio de estado): «● ABIERTO LAS 24 H». Un lugar con 24 h solo algunos días muestra el cierre normal («cierra a la medianoche…»). Supuesto — confirmar.
 4. **Distancia** («850 m · 11 min a pie») como fila de la metadata, solo con origen; mismo manejo del origen por `state` que el evento. Supuesto — confirmar.
 5. **Orden de bloques:** cabecera → cocina → nota → horario y dirección → acciones → próximos eventos → atribución. Supuesto — confirmar.
 6. **Tipo de lugar** (`kind`) como etiqueta secundaria («BAR»); un tipo desconocido o `otro` no se rotula (como `placeKindLabel`). Supuesto — confirmar.
