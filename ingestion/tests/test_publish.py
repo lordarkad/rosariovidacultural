@@ -5,8 +5,8 @@ import unittest
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 import publish
-from publish import (IngestError, build_batches, build_place_batches, post_batch, publish as publish_all,
-                     tier_of)
+from publish import (IngestError, build_batches, build_place_batches, parse_args, post_batch,
+                     publish as publish_all, select_batches, tier_of)
 
 
 def record(i, feed="Agenda municipal", venue="Teatro El Círculo"):
@@ -70,6 +70,48 @@ class LotesDeLugares(unittest.TestCase):
                        "rejected": []}])
         totals, failures = publish_all("u", "t", batches, post=lambda *a: next(calls))
         self.assertEqual((totals, failures), ({"created": 1, "updated": 1, "rejected": 0}, []))
+
+
+def names(batches):
+    return [b["source"]["name"] for b in batches]
+
+
+class SeleccionDeLotes(unittest.TestCase):
+    """El workflow diario publica eventos y curados; el semanal, los lugares (con OpenStreetMap)."""
+
+    DATA = {"events": [record(1)]}
+
+    def select(self, **kw):
+        return select_batches(self.DATA, [CURADO], [osm(1)], [], "t", **kw)
+
+    def test_sin_flags_publica_todo_como_hasta_ahora(self):
+        self.assertEqual(names(self.select()), ["Curados", "OpenStreetMap", "Agenda municipal"])
+
+    def test_solo_eventos(self):
+        self.assertEqual(names(self.select(only="events")), ["Agenda municipal"])
+
+    def test_solo_lugares_incluye_curados_y_osm(self):
+        self.assertEqual(names(self.select(only="places")), ["Curados", "OpenStreetMap"])
+
+    def test_sin_osm_publica_eventos_y_curados(self):
+        self.assertEqual(names(self.select(skip_osm=True)), ["Curados", "Agenda municipal"])
+
+    def test_solo_lugares_sin_osm_son_solo_curados(self):
+        self.assertEqual(names(self.select(only="places", skip_osm=True)), ["Curados"])
+
+
+class Argumentos(unittest.TestCase):
+    def test_defaults(self):
+        a = parse_args([])
+        self.assertEqual((a.dry_run, a.only, a.skip_osm), (False, None, False))
+
+    def test_flags(self):
+        a = parse_args(["--dry-run", "--only", "places", "--skip-osm"])
+        self.assertEqual((a.dry_run, a.only, a.skip_osm), (True, "places", True))
+
+    def test_only_invalido_se_rechaza(self):
+        with self.assertRaises(SystemExit):
+            parse_args(["--only", "todo"])
 
 
 class Servidor(BaseHTTPRequestHandler):

@@ -82,8 +82,16 @@ Un módulo en `scrapers/` con `SOURCE` y `scrape(today)` que devuelva dicts con:
 
 ## Publicación
 
-`.github/workflows/scrape.yml` corre cada noche, actualiza `site/events.json` y hace commit. El
-directorio `site/` es estático: sirve para Cloudflare Pages o GitHub Pages.
+Dos workflows, escalonados porque los lugares de OpenStreetMap tardan 12-16 min y casi no cambian:
+
+- `.github/workflows/scrape.yml` («Actualizar agenda») corre cada noche (~8 min), actualiza `site/events.json` y hace
+  commit; publica eventos y espacios curados (`publish.py --skip-osm`).
+- `.github/workflows/scrape-places.yml` («Actualizar lugares») corre los domingos de madrugada: `build_places.py`
+  actualiza `site/places.json` y `publish.py --only places` publica todos los lugares. Si Overpass falla o se arrastra
+  (el paso tiene su propio tope), se conserva el `places.json` anterior.
+
+Los dos se hacen de a uno (`concurrency: agenda`) porque commitean a `main`. El directorio `site/` es estático: sirve
+para Cloudflare Pages o GitHub Pages.
 
 ## Límites conocidos
 
