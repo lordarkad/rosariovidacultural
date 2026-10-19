@@ -268,7 +268,7 @@ paths:
         `X-Per-Page`. Una página más allá de la última es 200 con `data: []`. El cliente que exporta todo lo filtrado
         (CSV) recorre las páginas con `per_page=100`. El orden depende de `estado`, que se recalcula con la hora de
         cada pedido: si la ingesta o el cambio de día de negocio mueven un evento de grupo entre dos páginas, el
-        recorrido puede repetir u omitir filas. Por eso el cliente que recorre debe verificar `X-Total-Count` entre páginas.
+        recorrido puede repetir u omitir filas. Por eso el cliente que recorre debe deduplicar por `id` y verificar que las filas únicas igualen `X-Total-Count`; un total distinto entre páginas o un conteo final distinto invalidan el recorrido.
       tags: [curation]
       security: []
       parameters:

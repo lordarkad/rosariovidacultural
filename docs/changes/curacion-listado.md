@@ -137,7 +137,7 @@ Reloj fijo en los tests; Buenos Aires es UTC−3 sin horario de verano. Los AC d
   - When: «Exportar CSV (312)».
   - Then: el botón muestra `X-Total-Count`; el export pide las páginas 1 a 4 con **los mismos filtros** y `per_page=100`, y escribe 312 filas más la cabecera, no solo la página visible; mientras corre muestra progreso y se puede cancelar; descarga con el nombre de C-17. El cliente compara `X-Total-Count` de cada página con el de la primera, deduplica por `id` y verifica que las filas escritas igualen ese total.
 - **[AC-30]** Fallo o cambio de datos a mitad de camino.
-  - Given: la página 3 falla; o su `X-Total-Count` difiere del de la página 1 (la ingesta o el cambio de día movieron filas).
+  - Given: la página 3 falla; o su `X-Total-Count` difiere del de la página 1; o, tras deduplicar por `id`, las filas no igualan ese total (la ingesta o el cambio de día movieron filas entre grupos: eso repite una y omite otra sin cambiar el total).
   - Then: no se descarga un archivo parcial; se muestra el error (en el segundo caso, «los datos cambiaron mientras se exportaba») con «Reintentar»; la lista visible no cambia.
 - **[AC-31]** Formato y seguridad del CSV (reglas de C-17).
   - Then: un título `=HYPERLINK("http://x","clic")` sale como `'=HYPERLINK(...)` entre comillas; una celda con `;` o comillas sale entre comillas dobles con las comillas duplicadas; una `lat` negativa sale como `-32,93415` sin apóstrofo; los `null` salen vacíos; las listas se unen con ` | `; el archivo empieza con BOM, usa `;` y `CRLF`; la cabecera lleva los nombres de columna de la pantalla más los campos extra de C-5b.
