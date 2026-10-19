@@ -1,9 +1,10 @@
 <template>
   <li :id="`item-${item.kind}-${item.id}`">
-    <RouterLink
-      :to="to"
-      class="flex gap-3 rounded-card border bg-surface-card p-3 hover:border-line-strong"
-      :class="selected ? 'border-line-strong ring-2 ring-[var(--rq-focus)]' : 'border-line'"
+    <component
+      :is="to ? RouterLink : 'div'"
+      v-bind="to ? { to } : {}"
+      class="flex gap-3 rounded-card border bg-surface-card p-3"
+      :class="[selected ? 'border-line-strong ring-2 ring-[var(--rq-focus)]' : 'border-line', to && 'hover:border-line-strong']"
       :aria-current="selected ? 'true' : undefined"
     >
       <div class="h-16 w-16 shrink-0 overflow-hidden rounded-tag bg-surface-100">
@@ -20,7 +21,7 @@
         <p class="truncate text-sm text-ink-muted">{{ when }}</p>
         <p class="truncate text-sm text-ink-muted">{{ where }}</p>
       </div>
-    </RouterLink>
+    </component>
   </li>
 </template>
 
@@ -28,6 +29,7 @@
 import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import type { SearchItem } from '@tript/shared'
+import { detailLink, type Origin } from '@/lib/detail'
 import {
   formatDate,
   formatDistance,
@@ -37,10 +39,10 @@ import {
   placeKindLabel,
 } from '@/lib/format'
 
-const props = defineProps<{ item: SearchItem; selected?: boolean }>()
+const props = defineProps<{ item: SearchItem; selected?: boolean; origin?: Origin | null }>()
 
-// Un `kind` que la UI no conoce se trata como lugar solo para el link; el rótulo no se inventa (S2).
-const to = computed(() => (props.item.kind === 'event' ? `/e/${props.item.id}` : `/l/${props.item.id}`))
+// Solo los eventos tienen Detalle por ahora (S4-2): un lugar se ve igual pero sin enlace.
+const to = computed(() => detailLink(props.item.kind, props.item.id, props.origin))
 const kindLabel = computed(() => ({ event: 'Evento', place: 'Lugar' })[props.item.kind as string] ?? null)
 const price = computed(() => formatPrice(props.item.price_status, props.item.price_from_ars))
 

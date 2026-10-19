@@ -1,6 +1,7 @@
 import type { Intent, MusicGenre, SearchItem } from '@tript/shared'
 import type { Cuando, SearchQuery } from '@/services/api'
 import { bandLabel, formatDate } from '@/lib/format'
+import { round5n, validCoord } from '@/lib/coords'
 import { RADIO_DEFAULT, clampRadius, formatRadius } from '@/lib/geo'
 
 export const INTENTS: { value: Intent; label: string }[] = [
@@ -97,10 +98,10 @@ export function parseSearch(raw: RawQuery): SearchQuery {
 const coord = (v: string | undefined, max: number): number | undefined => {
   if (v === undefined || v.trim() === '') return undefined
   const n = Number(v)
-  return Number.isFinite(n) && Math.abs(n) <= max ? n : undefined
+  return validCoord(n, max) ? n : undefined
 }
 
-const round5 = (n: number): string => String(Math.round(n * 1e5) / 1e5)
+const round5 = (n: number): string => String(round5n(n))
 
 /** Inversa de `parseSearch`: el objeto que se le pasa al router. */
 export function toRouteQuery(q: SearchQuery): Record<string, string> {

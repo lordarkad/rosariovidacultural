@@ -5,8 +5,8 @@
         <RouterLink
           :to="tab.to"
           class="flex min-h-14 items-center justify-center text-sm font-semibold"
-          :class="isActive(tab.to) ? 'text-ink underline decoration-primary decoration-4 underline-offset-8' : 'text-ink-muted'"
-          :aria-current="isActive(tab.to) ? 'page' : undefined"
+          :class="isActive(tab.id) ? 'text-ink underline decoration-primary decoration-4 underline-offset-8' : 'text-ink-muted'"
+          :aria-current="isActive(tab.id) && !route.meta.tab ? 'page' : undefined"
         >
           {{ tab.label }}
         </RouterLink>
@@ -17,13 +17,14 @@
 
 <script setup lang="ts">
 import { RouterLink, useRoute } from 'vue-router'
+import { activeTab, type TabId } from '@/lib/detail'
 
-const tabs = [
-  { to: '/', label: 'Buscar' },
-  { to: '/zona', label: 'Zona' },
-  { to: '/resultados', label: 'Resultados' },
+const tabs: { id: TabId; to: string; label: string }[] = [
+  { id: 'buscar', to: '/', label: 'Buscar' },
+  { id: 'zona', to: '/zona', label: 'Zona' },
+  { id: 'resultados', to: '/resultados', label: 'Resultados' },
 ]
 
 const route = useRoute()
-const isActive = (to: string): boolean => (to === '/' ? route.path === '/' : route.path.startsWith(to))
+const isActive = (id: TabId): boolean => activeTab(route) === id
 </script>
