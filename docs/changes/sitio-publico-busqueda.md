@@ -440,26 +440,26 @@ Aprobadas por Daniel el 2026-10-18.
 
 | # | Decisión | Resolución |
 |---|---|---|
-| S2-1 (B1) | Dónde vive | App nueva `apps/web` (Pages), aparte de `apps/dashboard` (admin). Proyectos Pages de staging y producción y su workflow de deploy. |
-| S2-2 (B2) | Mapa | MapLibre con teselas vectoriales de un proveedor (o Protomaps en R2); el servidor público de OSM no admite tráfico de producción. Atribución © OpenStreetMap visible (D-10). Modo oscuro del mapa incluido (B-11). |
-| S2-3 (B3) | Estado de la búsqueda | La URL manda (`?i=…&cuando=…&z=…`, E-12); el store la refleja. Detalle en `/e/:id` y `/l/:id`. |
-| S2-4 (B4) | Primer uso sin ubicación | Búsqueda de toda la ciudad sin distancia (F-7), con «ubicación no informada» (E-1); la card pide GPS o zona para afinar. |
-| S2-5 (B5) | Desktop | Mobile-first; el resto de las pantallas se adapta por layout responsivo (Resultados: lista + mapa lado a lado). Se valida visualmente al final. |
-| S2-6 (B6/D1) | Ficha de Lugar | **Bloqueante:** falta wireframe del owner. Se genera con `/tript-wireframe-brief` (solo esa pantalla) y se aprueba antes de construir el Detalle de lugar. El Detalle de evento no depende de él. |
-| S2-7 (B8) | SEO | SPA pura por ahora; prerender se evalúa después (requeriría un endpoint de listado de IDs). |
-| S2-8 (B7) | Cómo llegar | Enlace universal de Google Maps con destino por coordenadas. |
-| S2-9 (D2) | Tokens | Se leen del Figma Make `en5jOAjdZvfWxOggie0jUt` (`src/rq/tokens.ts`) y se copian 1:1. Pendiente: acceso al Make. |
-| S2-10 (D3) | Franjas | Ahora · Hoy · Esta noche · Mañana · Próximos días · En cartel · Horario a confirmar. |
-| S2-11 (D4) | Ítem de resultado | GRATIS o «$ 12.000»; nada si el precio es desconocido (el Detalle dice «precio no informado»); tipo de lugar en la meta («Bar · 850 m»). |
-| S2-12 (D5) | Gratis | Chip separado junto a Cuándo; no es una intención (F-4). |
-| S2-13 (D6) | Radio | Slider en «Cerca mío» y «En el mapa»; sin slider en zona fija (E-8). En Resultados, tocar zona o radio de la frase lleva a Zona. |
-| S2-14 (D7) | Home sin zona | Sin zona por defecto; el preview muestra Rosario. |
-| S2-15 (D8) | Estados | «Reintentar» en error; acciones tocables en sin resultados («Quitar filtros», «Cambiar día»); aviso de privacidad (D-9) en sin ubicación. Todos viven en Resultados. |
-| S2-16 (D9) | Nombres | Tab «Zona»; modos «Cerca mío», «En el mapa», «Barrios». |
-| S2-17 (D10) | Bottom sheet | Tres alturas (colapsado, medio, completo) con arrastre; foco gestionado al abrir y cerrar. |
-| S2-18 (D11) | Selector de fecha | Input de fecha nativo, mínimo hoy en `America/Argentina/Buenos_Aires`. |
-| S2-19 (D12) | Tag MÚSICA | Primer género de `music_genres` (ej. TANGO); sin géneros, no se muestra. |
-| S2-20 (D13) | Rendimiento (D-11) | LCP ≤ 2,5 s en 4G simulada; JS inicial ≤ 200 KB gzip; el mapa carga en diferido. |
+| S2-1 | Dónde vive | App nueva `apps/web` (Pages), aparte de `apps/dashboard` (admin). Proyectos Pages de staging y producción y su workflow de deploy. |
+| S2-2 | Mapa | Precisa B-7: MapLibre con teselas vectoriales de un proveedor (o Protomaps en R2); el servidor público de OSM no admite tráfico de producción. Atribución visible (D-10): © OpenStreetMap más la que exija el proveedor de teselas. Modo oscuro del mapa incluido (B-11). |
+| S2-3 | Estado de la búsqueda | La URL manda (`?i=…&cuando=…&z=…`, E-12); el store la refleja. Detalle en `/e/:id` y `/l/:id`. |
+| S2-4 | Primer uso sin ubicación | Búsqueda de toda la ciudad sin distancia (F-7), con «ubicación no informada» (E-1); la card pide GPS o zona para afinar. |
+| S2-5 | Desktop | Mobile-first; el resto de las pantallas se adapta por layout responsivo (Resultados: lista + mapa lado a lado). Se valida visualmente al final. |
+| S2-6 | Ficha de Lugar | **Bloqueante:** falta wireframe del owner. Se genera con `/tript-wireframe-brief` (solo esa pantalla) y se aprueba antes de construir el Detalle de lugar. El Detalle de evento no depende de él. |
+| S2-7 | SEO | SPA pura por ahora; prerender se evalúa después (requeriría un endpoint de listado de IDs). |
+| S2-8 | Cómo llegar | Reemplaza el «deep link a la app de mapas» de B-8: enlace universal de Google Maps con destino por coordenadas (los «min a pie» de B-8 se mantienen). |
+| S2-9 | Tokens | Se leen del Figma Make `en5jOAjdZvfWxOggie0jUt` (`src/rq/tokens.ts`) y se copian 1:1, salvo el ajuste ya fijado en `docs/DESIGN.md` (se elimina `type-espacio`, B-1b). Pendiente: acceso al Make. |
+| S2-10 | Franjas | Ahora · Hoy · Esta noche · Mañana · Próximos días · En cartel · Horario a confirmar. |
+| S2-11 | Ítem de resultado | GRATIS o «$ 12.000»; nada si el precio es desconocido (el Detalle dice «precio no informado»); tipo de lugar en la meta («Bar · 850 m»). |
+| S2-12 | Gratis | Chip separado junto a Cuándo; no es una intención (F-4). |
+| S2-13 | Radio | Slider en «Cerca mío» y «En el mapa»; sin slider en zona fija (E-8). En Resultados, tocar zona o radio de la frase lleva a Zona; en la búsqueda de toda la ciudad (S2-4) la frase ofrece «Elegir zona» con el mismo destino. |
+| S2-14 | Home sin zona | Sin zona por defecto; el preview muestra Rosario. |
+| S2-15 | Estados | «Reintentar» en error; acciones tocables en sin resultados («Quitar filtros», «Cambiar día»); aviso de privacidad (D-9) en sin ubicación. Todos viven en Resultados. |
+| S2-16 | Nombres | Tab «Zona»; modos «Cerca mío», «En el mapa», «Barrios». |
+| S2-17 | Bottom sheet | Tres alturas (colapsado, medio, completo) con arrastre; foco gestionado al abrir y cerrar. |
+| S2-18 | Selector de fecha | Input de fecha nativo, mínimo hoy en `America/Argentina/Buenos_Aires`. |
+| S2-19 | Tag MÚSICA | Primer género de `music_genres` (ej. TANGO); sin géneros, no se muestra. |
+| S2-20 | Rendimiento (D-11) | LCP ≤ 2,5 s en 4G simulada; JS inicial ≤ 200 KB gzip; el mapa carga en diferido. |
 
 ## Edge cases del slice 2 (reglas a implementar)
 
@@ -473,10 +473,10 @@ Aprobadas por Daniel el 2026-10-18.
 
 ## Hallazgos de backend (fixes aparte, fuera del slice de UI)
 
-1. `cuando=fecha` con la fecha de hoy no se comporta como `hoy` (el spec lo dice; `windows.ts:71` devuelve `fecha` y `bands.ts` excluye los sin horario).
+1. `cuando=fecha` con la fecha de hoy no se comporta como `hoy` (el spec lo dice; `windows.ts:71` devuelve `fecha` y `bands.ts:80,100` excluye los sin horario).
 2. `UpcomingEvent.start_date` del detalle de lugar devuelve el inicio del rango, no la próxima ocurrencia (`detail.repo.ts:242`).
-3. Ningún endpoint manda `Cache-Control`, aunque el spec dice que `/zones` se cachea en el cliente.
-4. CORS solo permite `*.pages.dev` y `localhost:5173`: un dominio propio quedaría bloqueado.
+3. Ningún endpoint manda `Cache-Control`, aunque el spec dice que `/zones` se cachea en el cliente (sin `Cache-Control` ese cacheo queda a criterio del navegador).
+4. CORS solo permite `*.pages.dev` y `localhost:5173`: un dominio propio quedaría bloqueado; además `endsWith('.pages.dev')` acepta subdominios de cualquier cuenta, así que el fix debe acotarlo a los proyectos propios.
 
 ## Corte en slices de implementación
 
