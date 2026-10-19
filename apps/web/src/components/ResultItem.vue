@@ -1,8 +1,10 @@
 <template>
-  <li>
+  <li :id="`item-${item.kind}-${item.id}`">
     <RouterLink
       :to="to"
-      class="flex gap-3 rounded-card border border-line bg-surface-card p-3 hover:border-line-strong"
+      class="flex gap-3 rounded-card border bg-surface-card p-3 hover:border-line-strong"
+      :class="selected ? 'border-line-strong ring-2 ring-[var(--rq-focus)]' : 'border-line'"
+      :aria-current="selected ? 'true' : undefined"
     >
       <div class="h-16 w-16 shrink-0 overflow-hidden rounded-tag bg-surface-100">
         <img v-if="item.image_url" :src="item.image_url" alt="" loading="lazy" class="h-full w-full object-cover" />
@@ -35,7 +37,7 @@ import {
   placeKindLabel,
 } from '@/lib/format'
 
-const props = defineProps<{ item: SearchItem }>()
+const props = defineProps<{ item: SearchItem; selected?: boolean }>()
 
 // Un `kind` que la UI no conoce se trata como lugar solo para el link; el rótulo no se inventa (S2).
 const to = computed(() => (props.item.kind === 'event' ? `/e/${props.item.id}` : `/l/${props.item.id}`))
