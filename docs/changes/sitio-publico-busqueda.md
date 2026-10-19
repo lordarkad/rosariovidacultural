@@ -448,7 +448,7 @@ Aprobadas por Daniel el 2026-10-18.
 | S2-6 | Ficha de Lugar | **Bloqueante:** falta wireframe del owner. Se genera con `/tript-wireframe-brief` (solo esa pantalla) y se aprueba antes de construir el Detalle de lugar. El Detalle de evento no depende de él. |
 | S2-7 | SEO | SPA pura por ahora; prerender se evalúa después (requeriría un endpoint de listado de IDs). |
 | S2-8 | Cómo llegar | Reemplaza el «deep link a la app de mapas» de B-8: enlace universal de Google Maps con destino por coordenadas (los «min a pie» de B-8 se mantienen). |
-| S2-9 | Tokens | Se leen del Figma Make `en5jOAjdZvfWxOggie0jUt` (`src/rq/tokens.ts`) y se copian 1:1, salvo el ajuste ya fijado en `docs/DESIGN.md` (se elimina `type-espacio`, B-1b). Pendiente: acceso al Make. |
+| S2-9 | Tokens | Se leen del Figma Make `en5jOAjdZvfWxOggie0jUt` (`src/rq/tokens.ts`) y se copian 1:1, salvo el ajuste ya fijado en `docs/DESIGN.md` (se elimina `type-espacio`, B-1b). Leídos el 2026-10-18; copia de referencia en `docs/design-tokens-ribera.md`. |
 | S2-10 | Franjas | Ahora · Hoy · Esta noche · Mañana · Próximos días · En cartel · Horario a confirmar. |
 | S2-11 | Ítem de resultado | GRATIS o «$ 12.000»; nada si el precio es desconocido (el Detalle dice «precio no informado»); tipo de lugar en la meta («Bar · 850 m»). |
 | S2-12 | Gratis | Chip separado junto a Cuándo; no es una intención (F-4). |
