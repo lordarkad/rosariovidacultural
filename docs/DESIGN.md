@@ -67,3 +67,16 @@
 - **Base de UI:** dirección B · Ribera ya aprobada; perfil `personal` (sin auditoría contra la semilla de Triptongo).
 - **Wireframes:** generados con `/tript-wireframe-brief` (entrevista ligera, 8 decisiones del owner): `wireframes/detalle-lugar.html`; decisiones y supuestos en `wireframes/README.md`.
 - **Aprobación:** Daniel King, 2026-10-19 — wireframes generados con `/tript-wireframe-brief` y aprobados explícitamente por el owner. Los supuestos de `wireframes/README.md` siguen «confirmar» y pasan a `/enrich-us` como gaps (§D).
+
+---
+
+## Curación — eventos y lugares (`/curacion/eventos`, `/curacion/lugares`) — 2026-10-19
+
+- **PR / rama:** pendiente (sin implementación todavía)
+- 🔹 **Nivel:** 2 (vista nueva, herramienta interna dentro del sitio público, sin enlace desde otras pantallas)
+- 🔹 **Arquetipo (`docs/12-page-archetypes.md`):** listado con filtros, en tabla densa (desktop) y tarjetas apiladas (móvil). Sin detalle propio: cada fila enlaza al detalle público.
+- 🔹 **Qué cambia y por qué:** el owner y un equipo de voluntarios necesitan ver todo lo cargado (eventos vigentes y pasados, y lugares), sin filtro de intención ni mapa, para chequear la ingesta y repartir la curación. Solo lectura más exportación CSV.
+- 🔹 **Estados asíncronos que toca:** cargando, sin resultados, error de carga y catálogo vacío. Estados de dato del evento: Vigente, Pasado y Sin ver hace +7 d.
+- **Base de UI:** dirección B · Ribera ya aprobada; perfil `personal` (sin auditoría contra la semilla de Triptongo). Tono sobrio y funcional, claro y oscuro, WCAG 2.2 AA.
+- **Wireframes:** generados con `/tript-wireframe-brief` (entrevista completa, 10 decisiones del owner): `wireframes/curacion.html`; decisiones y supuestos en `wireframes/README.md`.
+- **Aprobación:** Daniel King, 2026-10-19 — wireframes generados con `/tript-wireframe-brief` y aprobados explícitamente por el owner. Los supuestos de `wireframes/README.md` siguen «confirmar» y pasan a `/enrich-us` como gaps (§D).
