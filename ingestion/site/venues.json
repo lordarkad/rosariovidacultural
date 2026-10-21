@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-20T14:02:46+00:00",
+ "generated_at": "2026-10-21T14:22:32+00:00",
  "offers": {
   "musica_en_vivo": "Música en vivo",
   "cena": "Cena",
@@ -23,7 +23,7 @@
    "image_url": "",
    "note": "Bandas en vivo; también hay cena y se baila.",
    "info_sources": [],
-   "upcoming_count": 2,
+   "upcoming_count": 3,
    "upcoming": [
     {
      "id": "6f80e12a9a",
@@ -43,6 +43,17 @@
      "date_text": "29 oct",
      "time": "20:30",
      "url": "https://www.bandsintown.com/e/108736562-tobika-at-casa-brava",
+     "source": "Bandsintown",
+     "free": false,
+     "price_from": null
+    },
+    {
+     "id": "9fdbe367ad",
+     "title": "LA VALENTI",
+     "start": "2026-11-12",
+     "date_text": "12 nov",
+     "time": "08:30",
+     "url": "https://www.bandsintown.com/e/108785153-la-valenti-at-casa-brava",
      "source": "Bandsintown",
      "free": false,
      "price_from": null
