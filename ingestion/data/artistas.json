@@ -1,0 +1,218 @@
+{
+  "_comment": "Artistas con género conocido (scrapers/artists.py). 'genres' son valores de MusicGenre; 'source' dice de dónde salió (wikidata, wikipedia o manual) y una persona lo confirma. 'aliases' son otras formas de escribir el nombre. 'exact': true para nombres ambiguos de una sola palabra (el título tiene que ser exactamente ese nombre). Se comparan sin tildes ni mayúsculas.",
+  "artists": [
+    {
+      "name": "Aterciopelados",
+      "genres": [
+        "rock"
+      ],
+      "source": "wikidata"
+    },
+    {
+      "name": "Ciro y Los Persas",
+      "genres": [
+        "rock"
+      ],
+      "source": "wikidata"
+    },
+    {
+      "name": "Ronnie Wood",
+      "genres": [
+        "rock"
+      ],
+      "source": "wikidata"
+    },
+    {
+      "name": "Coti",
+      "genres": [
+        "rock"
+      ],
+      "source": "wikidata",
+      "exact": true
+    },
+    {
+      "name": "Serú Girán",
+      "genres": [
+        "rock"
+      ],
+      "source": "wikidata",
+      "aliases": [
+        "Seru Giran"
+      ]
+    },
+    {
+      "name": "Babasónicos",
+      "genres": [
+        "rock"
+      ],
+      "source": "wikidata"
+    },
+    {
+      "name": "Paralamas",
+      "genres": [
+        "rock"
+      ],
+      "source": "wikidata",
+      "aliases": [
+        "Los Paralamas",
+        "Paralamas do Sucesso"
+      ]
+    },
+    {
+      "name": "Tan Bionica",
+      "genres": [
+        "rock"
+      ],
+      "source": "wikidata",
+      "aliases": [
+        "Tan Biónica"
+      ]
+    },
+    {
+      "name": "Mathame",
+      "genres": [
+        "electronica"
+      ],
+      "source": "wikidata"
+    },
+    {
+      "name": "Miss Monique",
+      "genres": [
+        "electronica"
+      ],
+      "source": "wikidata"
+    },
+    {
+      "name": "John Digweed",
+      "genres": [
+        "electronica"
+      ],
+      "source": "wikidata"
+    },
+    {
+      "name": "Deborah de Luca",
+      "genres": [
+        "electronica"
+      ],
+      "source": "wikidata"
+    },
+    {
+      "name": "Víctor Heredia",
+      "genres": [
+        "folklore"
+      ],
+      "source": "wikipedia"
+    },
+    {
+      "name": "Abel Pintos",
+      "genres": [
+        "folklore"
+      ],
+      "source": "wikipedia"
+    },
+    {
+      "name": "Los Nocheros",
+      "genres": [
+        "folklore"
+      ],
+      "source": "wikipedia"
+    },
+    {
+      "name": "Tarja Turunen",
+      "genres": [
+        "clasica",
+        "rock"
+      ],
+      "source": "wikidata",
+      "aliases": [
+        "Tarja"
+      ]
+    },
+    {
+      "name": "Diego Torres",
+      "genres": [
+        "pop"
+      ],
+      "source": "wikidata"
+    },
+    {
+      "name": "Alex Ubago",
+      "genres": [
+        "pop"
+      ],
+      "source": "wikidata"
+    },
+    {
+      "name": "Sergio Dalma",
+      "genres": [
+        "pop"
+      ],
+      "source": "wikidata"
+    },
+    {
+      "name": "Ha*Ash",
+      "genres": [
+        "pop"
+      ],
+      "source": "wikidata",
+      "aliases": [
+        "Ha Ash"
+      ]
+    },
+    {
+      "name": "Camilo",
+      "genres": [
+        "pop"
+      ],
+      "source": "wikipedia",
+      "exact": true
+    },
+    {
+      "name": "Axel",
+      "genres": [
+        "pop"
+      ],
+      "source": "wikipedia",
+      "exact": true
+    },
+    {
+      "name": "Ángela Torres",
+      "genres": [
+        "pop"
+      ],
+      "source": "wikipedia",
+      "aliases": [
+        "Angela Torres"
+      ]
+    },
+    {
+      "name": "María Becerra",
+      "genres": [
+        "pop",
+        "urbano"
+      ],
+      "source": "wikidata",
+      "aliases": [
+        "Maria Becerra"
+      ]
+    },
+    {
+      "name": "Los Pérez García",
+      "genres": [
+        "rock"
+      ],
+      "source": "wikipedia",
+      "aliases": [
+        "Los Perez Garcia"
+      ]
+    },
+    {
+      "name": "Pez",
+      "genres": [
+        "rock"
+      ],
+      "source": "wikipedia",
+      "exact": true
+    }
+  ]
+}

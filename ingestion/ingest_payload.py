@@ -7,6 +7,7 @@ from __future__ import annotations
 import hashlib
 import re
 
+from scrapers import artists as artists_mod
 from scrapers import venues as venues_mod
 from scrapers.common import feed_of, guess_genres, guess_intents, norm, split_venues
 
@@ -37,7 +38,7 @@ def _price(record: dict) -> tuple[str, int | None]:
     return "unknown", None
 
 
-def to_ingest_events(record: dict, venues: list[dict]) -> list[dict]:
+def to_ingest_events(record: dict, venues: list[dict], artists: list[dict] | None = None) -> list[dict]:
     """Un `IngestEvent` por sede: una película en 2 cines da 2 eventos con la misma `source_url` (E-2)."""
     parts = split_venues(record.get("venue") or "")
     coords = record.get("coords") or []
@@ -45,6 +46,7 @@ def to_ingest_events(record: dict, venues: list[dict]) -> list[dict]:
     categories = record.get("categories") or [record["category"]]
     intents = guess_intents(record["title"], description, categories, record.get("plan", "cultura"))
     hints = set(record.get("genre_hints") or [])  # lo que declaró la propia fuente (p. ej. «Fiestas electrónicas»)
+    hints |= set(artists_mod.genres_of(record["title"], artists or []))  # artistas curados (data/artistas.json)
     musical = bool(_MUSIC_CATEGORIES & set(categories)) or bool(hints)  # «House of Gucci» (cine) no es electrónica
     price_status, price_from = _price(record)
     primary = record["sources"][0]
