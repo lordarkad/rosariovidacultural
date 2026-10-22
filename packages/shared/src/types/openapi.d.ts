@@ -395,10 +395,10 @@ export interface components {
          */
         Intent: "comer" | "tomar_algo" | "espectaculo" | "musica_en_vivo" | "bailar" | "con_chicos";
         /**
-         * @description Subgénero de música (B-3, F-17). Lo asigna la ingesta. Un evento puede tener varios.
+         * @description Subgénero de música (B-3). Lo asigna la ingesta. Un evento puede tener varios. `urbano` agrupa trap, hip hop y reggaetón.
          * @enum {string}
          */
-        MusicGenre: "jazz" | "rock" | "folklore" | "electronica" | "tango" | "cumbia" | "clasica" | "chamame";
+        MusicGenre: "jazz" | "rock" | "folklore" | "electronica" | "tango" | "cumbia" | "clasica" | "chamame" | "pop" | "urbano" | "reggae" | "cuarteto" | "metal";
         /**
          * @description Franja de la lista (B-9), en America/Argentina/Buenos_Aires (E-5). Reglas completas en la descripción de `searchItems`.
          *     `ahora`: empezó hace hasta 2 h o empieza en la próxima hora (lugares: abierto ahora).
