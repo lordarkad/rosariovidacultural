@@ -22,6 +22,7 @@ from pathlib import Path
 import cuisine
 from ingest_payload import to_ingest_events
 from ingest_places import curated_place, osm_place
+from scrapers import artists as artists_mod
 from scrapers import venues as venues_mod
 from scrapers.common import feed_of
 
@@ -39,11 +40,12 @@ def tier_of(feed: str) -> str:
     return "official" if feed in SALAS else "aggregator"
 
 
-def build_batches(records: list[dict], venues: list[dict], generated_at: str) -> list[dict]:
+def build_batches(records: list[dict], venues: list[dict], generated_at: str,
+                  artists: list[dict] | None = None) -> list[dict]:
     """Agrupa los IngestEvent por fuente y los parte en lotes de MAX_BATCH. Orden estable: fuentes por aparición."""
     by_feed: dict[str, list[dict]] = {}
     for record in records:
-        by_feed.setdefault(feed_of(record), []).extend(to_ingest_events(record, venues))
+        by_feed.setdefault(feed_of(record), []).extend(to_ingest_events(record, venues, artists))
     batches = []
     for feed, events in by_feed.items():
         for i in range(0, len(events), MAX_BATCH):
@@ -66,14 +68,14 @@ def build_place_batches(curated: list[dict], osm: list[dict], generated_at: str)
 
 
 def select_batches(data: dict, curated: list[dict], osm: list[dict], venues: list[dict], generated_at: str,
-                   only: str | None = None, skip_osm: bool = False) -> list[dict]:
+                   only: str | None = None, skip_osm: bool = False, artists: list[dict] | None = None) -> list[dict]:
     """Qué se publica. Sin flags, todo. `only` limita a `events` o `places`; `skip_osm` deja afuera los lugares de
     OpenStreetMap (el workflow diario publica eventos y curados; el semanal, los lugares)."""
     batches: list[dict] = []
     if only != "events":
         batches += build_place_batches(curated, [] if skip_osm else osm, generated_at)
     if only != "places":
-        batches += build_batches(data["events"], venues, generated_at)
+        batches += build_batches(data["events"], venues, generated_at, artists)
     return batches
 
 
@@ -150,7 +152,8 @@ def main() -> int:
     generated_at = data.get("generated_at") or datetime.now(timezone.utc).isoformat(timespec="seconds")
     curated = json.loads(VENUES.read_text(encoding="utf-8")).get("venues", []) if VENUES.exists() else []
     osm = json.loads(PLACES.read_text(encoding="utf-8")).get("places", []) if PLACES.exists() else []
-    batches = select_batches(data, curated, osm, venues_mod.load(), generated_at, args.only, args.skip_osm)
+    batches = select_batches(data, curated, osm, venues_mod.load(), generated_at, args.only, args.skip_osm,
+                              artists_mod.load())
     n_places = sum(len(b.get("places", [])) for b in batches)
     n_events = sum(len(b.get("events", [])) for b in batches)
     print(f"{len(data['events'])} registros -> {n_events} eventos y {n_places} lugares en {len(batches)} lotes")
