@@ -132,6 +132,17 @@ class Generos(unittest.TestCase):
         [ev] = to_ingest_events(r, [CASA_TANGO])
         self.assertEqual(ev["music_genres"], ["tango"])
 
+    def test_el_genero_que_declara_la_fuente_se_conserva(self):
+        # «Fiestas electrónicas» de Disfruta Rosario: categoría de la fuente, no adivinada del título
+        r = record(title="Noche de sets", categories=["eventos"], category="eventos", genre_hints=["electronica"])
+        [ev] = to_ingest_events(r, [])
+        self.assertEqual(ev["music_genres"], ["electronica"])
+
+    def test_sin_pista_ni_musica_no_hay_genero(self):
+        r = record(title="Noche de sets", categories=["eventos"], category="eventos")
+        [ev] = to_ingest_events(r, [])
+        self.assertEqual(ev["music_genres"], [])
+
     def test_solo_en_musica_o_baile(self):
         # «House» en el título de una película no es electrónica
         r = record(title="House of Gucci", categories=["cine"], category="cine")

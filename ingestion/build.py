@@ -51,6 +51,8 @@ def to_record(ev: dict) -> dict | None:
         # fuente primaria primero; "also" son agregadores/notas que lo mencionan (atribución "vía")
         "sources": [{"name": ev["source"], "url": ev["url"]}, *ev.get("also", [])],
         **({"coords": ev["coords"]} if ev.get("coords") else {}),
+        # subgéneros que la propia fuente declara (no se adivinan del texto): ver ingest_payload
+        **({"genre_hints": ev["genres"]} if ev.get("genres") else {}),
     }
 
 
@@ -99,6 +101,8 @@ def merge_duplicates(records: list[dict]) -> list[dict]:
         for field in ("venue", "address", "image", "description", "time", "coords"):
             cur[field] = cur.get(field) or rec.get(field, "")
         cur["categories"] = sorted(set(cur["categories"]) | set(rec["categories"]))
+        if rec.get("genre_hints"):
+            cur["genre_hints"] = sorted(set(cur.get("genre_hints", [])) | set(rec["genre_hints"]))
         if not cur["ranged"] and not rec["ranged"]:
             cur["dates"] = sorted(set(cur["dates"]) | set(rec["dates"]))
         cur["start"], cur["end"] = min(cur["start"], rec["start"]), max(cur["end"], rec["end"])

@@ -44,13 +44,14 @@ def to_ingest_events(record: dict, venues: list[dict]) -> list[dict]:
     description = record.get("description") or ""
     categories = record.get("categories") or [record["category"]]
     intents = guess_intents(record["title"], description, categories, record.get("plan", "cultura"))
-    musical = bool(_MUSIC_CATEGORIES & set(categories))  # «House of Gucci» (cine) no es electrónica
+    hints = set(record.get("genre_hints") or [])  # lo que declaró la propia fuente (p. ej. «Fiestas electrónicas»)
+    musical = bool(_MUSIC_CATEGORIES & set(categories)) or bool(hints)  # «House of Gucci» (cine) no es electrónica
     price_status, price_from = _price(record)
     primary = record["sources"][0]
     out = []
     for i, part in enumerate(parts):
         place = venues_mod.venue_of({"venue": part}, venues) if part else None
-        genres = (guess_genres(record["title"], description, place["genres"] if place else None)
+        genres = (guess_genres(record["title"], description, sorted(hints | set(place["genres"] if place else [])))
                   if musical else [])
         located = coords[i] if len(coords) == len(parts) else None
         time = record.get("time") or ""

@@ -22,6 +22,7 @@ HOST = "https://disfrutarosario.com"
 API = f"{HOST}/wp-json/wp/v2"
 SOURCE = "Disfruta Rosario"
 CAT_EVENTOS = 248  # eventos-en-rosario
+CAT_ELECTRONICA = 9005  # fiestas-electronicas: ya es un subgénero de música
 CAT_PADRE_LUGARES = 2  # espectaculos: sus hijas son las sedes (El Círculo, City Center...)
 PER_PAGE = 100
 MAX_PAGES = 3
@@ -139,6 +140,8 @@ def parse_post(post: dict, venues: dict[int, str], today: date) -> dict | None:
         "price_from": min(prices) if prices else None,
         "free": bool(FREE_RE.search(text[:HEAD_CHARS])) and not prices,
     }
+    if CAT_ELECTRONICA in post.get("categories", []):
+        ev["genres"] = ["electronica"]
     ticket = ticket_link(soup)
     if ticket:  # la ticketera es la fuente primaria; la nota queda como "vía"
         ev["source"], ev["url"], ev["also"] = ticket[0], ticket[1], [{"name": SOURCE, "url": post["link"]}]

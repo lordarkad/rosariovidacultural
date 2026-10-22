@@ -64,6 +64,24 @@ class QueHacemos(unittest.TestCase):
         self.assertEqual(m["coords"], [[-32.96392, -60.66403]])
         self.assertEqual(len(m["sources"]), 3)
 
+    def test_el_tipo_electronica_pasa_como_subgenero(self):
+        ev = quehacemos.to_event(api_event(event_type="electronica"), TODAY)
+        self.assertEqual((ev["category"], ev["genres"]), ("musica", ["electronica"]))
+        self.assertEqual(to_record(ev)["genre_hints"], ["electronica"])
+
+    def test_otros_tipos_no_traen_pista_de_genero(self):
+        for kind in ("recital", "cuarteto", "fiesta"):  # cuarteto no está en el enum del spec
+            ev = quehacemos.to_event(api_event(event_type=kind), TODAY)
+            self.assertNotIn("genres", ev)
+            self.assertNotIn("genre_hints", to_record(ev))
+
+    def test_las_pistas_de_genero_se_unen_al_fusionar(self):
+        a = to_record(quehacemos.to_event(api_event(title="Set", event_type="electronica", date="2026-10-03T23:00:00"), TODAY))
+        b = to_record({**quehacemos.to_event(api_event(title="Set", event_type="recital", date="2026-10-03T23:00:00"), TODAY),
+                       "url": "https://muni.test/set", "source": "Agenda municipal", "also": []})
+        (m,) = merge_duplicates([b, a])
+        self.assertEqual(m["genre_hints"], ["electronica"])
+
 
 POST = {
     "date": "2026-09-20T10:00:00",
@@ -86,6 +104,11 @@ class DisfrutaRosario(unittest.TestCase):
         self.assertEqual(ev["venue"], "Asociación Japonesa")
         self.assertEqual((ev["source"], ev["url"]), ("Tickets for Lovers", "https://www.ticketsforlovers.com/eventos/fieston-e1385"))
         self.assertEqual(ev["also"], [{"name": "Disfruta Rosario", "url": POST["link"]}])
+
+    def test_categoria_fiestas_electronicas_es_pista_de_genero(self):
+        self.assertNotIn("genres", disfrutarosario.parse_post(POST, {}, TODAY))
+        ev = disfrutarosario.parse_post({**POST, "categories": [7, disfrutarosario.CAT_ELECTRONICA]}, {}, TODAY)
+        self.assertEqual(ev["genres"], ["electronica"])
 
     def test_sin_ticketera_la_fuente_es_la_nota(self):
         post = {**POST, "content": {"rendered": "<p>Domingo 4 de octubre de 14 a 20. Entrada libre y gratuita.</p>"}}
