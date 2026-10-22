@@ -397,6 +397,7 @@ Confirmadas por Daniel el 2026-10-16. Viven en `ingestion/scrapers/common.py::gu
 - **`source_key`:** `<fuente>:<sha256(url de esa fuente + sede)[:12]>`, anclada a la fuente que trajo el evento (`feed`) y no a `sources[0]`, para que fusionar duplicados no la cambie. `place_source_key` queda en `null` hasta B-3c. **`start_time`:** con varias funciones («15:10 / 17:55») se conserva la primera; `La Tertulia` en el título es un espacio, no `bailar`.
 - **Precio:** `free` si la fuente lo marca gratis; `paid` si hay `price_from` mayor que 0; si no, `unknown`.
 - **Medición sobre `events.json` (390 registros → 400 `IngestEvent`):** 152 quedan sin intención (todos `eventos`, `otros`, `muestras`, `deporte`, `arte`); solo 1 es `bailar` y 14 traen género. Ampliar las palabras clave es un ajuste posterior.
+- **Género declarado por la fuente (2026-10-22):** el campo «Género:» casi no existe en las fuentes (2 de 158 eventos de música) y las ticketeras probadas no exponen género estructurado. Las únicas señales propias que hay se pasan tal cual como `genre_hints` del registro y entran a `music_genres` (también en eventos que no son de categoría `musica`): `event_type: electronica` de Qué Hacemos y la categoría «Fiestas electrónicas» (id 9005) de Disfruta Rosario. `cuarteto` de Qué Hacemos no se mapea: no está en el enum `MusicGenre`. Sin cambio de contrato. El resto del hueco (artistas sin género reconocible en el título) se atiende con una lista curada de artistas, aparte.
 
 ## Decisiones de implementación (B-3b, publicación a /ingest, 2026-10-16)
 

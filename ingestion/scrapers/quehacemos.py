@@ -27,6 +27,8 @@ CATEGORY = {
     "familia": "chicos", "deporte": "deporte", "festival": "eventos", "fiesta": "eventos",
     "gastronomia": "eventos", "charla": "otros", "otro": "otros",
 }
+# event_type de la API que ya es un subgénero de música (MusicGenre). `cuarteto` no está en el enum del spec.
+GENRE_BY_TYPE = {"electronica": "electronica"}
 # dominio -> nombre para mostrar (los que no estén acá se muestran como dominio sin www/.com.ar)
 NAMES = {
     "passline.com": "Passline", "ticketek.com.ar": "Ticketek", "alternativateatral.com": "Alternativa Teatral",
@@ -108,6 +110,8 @@ def to_event(ev: dict, today: date) -> dict | None:
         "price_from": int(price) if price else None,
         "free": ev.get("price_type") == "gratis",
     }
+    if ev.get("event_type") in GENRE_BY_TYPE:
+        out["genres"] = [GENRE_BY_TYPE[ev["event_type"]]]
     if lat is not None and lon is not None:
         out["coords"] = [[round(float(lat), 5), round(float(lon), 5)]]
     return out
