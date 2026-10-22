@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-21T14:22:32+00:00",
+ "generated_at": "2026-10-22T14:23:49+00:00",
  "offers": {
   "musica_en_vivo": "Música en vivo",
   "cena": "Cena",
@@ -109,17 +109,6 @@
    "upcoming_count": 5,
    "upcoming": [
     {
-     "id": "933bf4ec65",
-     "title": "Taller de Técnicas de Danza y Composición Instantánea",
-     "start": "2026-10-21",
-     "date_text": "Del 21 de octubre al 25 de noviembre · Miércoles · De 16:30 a 18 horas",
-     "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/taller-de-tecnicas-de-danza-y-composicion-instantanea",
-     "source": "Agenda municipal",
-     "free": true,
-     "price_from": null
-    },
-    {
      "id": "eab6d41868",
      "title": "Tertulias Tangueras",
      "start": "2026-10-23",
@@ -148,6 +137,17 @@
      "date_text": "Del 25 de octubre al 29 de noviembre · Domingo · De 10 a 12 horas",
      "time": "",
      "url": "https://www.rosario.gob.ar/inicio/tango-en-calle",
+     "source": "Agenda municipal",
+     "free": true,
+     "price_from": null
+    },
+    {
+     "id": "933bf4ec65",
+     "title": "Taller de Técnicas de Danza y Composición Instantánea",
+     "start": "2026-10-28",
+     "date_text": "Del 28 de octubre al 25 de noviembre · Miércoles · De 16:30 a 18 horas",
+     "time": "",
+     "url": "https://www.rosario.gob.ar/inicio/taller-de-tecnicas-de-danza-y-composicion-instantanea",
      "source": "Agenda municipal",
      "free": true,
      "price_from": null
