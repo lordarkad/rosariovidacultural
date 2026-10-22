@@ -20,24 +20,24 @@
 
       <fieldset class="flex flex-wrap gap-x-5 gap-y-1">
         <legend class="rq-meta mb-1">Origen</legend>
-        <label v-for="o in ORIGENES" :key="o.value" class="flex items-center gap-2 text-sm">
-          <input type="checkbox" :checked="filters.origen?.includes(o.value)" @change="toggle('origen', o.value)" />
+        <label v-for="o in ORIGENES" :key="o.value" class="rq-check">
+          <input type="checkbox" class="rq-check-box" :checked="filters.origen?.includes(o.value)" @change="toggle('origen', o.value)" />
           {{ o.label }}
         </label>
       </fieldset>
 
       <fieldset class="flex flex-wrap gap-x-5 gap-y-1">
         <legend class="rq-meta mb-1">Tipo</legend>
-        <label v-for="o in TIPOS" :key="o.value" class="flex items-center gap-2 text-sm">
-          <input type="checkbox" :checked="filters.tipo?.includes(o.value)" @change="toggle('tipo', o.value)" />
+        <label v-for="o in TIPOS" :key="o.value" class="rq-check">
+          <input type="checkbox" class="rq-check-box" :checked="filters.tipo?.includes(o.value)" @change="toggle('tipo', o.value)" />
           {{ o.label }}
         </label>
       </fieldset>
 
       <fieldset class="flex flex-wrap gap-x-5 gap-y-1">
         <legend class="rq-meta mb-1">Faltan</legend>
-        <label v-for="o in PLACE_MISSING" :key="o.value" class="flex items-center gap-2 text-sm">
-          <input type="checkbox" :checked="filters.faltan?.includes(o.value)" @change="toggle('faltan', o.value)" />
+        <label v-for="o in PLACE_MISSING" :key="o.value" class="rq-check">
+          <input type="checkbox" class="rq-check-box" :checked="filters.faltan?.includes(o.value)" @change="toggle('faltan', o.value)" />
           {{ o.label }}
         </label>
       </fieldset>
@@ -85,7 +85,7 @@
           <tbody>
             <tr v-for="p in store.places" :key="p.id" class="block border-b border-line md:table-row">
               <td data-label="Nombre" class="px-2 py-1.5 font-semibold">
-                <a :href="`/l/${p.id}`" target="_blank" rel="noopener noreferrer" class="underline decoration-primary underline-offset-4">{{ p.name }}</a>
+                <a :href="`/l/${p.id}`" target="_blank" rel="noopener noreferrer" class="underline decoration-ink underline-offset-4">{{ p.name }}</a>
               </td>
               <td data-label="Tipo" class="px-2 py-1.5">{{ tipoLabel(p.kind) }}</td>
               <td data-label="Origen" class="px-2 py-1.5">{{ origenLabel(p.origin) }}</td>
@@ -159,21 +159,36 @@ function toggle(key: ListKey, value: string): void {
 
 // El texto que se está escribiendo vive acá: la URL lo recibe con retraso y recortado, y no debe pisar el input.
 const draft = ref(filters.value.q ?? '')
+// `sent` es lo último que este campo mandó a la URL: la URL que vuelve con retraso no pisa lo que se sigue
+// escribiendo; solo un cambio externo (Atrás, «Limpiar filtros») sobrescribe el campo.
+let sent = filters.value.q ?? ''
 watch(
   () => filters.value.q,
   (q) => {
-    if ((q ?? '') !== draft.value.trim()) draft.value = q ?? ''
+    if ((q ?? '') !== sent) {
+      sent = q ?? ''
+      draft.value = sent
+    }
   },
 )
 
 let timer: ReturnType<typeof setTimeout> | undefined
 function onSearch(value: string): void {
   clearTimeout(timer)
-  timer = setTimeout(() => apply({ q: value.trim() || undefined }), 300)
+  timer = setTimeout(() => {
+    sent = value.trim()
+    apply({ q: sent || undefined })
+  }, 300)
 }
 
-const clear = (): void => void router.push({ query: {} })
-const goTo = (page: number): void => void router.push({ query: filtersToQuery({ ...filters.value, page }) })
+function clear(): void {
+  clearTimeout(timer)
+  void router.push({ query: {} })
+}
+function goTo(page: number): void {
+  clearTimeout(timer)
+  void router.push({ query: filtersToQuery({ ...filters.value, page }) })
+}
 
 async function exportCsv(): Promise<void> {
   const rows = (await store.exportAll('lugares', filters.value)) as CurationPlace[] | null

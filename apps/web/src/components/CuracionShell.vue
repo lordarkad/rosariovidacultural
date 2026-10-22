@@ -17,7 +17,7 @@
           :key="tab.to"
           :to="tab.to"
           class="-mb-px border-b-4 px-4 py-2 text-sm font-semibold"
-          :class="route.path === tab.to ? 'border-primary text-ink' : 'border-transparent text-ink-muted hover:text-ink'"
+          :class="route.path === tab.to ? 'border-line-strong text-ink' : 'border-transparent text-ink-muted hover:text-ink'"
         >
           {{ tab.label }}
         </RouterLink>

@@ -5,7 +5,7 @@
         <RouterLink
           :to="tab.to"
           class="flex min-h-14 items-center justify-center text-sm font-semibold"
-          :class="isActive(tab.id) ? 'text-ink underline decoration-primary decoration-4 underline-offset-8' : 'text-ink-muted'"
+          :class="isActive(tab.id) ? 'text-ink underline decoration-ink decoration-4 underline-offset-8' : 'text-ink-muted'"
           :aria-current="isActive(tab.id) && !route.meta.tab ? 'page' : undefined"
         >
           {{ tab.label }}
