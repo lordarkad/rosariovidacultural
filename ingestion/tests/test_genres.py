@@ -42,10 +42,30 @@ class Palabras(unittest.TestCase):
         # títulos reales de la agenda que quedaban sin género
         self.assertEqual(guess_genres("Peña Folclórica día de la Independencia"), ["folklore"])
         self.assertEqual(guess_genres("Pre Cosquín 2027 Sede Rosario en el Galpón 11"), ["folklore"])
-        self.assertEqual(guess_genres("Buenos Aires Nu Metal Fest en Rosario"), ["rock"])
+        self.assertEqual(guess_genres("Buenos Aires Nu Metal Fest en Rosario"), ["metal"])  # F-19: metal no es rock
         self.assertEqual(guess_genres("Piedra y camino. Cantata a la Luna en el CAM"), ["clasica"])
         self.assertEqual(guess_genres("Orquesta Filarmónica de Rosario"), ["clasica"])
         self.assertEqual(guess_genres("Noche punk"), ["rock"])
+
+    def test_generos_nuevos_f19(self):
+        self.assertEqual(guess_genres("Noche de heavy metal"), ["metal"])
+        self.assertEqual(guess_genres("Reggae en la terraza"), ["reggae"])
+        self.assertEqual(guess_genres("Cuarteto a pleno"), ["cuarteto"])
+        self.assertEqual(guess_genres("Fiesta trap y reggaetón"), ["urbano"])
+        self.assertEqual(guess_genres("Hip hop en vivo"), ["urbano"])
+        self.assertEqual(guess_genres("Noche pop"), ["pop"])
+        self.assertEqual(guess_genres("Metal y rock"), ["metal", "rock"])
+
+    def test_pop_con_exclusiones(self):
+        self.assertEqual(guess_genres("Feria pop up de diseño"), [])
+        self.assertEqual(guess_genres("Muestra de pop art"), [])
+
+    def test_genero_f19_en_el_campo_genero(self):
+        self.assertEqual(guess_genres("Show", "Género: Reggaeton Destinatarios: todos"), ["urbano"])
+        self.assertEqual(guess_genres("Show", "Género: Pop"), ["pop"])
+        self.assertEqual(guess_genres("Show", "Género: PopDestinatarios: todos"), ["pop"])  # pegado al campo siguiente
+        self.assertEqual(guess_genres("Show", "Género: Música Popular"), [])
+        self.assertEqual(guess_genres("Show", "Género: Circo trapecio"), [])
 
     def test_sin_genero(self):
         self.assertEqual(guess_genres("Stand up"), [])

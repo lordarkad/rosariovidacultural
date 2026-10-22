@@ -29,6 +29,11 @@ describe('parseSearch (la URL manda, S2-3)', () => {
   it('los géneros solo valen con música en vivo o bailar (F-16/F-17)', () => {
     expect(parseSearch({ i: 'comer', musica: 'tango' })).toEqual({ i: ['comer'] })
     expect(parseSearch({ i: 'bailar', musica: 'tango,vallenato' })).toEqual({ i: ['bailar'], musica: ['tango'] })
+    // [AC-16c] los géneros de F-19 se conservan; trap/reguetón no son valores del enum (el género es urbano)
+    expect(parseSearch({ i: 'bailar', musica: 'pop,urbano,reggae,cuarteto,metal,trap' })).toEqual({
+      i: ['bailar'],
+      musica: ['pop', 'urbano', 'reggae', 'cuarteto', 'metal'],
+    })
   })
 
   it('texto libre recortado; vacío se ignora; toma el primer valor si viene repetido', () => {

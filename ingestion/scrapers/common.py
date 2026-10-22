@@ -236,7 +236,8 @@ def guess_category(title: str, default: str = "eventos") -> str:
 
 
 # Subgéneros de música (MusicGenre del spec, F-17). Palabras ya normalizadas (sin tildes).
-MUSIC_GENRES = ("jazz", "rock", "folklore", "electronica", "tango", "cumbia", "clasica", "chamame")
+MUSIC_GENRES = ("jazz", "rock", "folklore", "electronica", "tango", "cumbia", "clasica", "chamame",
+                "pop", "urbano", "reggae", "cuarteto", "metal")
 _GENRE_WORDS = {
     "tango": ["tango", "tangos", "tanguera", "tangueras", "tanguero", "tangueros", "milonga", "milongas", "bandoneon"],
     "folklore": ["folklore", "folclore", "folklorico", "folclorico", "folklorica", "folclorica", "zamba", "zambas",
@@ -245,8 +246,26 @@ _GENRE_WORDS = {
     "chamame": ["chamame", "chamames"],
     "clasica": ["clasica", "sinfonica", "sinfonico", "opera", "cantata", "filarmonica", "camerata"],
     "jazz": ["jazz"],
-    "rock": ["rock", "rockero", "rockera", "rockeros", "rockeras", "metal", "punk"],
+    "rock": ["rock", "rockero", "rockera", "rockeros", "rockeras", "punk"],
     "electronica": ["electronica", "techno", "house"],
+    # F-19. `metal` no es alias de `rock`. «arte urbano» es de la calle, no un género: `urbano` solo entra por trap/hip hop/reggaetón.
+    "metal": ["metal", "metalero", "metalera", "metaleros", "metaleras"],
+    "pop": ["pop"],
+    "urbano": ["trap", "hip hop", "hiphop", "reggaeton", "regueton"],
+    "reggae": ["reggae"],
+    "cuarteto": ["cuarteto", "cuartetos"],
+}
+# Frases que contienen la palabra del género pero no son el género («pop up», «cuarteto de cuerdas»): se sacan del texto antes de buscar.
+_GENRE_EXCLUDE = {
+    "pop": ["pop up", "pop art"],
+    "cuarteto": ["cuarteto de cuerdas", "cuarteto de vientos", "cuarteto de saxos", "cuarteto de camara"],
+    "reggae": ["reggaeton"],  # en «Género:» la búsqueda es por subcadena y «reggaeton» contiene «reggae»
+}
+# En el campo «Género:» la búsqueda es por subcadena (las ticketeras lo pegan con el campo siguiente). Para las palabras
+# cortas que chocan con otras («popular», «trapecio») se usa un patrón propio.
+_GENRE_FIELD_PATTERN = {
+    "pop": re.compile(r"\bpop(?!ul)"),
+    "urbano": re.compile(r"\b(trap(?!e)|hip hop|hiphop|reggaeton|regueton)"),
 }
 
 
@@ -260,7 +279,14 @@ def guess_genres(title: str, description: str = "", forced: list[str] | None = N
     genre_field = m.group(1) if m else ""
     found = set(forced or [])
     for genre, words in _GENRE_WORDS.items():
-        if any(f" {w} " in words_in_title for w in words) or any(w in genre_field for w in words):
+        in_title, field = words_in_title, f" {genre_field} "
+        for phrase in _GENRE_EXCLUDE.get(genre, []):
+            in_title, field = in_title.replace(f" {phrase} ", " "), field.replace(phrase, " ")
+        if genre in _GENRE_FIELD_PATTERN:
+            in_field = bool(_GENRE_FIELD_PATTERN[genre].search(field))
+        else:
+            in_field = any(w in field for w in words)
+        if any(f" {w} " in in_title for w in words) or in_field:
             found.add(genre)
     return sorted(found)
 
