@@ -183,12 +183,12 @@ function onSearch(value: string): void {
 
 function clear(): void {
   clearTimeout(timer)
+  // Si la URL no tenía `q`, el watch no se dispara: el campo se vacía acá.
+  draft.value = ''
+  sent = ''
   void router.push({ query: {} })
 }
-function goTo(page: number): void {
-  clearTimeout(timer)
-  void router.push({ query: filtersToQuery({ ...filters.value, page }) })
-}
+const goTo = (page: number): void => void router.push({ query: filtersToQuery({ ...filters.value, page }) })
 
 async function exportCsv(): Promise<void> {
   const rows = (await store.exportAll('lugares', filters.value)) as CurationPlace[] | null

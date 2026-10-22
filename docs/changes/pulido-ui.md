@@ -13,7 +13,7 @@ Pedido del owner (2026-10-22): cerrar los pendientes de accesibilidad y performa
 | AC-5 | Los pares de tokens de texto del listado (`text`, `text-muted` sobre `surface-0`, `surface-card`, `primary-soft`; filas atenuadas) cumplen ≥ 4,5:1 en claro y oscuro; lo fija un test sobre `tokens.css`. |
 | AC-6 | La hoja de Google Fonts no bloquea el primer render (carga diferida con `media="print"` + `onload`, y `<noscript>` de respaldo). |
 | AC-7 | Escribir en el buscador no se pisa si la URL llega con retraso (el `watch` solo sobrescribe el campo ante un cambio externo: Atrás, «Limpiar filtros»). |
-| AC-8 | «Limpiar filtros» y el cambio de página cancelan el temporizador pendiente del buscador. |
+| AC-8 | «Limpiar filtros» cancela el temporizador pendiente del buscador y vacía el campo, aunque la URL no tuviera `q`. El cambio de página no lo toca. |
 
 ## Sin verificar a mano (pendiente del owner)
 
