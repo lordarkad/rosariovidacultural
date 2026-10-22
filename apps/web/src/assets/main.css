@@ -33,4 +33,21 @@
     text-transform: var(--rq-meta-transform);
     color: var(--rq-text-muted);
   }
+
+  /* Casilla de filtro: área de toque de 44 px (WCAG 2.5.8 pide ≥ 24) con la etiqueta entera clicable */
+  .rq-check {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+  .rq-check-box {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex: none;
+    accent-color: var(--rq-text);
+    cursor: pointer;
+  }
 }

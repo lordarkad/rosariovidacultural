@@ -21,8 +21,8 @@
 
       <fieldset class="flex flex-wrap gap-x-5 gap-y-1">
         <legend class="rq-meta mb-1">Estado</legend>
-        <label v-for="o in ESTADOS" :key="o.value" class="flex items-center gap-2 text-sm">
-          <input type="checkbox" :checked="filters.estado?.includes(o.value)" @change="toggle('estado', o.value)" />
+        <label v-for="o in ESTADOS" :key="o.value" class="rq-check">
+          <input type="checkbox" class="rq-check-box" :checked="filters.estado?.includes(o.value)" @change="toggle('estado', o.value)" />
           {{ o.label }}
         </label>
       </fieldset>
@@ -30,8 +30,8 @@
       <details class="rounded-card border border-line bg-surface-card p-3" :open="!!filters.fuente?.length">
         <summary class="cursor-pointer text-sm font-semibold">Fuente</summary>
         <div class="mt-2 flex flex-wrap gap-x-5 gap-y-1">
-          <label v-for="s in store.sources" :key="s.name" class="flex items-center gap-2 text-sm">
-            <input type="checkbox" :checked="filters.fuente?.includes(s.name)" @change="toggle('fuente', s.name)" />
+          <label v-for="s in store.sources" :key="s.name" class="rq-check">
+            <input type="checkbox" class="rq-check-box" :checked="filters.fuente?.includes(s.name)" @change="toggle('fuente', s.name)" />
             {{ s.name }} <span class="text-ink-muted">({{ s.count }})</span>
           </label>
           <p v-if="!store.sources.length" class="text-sm text-ink-muted">Sin fuentes para mostrar.</p>
@@ -40,8 +40,8 @@
 
       <fieldset class="flex flex-wrap gap-x-5 gap-y-1">
         <legend class="rq-meta mb-1">Faltan</legend>
-        <label v-for="o in EVENT_MISSING" :key="o.value" class="flex items-center gap-2 text-sm">
-          <input type="checkbox" :checked="filters.faltan?.includes(o.value)" @change="toggle('faltan', o.value)" />
+        <label v-for="o in EVENT_MISSING" :key="o.value" class="rq-check">
+          <input type="checkbox" class="rq-check-box" :checked="filters.faltan?.includes(o.value)" @change="toggle('faltan', o.value)" />
           {{ o.label }}
         </label>
       </fieldset>
@@ -99,7 +99,7 @@
               <td data-label="Fecha" class="px-2 py-1.5">{{ fechaLabel(e.start_date, e.end_date) }}</td>
               <td data-label="Hora" class="px-2 py-1.5">{{ e.start_time ?? '—' }}</td>
               <td data-label="Título" class="px-2 py-1.5 font-semibold">
-                <a :href="`/e/${e.id}`" target="_blank" rel="noopener noreferrer" class="underline decoration-primary underline-offset-4">{{ e.title }}</a>
+                <a :href="`/e/${e.id}`" target="_blank" rel="noopener noreferrer" class="underline decoration-ink underline-offset-4">{{ e.title }}</a>
               </td>
               <td data-label="Lugar" class="px-2 py-1.5">{{ lugar(e) }}</td>
               <td data-label="Fuente" class="px-2 py-1.5">
@@ -179,20 +179,35 @@ function toggle(key: ListKey, value: string): void {
 
 // El texto que se está escribiendo vive acá: la URL lo recibe con retraso y recortado, y no debe pisar el input.
 const draft = ref(filters.value.q ?? '')
+// `sent` es lo último que este campo mandó a la URL: la URL que vuelve con retraso no pisa lo que se sigue
+// escribiendo; solo un cambio externo (Atrás, «Limpiar filtros») sobrescribe el campo.
+let sent = filters.value.q ?? ''
 watch(
   () => filters.value.q,
   (q) => {
-    if ((q ?? '') !== draft.value.trim()) draft.value = q ?? ''
+    if ((q ?? '') !== sent) {
+      sent = q ?? ''
+      draft.value = sent
+    }
   },
 )
 
 let timer: ReturnType<typeof setTimeout> | undefined
 function onSearch(value: string): void {
   clearTimeout(timer)
-  timer = setTimeout(() => apply({ q: value.trim() || undefined }), 300)
+  timer = setTimeout(() => {
+    sent = value.trim()
+    apply({ q: sent || undefined })
+  }, 300)
 }
 
-const clear = (): void => void router.push({ query: {} })
+function clear(): void {
+  clearTimeout(timer)
+  // Si la URL no tenía `q`, el watch no se dispara: el campo se vacía acá.
+  draft.value = ''
+  sent = ''
+  void router.push({ query: {} })
+}
 const goTo = (page: number): void => void router.push({ query: filtersToQuery({ ...filters.value, page }) })
 
 async function exportCsv(): Promise<void> {

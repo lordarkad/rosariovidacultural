@@ -243,6 +243,61 @@ describe('Curación · eventos', () => {
     }
   })
 
+  it('[AC-7] la URL que llega con retraso no pisa lo que se sigue escribiendo', async () => {
+    vi.mocked(listEvents).mockResolvedValue(evPage([ev('e1')]))
+    await mount('/curacion/eventos', CuracionEventosView, () => expect(root.querySelector('table')).not.toBeNull())
+    vi.useFakeTimers()
+    try {
+      const input = root.querySelector<HTMLInputElement>('input[type="search"]')!
+      input.value = 'a'
+      input.dispatchEvent(new Event('input'))
+      vi.advanceTimersByTime(300) // dispara el push, que todavía no resolvió
+      input.value = 'ab'
+      input.dispatchEvent(new Event('input'))
+      await vi.advanceTimersByTimeAsync(0) // ahora la URL llega con q=a
+      expect(router.currentRoute.value.query).toEqual({ q: 'a' })
+      expect(input.value).toBe('ab')
+      await vi.advanceTimersByTimeAsync(400)
+      expect(router.currentRoute.value.query).toEqual({ q: 'ab' })
+    } finally {
+      vi.useRealTimers()
+    }
+  })
+
+  it('[AC-8] «Limpiar filtros» cancela la búsqueda pendiente', async () => {
+    vi.mocked(listEvents).mockResolvedValue(evPage([], 0))
+    await mount('/curacion/eventos?q=zzz', CuracionEventosView, () => expect(text()).toContain('Sin resultados'))
+    vi.useFakeTimers()
+    try {
+      const input = root.querySelector<HTMLInputElement>('input[type="search"]')!
+      input.value = 'x'
+      input.dispatchEvent(new Event('input'))
+      byText('button', 'Limpiar filtros')!.click()
+      await vi.advanceTimersByTimeAsync(400)
+      expect(router.currentRoute.value.query).toEqual({})
+      expect(input.value).toBe('')
+    } finally {
+      vi.useRealTimers()
+    }
+  })
+
+  it('[AC-8] «Limpiar filtros» vacía el campo aunque la URL no tuviera q', async () => {
+    vi.mocked(listEvents).mockResolvedValue(evPage([], 0))
+    await mount('/curacion/eventos?estado=pasado', CuracionEventosView, () => expect(text()).toContain('Sin resultados'))
+    vi.useFakeTimers()
+    try {
+      const input = root.querySelector<HTMLInputElement>('input[type="search"]')!
+      input.value = 'x'
+      input.dispatchEvent(new Event('input'))
+      byText('button', 'Limpiar filtros')!.click()
+      await vi.advanceTimersByTimeAsync(400)
+      expect(router.currentRoute.value.query).toEqual({})
+      expect(input.value).toBe('')
+    } finally {
+      vi.useRealTimers()
+    }
+  })
+
   it('[AC-24] Atrás y «Limpiar filtros» sí actualizan el buscador', async () => {
     vi.mocked(listEvents).mockResolvedValue(evPage([], 0))
     await mount('/curacion/eventos?q=zzz', CuracionEventosView, () => expect(text()).toContain('Sin resultados'))
