@@ -27,8 +27,8 @@ CATEGORY = {
     "familia": "chicos", "deporte": "deporte", "festival": "eventos", "fiesta": "eventos",
     "gastronomia": "eventos", "charla": "otros", "otro": "otros",
 }
-# event_type de la API que ya es un subgénero de música (MusicGenre). `cuarteto` no está en el enum del spec.
-GENRE_BY_TYPE = {"electronica": "electronica"}
+# event_type de la API que ya es un subgénero de música (MusicGenre).
+GENRE_BY_TYPE = {"electronica": "electronica", "cuarteto": "cuarteto"}
 # dominio -> nombre para mostrar (los que no estén acá se muestran como dominio sin www/.com.ar)
 NAMES = {
     "passline.com": "Passline", "ticketek.com.ar": "Ticketek", "alternativateatral.com": "Alternativa Teatral",

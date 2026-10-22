@@ -55,6 +55,15 @@ describe('GET /api/search — parámetros inválidos (400)', () => {
     await reachesDb('/api/search?i=bailar&musica=tango,cumbia,clasica,chamame')
   })
 
+  it('[AC-16c] los géneros nuevos (pop, urbano, reggae, cuarteto, metal) son válidos (no dan 400)', async () => {
+    await reachesDb('/api/search?i=musica_en_vivo&musica=pop,urbano,reggae,cuarteto,metal')
+  })
+
+  it.each([['reguetón'], ['trap']])('[AC-16c] musica=%s es 400: el género se llama urbano', async (g) => {
+    await bad(`/api/search?i=musica_en_vivo&musica=${encodeURIComponent(g)}`)
+    await bad(`/api/search/pins?musica=${encodeURIComponent(g)}`)
+  })
+
   it('[AC-5] cuando=fecha&fecha de hoy no es 400 (se comporta como hoy)', async () => {
     await reachesDb('/api/search?cuando=fecha&fecha=2026-10-06')
   })

@@ -69,8 +69,12 @@ class QueHacemos(unittest.TestCase):
         self.assertEqual((ev["category"], ev["genres"]), ("musica", ["electronica"]))
         self.assertEqual(to_record(ev)["genre_hints"], ["electronica"])
 
+    def test_el_tipo_cuarteto_pasa_como_subgenero(self):  # F-19
+        ev = quehacemos.to_event(api_event(event_type="cuarteto"), TODAY)
+        self.assertEqual((ev["category"], ev["genres"]), ("musica", ["cuarteto"]))
+
     def test_otros_tipos_no_traen_pista_de_genero(self):
-        for kind in ("recital", "cuarteto", "fiesta"):  # cuarteto no está en el enum del spec
+        for kind in ("recital", "fiesta"):
             ev = quehacemos.to_event(api_event(event_type=kind), TODAY)
             self.assertNotIn("genres", ev)
             self.assertNotIn("genre_hints", to_record(ev))

@@ -22,6 +22,11 @@ export const GENRES: { value: MusicGenre; label: string }[] = [
   { value: 'cumbia', label: 'Cumbia' },
   { value: 'clasica', label: 'Clásica' },
   { value: 'chamame', label: 'Chamamé' },
+  { value: 'pop', label: 'Pop' },
+  { value: 'urbano', label: 'Urbano' },
+  { value: 'reggae', label: 'Reggae' },
+  { value: 'cuarteto', label: 'Cuarteto' },
+  { value: 'metal', label: 'Metal' },
 ]
 
 export const CUANDO: { value: Cuando; label: string }[] = [

@@ -157,6 +157,20 @@ describe('GET /api/search', () => {
     expect(ignorado.json.data.map((i: any) => i.title)).toEqual(['Cena'])
   })
 
+  it('[AC-16c] metal y pop contra datos reales (F-19)', async () => {
+    await ingest({
+      events: [
+        { source_key: 'g:pop', title: 'Show pop', venue_name: 'A', intents: ['musica_en_vivo'], music_genres: ['pop'] },
+        { source_key: 'g:rock', title: 'Show rock', venue_name: 'B', intents: ['musica_en_vivo'], music_genres: ['rock'] },
+        { source_key: 'g:metal', title: 'Show metal', venue_name: 'C', intents: ['musica_en_vivo'], music_genres: ['metal', 'rock'] },
+      ],
+    })
+    const metal = await get('/api/search?cuando=hoy&i=musica_en_vivo&musica=metal')
+    expect(metal.json.data.map((i: any) => i.title)).toEqual(['Show metal'])
+    const varios = await get('/api/search?cuando=hoy&i=musica_en_vivo&musica=pop,urbano,reggae,cuarteto,metal')
+    expect(varios.json.data.map((i: any) => i.title).sort()).toEqual(['Show metal', 'Show pop'])
+  })
+
   it('[AC-14] [AC-39] un evento sin coordenadas hereda las del lugar vinculado y su sede/dirección', async () => {
     await ingest({
       places: [{ source_key: 'p:sala', name: 'Teatro Mayor', address: 'Corrientes 100', ...PICHINCHA }],

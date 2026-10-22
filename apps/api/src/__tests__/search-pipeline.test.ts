@@ -273,6 +273,23 @@ describe('buildSearchResults', () => {
       })
     })
 
+    describe('[AC-16c] géneros nuevos (F-19)', () => {
+      const pop = ev({ title_norm: 'pop', intents: ['musica_en_vivo'], music_genres: ['pop'] })
+      const rock = ev({ title_norm: 'rock', intents: ['musica_en_vivo'], music_genres: ['rock'] })
+      const metalRock = ev({ title_norm: 'metal', intents: ['musica_en_vivo'], music_genres: ['metal', 'rock'] })
+      const todos = [pop, rock, metalRock]
+
+      it('musica=pop,urbano,reggae,cuarteto,metal: entran pop y metal, no rock', () => {
+        const res = run(todos, [], params({ intents: ['musica_en_vivo'], musica: ['pop', 'urbano', 'reggae', 'cuarteto', 'metal'] }))
+        expect(res.map((r) => r.id).sort()).toEqual([pop.id, metalRock.id].sort())
+      })
+
+      it('musica=metal: solo el que tiene metal; metal no es alias de rock', () => {
+        const res = run(todos, [], params({ intents: ['musica_en_vivo'], musica: ['metal'] }))
+        expect(res.map((r) => r.id)).toEqual([metalRock.id])
+      })
+    })
+
     it('i=musica_en_vivo&musica=jazz: la cena-show [jazz]/[comer] queda fuera', () => {
       const res = run(
         [cena, jazzVivo],
