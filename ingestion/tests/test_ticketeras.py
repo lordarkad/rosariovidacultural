@@ -146,7 +146,29 @@ class Ticketle(unittest.TestCase):
         self.assertEqual([e["title"] for e in ticketle.parse(peligroso, TODAY)], ["Camilo"])
 
 
-ACA_HOME = """<main data-vista="productor"><section class="js_slides"><article>
+class TicketlePaginado(unittest.TestCase):
+    def test_sigue_las_paginas_hasta_que_no_hay_siguiente(self):
+        def ld(name, n):
+            return ('<script type="application/ld+json">{"@type": "MusicEvent", "name": "%s", "startDate": "2026-11-01", '
+                    '"url": "https://www.ticketle.com.ar/x/event/%d", "location": {"name": "S", "address": '
+                    '{"addressLocality": "Rosario"}}}</script>' % (name, n))
+        pages = {ticketle.URL: ld("Uno", 1) + '<a data-element=next-page href="/rosario?page=2">',
+                 ticketle.URL + "?page=2": ld("Dos", 2) + ld("Uno", 1)}
+        pedidos = []
+
+        def fake_fetch(url):
+            pedidos.append(url)
+            return pages[url]
+        original, ticketle.fetch = ticketle.fetch, fake_fetch
+        try:
+            evs = ticketle.scrape(TODAY)
+        finally:
+            ticketle.fetch = original
+        self.assertEqual([e["title"] for e in evs], ["Uno", "Dos"])  # sin repetir el de la página 1
+        self.assertEqual(pedidos, [ticketle.URL, ticketle.URL + "?page=2"])
+
+
+ACA_HOME ="""<main data-vista="productor"><section class="js_slides"><article>
 <a href="/eventos/rolockanroll-en-vivo-e167"><h2>ROLOCKAN'ROLL</h2></a></article></section>
 <section class="eventos"><article><a href="/eventos/rolockanroll-en-vivo-e167">dup</a></article>
 <article><a href="/eventos/experiencia-tr3ce-e172">TR3CE</a></article>

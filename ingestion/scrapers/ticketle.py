@@ -15,6 +15,8 @@ from .common import DateSpec, clean, fetch, format_dates, guess_category, guess_
 
 URL = "https://www.ticketle.com.ar/rosario"
 SOURCE = "Ticketle"
+MAX_PAGES = 10  # tope de seguridad: hoy son 2 (51 eventos)
+NEXT_PAGE = re.compile(r"data-element=[\"']?next-page")
 LD_JSON = re.compile(r"<script[^>]*ld\+json[^>]*>(.*?)</script>", re.S | re.I)
 
 
@@ -68,6 +70,15 @@ def parse(html: str, today: date) -> list[dict]:
 
 
 def scrape(today: date) -> list[dict]:
-    events = parse(fetch(URL), today)
+    """El listado es paginado (50 por página, sin orden por fecha): se sigue `data-element=next-page`."""
+    events: list[dict] = []
+    seen: set[str] = set()
+    for page in range(1, MAX_PAGES + 1):
+        html = fetch(URL if page == 1 else f"{URL}?page={page}")
+        new = [e for e in parse(html, today) if e["url"] not in seen]
+        seen.update(e["url"] for e in new)
+        events += new
+        if not NEXT_PAGE.search(html) or not new:
+            break
     print(f"  [ticketle] {len(events)} eventos en Rosario")
     return events
