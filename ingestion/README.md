@@ -29,6 +29,8 @@ python -m unittest discover -s tests
 | Disfruta Rosario | API REST de WordPress (categoría `eventos-en-rosario`). Fecha, hora, precio y dirección salen del texto libre; si la nota enlaza a una ticketera, esa pasa a ser la fuente primaria |
 | TurboEntrada | Ticketera (plataforma EntradaUno). Dos endpoints JSON públicos que usa su front: `EspectaculosCartel` (shows y próxima función) y `Establecimientos` (sede, domicilio y coordenadas del mapa embebido). Fuente primaria, link directo a la compra |
 | 1000Tickets | Ticketera. Portada + una página por evento con fechas y horarios, lugar, dirección y mapa embebido (coordenadas). Sin precio en el HTML. Fuente primaria |
+| Producciones de Acá | Productora rosarina de rock sobre EventoSimple (`ticketera.produccionesdeaca.com`). Portada + una página por evento: fecha y hora, lugar, precio inicial, descripción y coordenadas del link a Google Maps. Los "Evento Finalizado" se descartan. Fuente primaria |
+| Ticketle | Marketplace de entradas (`ticketle.com.ar/rosario`). Un JSON-LD `MusicEvent` por evento (nombre, fecha, sede, imagen). No se guarda el precio (es de reventa/internacional, no el real) ni hay hora. Va como **agregador**: si el show lo vende otra ticketera, esa es la fuente primaria |
 | Rosario Noticias | RSS oficial. No son eventos sino notas de prensa: van aparte a `site/news.json` (solo categorías Cultura y Turismo) |
 
 Los cines se muestran como una entrada por película con sus días y horarios; si una película está

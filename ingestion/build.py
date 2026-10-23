@@ -12,7 +12,7 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 from scrapers import (broadway, cartel, cinemark, comedia, disfrutarosario, mil_tickets, muni, noticias,
-                      quehacemos, showcase, turboentrada)
+                      produccionesdeaca, quehacemos, showcase, ticketle, turboentrada)
 from scrapers import geocode, venues
 from scrapers.common import feed_of, norm, split_venues
 
@@ -22,7 +22,8 @@ NEWS_OUT = ROOT / "site" / "news.json"
 VENUES_OUT = ROOT / "site" / "venues.json"
 SOURCES = {"muni": muni, "cartel": cartel, "comedia": comedia, "broadway": broadway,
            "showcase": showcase, "cinemark": cinemark, "quehacemos": quehacemos,
-           "disfrutarosario": disfrutarosario, "turboentrada": turboentrada, "mil_tickets": mil_tickets}
+           "disfrutarosario": disfrutarosario, "turboentrada": turboentrada, "mil_tickets": mil_tickets,
+           "produccionesdeaca": produccionesdeaca, "ticketle": ticketle}
 KEEP_PAST_DAYS = 0  # eventos terminados hace más de esto se descartan
 
 
@@ -60,7 +61,7 @@ def to_record(ev: dict) -> dict | None:
 # 2 = agendas, agregadores y notas editoriales. Lo que no está listado (ticketeras que solo conoce Qué
 # Hacemos: Passline, Ticketek, Venti, Qrticket...) es fuente primaria y va primero.
 SALAS = {"Teatro La Comedia", "Teatro Broadway", "Showcase Rosario", "Cinemark Rosario", "Agenda municipal"}
-AGREGADORES = {"Qué Hacemos", "Bandsintown", "Rosario en Cartel", "Disfruta Rosario"}
+AGREGADORES = {"Qué Hacemos", "Bandsintown", "Rosario en Cartel", "Disfruta Rosario", "Ticketle"}
 
 
 def source_rank(name: str) -> int:
