@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-23T14:07:02+00:00",
+ "generated_at": "2026-10-24T13:07:08+00:00",
  "offers": {
   "musica_en_vivo": "Música en vivo",
   "cena": "Cena",
@@ -95,13 +95,13 @@
      "url": "https://www.rosario.tur.ar/donde-ir/cultura/centros-culturales/la-casa-del-tango"
     }
    ],
-   "upcoming_count": 5,
+   "upcoming_count": 6,
    "upcoming": [
     {
      "id": "eab6d41868",
      "title": "Tertulias Tangueras",
      "start": "2026-10-23",
-     "date_text": "Del 23 de octubre al 27 de noviembre · Viernes · De 17 a 18:30 horas",
+     "date_text": "Del 30 de octubre al 27 de noviembre · Viernes · De 17 a 18:30 horas",
      "time": "",
      "url": "https://www.rosario.gob.ar/inicio/tertulias-tangueras-1",
      "source": "Agenda municipal",
@@ -142,12 +142,12 @@
      "price_from": null
     },
     {
-     "id": "bb2f51015f",
-     "title": "Fueye Solo: concierto acústico de bandoneón",
-     "start": "2026-10-31",
-     "date_text": "Sábado · a 23 horas",
+     "id": "9d830be641",
+     "title": "Un cielo de seis cuerdas",
+     "start": "2026-10-30",
+     "date_text": "Viernes · a 23:59 horas",
      "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/fueye-solo-concierto-acustico-de-bandoneon",
+     "url": "https://www.rosario.gob.ar/inicio/un-cielo-de-seis-cuerdas",
      "source": "Agenda municipal",
      "free": true,
      "price_from": null
