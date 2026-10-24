@@ -173,7 +173,10 @@
         "pop"
       ],
       "source": "wikipedia",
-      "exact": true
+      "exact": true,
+      "aliases": [
+        "AX'EL"
+      ]
     },
     {
       "name": "Ángela Torres",
@@ -213,6 +216,126 @@
       ],
       "source": "wikipedia",
       "exact": true
+    },
+    {
+      "name": "Airbag",
+      "genres": [
+        "rock"
+      ],
+      "source": "manual"
+    },
+    {
+      "name": "Los Abuelos de la Nada",
+      "genres": [
+        "rock"
+      ],
+      "source": "manual"
+    },
+    {
+      "name": "Hilda Lizarazu",
+      "genres": [
+        "rock"
+      ],
+      "source": "manual"
+    },
+    {
+      "name": "Memphis La Blusera",
+      "genres": [
+        "rock"
+      ],
+      "source": "manual"
+    },
+    {
+      "name": "Un Poco de Ruido",
+      "genres": [
+        "rock"
+      ],
+      "source": "manual"
+    },
+    {
+      "name": "Pedro Aznar",
+      "genres": [
+        "rock",
+        "jazz"
+      ],
+      "source": "manual"
+    },
+    {
+      "name": "Valeria Lynch",
+      "genres": [
+        "pop"
+      ],
+      "source": "manual"
+    },
+    {
+      "name": "Los Iracundos",
+      "genres": [
+        "pop"
+      ],
+      "source": "manual"
+    },
+    {
+      "name": "Los Pasteles Verdes",
+      "genres": [
+        "pop"
+      ],
+      "source": "manual"
+    },
+    {
+      "name": "Antonio Orozco",
+      "genres": [
+        "pop"
+      ],
+      "source": "manual"
+    },
+    {
+      "name": "Benjamín Amadeo",
+      "genres": [
+        "pop"
+      ],
+      "source": "manual"
+    },
+    {
+      "name": "Paz Martínez",
+      "genres": [
+        "pop"
+      ],
+      "source": "manual"
+    },
+    {
+      "name": "Diableros Jujeños",
+      "genres": [
+        "folklore"
+      ],
+      "source": "manual"
+    },
+    {
+      "name": "Los Manseros Santiagueños",
+      "genres": [
+        "folklore"
+      ],
+      "source": "manual"
+    },
+    {
+      "name": "Destino San Javier",
+      "genres": [
+        "folklore"
+      ],
+      "source": "manual"
+    },
+    {
+      "name": "La K'onga",
+      "genres": [
+        "cumbia"
+      ],
+      "source": "manual"
+    },
+    {
+      "name": "Ke Personajes",
+      "genres": [
+        "cumbia"
+      ],
+      "source": "manual"
     }
   ]
 }
