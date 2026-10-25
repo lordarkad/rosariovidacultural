@@ -47,6 +47,27 @@ class Palabras(unittest.TestCase):
         self.assertEqual(guess_genres("Orquesta Filarmónica de Rosario"), ["clasica"])
         self.assertEqual(guess_genres("Noche punk"), ["rock"])
 
+    def test_pena_y_folk_sueltos(self):
+        self.assertEqual(guess_genres("La Peña de Demi Carabajal"), ["folklore"])
+        self.assertEqual(guess_genres("Peñas del sábado"), ["folklore"])
+        self.assertEqual(guess_genres("Noche de folk en vivo"), ["folklore"])
+        self.assertEqual(guess_genres("La Peña de Demi Carabajal".replace("ñ", "ñ")), ["folklore"])  # ñ descompuesta (NFD)
+        self.assertEqual(guess_genres("Gran Peña Folclórica"), ["folklore"])
+        self.assertEqual(guess_genres("Gustavo Peña"), [])  # apellido, no peña
+        self.assertEqual(guess_genres("Lucas Peña Trío"), [])
+        self.assertEqual(guess_genres("Peña de rock"), ["rock"])  # cede ante otro género
+        # «pena» sin ñ es tristeza y «Penal» / «Peñarol» no son la palabra
+        for titulo in ("Una pena de amor", "Sin pena ni gloria", "Peñarol vs Nacional", "Penal en el área"):
+            self.assertEqual(guess_genres(titulo), [], msg=titulo)
+
+    def test_mas_palabras_de_tango_y_folklore(self):
+        self.assertEqual(guess_genres("Noche de payadores y malambo"), ["folklore"])
+        self.assertEqual(guess_genres("Encuentro de folcloristas"), ["folklore"])
+        self.assertEqual(guess_genres("Carnavalito y vidala"), ["folklore"])
+        self.assertEqual(guess_genres("Fueye de arrabal"), ["tango"])
+        self.assertEqual(guess_genres("Ciclo de tanguistas"), ["tango"])
+        self.assertEqual(guess_genres("Folkestone"), [])  # palabra completa
+
     def test_generos_nuevos_f19(self):
         self.assertEqual(guess_genres("Noche de heavy metal"), ["metal"])
         self.assertEqual(guess_genres("Reggae en la terraza"), ["reggae"])
