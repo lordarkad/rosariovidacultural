@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-24T13:07:08+00:00",
+ "generated_at": "2026-10-25T13:34:24+00:00",
  "offers": {
   "musica_en_vivo": "Música en vivo",
   "cena": "Cena",
@@ -95,7 +95,7 @@
      "url": "https://www.rosario.tur.ar/donde-ir/cultura/centros-culturales/la-casa-del-tango"
     }
    ],
-   "upcoming_count": 6,
+   "upcoming_count": 5,
    "upcoming": [
     {
      "id": "eab6d41868",
@@ -106,17 +106,6 @@
      "url": "https://www.rosario.gob.ar/inicio/tertulias-tangueras-1",
      "source": "Agenda municipal",
      "free": true,
-     "price_from": null
-    },
-    {
-     "id": "05e470a06f",
-     "title": "Rubén Gómez y Julián Cicerchia presentan Doce Retratos",
-     "start": "2026-10-24",
-     "date_text": "Sábado · a 23 horas",
-     "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/ruben-gomez-y-julian-cicerchia-presentan-doce-retratos",
-     "source": "Agenda municipal",
-     "free": false,
      "price_from": null
     },
     {
@@ -148,6 +137,17 @@
      "date_text": "Viernes · a 23:59 horas",
      "time": "",
      "url": "https://www.rosario.gob.ar/inicio/un-cielo-de-seis-cuerdas",
+     "source": "Agenda municipal",
+     "free": true,
+     "price_from": null
+    },
+    {
+     "id": "bb2f51015f",
+     "title": "Fueye Solo: concierto acústico de bandoneón",
+     "start": "2026-10-31",
+     "date_text": "Sábado · a 23 horas",
+     "time": "",
+     "url": "https://www.rosario.gob.ar/inicio/fueye-solo-concierto-acustico-de-bandoneon",
      "source": "Agenda municipal",
      "free": true,
      "price_from": null
