@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import calendar
 import codecs
+import json
 import re
 import time
 import unicodedata
@@ -25,15 +26,19 @@ DIAS = {"lunes": 0, "martes": 1, "miercoles": 2, "jueves": 3, "viernes": 4, "sab
 _last_request = 0.0
 
 
-def fetch(url: str, timeout: int = 30) -> str:
-    """GET con User-Agent propio y pausa entre pedidos. Solo http(s)."""
+def fetch(url: str, timeout: int = 30, payload: dict | None = None) -> str:
+    """GET con User-Agent propio y pausa entre pedidos (POST de JSON si hay `payload`). Solo http(s)."""
     global _last_request
     if not url.startswith(("https://", "http://")):
         raise ValueError(f"URL no permitida: {url}")
     wait = REQUEST_DELAY - (time.monotonic() - _last_request)
     if wait > 0:
         time.sleep(wait)
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    headers = {"User-Agent": USER_AGENT}
+    if payload is not None:
+        headers["Content-Type"] = "application/json"
+    data = json.dumps(payload).encode() if payload is not None else None
+    req = urllib.request.Request(url, data=data, headers=headers)
     with urllib.request.urlopen(req, timeout=timeout) as resp:  # nosec - esquema validado arriba
         raw = resp.read()
     _last_request = time.monotonic()

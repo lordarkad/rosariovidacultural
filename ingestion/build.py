@@ -11,8 +11,8 @@ import json
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
-from scrapers import (broadway, cartel, cinemark, comedia, disfrutarosario, mil_tickets, muni, noticias,
-                      produccionesdeaca, quehacemos, showcase, ticketle, turboentrada)
+from scrapers import (allaccess, alpogo, broadway, cartel, cinemark, comedia, disfrutarosario, mil_tickets, muni,
+                      noticias, produccionesdeaca, quehacemos, showcase, ticketle, turboentrada)
 from scrapers import geocode, venues
 from scrapers.common import feed_of, norm, split_venues
 
@@ -23,7 +23,8 @@ VENUES_OUT = ROOT / "site" / "venues.json"
 SOURCES = {"muni": muni, "cartel": cartel, "comedia": comedia, "broadway": broadway,
            "showcase": showcase, "cinemark": cinemark, "quehacemos": quehacemos,
            "disfrutarosario": disfrutarosario, "turboentrada": turboentrada, "mil_tickets": mil_tickets,
-           "produccionesdeaca": produccionesdeaca, "ticketle": ticketle}
+           "produccionesdeaca": produccionesdeaca, "ticketle": ticketle, "alpogo": alpogo,
+           "allaccess": allaccess}
 KEEP_PAST_DAYS = 0  # eventos terminados hace más de esto se descartan
 
 
@@ -170,8 +171,9 @@ def main() -> int:
     records: list[dict] = []
     status: dict[str, dict] = {}
     for key, mod in SOURCES.items():
-        if args.only and args.only != key:
-            # fuente no pedida: se conserva lo anterior
+        weekday = getattr(mod, "WEEKDAY", None)  # fuente semanal: el resto de los días se conserva lo anterior
+        if (args.only and args.only != key) or (not args.only and weekday is not None and today.weekday() != weekday):
+            # fuente no pedida (o que hoy no le toca): se conserva lo anterior
             records += [r for r in previous if feed_of(r) == mod.SOURCE]
             if mod.SOURCE in prev_data.get("sources", {}):
                 status[mod.SOURCE] = prev_data["sources"][mod.SOURCE]
