@@ -244,9 +244,11 @@ def guess_category(title: str, default: str = "eventos") -> str:
 MUSIC_GENRES = ("jazz", "rock", "folklore", "electronica", "tango", "cumbia", "clasica", "chamame",
                 "pop", "urbano", "reggae", "cuarteto", "metal")
 _GENRE_WORDS = {
-    "tango": ["tango", "tangos", "tanguera", "tangueras", "tanguero", "tangueros", "milonga", "milongas", "bandoneon"],
+    "tango": ["tango", "tangos", "tanguera", "tangueras", "tanguero", "tangueros", "milonga", "milongas", "bandoneon",
+              "tanguista", "tanguistas", "fueye", "fueyes", "arrabal"],
     "folklore": ["folklore", "folclore", "folklorico", "folclorico", "folklorica", "folclorica", "zamba", "zambas",
-                 "chacarera", "chacareras", "cosquin"],
+                 "chacarera", "chacareras", "cosquin", "folk", "folclorista", "folcloristas", "folkloristas",
+                 "payada", "payadas", "payador", "payadores", "malambo", "carnavalito", "vidala", "vidalas"],
     "cumbia": ["cumbia", "cumbias"],
     "chamame": ["chamame", "chamames"],
     "clasica": ["clasica", "sinfonica", "sinfonico", "opera", "cantata", "filarmonica", "camerata"],
@@ -274,6 +276,9 @@ _GENRE_FIELD_PATTERN = {
 }
 
 
+_PENA = re.compile(r"(?:^|\b(?:la|las|gran|una)\s+)peñas?\b")  # no «Gustavo Peña»
+
+
 def guess_genres(title: str, description: str = "", forced: list[str] | None = None) -> list[str]:
     """Subgéneros de música por el título (palabra completa), por el campo «Género:» de la descripción
     (ticketeras) y por los que fuerza el espacio. El cuerpo libre de la descripción no cuenta: nombra de todo,
@@ -293,6 +298,11 @@ def guess_genres(title: str, description: str = "", forced: list[str] | None = N
             in_field = any(w in field for w in words)
         if any(f" {w} " in in_title for w in words) or in_field:
             found.add(genre)
+    # «peña» sola es folklore, pero cede ante cualquier otro género (una peña en la Casa del Tango es de tango) y
+    # solo cuenta al inicio del título o tras «la/las/gran/una»: «Gustavo Peña» es un apellido.
+    # Va aparte: norm() la vuelve «pena» (tristeza), así que se busca con la ñ en el título original.
+    if not found and _PENA.search(unicodedata.normalize("NFC", title).lower()):
+        found.add("folklore")
     return sorted(found)
 
 
