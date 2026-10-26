@@ -1,5 +1,39 @@
 {
- "generated_at": "2026-10-25T13:34:25+00:00",
+ "generated_at": "2026-10-26T15:42:11+00:00",
  "source": "Rosario Noticias",
- "items": []
+ "items": [
+  {
+   "title": "La Escuela de Diseño y Producción Textil reprogramó el festejo de sus 15 años",
+   "url": "https://www.rosarionoticias.gob.ar/page/noticias/id/738777/title/La-Escuela-de-Dise%C3%B1o-y-Producci%C3%B3n-Textil-reprogram%C3%B3-el-festejo-de-sus-15-a%C3%B1os",
+   "summary": "El desfile se trasladó al jueves 29 de octubre, desde las 19, en el Rosedal del Parque Independencia. Se presentarán creaciones de estudiantes y propuestas del Semillero de Diseño Emergente.",
+   "image": "https://www.rosarionoticias.gob.ar/uploads/fotos/p1k5s8gv4a1t3f187jt0qbi11qlo7.jpg",
+   "published": "2026-10-26T11:42-03:00",
+   "categories": [
+    "Cultura"
+   ],
+   "source": "Rosario Noticias"
+  },
+  {
+   "title": "«Rosario se viene consolidando como uno de los destinos más elegidos de la Argentina»",
+   "url": "https://www.rosarionoticias.gob.ar/page/noticias/id/738747/title/%C2%ABRosario-se-viene-consolidando-como-uno-de-los-destinos-m%C3%A1s-elegidos-de-la-Argentina%C2%BB",
+   "summary": "En el marco del una conferencia de prensa, autoridades locales realizaron un balance positivo de los grandes eventos de la semana y el impacto económico en el sector gastronómico y hotelero.",
+   "image": "https://www.rosarionoticias.gob.ar/uploads/fotos/p1k5ros9l21jo7102n1sk5fo11av5.jpg",
+   "published": "2026-10-26T10:41-03:00",
+   "categories": [
+    "Turismo"
+   ],
+   "source": "Rosario Noticias"
+  },
+  {
+   "title": "Rosario recibió más de 120.000 visitantes y alcanzó el 97% de ocupación hotelera",
+   "url": "https://www.rosarionoticias.gob.ar/page/noticias/id/738666/title/Rosario-recibi%C3%B3-m%C3%A1s-de-120.000-visitantes-y-alcanz%C3%B3-el-97%25-de-ocupaci%C3%B3n-hotelera",
+   "summary": "Entre el 19 y el 25 de octubre, la ciudad registró un impacto económico estimado en más de 11.400 millones de pesos y volvió a mostrar que es uno de los destinos más elegidos del país.",
+   "image": "https://www.rosarionoticias.gob.ar/uploads/fotos/p1k5qdfpc710u1no415cv13tbcfuq.jpg",
+   "published": "2026-10-25T19:54-03:00",
+   "categories": [
+    "Turismo"
+   ],
+   "source": "Rosario Noticias"
+  }
+ ]
 }
