@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T15:42:10+00:00",
+ "generated_at": "2026-10-31T15:00:15+00:00",
  "offers": {
   "musica_en_vivo": "Música en vivo",
   "cena": "Cena",
@@ -23,19 +23,8 @@
    "image_url": "",
    "note": "Bandas en vivo; también hay cena y se baila.",
    "info_sources": [],
-   "upcoming_count": 2,
+   "upcoming_count": 1,
    "upcoming": [
-    {
-     "id": "be0a46b215",
-     "title": "TOBIKA",
-     "start": "2026-10-29",
-     "date_text": "29 oct",
-     "time": "20:30",
-     "url": "https://www.bandsintown.com/e/108736562-tobika-at-casa-brava",
-     "source": "Bandsintown",
-     "free": false,
-     "price_from": null
-    },
     {
      "id": "9fdbe367ad",
      "title": "LA VALENTI",
@@ -71,8 +60,20 @@
      "url": "https://lanochedelasbirrerias.com.ar/cerveceria/bon-scott/"
     }
    ],
-   "upcoming_count": 0,
-   "upcoming": []
+   "upcoming_count": 1,
+   "upcoming": [
+    {
+     "id": "610d942edd",
+     "title": "LISA SCHA+ROSENDO EN ROSARIO",
+     "start": "2026-11-21",
+     "date_text": "21 nov",
+     "time": "20:00",
+     "url": "https://www.passline.com/eventos/lisa-scharosendo-en-rosario",
+     "source": "Passline",
+     "free": false,
+     "price_from": 10000
+    }
+   ]
   },
   {
    "id": "casa-del-tango",
@@ -95,7 +96,7 @@
      "url": "https://www.rosario.tur.ar/donde-ir/cultura/centros-culturales/la-casa-del-tango"
     }
    ],
-   "upcoming_count": 5,
+   "upcoming_count": 4,
    "upcoming": [
     {
      "id": "eab6d41868",
@@ -126,17 +127,6 @@
      "date_text": "Del 28 de octubre al 25 de noviembre · Miércoles · De 16:30 a 18 horas",
      "time": "",
      "url": "https://www.rosario.gob.ar/inicio/taller-de-tecnicas-de-danza-y-composicion-instantanea",
-     "source": "Agenda municipal",
-     "free": true,
-     "price_from": null
-    },
-    {
-     "id": "9d830be641",
-     "title": "Un cielo de seis cuerdas",
-     "start": "2026-10-30",
-     "date_text": "Viernes · a 23:59 horas",
-     "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/un-cielo-de-seis-cuerdas",
      "source": "Agenda municipal",
      "free": true,
      "price_from": null
