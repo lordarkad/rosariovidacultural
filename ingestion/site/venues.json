@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-31T15:00:15+00:00",
+ "generated_at": "2026-11-02T19:03:51+00:00",
  "offers": {
   "musica_en_vivo": "Música en vivo",
   "cena": "Cena",
@@ -96,7 +96,7 @@
      "url": "https://www.rosario.tur.ar/donde-ir/cultura/centros-culturales/la-casa-del-tango"
     }
    ],
-   "upcoming_count": 4,
+   "upcoming_count": 3,
    "upcoming": [
     {
      "id": "eab6d41868",
@@ -127,17 +127,6 @@
      "date_text": "Del 28 de octubre al 25 de noviembre · Miércoles · De 16:30 a 18 horas",
      "time": "",
      "url": "https://www.rosario.gob.ar/inicio/taller-de-tecnicas-de-danza-y-composicion-instantanea",
-     "source": "Agenda municipal",
-     "free": true,
-     "price_from": null
-    },
-    {
-     "id": "bb2f51015f",
-     "title": "Fueye Solo: concierto acústico de bandoneón",
-     "start": "2026-10-31",
-     "date_text": "Sábado · a 23 horas",
-     "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/fueye-solo-concierto-acustico-de-bandoneon",
      "source": "Agenda municipal",
      "free": true,
      "price_from": null
