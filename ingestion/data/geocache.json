@@ -59,6 +59,7 @@
   -32.96277,
   -60.6215
  ],
+ "bar anfi": null,
  "bar rosario blend martes": null,
  "barro alvear 41": null,
  "biblioteca argentina dr juan alvarez roca pte julio argentino 731": [
@@ -106,6 +107,7 @@
   -32.93415,
   -60.66093
  ],
+ "casa de cultura barrio alvear": null,
  "casa de cultura barrio alvear lett francisco n 4253": [
   -32.97965,
   -60.68011
@@ -114,6 +116,10 @@
  "casa vanzo wernicke cochabamba 2010": [
   -32.9561,
   -60.65391
+ ],
+ "casa zulu funes santa fe": [
+  -32.92022,
+  -60.81271
  ],
  "casona": [
   -32.95613,
@@ -135,6 +141,7 @@
   -60.65497
  ],
  "centro cultural la casa del tango illia pte arturo u 1750": null,
+ "centro cultural la escalera nueve de julio 324": null,
  "centro cultural la selva paga": null,
  "centro cultural la trama paga": null,
  "centro cultural parque alem nansen 100": [
@@ -147,6 +154,7 @@
   -32.94202,
   -60.63325
  ],
+ "centro de jubilados zona norte": null,
  "centro de salud san vicente de paul punta del indio 7760": [
   -33.02806,
   -60.68742
@@ -252,6 +260,10 @@
   -32.95503,
   -60.64647
  ],
+ "el circulo": [
+  -32.95229,
+  -60.63451
+ ],
  "el jardin de los ninos lugones leopoldo 2290": [
   -32.85787,
   -60.71935
@@ -287,6 +299,10 @@
  "facultad de ciencias bioquimicas y farmaceuticas domingo": [
   -32.93878,
   -60.66309
+ ],
+ "facultad de ciencias medicas universidad nacional de rosario sta fe 3100 s2002 rosario santa fe argentina": [
+  -32.93996,
+  -60.66499
  ],
  "feuer": null,
  "ficha av francia 811": [
@@ -334,6 +350,7 @@
  "jueves viernes": null,
  "l2 arena": null,
  "la casa del nogal": null,
+ "la casa del tango": null,
  "la felipa pellegrini 800 paga": null,
  "la granja de la infancia peron presidente juan dom 8000": [
   -32.97666,
@@ -365,9 +382,17 @@
   -33.02806,
   -60.58957
  ],
+ "la vigil paga": [
+  -33.02806,
+  -60.58957
+ ],
  "lecoin": null,
  "lotus night club": null,
  "lumvra club": null,
+ "mapu": [
+  -32.88094,
+  -60.68706
+ ],
  "mercado del patio": [
   -32.9399,
   -60.66957
@@ -489,6 +514,10 @@
   -60.63887
  ],
  "recreo": null,
+ "refugio 428": [
+  -32.98092,
+  -60.62824
+ ],
  "riccheri 340": [
   -32.94634,
   -60.65066
@@ -514,6 +543,11 @@
  "san martin 7200": [
   -32.97648,
   -60.63726
+ ],
+ "secret location": null,
+ "secretaria de cultura y educacion del valle aristobulo 2734": [
+  -32.93075,
+  -60.65702
  ],
  "showcase rosario": [
   -32.92804,
@@ -568,6 +602,7 @@
   -32.95258,
   -60.63507
  ],
+ "teatro el rayo": null,
  "teatro la comedia": [
   -32.94806,
   -60.64021
@@ -594,6 +629,7 @@
   -60.63923
  ],
  "teatro vigil": null,
+ "tunel de las artes pasaje pan cordoba 954 paga": null,
  "ubicacion secreta rosario santa fe": null,
  "uca rosario qeo rosario santa fe ar": [
   -32.95126,
