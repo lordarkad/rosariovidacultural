@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-07T15:35:18+00:00",
+ "generated_at": "2026-11-08T15:58:55+00:00",
  "offers": {
   "musica_en_vivo": "Música en vivo",
   "cena": "Cena",
@@ -96,39 +96,17 @@
      "url": "https://www.rosario.tur.ar/donde-ir/cultura/centros-culturales/la-casa-del-tango"
     }
    ],
-   "upcoming_count": 4,
+   "upcoming_count": 2,
    "upcoming": [
     {
-     "id": "eab6d41868",
-     "title": "Tertulias Tangueras",
-     "start": "2026-11-06",
-     "date_text": "Del 13 al 27 de noviembre · Viernes · De 17 a 18:30 horas",
+     "id": "1d878c1b21",
+     "title": "Concierto de la Orquesta de Carlos Quilici",
+     "start": "2026-11-21",
+     "date_text": "Sábado · a 23 horas",
      "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/tertulias-tangueras-1",
+     "url": "https://www.rosario.gob.ar/inicio/concierto-de-la-orquesta-de-carlos-quilici",
      "source": "Agenda municipal",
-     "free": true,
-     "price_from": null
-    },
-    {
-     "id": "d829bd08d9",
-     "title": "Tango en Calle",
-     "start": "2026-11-08",
-     "date_text": "Del 8 al 29 de noviembre · Domingo · De 10 a 12 horas",
-     "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/tango-en-calle",
-     "source": "Agenda municipal",
-     "free": true,
-     "price_from": null
-    },
-    {
-     "id": "933bf4ec65",
-     "title": "Taller de Técnicas de Danza y Composición Instantánea",
-     "start": "2026-11-11",
-     "date_text": "Del 11 al 25 de noviembre · Miércoles · De 16:30 a 18 horas",
-     "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/taller-de-tecnicas-de-danza-y-composicion-instantanea",
-     "source": "Agenda municipal",
-     "free": true,
+     "free": false,
      "price_from": null
     },
     {
