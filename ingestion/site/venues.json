@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-10T16:54:45+00:00",
+ "generated_at": "2026-11-13T16:59:36+00:00",
  "offers": {
   "musica_en_vivo": "Música en vivo",
   "cena": "Cena",
@@ -23,20 +23,8 @@
    "image_url": "",
    "note": "Bandas en vivo; también hay cena y se baila.",
    "info_sources": [],
-   "upcoming_count": 1,
-   "upcoming": [
-    {
-     "id": "9fdbe367ad",
-     "title": "LA VALENTI",
-     "start": "2026-11-12",
-     "date_text": "12 nov",
-     "time": "08:30",
-     "url": "https://www.bandsintown.com/e/108785153-la-valenti-at-casa-brava",
-     "source": "Bandsintown",
-     "free": false,
-     "price_from": null
-    }
-   ]
+   "upcoming_count": 0,
+   "upcoming": []
   },
   {
    "id": "bon-scott",

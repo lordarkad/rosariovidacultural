@@ -1,10 +1,9 @@
 {
- "generated_at": "2026-11-10T16:54:46+00:00",
+ "generated_at": "2026-11-13T16:59:37+00:00",
  "sources": {
   "Agenda municipal": {
-   "ok": true,
-   "count": 37,
-   "sin_fecha": 0
+   "ok": false,
+   "error": "<urlopen error timed out>"
   },
   "Rosario en Cartel": {
    "ok": true,
@@ -18,7 +17,7 @@
   },
   "Teatro Broadway": {
    "ok": true,
-   "count": 17,
+   "count": 16,
    "sin_fecha": 0
   },
   "Showcase Rosario": {
@@ -28,27 +27,27 @@
   },
   "Cinemark Rosario": {
    "ok": true,
-   "count": 7,
+   "count": 10,
    "sin_fecha": 0
   },
   "Qué Hacemos": {
    "ok": true,
-   "count": 158,
+   "count": 189,
    "sin_fecha": 0
   },
   "Disfruta Rosario": {
    "ok": true,
-   "count": 16,
+   "count": 22,
    "sin_fecha": 0
   },
   "TurboEntrada": {
    "ok": true,
-   "count": 14,
+   "count": 13,
    "sin_fecha": 0
   },
   "1000Tickets": {
    "ok": true,
-   "count": 6,
+   "count": 7,
    "sin_fecha": 0
   },
   "Producciones de Acá": {
@@ -58,12 +57,12 @@
   },
   "Ticketle": {
    "ok": true,
-   "count": 40,
+   "count": 38,
    "sin_fecha": 0
   },
   "Alpogo": {
    "ok": true,
-   "count": 7,
+   "count": 9,
    "sin_fecha": 0
   },
   "AllAccess": {
@@ -72,7 +71,7 @@
   },
   "Rosario Noticias": {
    "ok": true,
-   "count": 5
+   "count": 3
   }
  },
  "events": [
@@ -484,88 +483,6 @@
    "coords": []
   },
   {
-   "id": "b5bd560a8c",
-   "title": "Cars 20° Aniversario",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Cinemark Rosario",
-   "date_text": "10 nov, 11 nov",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "ranged": false,
-   "dates": [
-    "2026-11-10",
-    "2026-11-11"
-   ],
-   "address": "Nansen 255 (Portal Rosario)",
-   "time": "15:35",
-   "price_from": null,
-   "free": false,
-   "image": "https://cdn.cinemark.com.ar/content/posters/HO00013131.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Cinemark Rosario",
-     "url": "https://www.cinemark.com.ar/pelicula/cars-20-aniversario/compra-entradas/entradas"
-    }
-   ],
-   "feed": "Cinemark Rosario",
-   "coords": [
-    [
-     -32.91082,
-     -60.68296
-    ]
-   ]
-  },
-  {
-   "id": "213d47eb56",
-   "title": "Clayface",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario · Cinemark Rosario",
-   "date_text": "10 nov, 11 nov",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "ranged": false,
-   "dates": [
-    "2026-11-10",
-    "2026-11-11"
-   ],
-   "address": "",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6209.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6209"
-    },
-    {
-     "name": "Cinemark Rosario",
-     "url": "https://www.cinemark.com.ar/pelicula/clayface/compra-entradas/entradas"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ],
-    [
-     -32.91082,
-     -60.68296
-    ]
-   ]
-  },
-  {
    "id": "d47a8448e3",
    "title": "Consejo de Niñas y Niños en Casa de Cultura Barrio Alvear",
    "category": "otros",
@@ -600,289 +517,6 @@
    ]
   },
   {
-   "id": "5e7a1060c7",
-   "title": "Coyote vs ACME",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "10 nov, 11 nov",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "ranged": false,
-   "dates": [
-    "2026-11-10",
-    "2026-11-11"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "14:15 / 16:40",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i5984.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=5984"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "69c0f75e02",
-   "title": "Digger",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "10 nov, 11 nov",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "ranged": false,
-   "dates": [
-    "2026-11-10",
-    "2026-11-11"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "21:40",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6101.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6101"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "e23c46e224",
-   "title": "El bosque salvaje: Wildwood",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "10 nov, 11 nov",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "ranged": false,
-   "dates": [
-    "2026-11-10",
-    "2026-11-11"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "14:00 / 16:50 / 19:40 / 21:55",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6252.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6252"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "9e746d664a",
-   "title": "El corazón de la bestia",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario · Cinemark Rosario",
-   "date_text": "10 nov, 11 nov",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "ranged": false,
-   "dates": [
-    "2026-11-10",
-    "2026-11-11"
-   ],
-   "address": "",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6083.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6083"
-    },
-    {
-     "name": "Cinemark Rosario",
-     "url": "https://www.cinemark.com.ar/pelicula/el-corazon-de-la-bestia/compra-entradas/entradas"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ],
-    [
-     -32.91082,
-     -60.68296
-    ]
-   ]
-  },
-  {
-   "id": "da29af45da",
-   "title": "El gato con sombrero",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario · Cinemark Rosario",
-   "date_text": "10 nov, 11 nov",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "ranged": false,
-   "dates": [
-    "2026-11-10",
-    "2026-11-11"
-   ],
-   "address": "",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6275.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6275"
-    },
-    {
-     "name": "Cinemark Rosario",
-     "url": "https://www.cinemark.com.ar/pelicula/el-gato-con-sombrero/compra-entradas/entradas"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ],
-    [
-     -32.91082,
-     -60.68296
-    ]
-   ]
-  },
-  {
-   "id": "669db4aae6",
-   "title": "Entrega al límite",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "10 nov, 11 nov",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "ranged": false,
-   "dates": [
-    "2026-11-10",
-    "2026-11-11"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "19:00 / 22:30",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6276.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6276"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "d15e629953",
-   "title": "Godzilla Minus Zero",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario · Cinemark Rosario",
-   "date_text": "10 nov, 11 nov",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "ranged": false,
-   "dates": [
-    "2026-11-10",
-    "2026-11-11"
-   ],
-   "address": "",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6234.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6234"
-    },
-    {
-     "name": "Cinemark Rosario",
-     "url": "https://www.cinemark.com.ar/pelicula/godzilla-minus-zero/compra-entradas/entradas"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ],
-    [
-     -32.91082,
-     -60.68296
-    ]
-   ]
-  },
-  {
    "id": "b2b384714c",
    "title": "Hystérēsis. Anatomía del roce",
    "category": "otros",
@@ -910,384 +544,6 @@
    ],
    "feed": "Agenda municipal",
    "coords": []
-  },
-  {
-   "id": "3f93eaf752",
-   "title": "La Odisea",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "10 nov, 11 nov",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "ranged": false,
-   "dates": [
-    "2026-11-10",
-    "2026-11-11"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "18:55",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i5875.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=5875"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "6d5af8ae90",
-   "title": "La casa",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "10 nov, 11 nov",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "ranged": false,
-   "dates": [
-    "2026-11-10",
-    "2026-11-11"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "16:30 / 22:35",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6156.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6156"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "a077505d5c",
-   "title": "La caída de la ballena",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "10 nov, 11 nov",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "ranged": false,
-   "dates": [
-    "2026-11-10",
-    "2026-11-11"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "17:30",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6191.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6191"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "1625890347",
-   "title": "La isla olvidada",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "10 nov, 11 nov",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "ranged": false,
-   "dates": [
-    "2026-11-10",
-    "2026-11-11"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "14:05 / 16:25",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6082.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6082"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "eda0c765c4",
-   "title": "Madre siniestra",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario · Cinemark Rosario",
-   "date_text": "10 nov, 11 nov",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "ranged": false,
-   "dates": [
-    "2026-11-10",
-    "2026-11-11"
-   ],
-   "address": "",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6154.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6154"
-    },
-    {
-     "name": "Cinemark Rosario",
-     "url": "https://www.cinemark.com.ar/pelicula/madre-siniestra/compra-entradas/entradas"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ],
-    [
-     -32.91082,
-     -60.68296
-    ]
-   ]
-  },
-  {
-   "id": "d042a1e94d",
-   "title": "Resident evil: noche cero",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "10 nov, 11 nov",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "ranged": false,
-   "dates": [
-    "2026-11-10",
-    "2026-11-11"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "15:15 / 19:55 / 22:05",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6060.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6060"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "8dd38dac6e",
-   "title": "Sacrificio: los elegidos",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "10 nov, 11 nov",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "ranged": false,
-   "dates": [
-    "2026-11-10",
-    "2026-11-11"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "14:10 / 22:15",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6278.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6278"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "3b0e24ddd6",
-   "title": "Sensatez y sentimiento",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "10 nov, 11 nov",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "ranged": false,
-   "dates": [
-    "2026-11-10",
-    "2026-11-11"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "16:25 / 19:25",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6250.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6250"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "154b7f9444",
-   "title": "Street Fighter",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "10 nov, 11 nov",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "ranged": false,
-   "dates": [
-    "2026-11-10",
-    "2026-11-11"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "14:00 / 19:05",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6177.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6177"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "d693f82d6f",
-   "title": "Verity: la sombra de un engaño",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "10 nov, 11 nov",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "ranged": false,
-   "dates": [
-    "2026-11-10",
-    "2026-11-11"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "14:05 / 16:40 / 19:15 / 21:50",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6102.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6102"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
   },
   {
    "id": "9fc1388f03",
@@ -1319,80 +575,6 @@
    "coords": []
   },
   {
-   "id": "876f6080b8",
-   "title": "Wildwood: el Bosque Salvaje",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Cinemark Rosario",
-   "date_text": "10 nov, 11 nov",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "ranged": false,
-   "dates": [
-    "2026-11-10",
-    "2026-11-11"
-   ],
-   "address": "Nansen 255 (Portal Rosario)",
-   "time": "16:15 / 19:10 / 22:10",
-   "price_from": null,
-   "free": false,
-   "image": "https://cdn.cinemark.com.ar/content/posters/HO00012754.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Cinemark Rosario",
-     "url": "https://www.cinemark.com.ar/pelicula/wildwood-el-bosque-salvaje/compra-entradas/entradas"
-    }
-   ],
-   "feed": "Cinemark Rosario",
-   "coords": [
-    [
-     -32.91082,
-     -60.68296
-    ]
-   ]
-  },
-  {
-   "id": "d9f09134c6",
-   "title": "¿Querés ser mi hijo?",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "10 nov, 11 nov",
-   "start": "2026-11-10",
-   "end": "2026-11-11",
-   "ranged": false,
-   "dates": [
-    "2026-11-10",
-    "2026-11-11"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "14:20 / 22:25",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6203.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6203"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
    "id": "59e55d8d57",
    "title": "9° Festival de Magia de Rosario",
    "category": "otros",
@@ -1422,6 +604,43 @@
    "coords": []
   },
   {
+   "id": "78e919cf24",
+   "title": "El Festival de Magia llega a Rosario con shows gratuitos",
+   "category": "musica",
+   "categories": [
+    "musica"
+   ],
+   "plan": "cultura",
+   "venue": "",
+   "date_text": "11 nov, 21 nov",
+   "start": "2026-11-11",
+   "end": "2026-11-21",
+   "ranged": false,
+   "dates": [
+    "2026-11-11",
+    "2026-11-21"
+   ],
+   "address": "Uriburu 637",
+   "time": "",
+   "price_from": null,
+   "free": true,
+   "image": "https://disfrutarosario.com/wp-content/uploads/2023/08/magia-3.jpg",
+   "description": "La ciudad se prepara para vivir diez días de magia, ilusión y entretenimiento con el Festival de Magia. Espectáculos y talleres gratuitos.",
+   "sources": [
+    {
+     "name": "Disfruta Rosario",
+     "url": "https://disfrutarosario.com/festival-de-magia-rosario/"
+    }
+   ],
+   "feed": "Disfruta Rosario",
+   "coords": [
+    [
+     -32.99097,
+     -60.64287
+    ]
+   ]
+  },
+  {
    "id": "f0c56bfdc1",
    "title": "Casa Abierta en Casa de Cultura Barrio Alvear",
    "category": "otros",
@@ -1449,283 +668,6 @@
    ],
    "feed": "Agenda municipal",
    "coords": []
-  },
-  {
-   "id": "aa1c2ed075",
-   "title": "DANIEL GAMBARTTE",
-   "category": "eventos",
-   "categories": [
-    "eventos"
-   ],
-   "plan": "cultura",
-   "venue": "Teatro Broadway",
-   "date_text": "12 nov",
-   "start": "2026-11-12",
-   "end": "2026-11-12",
-   "ranged": false,
-   "dates": [
-    "2026-11-12"
-   ],
-   "address": "",
-   "time": "21:30",
-   "price_from": 50000,
-   "free": false,
-   "image": "",
-   "description": "",
-   "sources": [
-    {
-     "name": "Teatro Broadway",
-     "url": "https://teatrobroadwayrosario.com/cartelera/871/daniel-gambartte"
-    }
-   ],
-   "feed": "Teatro Broadway",
-   "coords": [
-    [
-     -32.94396,
-     -60.63956
-    ]
-   ]
-  },
-  {
-   "id": "3c42b41f9a",
-   "title": "Diego Torres",
-   "category": "musica",
-   "categories": [
-    "musica"
-   ],
-   "plan": "recreacion",
-   "venue": "Metropolitano Rosario",
-   "date_text": "12 nov",
-   "start": "2026-11-12",
-   "end": "2026-11-12",
-   "ranged": false,
-   "dates": [
-    "2026-11-12"
-   ],
-   "address": "Junín 501",
-   "time": "21:00",
-   "price_from": null,
-   "free": false,
-   "image": "https://cdn.prod.website-files.com/6423440213c3f044ff2b62a1/6a0512164d919f84d62fde22_564609.jpg",
-   "description": "Diego Torres es un cantante, compositor y actor argentino reconocido por su fusión de pop, rock y ritmos latinos. Alcanzó la fama en los 90 con éxitos como \"Tratar de Estar Mejor\" y \"Color Esperanza\", canción que se volvió un himno de esperanza en toda Latinoamérica. Con más de 30 años de carrera, ha lanzado álbumes icónicos y ha recibido múltiples premios.",
-   "sources": [
-    {
-     "name": "Agendade",
-     "url": "https://www.turboentrada.com/landing/16559-diego-torres?idEspectaculoCartel=16559&cHashValidacion=60b65a218a44354e636983bfa0a11596dada2578"
-    },
-    {
-     "name": "Qué Hacemos",
-     "url": "https://www.quehacemos.com.ar/eventos/diego-torres-66313"
-    },
-    {
-     "name": "Ticketle",
-     "url": "https://www.ticketle.com.ar/diego-torres-rosario-tickets-12-11-2026/event/716072"
-    }
-   ],
-   "coords": [
-    [
-     -32.95261,
-     -60.77296
-    ]
-   ],
-   "feed": "Qué Hacemos"
-  },
-  {
-   "id": "5b4e233415",
-   "title": "KINESIO FEST - 5TA EDICIÓN",
-   "category": "eventos",
-   "categories": [
-    "eventos"
-   ],
-   "plan": "cultura",
-   "venue": "Complejo Forest",
-   "date_text": "12 nov",
-   "start": "2026-11-12",
-   "end": "2026-11-12",
-   "ranged": false,
-   "dates": [
-    "2026-11-12"
-   ],
-   "address": "",
-   "time": "23:00",
-   "price_from": 8000,
-   "free": false,
-   "image": "https://imagenes.passline.com/eventos/-821211-rec.jpg",
-   "description": "KINESIO FEST - 5TA EDICIÓN en Complejo Forest",
-   "sources": [
-    {
-     "name": "Passline",
-     "url": "https://www.passline.com/eventos/kinesio-fest-5ta-edicion"
-    },
-    {
-     "name": "Qué Hacemos",
-     "url": "https://www.quehacemos.com.ar/eventos/kinesio-fest-5ta-edicion-73897"
-    }
-   ],
-   "coords": [
-    [
-     -32.93192,
-     -60.66438
-    ]
-   ],
-   "feed": "Qué Hacemos"
-  },
-  {
-   "id": "9fdbe367ad",
-   "title": "LA VALENTI",
-   "category": "musica",
-   "categories": [
-    "musica"
-   ],
-   "plan": "cultura",
-   "venue": "Casa Brava",
-   "date_text": "12 nov",
-   "start": "2026-11-12",
-   "end": "2026-11-12",
-   "ranged": false,
-   "dates": [
-    "2026-11-12"
-   ],
-   "address": "Pichincha 120",
-   "time": "08:30",
-   "price_from": null,
-   "free": false,
-   "image": "https://photos.bandsintown.com/large/25943880.jpeg",
-   "description": "Después de agotar las ocho funciones de \"La Peña de La Capitana\" en el Santa Evita, La Valenti se anima a lo más grande: llevar este ciclo a una gira nacional que recorre ciudades como Buenos Aires, Salta, Tucuman, Rosario, Cordoba, La Plata, Neuquen, Bariloche, Lago Puelo, Mendoza, San Luis, entre otras… con una experiencia unica y sensible. Animate a vivir una noche irrepetible, con invitados es",
-   "sources": [
-    {
-     "name": "Bandsintown",
-     "url": "https://www.bandsintown.com/e/108785153-la-valenti-at-casa-brava"
-    },
-    {
-     "name": "Qué Hacemos",
-     "url": "https://www.quehacemos.com.ar/eventos/la-valenti-71186"
-    }
-   ],
-   "coords": [
-    [
-     -32.93415,
-     -60.66093
-    ]
-   ],
-   "feed": "Qué Hacemos",
-   "venue_id": "casa-brava"
-  },
-  {
-   "id": "76287e05ad",
-   "title": "Nico de Tracy - Nueva Función",
-   "category": "teatro",
-   "categories": [
-    "teatro"
-   ],
-   "plan": "cultura",
-   "venue": "Teatro Mateo Booz",
-   "date_text": "12 nov",
-   "start": "2026-11-12",
-   "end": "2026-11-12",
-   "ranged": false,
-   "dates": [
-    "2026-11-12"
-   ],
-   "address": "San Lorenzo 2243",
-   "time": "21:00",
-   "price_from": null,
-   "free": false,
-   "image": "https://www.ticketway.com.ar/twn/be/espectaculos/imagenes/nuevotracy1440x400.jpg",
-   "description": "ROSARIO",
-   "sources": [
-    {
-     "name": "Ticketway",
-     "url": "https://www.ticketway.com.ar/#/cartelera?evento=2754"
-    },
-    {
-     "name": "Qué Hacemos",
-     "url": "https://www.quehacemos.com.ar/eventos/nico-de-tracy-nueva-funcion-27907"
-    }
-   ],
-   "coords": [
-    [
-     -32.9414,
-     -60.65361
-    ]
-   ],
-   "feed": "Qué Hacemos"
-  },
-  {
-   "id": "617fe11146",
-   "title": "Orlando Vera Cruz",
-   "category": "musica",
-   "categories": [
-    "musica"
-   ],
-   "plan": "cultura",
-   "venue": "City Center Rosario",
-   "date_text": "12 nov",
-   "start": "2026-11-12",
-   "end": "2026-11-12",
-   "ranged": false,
-   "dates": [
-    "2026-11-12"
-   ],
-   "address": "",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "",
-   "description": "",
-   "sources": [
-    {
-     "name": "Ticketle",
-     "url": "https://www.ticketle.com.ar/orlando-vera-cruz-rosario-tickets-12-11-2026/event/611329"
-    }
-   ],
-   "feed": "Ticketle",
-   "coords": [
-    [
-     -33.01121,
-     -60.66248
-    ]
-   ]
-  },
-  {
-   "id": "b7b6231a5a",
-   "title": "Peña La Coplera - Nestor Garnica",
-   "category": "eventos",
-   "categories": [
-    "eventos"
-   ],
-   "plan": "cultura",
-   "venue": "Decada Disco",
-   "date_text": "12 nov",
-   "start": "2026-11-12",
-   "end": "2026-11-12",
-   "ranged": false,
-   "dates": [
-    "2026-11-12"
-   ],
-   "address": "",
-   "time": "20:30",
-   "price_from": 20000,
-   "free": false,
-   "image": "https://imagenes.passline.com/eventos/pena-la-coplera-nestor-garnica-573687-rec.jpg",
-   "description": "Peña La Coplera - Nestor Garnica en Decada Disco",
-   "sources": [
-    {
-     "name": "Passline",
-     "url": "https://www.passline.com/eventos/pena-la-coplera-nestor-garnica"
-    },
-    {
-     "name": "Qué Hacemos",
-     "url": "https://www.quehacemos.com.ar/eventos/pena-la-coplera-nestor-garnica-74789"
-    }
-   ],
-   "coords": [
-    [
-     -32.93662,
-     -60.6699
-    ]
-   ],
-   "feed": "Qué Hacemos"
   },
   {
    "id": "9b2ae0e00d",
@@ -1768,6 +710,47 @@
    "feed": "Qué Hacemos"
   },
   {
+   "id": "87cf3a7243",
+   "title": "Aniquilación",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "13 nov, 14 nov, 15 nov, 16 nov, 17 nov, 18 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "13:10 / 15:25 / 17:50 / 20:05 / 22:20 / 22:25",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6298.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6298"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
    "id": "d907271e3f",
    "title": "BARILOCHE 90’",
    "category": "otros",
@@ -1785,7 +768,7 @@
    ],
    "address": "",
    "time": "21:30",
-   "price_from": 15000,
+   "price_from": 20000,
    "free": false,
    "image": "https://imagenes.passline.com/eventos/bariloche-90-566626-rec.jpg",
    "description": "BARILOCHE 90’ en Complejo Forest",
@@ -1888,6 +871,55 @@
    "feed": "Qué Hacemos"
   },
   {
+   "id": "f63c7dc06b",
+   "title": "Caballo salvaje nueve",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario · Cinemark Rosario",
+   "date_text": "13 nov, 14 nov, 15 nov, 16 nov, 17 nov, 18 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6297.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6297"
+    },
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/caballo-salvaje-nueve/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ],
+    [
+     -32.91082,
+     -60.68296
+    ]
+   ]
+  },
+  {
    "id": "8d2ac123bf",
    "title": "Chamuyando StandUp - Rosario",
    "category": "teatro",
@@ -1928,6 +960,96 @@
    "feed": "Qué Hacemos"
   },
   {
+   "id": "213d47eb56",
+   "title": "Clayface",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario · Cinemark Rosario",
+   "date_text": "13 nov, 14 nov, 15 nov, 16 nov, 17 nov, 18 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6209.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6209"
+    },
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/clayface/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ],
+    [
+     -32.91082,
+     -60.68296
+    ]
+   ]
+  },
+  {
+   "id": "5e7a1060c7",
+   "title": "Coyote vs ACME",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "13 nov, 14 nov, 15 nov, 16 nov, 17 nov, 18 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "12:00 / 14:15 / 16:35",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i5984.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=5984"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
    "id": "d8bfa73702",
    "title": "Cumbia nena anunció una nueva fecha",
    "category": "eventos",
@@ -1957,6 +1079,243 @@
    ],
    "feed": "Disfruta Rosario",
    "coords": []
+  },
+  {
+   "id": "ec29573697",
+   "title": "Cómo robar un banco",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario · Cinemark Rosario",
+   "date_text": "13 nov, 14 nov, 15 nov, 16 nov, 17 nov, 18 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6296.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6296"
+    },
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/como-robar-un-banco/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ],
+    [
+     -32.91082,
+     -60.68296
+    ]
+   ]
+  },
+  {
+   "id": "7aea9f60c9",
+   "title": "Ebenezer: los fantasmas de Navidad",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario · Cinemark Rosario",
+   "date_text": "13 nov, 14 nov, 15 nov, 16 nov, 17 nov, 18 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6295.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6295"
+    },
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/ebenezer-los-fantasmas-de-navidad/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ],
+    [
+     -32.91082,
+     -60.68296
+    ]
+   ]
+  },
+  {
+   "id": "e23c46e224",
+   "title": "El bosque salvaje: Wildwood",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "13 nov, 14 nov, 15 nov, 16 nov, 17 nov, 18 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "14:05 / 16:50 / 19:45 / 22:25",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6252.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6252"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
+   "id": "9e746d664a",
+   "title": "El corazón de la bestia",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario · Cinemark Rosario",
+   "date_text": "13 nov, 14 nov, 15 nov, 16 nov, 17 nov, 18 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6083.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6083"
+    },
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/el-corazon-de-la-bestia/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ],
+    [
+     -32.91082,
+     -60.68296
+    ]
+   ]
+  },
+  {
+   "id": "da29af45da",
+   "title": "El gato con sombrero",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario · Cinemark Rosario",
+   "date_text": "13 nov, 14 nov, 15 nov, 16 nov, 17 nov, 18 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6275.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6275"
+    },
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/el-gato-con-sombrero/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ],
+    [
+     -32.91082,
+     -60.68296
+    ]
+   ]
   },
   {
    "id": "b015f43bfb",
@@ -1994,6 +1353,93 @@
    "coords": []
   },
   {
+   "id": "cad6e63dcc",
+   "title": "GOTEO - CLUB DE REGGAETON",
+   "category": "musica",
+   "categories": [
+    "musica"
+   ],
+   "plan": "cultura",
+   "venue": "Club Mercury",
+   "date_text": "13 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-13",
+   "ranged": false,
+   "dates": [
+    "2026-11-13"
+   ],
+   "address": "",
+   "time": "23:55",
+   "price_from": null,
+   "free": false,
+   "image": "https://imagenes.passline.com/eventos/goteo-club-de-reggaeton-577854-rec.jpg",
+   "description": "GOTEO - CLUB DE REGGAETON en Club Mercury",
+   "sources": [
+    {
+     "name": "Passline",
+     "url": "https://www.passline.com/eventos/goteo-club-de-reggaeton-577854"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/goteo-club-de-reggaeton-78377"
+    }
+   ],
+   "genre_hints": [
+    "electronica"
+   ],
+   "feed": "Qué Hacemos",
+   "coords": []
+  },
+  {
+   "id": "d15e629953",
+   "title": "Godzilla Minus Zero",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario · Cinemark Rosario",
+   "date_text": "13 nov, 14 nov, 15 nov, 16 nov, 17 nov, 18 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6234.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6234"
+    },
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/godzilla-minus-zero/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ],
+    [
+     -32.91082,
+     -60.68296
+    ]
+   ]
+  },
+  {
    "id": "8e3b99fc1f",
    "title": "HI FI STUDIO // ALEMANNO - GARY MGM",
    "category": "otros",
@@ -2011,7 +1457,7 @@
    ],
    "address": "",
    "time": "23:00",
-   "price_from": 6000,
+   "price_from": 8000,
    "free": false,
    "image": "https://imagenes.passline.com/eventos/hi-fi-studio-alemanno-gary-mgm-573375-rec.jpg",
    "description": "HI FI STUDIO // ALEMANNO - GARY MGM en HI FI STUDIO",
@@ -2100,6 +1546,218 @@
    "coords": []
   },
   {
+   "id": "7270bd61c2",
+   "title": "Ju-On: el grito",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "13 nov, 14 nov, 15 nov, 16 nov, 17 nov, 18 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "12:00 / 22:35 / 22:40",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6302.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6302"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
+   "id": "6d5af8ae90",
+   "title": "La casa",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "13 nov, 14 nov, 15 nov, 16 nov, 17 nov, 18 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "19:55 / 21:55 / 22:30",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6156.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6156"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
+   "id": "1625890347",
+   "title": "La isla olvidada",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "13 nov, 14 nov, 15 nov, 16 nov, 17 nov, 18 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "14:00",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6082.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6082"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
+   "id": "fed56b9ed2",
+   "title": "MOULIN ROUGE BY ZETA🫦",
+   "category": "otros",
+   "categories": [
+    "otros"
+   ],
+   "plan": "cultura",
+   "venue": "Güemes 2607",
+   "date_text": "13 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-13",
+   "ranged": false,
+   "dates": [
+    "2026-11-13"
+   ],
+   "address": "Güemes 2607, Rosario",
+   "time": "",
+   "price_from": 4000,
+   "free": false,
+   "image": "https://images.venti.live/user-images/1794343611108-lg.jpg",
+   "description": "VIERNES 13.11 - WELCOME TO THE MOULIN ROUGE💋 Una noche donde el glamour, la seducción y el espectáculo se apoderan de Zeta.💄 💃La magia del Moulin Rouge llega a la pista con bailarines en escena que serán parte de una noche llena de fantasía y espectáculo.",
+   "sources": [
+    {
+     "name": "Venti",
+     "url": "https://venti.com.ar/evento/mouline-rouge-by-zeta"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/moulin-rouge-by-zeta-78154"
+    }
+   ],
+   "coords": [
+    [
+     -32.93239,
+     -60.65631
+    ]
+   ],
+   "feed": "Qué Hacemos"
+  },
+  {
+   "id": "eda0c765c4",
+   "title": "Madre siniestra",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario · Cinemark Rosario",
+   "date_text": "13 nov, 14 nov, 15 nov, 16 nov, 17 nov, 18 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6154.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6154"
+    },
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/madre-siniestra/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ],
+    [
+     -32.91082,
+     -60.68296
+    ]
+   ]
+  },
+  {
    "id": "01cae4d610",
    "title": "Muestra/talleres Colegas",
    "category": "otros",
@@ -2126,6 +1784,76 @@
     }
    ],
    "feed": "Agenda municipal",
+   "coords": []
+  },
+  {
+   "id": "8d860fd02d",
+   "title": "Noche de las vinotecas en Rosario",
+   "category": "eventos",
+   "categories": [
+    "eventos"
+   ],
+   "plan": "gastronomia",
+   "venue": "",
+   "date_text": "13 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-13",
+   "ranged": false,
+   "dates": [
+    "2026-11-13"
+   ],
+   "address": "",
+   "time": "19:00",
+   "price_from": 19000,
+   "free": false,
+   "image": "https://disfrutarosario.com/wp-content/uploads/2024/02/vino-brindis.jpg",
+   "description": "La Noche de las vinotecas en Rosario tendrá degustaciones, promociones y charlas.",
+   "sources": [
+    {
+     "name": "Eventbrite",
+     "url": "https://www.eventbrite.com.ar/e/la-noche-de-las-vinotecas-2026-rosario-tickets-2003708070778?aff=oddtdtcreator"
+    },
+    {
+     "name": "Disfruta Rosario",
+     "url": "https://disfrutarosario.com/noche-de-las-vinotecas-en-rosario/"
+    }
+   ],
+   "feed": "Disfruta Rosario",
+   "coords": []
+  },
+  {
+   "id": "d5051e8edc",
+   "title": "PRE PARTY SUDBEAT - 13.11.26",
+   "category": "eventos",
+   "categories": [
+    "eventos"
+   ],
+   "plan": "cultura",
+   "venue": "Crema",
+   "date_text": "13 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-13",
+   "ranged": false,
+   "dates": [
+    "2026-11-13"
+   ],
+   "address": "",
+   "time": "22:00",
+   "price_from": null,
+   "free": false,
+   "image": "https://imagenes.passline.com/eventos/pre-party-sudbeat-131126-578261-rec.jpg",
+   "description": "PRE PARTY SUDBEAT - 13.11.26 en Crema",
+   "sources": [
+    {
+     "name": "Passline",
+     "url": "https://www.passline.com/eventos/pre-party-sudbeat-131126"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/pre-party-sudbeat-13-11-26-78369"
+    }
+   ],
+   "feed": "Qué Hacemos",
    "coords": []
   },
   {
@@ -2169,14 +1897,178 @@
    "feed": "Qué Hacemos"
   },
   {
-   "id": "7ee7b5a4ea",
-   "title": "SERGIO TORRES",
-   "category": "eventos",
+   "id": "aa4a177642",
+   "title": "Plumas: operación rescate",
+   "category": "cine",
    "categories": [
-    "eventos"
+    "cine"
    ],
    "plan": "cultura",
-   "venue": "Teatro Broadway",
+   "venue": "Showcase Rosario",
+   "date_text": "13 nov, 14 nov, 15 nov, 16 nov, 17 nov, 18 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "13:30 / 15:30",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6300.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6300"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
+   "id": "d042a1e94d",
+   "title": "Resident evil: noche cero",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "13 nov, 14 nov, 15 nov, 16 nov, 17 nov, 18 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "17:35 / 19:50 / 22:00",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6060.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6060"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
+   "id": "ab375e66df",
+   "title": "Rocky 50° Aniversario",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Cinemark Rosario",
+   "date_text": "13 nov, 14 nov, 15 nov, 16 nov, 17 nov, 18 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
+   ],
+   "address": "Nansen 255 (Portal Rosario)",
+   "time": "20:00",
+   "price_from": null,
+   "free": false,
+   "image": "https://cdn.cinemark.com.ar/content/posters/HO00013324.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/rocky-50-aniversario/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Cinemark Rosario",
+   "coords": [
+    [
+     -32.91082,
+     -60.68296
+    ]
+   ]
+  },
+  {
+   "id": "3b0e24ddd6",
+   "title": "Sensatez y sentimiento",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "13 nov, 14 nov, 15 nov, 16 nov, 17 nov, 18 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "16:20 / 19:00 / 21:55",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6250.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6250"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
+   "id": "784e6ea2a2",
+   "title": "Sueño gris",
+   "category": "teatro",
+   "categories": [
+    "teatro"
+   ],
+   "plan": "cultura",
+   "venue": "CASA LGTBI",
    "date_text": "13 nov",
    "start": "2026-11-13",
    "end": "2026-11-13",
@@ -2184,32 +2076,35 @@
    "dates": [
     "2026-11-13"
    ],
-   "address": "",
-   "time": "21:00",
-   "price_from": 35000,
+   "address": "Córdoba 3650",
+   "time": "20:00",
+   "price_from": null,
    "free": false,
-   "image": "",
+   "image": "https://img.alternativateatral.com/scripts/es/fotos/obras/resumen/88/000314588.jpg",
    "description": "",
    "sources": [
     {
-     "name": "Teatro Broadway",
-     "url": "https://teatrobroadwayrosario.com/cartelera/867/sergio-torres"
+     "name": "Alternativa Teatral",
+     "url": "https://www.alternativateatral.com/obra100888-sueno-gris"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/sueno-gris-77475"
     }
    ],
-   "feed": "Teatro Broadway",
    "coords": [
     [
-     -32.94396,
-     -60.63956
+     -32.94016,
+     -60.67299
     ]
-   ]
+   ],
+   "feed": "Qué Hacemos"
   },
   {
    "id": "e04789d675",
    "title": "TERAPIA DE COPAS",
    "category": "otros",
    "categories": [
-    "musica",
     "otros"
    ],
    "plan": "cultura",
@@ -2226,7 +2121,7 @@
    "price_from": 22000,
    "free": false,
    "image": "https://imagenes.alpogo.com/eventos/07aeca54-5ba7-4dcb-94d0-d13991e4f4ab.webp",
-   "description": "Terapia de Copas , Evento exclusivo para Mujeres🌺 Nuevo formato, más extendido, más bailable!",
+   "description": "Terapia de Copas , Evento exclusivo para Mujeres🌺 Nuevo formato, más extendido, más bailable! LAPRIDA 847, ROSARIO. Ingreso 23:30 hs fin 04:00hs",
    "sources": [
     {
      "name": "Alpogo",
@@ -2244,6 +2139,41 @@
     ]
    ],
    "feed": "Qué Hacemos"
+  },
+  {
+   "id": "8e0715f2da",
+   "title": "Tade Mosz",
+   "category": "musica",
+   "categories": [
+    "musica"
+   ],
+   "plan": "cultura",
+   "venue": "Tierra de sueños 2",
+   "date_text": "13 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-13",
+   "ranged": false,
+   "dates": [
+    "2026-11-13"
+   ],
+   "address": "",
+   "time": "14:30",
+   "price_from": null,
+   "free": false,
+   "image": "https://photos.bandsintown.com/large/26525281.jpeg",
+   "description": "Tade Mosz en vivo en Tierra de sueños 2, Rosario.",
+   "sources": [
+    {
+     "name": "Bandsintown",
+     "url": "https://www.bandsintown.com/e/109150427-tade-mosz-at-tierra-de-suenos-2"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/tade-mosz-78248"
+    }
+   ],
+   "feed": "Qué Hacemos",
+   "coords": []
   },
   {
    "id": "c978900714",
@@ -2311,6 +2241,88 @@
    ],
    "feed": "Agenda municipal",
    "coords": []
+  },
+  {
+   "id": "d693f82d6f",
+   "title": "Verity: la sombra de un engaño",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "13 nov, 14 nov, 15 nov, 16 nov, 17 nov, 18 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "16:20 / 16:25 / 19:10 / 21:50",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6102.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6102"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
+   "id": "876f6080b8",
+   "title": "Wildwood: el Bosque Salvaje",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Cinemark Rosario",
+   "date_text": "13 nov, 14 nov, 15 nov, 16 nov, 17 nov, 18 nov",
+   "start": "2026-11-13",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-13",
+    "2026-11-14",
+    "2026-11-15",
+    "2026-11-16",
+    "2026-11-17",
+    "2026-11-18"
+   ],
+   "address": "Nansen 255 (Portal Rosario)",
+   "time": "16:40 / 22:40",
+   "price_from": null,
+   "free": false,
+   "image": "https://cdn.cinemark.com.ar/content/posters/HO00012754.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/wildwood-el-bosque-salvaje/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Cinemark Rosario",
+   "coords": [
+    [
+     -32.91082,
+     -60.68296
+    ]
+   ]
   },
   {
    "id": "64e700fb23",
@@ -2526,7 +2538,7 @@
    ],
    "address": "",
    "time": "21:00",
-   "price_from": 18000,
+   "price_from": 20000,
    "free": false,
    "image": "https://imagenes.passline.com/eventos/audiostoners-homenaje-a-chris-cornell-jaguar-haus-rosario-545510-rec.jpg",
    "description": "Audiostoners - Homenaje a Chris Cornell - Jaguar Haüs Rosario en Jaguar Haüs",
@@ -2718,6 +2730,41 @@
    "feed": "Qué Hacemos"
   },
   {
+   "id": "3eeaad34e5",
+   "title": "ENTRE TAPAS Y COPAS",
+   "category": "otros",
+   "categories": [
+    "otros"
+   ],
+   "plan": "cultura",
+   "venue": "Crema",
+   "date_text": "14 nov",
+   "start": "2026-11-14",
+   "end": "2026-11-14",
+   "ranged": false,
+   "dates": [
+    "2026-11-14"
+   ],
+   "address": "",
+   "time": "21:00",
+   "price_from": 17000,
+   "free": false,
+   "image": "https://imagenes.passline.com/eventos/entre-tapas-y-copas-578134-rec.jpg",
+   "description": "ENTRE TAPAS Y COPAS en Crema",
+   "sources": [
+    {
+     "name": "Passline",
+     "url": "https://www.passline.com/eventos/entre-tapas-y-copas"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/entre-tapas-y-copas-78394"
+    }
+   ],
+   "feed": "Qué Hacemos",
+   "coords": []
+  },
+  {
    "id": "92240c2f0e",
    "title": "El Club de la Serpiente en Rosario",
    "category": "eventos",
@@ -2738,7 +2785,7 @@
    "price_from": 16000,
    "free": false,
    "image": "https://disfrutarosario.com/wp-content/uploads/2025/02/el-club-de-la-serpiente-rosario.avif",
-   "description": "El Club de la Serpiente en Rosario El Club de la Serpiente anunció una nueva fecha en Rosario. Entradas a la venta.",
+   "description": "El Club de la Serpiente anunció una nueva fecha en Rosario. Entradas a la venta.",
    "sources": [
     {
      "name": "Disfruta Rosario",
@@ -2789,6 +2836,46 @@
    "feed": "Qué Hacemos"
   },
   {
+   "id": "b645bd8d25",
+   "title": "FINALES TORNEO REGIONAL",
+   "category": "eventos",
+   "categories": [
+    "eventos"
+   ],
+   "plan": "recreacion",
+   "venue": "Hipodromo de Rosario",
+   "date_text": "14 nov",
+   "start": "2026-11-14",
+   "end": "2026-11-14",
+   "ranged": false,
+   "dates": [
+    "2026-11-14"
+   ],
+   "address": "",
+   "time": "16:00",
+   "price_from": null,
+   "free": false,
+   "image": "https://www.ticketway.com.ar/twn/be/espectaculos/imagenes/final1440x400.jpg",
+   "description": "¡Se vienen las finales del torneo más importante del interior del país! El TRL 2026 entra en su etapa decisiva, donde la pasión, la entrega y el orgullo por los colores se ponen en juego para definir a los campeones del *Rugby del Litoral*. Duendes, Jockey de Rosario, Santa Fe Rugby Club y Estudiantes de Parana se disputaran por el titulo en el Estadio Capibaras, el Hipódromo de Rosario, será el e",
+   "sources": [
+    {
+     "name": "Ticketway",
+     "url": "https://www.ticketway.com.ar/#/cartelera?evento=2970"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/finales-torneo-regional-77417"
+    }
+   ],
+   "coords": [
+    [
+     -32.95961,
+     -60.66156
+    ]
+   ],
+   "feed": "Qué Hacemos"
+  },
+  {
    "id": "0008cd6138",
    "title": "Fiesta Provincial de la Destreza Culinaria y la Comida Casera",
    "category": "eventos",
@@ -2806,7 +2893,7 @@
    ],
    "address": "",
    "time": "19:00",
-   "price_from": 8000,
+   "price_from": 10000,
    "free": false,
    "image": "https://etickets.com.ar/images/eventos/1793665551ece29d6b2303af46fd536894167d15b5.jpg",
    "description": "Fiesta culinaria que se lleva a cabo en Esmeralda, Santa Fe. Shows presentes en esta edición: TRULALA - El Popo Giaveno. Premiación de stands culinarios, elección de Soberana",
@@ -2919,7 +3006,7 @@
    ],
    "address": "",
    "time": "19:00",
-   "price_from": 20000,
+   "price_from": 22000,
    "free": false,
    "image": "https://imagenes.passline.com/eventos/-795255-rec.jpg",
    "description": "HORIFEST 10 en Club Atlético Horizonte",
@@ -3094,6 +3181,41 @@
    "feed": "Qué Hacemos"
   },
   {
+   "id": "2e5d9280ae",
+   "title": "MERCURY - SABADO 14 DE NOVIEMBRE",
+   "category": "otros",
+   "categories": [
+    "otros"
+   ],
+   "plan": "cultura",
+   "venue": "Club Mercury",
+   "date_text": "14 nov",
+   "start": "2026-11-14",
+   "end": "2026-11-14",
+   "ranged": false,
+   "dates": [
+    "2026-11-14"
+   ],
+   "address": "",
+   "time": "23:30",
+   "price_from": null,
+   "free": false,
+   "image": "https://imagenes.passline.com/eventos/mercury-sabado-14-de-noviembre-577940-rec.jpg",
+   "description": "MERCURY - SABADO 14 DE NOVIEMBRE en Club Mercury",
+   "sources": [
+    {
+     "name": "Passline",
+     "url": "https://www.passline.com/eventos/mercury-sabado-14-de-noviembre"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/mercury-sabado-14-de-noviembre-78408"
+    }
+   ],
+   "feed": "Qué Hacemos",
+   "coords": []
+  },
+  {
    "id": "99a0d9311f",
    "title": "MISMOS PROTAGONISTAS",
    "category": "musica",
@@ -3171,6 +3293,46 @@
     ]
    ],
    "feed": "TurboEntrada"
+  },
+  {
+   "id": "adc11e4a24",
+   "title": "Mica Ruiz",
+   "category": "musica",
+   "categories": [
+    "musica"
+   ],
+   "plan": "cultura",
+   "venue": "BIOCERES ARENA",
+   "date_text": "14 nov",
+   "start": "2026-11-14",
+   "end": "2026-11-14",
+   "ranged": false,
+   "dates": [
+    "2026-11-14"
+   ],
+   "address": "",
+   "time": "19:30",
+   "price_from": null,
+   "free": false,
+   "image": "https://photos.bandsintown.com/large/26679426.jpeg",
+   "description": "Mica Ruiz en vivo en BIOCERES ARENA, Rosario.",
+   "sources": [
+    {
+     "name": "Bandsintown",
+     "url": "https://www.bandsintown.com/e/109132245-mica-ruiz-at-bioceres-arena"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/mica-ruiz-78249"
+    }
+   ],
+   "feed": "Qué Hacemos",
+   "coords": [
+    [
+     -32.94026,
+     -60.66996
+    ]
+   ]
   },
   {
    "id": "9d3e8139de",
@@ -3290,7 +3452,7 @@
    ],
    "address": "",
    "time": "23:30",
-   "price_from": 3500,
+   "price_from": 7900,
    "free": false,
    "image": "https://imagenes.passline.com/eventos/-820887-rec.jpg",
    "description": "ROUGE 14.11 en Capitan",
@@ -3355,7 +3517,7 @@
     "2026-11-14"
    ],
    "address": "",
-   "time": "21:00",
+   "time": "19:00",
    "price_from": 35000,
    "free": false,
    "image": "https://imagenes.passline.com/eventos/sudbeat-showcase-141126-hipodromo-de-rosario-555092-rec.jpg",
@@ -3591,7 +3753,7 @@
    ],
    "address": "",
    "time": "20:00",
-   "price_from": 20000,
+   "price_from": 25000,
    "free": false,
    "image": "https://imagenes.passline.com/eventos/-806543-rec.jpg",
    "description": "el PROFE BORDA DESPIDE EL AÑO en ROSARIO en DISTRITO 7",
@@ -3631,7 +3793,7 @@
    ],
    "address": "",
    "time": "17:00",
-   "price_from": 30000,
+   "price_from": 35000,
    "free": false,
    "image": "https://imagenes.passline.com/eventos/crean-bosque-14112026-campus-green-569690-rec.jpg",
    "description": "🌳 CREAN BOSQUE 🌳 - 14.11.2026 - CAMPUS GREEN en CAMPUS GREEN",
@@ -3720,6 +3882,37 @@
    ]
   },
   {
+   "id": "110fded9f3",
+   "title": "Cine El Cairo: cartelera La Gratis del Domingo",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "",
+   "date_text": "15 nov",
+   "start": "2026-11-15",
+   "end": "2026-11-15",
+   "ranged": false,
+   "dates": [
+    "2026-11-15"
+   ],
+   "address": "",
+   "time": "18:00",
+   "price_from": null,
+   "free": true,
+   "image": "https://disfrutarosario.com/wp-content/uploads/2020/02/Cine-El-Cairo-1024x683.jpg",
+   "description": "El Cine El Cairo publicó la cartelera de películas que integran el ciclo La Gratis del Domingo.",
+   "sources": [
+    {
+     "name": "Disfruta Rosario",
+     "url": "https://disfrutarosario.com/cine-el-cairo-cartelera-la-gratis/"
+    }
+   ],
+   "feed": "Disfruta Rosario",
+   "coords": []
+  },
+  {
    "id": "3d08ebfe2a",
    "title": "Dyango",
    "category": "musica",
@@ -3758,6 +3951,46 @@
     ]
    ],
    "feed": "Qué Hacemos"
+  },
+  {
+   "id": "21ba700de9",
+   "title": "MARATON \"ANNA MARGARITA\" NEWELL'S OLD BOYS",
+   "category": "deporte",
+   "categories": [
+    "deporte"
+   ],
+   "plan": "recreacion",
+   "venue": "Puerta 6 (frente a la tribuna Lionel Messi)",
+   "date_text": "15 nov",
+   "start": "2026-11-15",
+   "end": "2026-11-15",
+   "ranged": false,
+   "dates": [
+    "2026-11-15"
+   ],
+   "address": "Puerta 6 (frente a la tribuna Lionel Messi) ,Rosario, Santa Fe",
+   "time": "08:00",
+   "price_from": null,
+   "free": false,
+   "image": "https://cbarun.com.ar/imagenescarrerascbarun/-------------------------------------------1789141619.jpg",
+   "description": "Calle en Puerta 6 (frente a la tribuna Lionel Messi), Santa Fe. Distancias disponibles: 10k/2k/5k/Kids.",
+   "sources": [
+    {
+     "name": "Cbarun",
+     "url": "https://www.newellsoldboys.com.ar/noticias/maraton-anna-margarita"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/maraton-anna-margarita-newell-s-old-boys-54136"
+    }
+   ],
+   "feed": "Qué Hacemos",
+   "coords": [
+    [
+     -32.92306,
+     -60.78065
+    ]
+   ]
   },
   {
    "id": "38bcbcb41c",
@@ -3872,6 +4105,46 @@
    ]
   },
   {
+   "id": "8fd068e753",
+   "title": "CAPACITACIÓN | Resolución UIF 144/2026",
+   "category": "otros",
+   "categories": [
+    "otros"
+   ],
+   "plan": "cultura",
+   "venue": "ROSARIO",
+   "date_text": "16 nov",
+   "start": "2026-11-16",
+   "end": "2026-11-16",
+   "ranged": false,
+   "dates": [
+    "2026-11-16"
+   ],
+   "address": "",
+   "time": "14:00",
+   "price_from": 40000,
+   "free": false,
+   "image": "https://imagenes.passline.com/eventos/capacitacion-resolucion-uif-1442026-577725-rec.jpg",
+   "description": "CAPACITACIÓN | Resolución UIF 144/2026",
+   "sources": [
+    {
+     "name": "Passline",
+     "url": "https://www.passline.com/eventos/capacitacion-resolucion-uif-1442026"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/capacitacion-resolucion-uif-144-2026-77616"
+    }
+   ],
+   "feed": "Qué Hacemos",
+   "coords": [
+    [
+     -32.95936,
+     -60.6617
+    ]
+   ]
+  },
+  {
    "id": "3067e20b5b",
    "title": "Los Juegos del Hambre: amanecer en la cosecha",
    "category": "cine",
@@ -3944,6 +4217,46 @@
    ],
    "feed": "Disfruta Rosario",
    "coords": []
+  },
+  {
+   "id": "3a337ce6f8",
+   "title": "CANNIBAL SET & CRISTAL CLUB 💎",
+   "category": "otros",
+   "categories": [
+    "otros"
+   ],
+   "plan": "cultura",
+   "venue": "Güemes 2607",
+   "date_text": "19 nov",
+   "start": "2026-11-19",
+   "end": "2026-11-19",
+   "ranged": false,
+   "dates": [
+    "2026-11-19"
+   ],
+   "address": "Güemes 2607, Rosario",
+   "time": "20:00",
+   "price_from": 3000,
+   "free": false,
+   "image": "https://images.venti.live/user-images/1794438879763-lg.jpg",
+   "description": "JUEVES 19 NOV 💎CANNIBAL SET × CRISTAL CLUB💎 Una nueva edición nos espera en Chicago. Esta vez, comenzamos con un sunset en la terraza y continuamos la noche en la pista, con dos propuestas y un line up preparado para vivir la experiencia hasta el cierre. 🌅TERRAZA SUNSET • OPEN DOORS 20HS @popi.zeballos & @ditta.oficial Serán los encargados de arrancar la experiencia sunset, pensada para acompañar ",
+   "sources": [
+    {
+     "name": "Venti",
+     "url": "https://venti.com.ar/evento/cannibal-set-cristal-club"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/cannibal-set-cristal-club-78159"
+    }
+   ],
+   "coords": [
+    [
+     -32.93239,
+     -60.65631
+    ]
+   ],
+   "feed": "Qué Hacemos"
   },
   {
    "id": "f86d1a1b89",
@@ -4126,6 +4439,88 @@
     [
      -32.92522,
      -60.67838
+    ]
+   ]
+  },
+  {
+   "id": "309cb5f048",
+   "title": "ULTIMA PEÑA SAN MARTIN - educacion fisica",
+   "category": "eventos",
+   "categories": [
+    "eventos"
+   ],
+   "plan": "cultura",
+   "venue": "Complejo Forest",
+   "date_text": "19 nov",
+   "start": "2026-11-19",
+   "end": "2026-11-19",
+   "ranged": false,
+   "dates": [
+    "2026-11-19"
+   ],
+   "address": "",
+   "time": "23:30",
+   "price_from": 9000,
+   "free": false,
+   "image": "https://imagenes.passline.com/eventos/-826841-rec.jpg",
+   "description": "ULTIMA PEÑA SAN MARTIN - educacion fisica en Complejo Forest",
+   "sources": [
+    {
+     "name": "Passline",
+     "url": "https://www.passline.com/eventos/ultima-pena-san-martin-educacion-fisica"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/ultima-pena-san-martin-educacion-fisica-78440"
+    }
+   ],
+   "coords": [
+    [
+     -32.93192,
+     -60.66438
+    ]
+   ],
+   "feed": "Qué Hacemos"
+  },
+  {
+   "id": "408358cf21",
+   "title": "Yo soy Rocky",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "19 nov, 20 nov, 21 nov, 22 nov, 23 nov, 24 nov, 25 nov",
+   "start": "2026-11-19",
+   "end": "2026-11-25",
+   "ranged": false,
+   "dates": [
+    "2026-11-19",
+    "2026-11-20",
+    "2026-11-21",
+    "2026-11-22",
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "14:20 / 17:05 / 19:50 / 22:35",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6325.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6325"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
     ]
    ]
   },
@@ -4441,6 +4836,41 @@
    "feed": "Qué Hacemos"
   },
   {
+   "id": "63c25c4c46",
+   "title": "JAUS - Barditos Special Edition II - 20.11.26",
+   "category": "otros",
+   "categories": [
+    "otros"
+   ],
+   "plan": "cultura",
+   "venue": "Crema",
+   "date_text": "20 nov",
+   "start": "2026-11-20",
+   "end": "2026-11-20",
+   "ranged": false,
+   "dates": [
+    "2026-11-20"
+   ],
+   "address": "",
+   "time": "21:00",
+   "price_from": 6000,
+   "free": false,
+   "image": "https://imagenes.passline.com/eventos/-827296-rec.jpg",
+   "description": "JAUS - Barditos Special Edition II - 20.11.26 en Crema",
+   "sources": [
+    {
+     "name": "Passline",
+     "url": "https://www.passline.com/eventos/jaus-barditos-special-edition-ii-201126"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/jaus-barditos-special-edition-ii-20-11-26-78443"
+    }
+   ],
+   "feed": "Qué Hacemos",
+   "coords": []
+  },
+  {
    "id": "53eddd2039",
    "title": "Juan Lopez",
    "category": "musica",
@@ -4479,6 +4909,46 @@
     ]
    ],
    "feed": "Qué Hacemos"
+  },
+  {
+   "id": "5718e50226",
+   "title": "Lnt. Noire",
+   "category": "musica",
+   "categories": [
+    "musica"
+   ],
+   "plan": "cultura",
+   "venue": "Capitán Bar",
+   "date_text": "20 nov",
+   "start": "2026-11-20",
+   "end": "2026-11-20",
+   "ranged": false,
+   "dates": [
+    "2026-11-20"
+   ],
+   "address": "",
+   "time": "21:00",
+   "price_from": null,
+   "free": false,
+   "image": "https://photos.bandsintown.com/large/26631091.jpeg",
+   "description": "Lnt. Noire en vivo en Capitán Bar, Rosario.",
+   "sources": [
+    {
+     "name": "Bandsintown",
+     "url": "https://www.bandsintown.com/e/109109987-lnt.-noire-at-capitan-bar"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/lnt-noire-78250"
+    }
+   ],
+   "feed": "Qué Hacemos",
+   "coords": [
+    [
+     -32.95174,
+     -60.63705
+    ]
+   ]
   },
   {
    "id": "c7dd25fb94",
@@ -4562,6 +5032,85 @@
    "feed": "Qué Hacemos"
   },
   {
+   "id": "9f3086fbfd",
+   "title": "PRODOT VIRGINIA",
+   "category": "musica",
+   "categories": [
+    "musica"
+   ],
+   "plan": "cultura",
+   "venue": "Feuer",
+   "date_text": "20 nov",
+   "start": "2026-11-20",
+   "end": "2026-11-20",
+   "ranged": false,
+   "dates": [
+    "2026-11-20"
+   ],
+   "address": "",
+   "time": "23:00",
+   "price_from": null,
+   "free": false,
+   "image": "https://gppfuletdjrldbxoakqb.supabase.co/storage/v1/object/public/event_photos/1794347898244-",
+   "description": "Prodot y Virginia éste 20 de Noviembre en Rosario",
+   "sources": [
+    {
+     "name": "Getdogma.app",
+     "url": "https://getdogma.app/web/event/lGFiTzLM2N7s"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/prodot-virginia-77850"
+    }
+   ],
+   "coords": [
+    [
+     -32.94474,
+     -60.63452
+    ]
+   ],
+   "genre_hints": [
+    "electronica"
+   ],
+   "feed": "Qué Hacemos"
+  },
+  {
+   "id": "7ee7b5a4ea",
+   "title": "SERGIO TORRES",
+   "category": "eventos",
+   "categories": [
+    "eventos"
+   ],
+   "plan": "cultura",
+   "venue": "Teatro Broadway",
+   "date_text": "20 nov",
+   "start": "2026-11-20",
+   "end": "2026-11-20",
+   "ranged": false,
+   "dates": [
+    "2026-11-20"
+   ],
+   "address": "",
+   "time": "21:00",
+   "price_from": 35000,
+   "free": false,
+   "image": "",
+   "description": "",
+   "sources": [
+    {
+     "name": "Teatro Broadway",
+     "url": "https://teatrobroadwayrosario.com/cartelera/867/sergio-torres"
+    }
+   ],
+   "feed": "Teatro Broadway",
+   "coords": [
+    [
+     -32.94396,
+     -60.63956
+    ]
+   ]
+  },
+  {
    "id": "758cae1f45",
    "title": "SOMOS PEÑA",
    "category": "eventos",
@@ -4636,6 +5185,82 @@
      -60.67838
     ]
    ]
+  },
+  {
+   "id": "79a710c439",
+   "title": "TABLAO DE LA CASONA",
+   "category": "otros",
+   "categories": [
+    "musica",
+    "otros"
+   ],
+   "plan": "cultura",
+   "venue": "Casona",
+   "date_text": "20 nov",
+   "start": "2026-11-20",
+   "end": "2026-11-20",
+   "ranged": false,
+   "dates": [
+    "2026-11-20"
+   ],
+   "address": "San Lorenzo 2157 59",
+   "time": "21:00",
+   "price_from": 15000,
+   "free": false,
+   "image": "https://imagenes.alpogo.com/eventos/edbd677e-601b-4781-9fff-00d90821441b.webp",
+   "description": "NOCHE FLAMENCA EN ROSARIO",
+   "sources": [
+    {
+     "name": "Alpogo",
+     "url": "https://alpogo.com/evento/tablao-de-la-casona-30174"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/tablao-de-la-casona-77780"
+    }
+   ],
+   "coords": [
+    [
+     -32.94302,
+     -60.64362
+    ]
+   ],
+   "feed": "Qué Hacemos"
+  },
+  {
+   "id": "2e2bc04d2b",
+   "title": "UMBRA x ETERNAL by PARC SUD PRODUCCIONES",
+   "category": "otros",
+   "categories": [
+    "otros"
+   ],
+   "plan": "cultura",
+   "venue": "HI FI STUDIO",
+   "date_text": "20 nov",
+   "start": "2026-11-20",
+   "end": "2026-11-20",
+   "ranged": false,
+   "dates": [
+    "2026-11-20"
+   ],
+   "address": "",
+   "time": "23:00",
+   "price_from": 5000,
+   "free": false,
+   "image": "https://imagenes.passline.com/eventos/-825667-rec.jpg",
+   "description": "UMBRA x ETERNAL by PARC SUD PRODUCCIONES en HI FI STUDIO",
+   "sources": [
+    {
+     "name": "Passline",
+     "url": "https://www.passline.com/eventos/umbra-x-eternal"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/umbra-x-eternal-by-parc-sud-producciones-77625"
+    }
+   ],
+   "feed": "Qué Hacemos",
+   "coords": []
   },
   {
    "id": "ccc157ac8b",
@@ -5076,7 +5701,7 @@
    "price_from": 21,
    "free": false,
    "image": "https://photos.bandsintown.com/large/25606159.jpeg",
-   "description": "Cruzando El Charco en vivo en BIOCERES ARENA, Rosario.",
+   "description": "Cruzando el Charco es una banda argentina de rock alternativo formada en La Plata. Desde su debut con Perdonar (2012), han crecido rápidamente en la escena nacional, destacándose con temas como \"Terminales\" y \"El Trato\". Su crecimiento ha sido exponencial en los últimos 10 años y este 2024 coronaron su trayectoria con un Movistar Arena sold out.",
    "sources": [
     {
      "name": "Bandsintown",
@@ -5283,7 +5908,7 @@
    "price_from": 10000,
    "free": false,
    "image": "https://images.venti.live/user-images/1793979855362-lg.jpg",
-   "description": "Evento en Venti: FRANCO SMITH @ SWITCH CLUB",
+   "description": "21.11 — Franco Smith ⛓️‍💥 Uno de los nombres que viene pisando fuerte dentro del techno argentino llega al club. Desde Buenos Aires, Franco Smith propone un sonido potente, futurista e inmersivo, con producciones que ya recibieron el apoyo de referentes como Amelie Lens, Charlotte de Witte y Adam Beyer. FULL LINE UP Infase • Streva & Bastian ↘ Tickets disponibles. [SWITCH] 🖤",
    "sources": [
     {
      "name": "Venti",
@@ -5342,6 +5967,41 @@
    ],
    "feed": "Qué Hacemos",
    "venue_id": "bon-scott"
+  },
+  {
+   "id": "3821531404",
+   "title": "MRB | EDICIÓN BLACKOUT",
+   "category": "otros",
+   "categories": [
+    "otros"
+   ],
+   "plan": "cultura",
+   "venue": "Club Mercury",
+   "date_text": "21 nov",
+   "start": "2026-11-21",
+   "end": "2026-11-21",
+   "ranged": false,
+   "dates": [
+    "2026-11-21"
+   ],
+   "address": "",
+   "time": "23:30",
+   "price_from": 20000,
+   "free": false,
+   "image": "https://imagenes.passline.com/eventos/mrb-edicion-blackout-578462-rec.jpg",
+   "description": "MRB | EDICIÓN BLACKOUT en Club Mercury",
+   "sources": [
+    {
+     "name": "Passline",
+     "url": "https://www.passline.com/eventos/mrb-edicion-blackout"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/mrb-edicion-blackout-78467"
+    }
+   ],
+   "feed": "Qué Hacemos",
+   "coords": []
   },
   {
    "id": "70b40cd6a7",
@@ -5536,6 +6196,46 @@
    "feed": "Qué Hacemos"
   },
   {
+   "id": "75faf53e1b",
+   "title": "ALGARETE EN ROSARIO",
+   "category": "musica",
+   "categories": [
+    "musica"
+   ],
+   "plan": "cultura",
+   "venue": "FLOYD PUB",
+   "date_text": "22 nov",
+   "start": "2026-11-22",
+   "end": "2026-11-22",
+   "ranged": false,
+   "dates": [
+    "2026-11-22"
+   ],
+   "address": "",
+   "time": "23:30",
+   "price_from": null,
+   "free": false,
+   "image": "https://imagenes.passline.com/eventos/algarete-en-rosario-578581-rec.jpg",
+   "description": "ALGARETE EN ROSARIO en FLOYD PUB",
+   "sources": [
+    {
+     "name": "Passline",
+     "url": "https://www.passline.com/eventos/algarete-en-rosario"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/algarete-en-rosario-78482"
+    }
+   ],
+   "coords": [
+    [
+     -32.95142,
+     -60.65103
+    ]
+   ],
+   "feed": "Qué Hacemos"
+  },
+  {
    "id": "4260db0329",
    "title": "ATTACK ON TITAN: The Last Concert - Orquesta Sinfonica en Rosario",
    "category": "musica",
@@ -5691,6 +6391,46 @@
    ],
    "genre_hints": [
     "electronica"
+   ],
+   "feed": "Qué Hacemos"
+  },
+  {
+   "id": "dcce4fe268",
+   "title": "LADIES NIGHT - TUMBA LA CASA - 22.11.26",
+   "category": "otros",
+   "categories": [
+    "otros"
+   ],
+   "plan": "cultura",
+   "venue": "Hipódromo de Rosario",
+   "date_text": "22 nov",
+   "start": "2026-11-22",
+   "end": "2026-11-22",
+   "ranged": false,
+   "dates": [
+    "2026-11-22"
+   ],
+   "address": "",
+   "time": "23:30",
+   "price_from": 6000,
+   "free": false,
+   "image": "https://imagenes.passline.com/eventos/ladies-night-tumba-la-casa-221126-578187-rec.jpg",
+   "description": "LADIES NIGHT - TUMBA LA CASA - 22.11.26 en Hipódromo de Rosario",
+   "sources": [
+    {
+     "name": "Passline",
+     "url": "https://www.passline.com/eventos/ladies-night-tumba-la-casa-221126"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/ladies-night-tumba-la-casa-22-11-26-78481"
+    }
+   ],
+   "coords": [
+    [
+     -32.95961,
+     -60.66156
+    ]
    ],
    "feed": "Qué Hacemos"
   },
@@ -6274,6 +7014,41 @@
    "feed": "Producciones de Acá"
   },
   {
+   "id": "7b678f8ec4",
+   "title": "EZE RAMIREZ OUT ROSARIO 27 NOV",
+   "category": "otros",
+   "categories": [
+    "otros"
+   ],
+   "plan": "cultura",
+   "venue": "",
+   "date_text": "27 nov",
+   "start": "2026-11-27",
+   "end": "2026-11-27",
+   "ranged": false,
+   "dates": [
+    "2026-11-27"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": 15000,
+   "free": false,
+   "image": "https://paseshow-img.s3.sa-east-1.amazonaws.com/imagenes/escenario/3470.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Paseshow",
+     "url": "https://www.paseshow.com.ar/eventos/eze-ramirez-out-rosario-27-nov"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/eze-ramirez-out-rosario-27-nov-77756"
+    }
+   ],
+   "feed": "Qué Hacemos",
+   "coords": []
+  },
+  {
    "id": "4f6aa81b9c",
    "title": "El mejor intento, luz señal y Cundo",
    "category": "otros",
@@ -6474,6 +7249,46 @@
    "feed": "Qué Hacemos"
   },
   {
+   "id": "c4ac0c33cf",
+   "title": "MARIANA CARRIZO EN ROSARIO - PARRANDA COPLERA",
+   "category": "otros",
+   "categories": [
+    "otros"
+   ],
+   "plan": "cultura",
+   "venue": "Centro Cultural Güemes",
+   "date_text": "27 nov",
+   "start": "2026-11-27",
+   "end": "2026-11-27",
+   "ranged": false,
+   "dates": [
+    "2026-11-27"
+   ],
+   "address": "Güemes 2808",
+   "time": "20:00",
+   "price_from": 27,
+   "free": false,
+   "image": "https://entradaplay.com/media/imagenes_eventos/home/2026/11/TICKETERA_SC.jpg",
+   "description": "MARIANA CARRIZO EN ROSARIO - PARRANDA COPLERA en Centro Cultural Güemes",
+   "sources": [
+    {
+     "name": "Entradaplay",
+     "url": "https://entradaplay.com/MARIANA-CARRIZO-EN-ROSARIO---PARRANDA-COPLERA/"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/mariana-carrizo-en-rosario-parranda-coplera-78357"
+    }
+   ],
+   "coords": [
+    [
+     -32.9317,
+     -60.65898
+    ]
+   ],
+   "feed": "Qué Hacemos"
+  },
+  {
    "id": "777368aafd",
    "title": "Massano",
    "category": "musica",
@@ -6559,6 +7374,46 @@
      -60.67838
     ]
    ]
+  },
+  {
+   "id": "0d0c461fbd",
+   "title": "ULTIMA PEÑA INGENIERIA UNR",
+   "category": "eventos",
+   "categories": [
+    "eventos"
+   ],
+   "plan": "cultura",
+   "venue": "Complejo Forest",
+   "date_text": "27 nov",
+   "start": "2026-11-27",
+   "end": "2026-11-27",
+   "ranged": false,
+   "dates": [
+    "2026-11-27"
+   ],
+   "address": "",
+   "time": "23:30",
+   "price_from": 9000,
+   "free": false,
+   "image": "https://imagenes.passline.com/eventos/-826828-rec.jpg",
+   "description": "ULTIMA PEÑA INGENIERIA UNR en Complejo Forest",
+   "sources": [
+    {
+     "name": "Passline",
+     "url": "https://www.passline.com/eventos/ultima-pena-ingenieria-unr"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/ultima-pena-ingenieria-unr-78503"
+    }
+   ],
+   "coords": [
+    [
+     -32.93192,
+     -60.66438
+    ]
+   ],
+   "feed": "Qué Hacemos"
   },
   {
    "id": "b341da6246",
@@ -6688,7 +7543,7 @@
     "musica"
    ],
    "plan": "cultura",
-   "venue": "Anfiteatro Humberto Nito",
+   "venue": "Anfiteatro Humberto de Nito",
    "date_text": "28 nov",
    "start": "2026-11-28",
    "end": "2026-11-28",
@@ -6718,8 +7573,8 @@
    ],
    "coords": [
     [
-     -32.95795,
-     -60.62241
+     -32.95787,
+     -60.62224
     ]
    ],
    "feed": "Qué Hacemos"
@@ -7030,6 +7885,118 @@
     ]
    ],
    "feed": "Producciones de Acá"
+  },
+  {
+   "id": "8fff4d494a",
+   "title": "Roast de Comediantes – Clasificatoria Rosario 2026",
+   "category": "teatro",
+   "categories": [
+    "teatro"
+   ],
+   "plan": "cultura",
+   "venue": "Capitan Bar",
+   "date_text": "28 nov",
+   "start": "2026-11-28",
+   "end": "2026-11-28",
+   "ranged": false,
+   "dates": [
+    "2026-11-28"
+   ],
+   "address": "",
+   "time": "21:00",
+   "price_from": 15000,
+   "free": false,
+   "image": "https://imagenes.passline.com/eventos/roast-de-comediantes-clasificatoria-rosario-2026-578112-rec.jpg",
+   "description": "Roast de Comediantes – Clasificatoria Rosario 2026 en Capitan Bar",
+   "sources": [
+    {
+     "name": "Passline",
+     "url": "https://www.passline.com/eventos/roast-de-comediantes-clasificatoria-rosario-2026"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/roast-de-comediantes-clasificatoria-rosario-2026-78515"
+    }
+   ],
+   "coords": [
+    [
+     -32.95174,
+     -60.63705
+    ]
+   ],
+   "feed": "Qué Hacemos"
+  },
+  {
+   "id": "fc3951562c",
+   "title": "Rosario Car Show edición especial",
+   "category": "eventos",
+   "categories": [
+    "eventos"
+   ],
+   "plan": "cultura",
+   "venue": "",
+   "date_text": "28 nov, 29 nov",
+   "start": "2026-11-28",
+   "end": "2026-11-29",
+   "ranged": false,
+   "dates": [
+    "2026-11-28",
+    "2026-11-29"
+   ],
+   "address": "",
+   "time": "13:00",
+   "price_from": 18000,
+   "free": false,
+   "image": "https://disfrutarosario.com/wp-content/uploads/2026/10/rosario-car-show.avif",
+   "description": "Rosario Car Show reunirá más de 100 autos y motos clásicos, deportivos y de colección.",
+   "sources": [
+    {
+     "name": "Disfruta Rosario",
+     "url": "https://disfrutarosario.com/salon-del-automovil-rosario/"
+    }
+   ],
+   "feed": "Disfruta Rosario",
+   "coords": []
+  },
+  {
+   "id": "1c11a53113",
+   "title": "Só",
+   "category": "musica",
+   "categories": [
+    "musica"
+   ],
+   "plan": "cultura",
+   "venue": "Capitán Bar",
+   "date_text": "28 nov",
+   "start": "2026-11-28",
+   "end": "2026-11-28",
+   "ranged": false,
+   "dates": [
+    "2026-11-28"
+   ],
+   "address": "",
+   "time": "21:00",
+   "price_from": null,
+   "free": false,
+   "image": "https://cdn.prod.website-files.com/6423440213c3f044ff2b62a1/6af628bdc30898a4367767b0_2356.jpg",
+   "description": "Só en Rosario",
+   "sources": [
+    {
+     "name": "Agendade",
+     "url": "https://damemiticket.com/evento/so-en-rosario"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/so-78123"
+    }
+   ],
+   "coords": [
+    [
+     -32.95174,
+     -60.63705
+    ]
+   ],
+   "feed": "Qué Hacemos"
   },
   {
    "id": "0ba49e1dc5",
@@ -7348,6 +8315,82 @@
    ]
   },
   {
+   "id": "6c7ea5d995",
+   "title": "FINAL BATALLA DE COMEDIANTES | ROSARIO 2026",
+   "category": "teatro",
+   "categories": [
+    "teatro"
+   ],
+   "plan": "cultura",
+   "venue": "Capitan Bar",
+   "date_text": "3 dic",
+   "start": "2026-12-03",
+   "end": "2026-12-03",
+   "ranged": false,
+   "dates": [
+    "2026-12-03"
+   ],
+   "address": "",
+   "time": "21:00",
+   "price_from": 5000,
+   "free": false,
+   "image": "https://imagenes.passline.com/eventos/final-batalla-de-comediantes-rosario-2026-578115-rec.jpg",
+   "description": "FINAL BATALLA DE COMEDIANTES | ROSARIO 2026 en Capitan Bar",
+   "sources": [
+    {
+     "name": "Passline",
+     "url": "https://www.passline.com/eventos/final-batalla-de-comediantes-rosario-2026"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/final-batalla-de-comediantes-rosario-2026-78528"
+    }
+   ],
+   "coords": [
+    [
+     -32.95174,
+     -60.63705
+    ]
+   ],
+   "feed": "Qué Hacemos"
+  },
+  {
+   "id": "fa83935d08",
+   "title": "LA POESIA ESTA EN LA CALLE",
+   "category": "eventos",
+   "categories": [
+    "eventos"
+   ],
+   "plan": "cultura",
+   "venue": "CEC - Centro de Expresiones Contemporáneas - gral.",
+   "date_text": "3 dic",
+   "start": "2026-12-03",
+   "end": "2026-12-03",
+   "ranged": false,
+   "dates": [
+    "2026-12-03"
+   ],
+   "address": "Paseo de las Artes y el río - Rosario - Santa Fe",
+   "time": "20:00",
+   "price_from": null,
+   "free": false,
+   "image": "https://www.1000tickets.ar/img/evento/1609_261111075524.webp",
+   "description": "LA POESIA ESTA EN LA CALLE Descripción Teatro - DanzaLa obra se sumerge en un entramado de imágenes poéticas, hilando resonancias entre movimientos sociales de distintas épocas, luchas históricas y activismos actuales. Se nutre de producciones artístico-políticas que han interpelado la conciencia colectiva a través de símbolos, grafitis, canciones, afiches: gestos de arte como actos de resistencia",
+   "sources": [
+    {
+     "name": "1000Tickets",
+     "url": "https://www.1000tickets.ar/evento?id_evento=1609&la-poesia-esta-en-la-calle"
+    }
+   ],
+   "coords": [
+    [
+     -32.94426,
+     -60.64003
+    ]
+   ],
+   "feed": "1000Tickets"
+  },
+  {
    "id": "ce194f2412",
    "title": "TARJA TURUNEN",
    "category": "eventos",
@@ -7391,6 +8434,41 @@
      -60.63956
     ]
    ]
+  },
+  {
+   "id": "e474725ba6",
+   "title": "ZAMBAYONNY EN ROSARIO!",
+   "category": "otros",
+   "categories": [
+    "otros"
+   ],
+   "plan": "cultura",
+   "venue": "NASHA casabar",
+   "date_text": "3 dic",
+   "start": "2026-12-03",
+   "end": "2026-12-03",
+   "ranged": false,
+   "dates": [
+    "2026-12-03"
+   ],
+   "address": "",
+   "time": "21:00",
+   "price_from": 30000,
+   "free": false,
+   "image": "https://imagenes.passline.com/eventos/zambayonny-en-rosario-578183-rec.jpg",
+   "description": "ZAMBAYONNY EN ROSARIO! en NASHA casabar",
+   "sources": [
+    {
+     "name": "Passline",
+     "url": "https://www.passline.com/eventos/zambayonny-en-rosario-578183"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/zambayonny-en-rosario-78530"
+    }
+   ],
+   "feed": "Qué Hacemos",
+   "coords": []
   },
   {
    "id": "06cf7a0fba",
@@ -7785,6 +8863,37 @@
    "feed": "Qué Hacemos"
   },
   {
+   "id": "2c7f50b5e4",
+   "title": "La noche en mi barrio llega a Paseo Industrial",
+   "category": "eventos",
+   "categories": [
+    "eventos"
+   ],
+   "plan": "gastronomia",
+   "venue": "",
+   "date_text": "5 dic",
+   "start": "2026-12-05",
+   "end": "2026-12-05",
+   "ranged": false,
+   "dates": [
+    "2026-12-05"
+   ],
+   "address": "",
+   "time": "19:00",
+   "price_from": null,
+   "free": true,
+   "image": "https://disfrutarosario.com/wp-content/uploads/2025/02/la-noche-en-mi-barrio-2.avif",
+   "description": "La noche en mi barrio invita a las familias a disfrutar de música en vivo, gastronomía, ferias y comercios abiertos. Evento gratuito.",
+   "sources": [
+    {
+     "name": "Disfruta Rosario",
+     "url": "https://disfrutarosario.com/la-noche-en-mi-barrio/"
+    }
+   ],
+   "feed": "Disfruta Rosario",
+   "coords": []
+  },
+  {
    "id": "6dfced3373",
    "title": "Paralelo 51 / 31 Gira Argentina Rosario",
    "category": "musica",
@@ -7901,6 +9010,46 @@
     [
      -32.75162,
      -60.73435
+    ]
+   ],
+   "feed": "Qué Hacemos"
+  },
+  {
+   "id": "8ebba09ebc",
+   "title": "mamita peyote",
+   "category": "musica",
+   "categories": [
+    "musica"
+   ],
+   "plan": "cultura",
+   "venue": "1927 Multiespacio",
+   "date_text": "5 dic",
+   "start": "2026-12-05",
+   "end": "2026-12-05",
+   "ranged": false,
+   "dates": [
+    "2026-12-05"
+   ],
+   "address": "Av. Casey 435",
+   "time": "23:00",
+   "price_from": 12000,
+   "free": false,
+   "image": "https://imagenes.alpogo.com/eventos/789313e2-2c4a-451d-8b11-51211a765c21.webp",
+   "description": "presentando su nuevo disco territorio peyote + bandas invitadas",
+   "sources": [
+    {
+     "name": "Alpogo",
+     "url": "https://alpogo.com/evento/mamita-peyote-30145"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/mamita-peyote-77796"
+    }
+   ],
+   "coords": [
+    [
+     -32.92912,
+     -60.79614
     ]
    ],
    "feed": "Qué Hacemos"
@@ -8121,7 +9270,7 @@
    ],
    "address": "",
    "time": "22:00",
-   "price_from": 15000,
+   "price_from": 18000,
    "free": false,
    "image": "https://imagenes.passline.com/eventos/michael-bm-music-please-575036-rec.jpg",
    "description": "MICHAEL BM - MUSIC PLEASE en Playa de la musica",
@@ -8295,6 +9444,46 @@
    "feed": "TurboEntrada"
   },
   {
+   "id": "0209a35629",
+   "title": "Música a Ciegas en ROSARIO",
+   "category": "musica",
+   "categories": [
+    "musica"
+   ],
+   "plan": "cultura",
+   "venue": "La Orilla Infinita Teatro",
+   "date_text": "7 dic",
+   "start": "2026-12-07",
+   "end": "2026-12-07",
+   "ranged": false,
+   "dates": [
+    "2026-12-07"
+   ],
+   "address": "Colón 2148",
+   "time": "19:30",
+   "price_from": 17000,
+   "free": false,
+   "image": "https://imagenes.alpogo.com/eventos/43357837-bc9a-40e5-a245-d3b1400ce9bc.webp",
+   "description": "Vení a disfrutar de Música a Ciegas, un viaje musical y sensorial en donde los sonidos se apropiarán de tu imaginación, en un entorno ideal para vivir la música como nunca antes.",
+   "sources": [
+    {
+     "name": "Alpogo",
+     "url": "https://alpogo.com/evento/musica-a-ciegas-en-rosario-30192"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/musica-a-ciegas-en-rosario-77801"
+    }
+   ],
+   "feed": "Qué Hacemos",
+   "coords": [
+    [
+     -32.96466,
+     -60.62965
+    ]
+   ]
+  },
+  {
    "id": "eca78caa27",
    "title": "Seru Giran Por Lebón y Aznar",
    "category": "musica",
@@ -8338,7 +9527,7 @@
     "musica"
    ],
    "plan": "cultura",
-   "venue": "Anfiteatro Humberto Nito",
+   "venue": "Anfiteatro Humberto de Nito",
    "date_text": "7 dic",
    "start": "2026-12-07",
    "end": "2026-12-07",
@@ -8368,8 +9557,8 @@
    ],
    "coords": [
     [
-     -32.95795,
-     -60.62241
+     -32.95787,
+     -60.62224
     ]
    ],
    "feed": "Qué Hacemos"
@@ -8697,6 +9886,46 @@
    "feed": "Qué Hacemos"
   },
   {
+   "id": "ee6be4a2c4",
+   "title": "La RE Fiesta en Rosario!",
+   "category": "eventos",
+   "categories": [
+    "eventos"
+   ],
+   "plan": "cultura",
+   "venue": "Jaguar Haus",
+   "date_text": "11 dic",
+   "start": "2026-12-11",
+   "end": "2026-12-11",
+   "ranged": false,
+   "dates": [
+    "2026-12-11"
+   ],
+   "address": "",
+   "time": "23:30",
+   "price_from": 14000,
+   "free": false,
+   "image": "https://imagenes.passline.com/eventos/la-re-fiesta-en-rosario-578199-rec.jpg",
+   "description": "La RE Fiesta en Rosario! en Jaguar Haus",
+   "sources": [
+    {
+     "name": "Passline",
+     "url": "https://www.passline.com/eventos/la-re-fiesta-en-rosario"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/la-re-fiesta-en-rosario-78573"
+    }
+   ],
+   "coords": [
+    [
+     -32.96392,
+     -60.66403
+    ]
+   ],
+   "feed": "Qué Hacemos"
+  },
+  {
    "id": "cae61cd559",
    "title": "SANTI ESCO | EL OTRO CLAVO",
    "category": "otros",
@@ -8772,6 +10001,46 @@
     [
      -32.9858,
      -60.64571
+    ]
+   ],
+   "feed": "Qué Hacemos"
+  },
+  {
+   "id": "15d88e933b",
+   "title": "Steal The System + Blastfemia en Rosario",
+   "category": "otros",
+   "categories": [
+    "otros"
+   ],
+   "plan": "cultura",
+   "venue": "Floyd Bar",
+   "date_text": "11 dic",
+   "start": "2026-12-11",
+   "end": "2026-12-11",
+   "ranged": false,
+   "dates": [
+    "2026-12-11"
+   ],
+   "address": "",
+   "time": "23:30",
+   "price_from": 10000,
+   "free": false,
+   "image": "https://imagenes.passline.com/eventos/steal-the-system-blastfemia-en-rosario-577537-rec.jpg",
+   "description": "Steal The System + Blastfemia en Rosario en Floyd Bar",
+   "sources": [
+    {
+     "name": "Passline",
+     "url": "https://www.passline.com/eventos/steal-the-system-blastfemia-en-rosario"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/steal-the-system-blastfemia-en-rosario-77664"
+    }
+   ],
+   "coords": [
+    [
+     -32.95146,
+     -60.65102
     ]
    ],
    "feed": "Qué Hacemos"
@@ -8961,6 +10230,38 @@
     {
      "name": "Disfruta Rosario",
      "url": "https://disfrutarosario.com/cumbion-del-parana/"
+    }
+   ],
+   "feed": "Disfruta Rosario",
+   "coords": []
+  },
+  {
+   "id": "5bc54f423a",
+   "title": "Expo Sabores en Rosario",
+   "category": "eventos",
+   "categories": [
+    "eventos"
+   ],
+   "plan": "gastronomia",
+   "venue": "",
+   "date_text": "12 dic, 13 dic",
+   "start": "2026-12-12",
+   "end": "2026-12-13",
+   "ranged": false,
+   "dates": [
+    "2026-12-12",
+    "2026-12-13"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": true,
+   "image": "https://disfrutarosario.com/wp-content/uploads/2025/07/expo-sabores.avif",
+   "description": "Llega a Rosario una nueva edición de Expo Sabores. Serán dos días con stands, degustaciones y clases de cocina en vivo.",
+   "sources": [
+    {
+     "name": "Disfruta Rosario",
+     "url": "https://disfrutarosario.com/sabores-rosario/"
     }
    ],
    "feed": "Disfruta Rosario",
@@ -9173,19 +10474,20 @@
     "musica"
    ],
    "plan": "cultura",
-   "venue": "Anfiteatro Humberto Nito",
-   "date_text": "17 dic",
+   "venue": "Anfiteatro Humberto de Nito",
+   "date_text": "17 dic, 20 dic",
    "start": "2026-12-17",
-   "end": "2026-12-17",
+   "end": "2026-12-20",
    "ranged": false,
    "dates": [
-    "2026-12-17"
+    "2026-12-17",
+    "2026-12-20"
    ],
    "address": "Avenida Diario La Capital 1750, 2000, Rosario",
    "time": "21:00",
    "price_from": 90000,
    "free": false,
-   "image": "https://cdn.getcrowder.com/images/2c8efb1c-6550-4567-bcc4-4385754cebd0-paez-toca-fito---banner---640-640---general.jpg",
+   "image": "https://cdn.prod.website-files.com/6423440213c3f044ff2b62a1/6aecf97555d0c95c726c7f1a_79579.jpg",
    "description": "Fito Paez vuelve a su Rosario natal para despedir el año con tres shows en el Anfiteatro Municipal . Serán noches únicas de celebración, con un recorrido por las canciones que marcaron su historia y que, desde hace décadas, forman parte de la vida de varias generaciones. Serán conciertos extensos, atravesados por los grandes clásicos de su repertorio. Canciones como Mariposa Tecknicolor , 11 y 6 ,",
    "sources": [
     {
@@ -9199,8 +10501,48 @@
    ],
    "coords": [
     [
-     -32.95795,
-     -60.62241
+     -32.95787,
+     -60.62224
+    ]
+   ],
+   "feed": "Qué Hacemos"
+  },
+  {
+   "id": "981f5a8cef",
+   "title": "Fonso",
+   "category": "musica",
+   "categories": [
+    "musica"
+   ],
+   "plan": "cultura",
+   "venue": "Refi Comunidad",
+   "date_text": "17 dic",
+   "start": "2026-12-17",
+   "end": "2026-12-17",
+   "ranged": false,
+   "dates": [
+    "2026-12-17"
+   ],
+   "address": "Vélez Sársfield 641",
+   "time": "20:00",
+   "price_from": null,
+   "free": false,
+   "image": "https://photos.bandsintown.com/large/17531877.jpeg",
+   "description": "Fonso en vivo en Refi Comunidad, Rosario.",
+   "sources": [
+    {
+     "name": "Bandsintown",
+     "url": "https://www.bandsintown.com/e/109154185-fonso-at-refi-comunidad"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/fonso-78251"
+    }
+   ],
+   "coords": [
+    [
+     -32.92491,
+     -60.67276
     ]
    ],
    "feed": "Qué Hacemos"
@@ -9244,6 +10586,42 @@
     ]
    ],
    "feed": "Qué Hacemos"
+  },
+  {
+   "id": "889877e778",
+   "title": "Araujo - Leys Casa Ríos",
+   "category": "musica",
+   "categories": [
+    "musica"
+   ],
+   "plan": "cultura",
+   "venue": "Casa Rios",
+   "date_text": "18 dic",
+   "start": "2026-12-18",
+   "end": "2026-12-18",
+   "ranged": false,
+   "dates": [
+    "2026-12-18"
+   ],
+   "address": "",
+   "time": "21:00",
+   "price_from": 10000,
+   "free": false,
+   "image": "https://imagenes.alpogo.com/eventos/a3599dd4-0f55-407e-8185-7b29c6a3cfc6.webp",
+   "description": "El cantante y compositor Jorge Araujo, presenta una mirada diferente de sus canciones junto al baterista solista Alex Leys. En el marco de su gira 2026 que los lleva a recorrer gran parte de Argentina, los reconocidos músicos argentinos presentan en la conocida Casa Ríos de la localidad de Funes, Santa Fe, su show a dúo reinterpretando las canciones de Araujo con la particular mirada percusiva de ",
+   "sources": [
+    {
+     "name": "Alpogo",
+     "url": "https://alpogo.com/evento/araujo-leys-casa-rios-30168"
+    }
+   ],
+   "feed": "Alpogo",
+   "coords": [
+    [
+     -32.91635,
+     -60.81017
+    ]
+   ]
   },
   {
    "id": "24cd16bbfc",
@@ -9305,7 +10683,7 @@
    "time": "20:00",
    "price_from": 9500,
    "free": false,
-   "image": "https://serv1.evento-simple.com/imagenes/productores/206/eventos/169/f995dc44a62643d998e364f207588822_xl.jpg",
+   "image": "https://serv1.evento-simple.com/imagenes/productores/206/eventos/169/8ac86e5a95194d7e87a14da67e452c44_xl.jpg",
    "description": "",
    "sources": [
     {
@@ -9430,6 +10808,46 @@
    "coords": []
   },
   {
+   "id": "0900611ddf",
+   "title": "Fito Paez",
+   "category": "musica",
+   "categories": [
+    "musica"
+   ],
+   "plan": "cultura",
+   "venue": "Anfiteatro Humberto de Nito",
+   "date_text": "19 dic",
+   "start": "2026-12-19",
+   "end": "2026-12-19",
+   "ranged": false,
+   "dates": [
+    "2026-12-19"
+   ],
+   "address": "Avenida Diario La Capital 1750, 2000, Rosario",
+   "time": "21:00",
+   "price_from": 90000,
+   "free": false,
+   "image": "https://cdn.prod.website-files.com/6423440213c3f044ff2b62a1/6ae899801b6c7b27e9a5efb3_4i804.jpg",
+   "description": "El sábado 19 de diciembre, en el Anfiteatro Municipal de Rosario, Fito despedirá un año extraordinario con un show que invita a celebrar su música, su historia y el vínculo con la ciudad donde todo empieza, siempre, una vez más. 3/11 – 12 hs – PREVENTA EXCLUSIVA CON TARJETA VISA DEL BANCO SANTA FE Hasta 9 cuotas sin interés. 4/11 – 12 hs – VENTA GENERAL EN ALLACCESS Beneficio de 6 cuotas sin inter",
+   "sources": [
+    {
+     "name": "AllAccess",
+     "url": "https://www.allaccess.com.ar/"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/fito-paez-75529"
+    }
+   ],
+   "coords": [
+    [
+     -32.95787,
+     -60.62224
+    ]
+   ],
+   "feed": "Qué Hacemos"
+  },
+  {
    "id": "5e5d2a329b",
    "title": "Los Abuelos De La Nada",
    "category": "musica",
@@ -9464,6 +10882,46 @@
      -60.66248
     ]
    ]
+  },
+  {
+   "id": "d5956612c5",
+   "title": "Piti Fernandez",
+   "category": "musica",
+   "categories": [
+    "musica"
+   ],
+   "plan": "cultura",
+   "venue": "La Sala De Las Artes",
+   "date_text": "19 dic",
+   "start": "2026-12-19",
+   "end": "2026-12-19",
+   "ranged": false,
+   "dates": [
+    "2026-12-19"
+   ],
+   "address": "Suipacha Bis 98",
+   "time": "20:00",
+   "price_from": null,
+   "free": false,
+   "image": "https://photos.bandsintown.com/large/25140804.jpeg",
+   "description": "Piti Fernandez en vivo en La Sala De Las Artes, Rosario.",
+   "sources": [
+    {
+     "name": "Bandsintown",
+     "url": "https://www.bandsintown.com/e/109119082-piti-fernandez-at-la-sala-de-las-artes"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/piti-fernandez-78252"
+    }
+   ],
+   "coords": [
+    [
+     -32.02544,
+     -61.20606
+    ]
+   ],
+   "feed": "Qué Hacemos"
   },
   {
    "id": "732fc68922",
@@ -9641,7 +11099,7 @@
    ],
    "address": "",
    "time": "03:00",
-   "price_from": 18000,
+   "price_from": 20000,
    "free": false,
    "image": "https://imagenes.passline.com/eventos/recreo-xmas-festival-574462-rec.jpg",
    "description": "RECREO XMAS FESTIVAL en Recreo",
@@ -9712,7 +11170,7 @@
    ],
    "address": "",
    "time": "01:00",
-   "price_from": 5000,
+   "price_from": 8000,
    "free": false,
    "image": "https://imagenes.passline.com/eventos/-816441-rec.jpg",
    "description": "🎅SANTA CUMBIA🎅 24 DE DICIEMBRE 🎄PARQUE INDEPENDENCIA 🎄 en PARQUE INDEPENDENCIA",
@@ -9859,6 +11317,41 @@
     "electronica"
    ],
    "feed": "Qué Hacemos"
+  },
+  {
+   "id": "b5a17a42e6",
+   "title": "FIESTA DE BLANCO - AÑO NUEVO - DECADA DISCO -",
+   "category": "eventos",
+   "categories": [
+    "eventos"
+   ],
+   "plan": "cultura",
+   "venue": "Playa de la Música",
+   "date_text": "1 ene",
+   "start": "2027-01-01",
+   "end": "2027-01-01",
+   "ranged": false,
+   "dates": [
+    "2027-01-01"
+   ],
+   "address": "",
+   "time": "01:30",
+   "price_from": 14000,
+   "free": false,
+   "image": "https://imagenes.passline.com/eventos/fiesta-de-blanco-ano-nuevo-decada-disco-578611-rec.jpg",
+   "description": "FIESTA DE BLANCO - AÑO NUEVO - DECADA DISCO - en Playa de la Música",
+   "sources": [
+    {
+     "name": "Passline",
+     "url": "https://www.passline.com/eventos/fiesta-de-blanco-ano-nuevo-decada-disco"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/fiesta-de-blanco-ano-nuevo-decada-disco-78623"
+    }
+   ],
+   "feed": "Qué Hacemos",
+   "coords": []
   },
   {
    "id": "5f873edaf8",

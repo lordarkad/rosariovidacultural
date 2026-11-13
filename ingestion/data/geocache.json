@@ -113,6 +113,10 @@
   -60.68011
  ],
  "casa mona": null,
+ "casa rios": [
+  -32.91635,
+  -60.81017
+ ],
  "casa vanzo wernicke cochabamba 2010": [
   -32.9561,
   -60.65391
@@ -375,6 +379,10 @@
  "la lengua del juglar": null,
  "la orilla infinita": null,
  "la orilla infinita paga": null,
+ "la orilla infinita teatro colon 2148": [
+  -32.96466,
+  -60.62965
+ ],
  "la playa de la musica": null,
  "la segunda seguros arena": null,
  "la segunda seguros arena av cordoba 3475": [
@@ -475,6 +483,7 @@
   -32.9465,
   -60.63298
  ],
+ "nasha casabar": null,
  "nomade": null,
  "oratorio h e c a": null,
  "ov lagos esquina brown": null,
@@ -516,6 +525,10 @@
   -60.63318
  ],
  "polideportivo colonia aldao": null,
+ "puerta 6 puerta 6 rosario santa fe": [
+  -32.92306,
+  -60.78065
+ ],
  "puerto joven av belgrano 950 s2000 rosario santa fe": [
   -32.94148,
   -60.63381
@@ -641,10 +654,16 @@
   -60.63923
  ],
  "teatro vigil": null,
+ "tierra de suenos 2": null,
  "tunel de las artes pasaje pan cordoba 954 paga": null,
  "ubicacion secreta rosario santa fe": null,
  "uca rosario qeo rosario santa fe ar": [
   -32.95126,
   -60.67118
- ]
+ ],
+ "uriburu 637": [
+  -32.99097,
+  -60.64287
+ ],
+ "viper club": null
 }
