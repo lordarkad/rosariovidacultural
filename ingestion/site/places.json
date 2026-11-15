@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-08T13:11:24+00:00",
+ "generated_at": "2026-11-15T13:56:00+00:00",
  "incomplete_tiles": 2,
  "attribution": "© colaboradores de OpenStreetMap (ODbL)",
  "places": [
@@ -1615,7 +1615,7 @@
    "website": "",
    "instagram": "",
    "image": "",
-   "outdoor": false
+   "outdoor": null
   },
   {
    "id": "n4318791903",
@@ -1690,7 +1690,7 @@
    "website": "",
    "instagram": "",
    "image": "",
-   "outdoor": false
+   "outdoor": null
   },
   {
    "id": "n8280356050",
@@ -6459,7 +6459,7 @@
    "website": "",
    "instagram": "",
    "image": "",
-   "outdoor": false
+   "outdoor": null
   },
   {
    "id": "w284755803",
@@ -6508,6 +6508,21 @@
    "instagram": "",
    "image": "",
    "outdoor": null
+  },
+  {
+   "id": "w1052070570",
+   "name": "La Veredita",
+   "kind": "Restaurante",
+   "cuisine": [],
+   "address": "Malabia 114",
+   "lat": -32.931,
+   "lon": -60.76184,
+   "hours": "",
+   "phone": "",
+   "website": "",
+   "instagram": "",
+   "image": "",
+   "outdoor": true
   },
   {
    "id": "w188144211",
@@ -6880,7 +6895,7 @@
    "website": "",
    "instagram": "",
    "image": "",
-   "outdoor": false
+   "outdoor": null
   },
   {
    "id": "n12681115924",
@@ -7608,7 +7623,7 @@
    "website": "",
    "instagram": "",
    "image": "",
-   "outdoor": false
+   "outdoor": null
   },
   {
    "id": "w1306263598",
@@ -9693,7 +9708,7 @@
    "website": "",
    "instagram": "",
    "image": "",
-   "outdoor": false
+   "outdoor": null
   },
   {
    "id": "n6383228441",
