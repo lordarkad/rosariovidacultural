@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-17T18:03:57+00:00",
+ "generated_at": "2026-11-18T17:45:39+00:00",
  "sources": {
   "Agenda municipal": {
    "ok": false,
@@ -70,7 +70,7 @@
   },
   "Rosario Noticias": {
    "ok": true,
-   "count": 1
+   "count": 2
   }
  },
  "events": [
@@ -141,35 +141,6 @@
      -60.65064
     ]
    ]
-  },
-  {
-   "id": "c30ac6b60e",
-   "title": "42° Fiesta Nacional de Colectividades",
-   "category": "eventos",
-   "categories": [
-    "eventos"
-   ],
-   "plan": "cultura",
-   "venue": "Parque Nacional a la Bandera",
-   "date_text": "Del 6 al 17 de noviembre",
-   "start": "2026-11-06",
-   "end": "2026-11-17",
-   "ranged": true,
-   "dates": [],
-   "address": "",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "https://www.rosarioencartel.com.ar/web/wp-content/uploads/2015/10/colectividades-2026-222x187.jpeg",
-   "description": "La fiesta, que se convirtió en el evento más convocante de la ciudad, se realizó por primera vez en...",
-   "sources": [
-    {
-     "name": "Rosario en Cartel",
-     "url": "https://www.rosarioencartel.com.ar/42o-fiesta-nacional-de-colectividades/"
-    }
-   ],
-   "feed": "Rosario en Cartel",
-   "coords": []
   },
   {
    "id": "9b651aadd2",
@@ -700,16 +671,15 @@
    ],
    "plan": "cultura",
    "venue": "Showcase Rosario",
-   "date_text": "17 nov, 18 nov",
-   "start": "2026-11-17",
+   "date_text": "18 nov",
+   "start": "2026-11-18",
    "end": "2026-11-18",
    "ranged": false,
    "dates": [
-    "2026-11-17",
     "2026-11-18"
    ],
    "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "15:25 / 17:50 / 20:05 / 22:20 / 22:25",
+   "time": "15:25 / 17:50 / 20:05 / 22:25",
    "price_from": null,
    "free": false,
    "image": "https://static.voyalcine.net/Uploads/i6298.jpg",
@@ -737,15 +707,19 @@
    ],
    "plan": "cultura",
    "venue": "Showcase Rosario · Cinemark Rosario",
-   "date_text": "17 nov, 18 nov, 19 nov, 20 nov",
-   "start": "2026-11-17",
-   "end": "2026-11-20",
+   "date_text": "18 nov, 19 nov, 20 nov, 21 nov, 22 nov, 23 nov, 24 nov, 25 nov",
+   "start": "2026-11-18",
+   "end": "2026-11-25",
    "ranged": false,
    "dates": [
-    "2026-11-17",
     "2026-11-18",
     "2026-11-19",
-    "2026-11-20"
+    "2026-11-20",
+    "2026-11-21",
+    "2026-11-22",
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25"
    ],
    "address": "",
    "time": "",
@@ -784,15 +758,19 @@
    ],
    "plan": "cultura",
    "venue": "Showcase Rosario · Cinemark Rosario",
-   "date_text": "17 nov, 18 nov, 19 nov, 20 nov",
-   "start": "2026-11-17",
-   "end": "2026-11-20",
+   "date_text": "18 nov, 19 nov, 20 nov, 21 nov, 22 nov, 23 nov, 24 nov, 25 nov",
+   "start": "2026-11-18",
+   "end": "2026-11-25",
    "ranged": false,
    "dates": [
-    "2026-11-17",
     "2026-11-18",
     "2026-11-19",
-    "2026-11-20"
+    "2026-11-20",
+    "2026-11-21",
+    "2026-11-22",
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25"
    ],
    "address": "",
    "time": "",
@@ -831,18 +809,22 @@
    ],
    "plan": "cultura",
    "venue": "Showcase Rosario",
-   "date_text": "17 nov, 18 nov, 19 nov, 20 nov",
-   "start": "2026-11-17",
-   "end": "2026-11-20",
+   "date_text": "18 nov, 19 nov, 20 nov, 21 nov, 22 nov, 23 nov, 24 nov, 25 nov",
+   "start": "2026-11-18",
+   "end": "2026-11-25",
    "ranged": false,
    "dates": [
-    "2026-11-17",
     "2026-11-18",
     "2026-11-19",
-    "2026-11-20"
+    "2026-11-20",
+    "2026-11-21",
+    "2026-11-22",
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25"
    ],
    "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "14:15 / 16:35",
+   "time": "12:00 / 14:15 / 16:35",
    "price_from": null,
    "free": false,
    "image": "https://static.voyalcine.net/Uploads/i5984.jpg",
@@ -870,12 +852,11 @@
    ],
    "plan": "cultura",
    "venue": "Showcase Rosario · Cinemark Rosario",
-   "date_text": "17 nov, 18 nov",
-   "start": "2026-11-17",
+   "date_text": "18 nov",
+   "start": "2026-11-18",
    "end": "2026-11-18",
    "ranged": false,
    "dates": [
-    "2026-11-17",
     "2026-11-18"
    ],
    "address": "",
@@ -915,15 +896,15 @@
    ],
    "plan": "cultura",
    "venue": "Showcase Rosario · Cinemark Rosario",
-   "date_text": "17 nov, 18 nov, 19 nov, 20 nov",
-   "start": "2026-11-17",
+   "date_text": "18 nov, 19 nov, 20 nov, 21 nov, 22 nov, 23 nov, 24 nov, 25 nov",
+   "start": "2026-11-18",
    "end": "2026-11-25",
    "ranged": false,
    "dates": [
-    "2026-11-17",
     "2026-11-18",
     "2026-11-19",
     "2026-11-20",
+    "2026-11-21",
     "2026-11-22",
     "2026-11-23",
     "2026-11-24",
@@ -966,17 +947,22 @@
    ],
    "plan": "cultura",
    "venue": "Showcase Rosario",
-   "date_text": "17 nov, 18 nov, 19 nov",
-   "start": "2026-11-17",
-   "end": "2026-11-19",
+   "date_text": "18 nov, 19 nov, 20 nov, 21 nov, 22 nov, 23 nov, 24 nov, 25 nov",
+   "start": "2026-11-18",
+   "end": "2026-11-25",
    "ranged": false,
    "dates": [
-    "2026-11-17",
     "2026-11-18",
-    "2026-11-19"
+    "2026-11-19",
+    "2026-11-20",
+    "2026-11-21",
+    "2026-11-22",
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25"
    ],
    "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "14:00 / 14:05 / 16:50 / 19:45 / 22:25",
+   "time": "14:00 / 16:50 / 19:45",
    "price_from": null,
    "free": false,
    "image": "https://static.voyalcine.net/Uploads/i6252.jpg",
@@ -1004,14 +990,19 @@
    ],
    "plan": "cultura",
    "venue": "Showcase Rosario · Cinemark Rosario",
-   "date_text": "17 nov, 18 nov, 19 nov",
-   "start": "2026-11-17",
-   "end": "2026-11-19",
+   "date_text": "18 nov, 19 nov, 20 nov, 21 nov, 22 nov, 23 nov, 24 nov, 25 nov",
+   "start": "2026-11-18",
+   "end": "2026-11-25",
    "ranged": false,
    "dates": [
-    "2026-11-17",
     "2026-11-18",
-    "2026-11-19"
+    "2026-11-19",
+    "2026-11-20",
+    "2026-11-21",
+    "2026-11-22",
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25"
    ],
    "address": "",
    "time": "",
@@ -1050,15 +1041,15 @@
    ],
    "plan": "cultura",
    "venue": "Showcase Rosario · Cinemark Rosario",
-   "date_text": "17 nov, 18 nov, 19 nov, 20 nov",
-   "start": "2026-11-17",
+   "date_text": "18 nov, 19 nov, 20 nov, 21 nov, 22 nov, 23 nov, 24 nov, 25 nov",
+   "start": "2026-11-18",
    "end": "2026-11-25",
    "ranged": false,
    "dates": [
-    "2026-11-17",
     "2026-11-18",
     "2026-11-19",
     "2026-11-20",
+    "2026-11-21",
     "2026-11-22",
     "2026-11-23",
     "2026-11-24",
@@ -1101,15 +1092,15 @@
    ],
    "plan": "cultura",
    "venue": "Showcase Rosario · Cinemark Rosario",
-   "date_text": "17 nov, 18 nov, 19 nov, 20 nov",
-   "start": "2026-11-17",
+   "date_text": "18 nov, 19 nov, 20 nov, 21 nov, 22 nov, 23 nov, 24 nov, 25 nov",
+   "start": "2026-11-18",
    "end": "2026-11-25",
    "ranged": false,
    "dates": [
-    "2026-11-17",
     "2026-11-18",
     "2026-11-19",
     "2026-11-20",
+    "2026-11-21",
     "2026-11-22",
     "2026-11-23",
     "2026-11-24",
@@ -1152,16 +1143,15 @@
    ],
    "plan": "cultura",
    "venue": "Showcase Rosario",
-   "date_text": "17 nov, 18 nov",
-   "start": "2026-11-17",
+   "date_text": "18 nov",
+   "start": "2026-11-18",
    "end": "2026-11-18",
    "ranged": false,
    "dates": [
-    "2026-11-17",
     "2026-11-18"
    ],
    "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "22:35 / 22:40",
+   "time": "22:35",
    "price_from": null,
    "free": false,
    "image": "https://static.voyalcine.net/Uploads/i6302.jpg",
@@ -1189,313 +1179,6 @@
    ],
    "plan": "cultura",
    "venue": "Showcase Rosario",
-   "date_text": "17 nov, 18 nov",
-   "start": "2026-11-17",
-   "end": "2026-11-18",
-   "ranged": false,
-   "dates": [
-    "2026-11-17",
-    "2026-11-18"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "19:55 / 21:55 / 22:30",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6156.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6156"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "eda0c765c4",
-   "title": "Madre siniestra",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario · Cinemark Rosario",
-   "date_text": "17 nov, 18 nov, 19 nov, 20 nov",
-   "start": "2026-11-17",
-   "end": "2026-11-20",
-   "ranged": false,
-   "dates": [
-    "2026-11-17",
-    "2026-11-18",
-    "2026-11-19",
-    "2026-11-20"
-   ],
-   "address": "",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6154.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6154"
-    },
-    {
-     "name": "Cinemark Rosario",
-     "url": "https://www.cinemark.com.ar/pelicula/madre-siniestra/compra-entradas/entradas"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ],
-    [
-     -32.91082,
-     -60.68296
-    ]
-   ]
-  },
-  {
-   "id": "aa4a177642",
-   "title": "Plumas: operación rescate",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "17 nov, 18 nov",
-   "start": "2026-11-17",
-   "end": "2026-11-18",
-   "ranged": false,
-   "dates": [
-    "2026-11-17",
-    "2026-11-18"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "15:30",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6300.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6300"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "d042a1e94d",
-   "title": "Resident evil: noche cero",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "17 nov, 18 nov",
-   "start": "2026-11-17",
-   "end": "2026-11-18",
-   "ranged": false,
-   "dates": [
-    "2026-11-17",
-    "2026-11-18"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "17:35 / 19:50 / 22:00",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6060.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6060"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "ab375e66df",
-   "title": "Rocky 50° Aniversario",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Cinemark Rosario",
-   "date_text": "17 nov, 18 nov",
-   "start": "2026-11-17",
-   "end": "2026-11-18",
-   "ranged": false,
-   "dates": [
-    "2026-11-17",
-    "2026-11-18"
-   ],
-   "address": "Nansen 255 (Portal Rosario)",
-   "time": "20:00",
-   "price_from": null,
-   "free": false,
-   "image": "https://cdn.cinemark.com.ar/content/posters/HO00013324.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Cinemark Rosario",
-     "url": "https://www.cinemark.com.ar/pelicula/rocky-50-aniversario/compra-entradas/entradas"
-    }
-   ],
-   "feed": "Cinemark Rosario",
-   "coords": [
-    [
-     -32.91082,
-     -60.68296
-    ]
-   ]
-  },
-  {
-   "id": "3b0e24ddd6",
-   "title": "Sensatez y sentimiento",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "17 nov, 18 nov",
-   "start": "2026-11-17",
-   "end": "2026-11-18",
-   "ranged": false,
-   "dates": [
-    "2026-11-17",
-    "2026-11-18"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "16:20 / 19:00 / 21:55",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6250.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6250"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "d693f82d6f",
-   "title": "Verity: la sombra de un engaño",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "17 nov, 18 nov, 19 nov",
-   "start": "2026-11-17",
-   "end": "2026-11-19",
-   "ranged": false,
-   "dates": [
-    "2026-11-17",
-    "2026-11-18",
-    "2026-11-19"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "16:20 / 16:25 / 16:55 / 19:10 / 21:50 / 22:25",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6102.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6102"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "876f6080b8",
-   "title": "Wildwood: el Bosque Salvaje",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Cinemark Rosario",
-   "date_text": "17 nov, 18 nov",
-   "start": "2026-11-17",
-   "end": "2026-11-18",
-   "ranged": false,
-   "dates": [
-    "2026-11-17",
-    "2026-11-18"
-   ],
-   "address": "Nansen 255 (Portal Rosario)",
-   "time": "16:40 / 22:40",
-   "price_from": null,
-   "free": false,
-   "image": "https://cdn.cinemark.com.ar/content/posters/HO00012754.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Cinemark Rosario",
-     "url": "https://www.cinemark.com.ar/pelicula/wildwood-el-bosque-salvaje/compra-entradas/entradas"
-    }
-   ],
-   "feed": "Cinemark Rosario",
-   "coords": [
-    [
-     -32.91082,
-     -60.68296
-    ]
-   ]
-  },
-  {
-   "id": "1625890347",
-   "title": "La isla olvidada",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
    "date_text": "18 nov",
    "start": "2026-11-18",
    "end": "2026-11-18",
@@ -1504,15 +1187,15 @@
     "2026-11-18"
    ],
    "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "14:00",
+   "time": "22:30",
    "price_from": null,
    "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6082.jpg",
+   "image": "https://static.voyalcine.net/Uploads/i6156.jpg",
    "description": "",
    "sources": [
     {
      "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6082"
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6156"
     }
    ],
    "feed": "Showcase Rosario",
@@ -1547,7 +1230,7 @@
     "2026-11-25"
    ],
    "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "14:40 / 15:00 / 15:20 / 15:40 / 16:00 / 16:40 / …",
+   "time": "12:05 / 12:25 / 12:45 / 13:20 / 14:40 / 15:00 / …",
    "price_from": null,
    "free": false,
    "image": "https://static.voyalcine.net/Uploads/i6291.jpg",
@@ -1563,6 +1246,57 @@
     [
      -32.92804,
      -60.66785
+    ]
+   ]
+  },
+  {
+   "id": "eda0c765c4",
+   "title": "Madre siniestra",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario · Cinemark Rosario",
+   "date_text": "18 nov, 19 nov, 20 nov, 21 nov, 22 nov, 23 nov, 24 nov, 25 nov",
+   "start": "2026-11-18",
+   "end": "2026-11-25",
+   "ranged": false,
+   "dates": [
+    "2026-11-18",
+    "2026-11-19",
+    "2026-11-20",
+    "2026-11-21",
+    "2026-11-22",
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6154.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6154"
+    },
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/madre-siniestra/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ],
+    [
+     -32.91082,
+     -60.68296
     ]
    ]
   },
@@ -1596,6 +1330,229 @@
    ],
    "feed": "Disfruta Rosario",
    "coords": []
+  },
+  {
+   "id": "aa4a177642",
+   "title": "Plumas: operación rescate",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "18 nov",
+   "start": "2026-11-18",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-18"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "15:30",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6300.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6300"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
+   "id": "d042a1e94d",
+   "title": "Resident evil: noche cero",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "18 nov",
+   "start": "2026-11-18",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-18"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "17:35 / 19:50",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6060.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6060"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
+   "id": "ab375e66df",
+   "title": "Rocky 50° Aniversario",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Cinemark Rosario",
+   "date_text": "18 nov",
+   "start": "2026-11-18",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-18"
+   ],
+   "address": "Nansen 255 (Portal Rosario)",
+   "time": "20:00",
+   "price_from": null,
+   "free": false,
+   "image": "https://cdn.cinemark.com.ar/content/posters/HO00013324.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/rocky-50-aniversario/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Cinemark Rosario",
+   "coords": [
+    [
+     -32.91082,
+     -60.68296
+    ]
+   ]
+  },
+  {
+   "id": "3b0e24ddd6",
+   "title": "Sensatez y sentimiento",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "18 nov",
+   "start": "2026-11-18",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-18"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "21:55",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6250.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6250"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
+   "id": "d693f82d6f",
+   "title": "Verity: la sombra de un engaño",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "18 nov, 19 nov, 20 nov, 21 nov, 22 nov, 23 nov, 24 nov, 25 nov",
+   "start": "2026-11-18",
+   "end": "2026-11-25",
+   "ranged": false,
+   "dates": [
+    "2026-11-18",
+    "2026-11-19",
+    "2026-11-20",
+    "2026-11-21",
+    "2026-11-22",
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "16:20 / 16:55 / 19:10 / 21:50 / 22:25",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6102.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6102"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
+   "id": "876f6080b8",
+   "title": "Wildwood: el Bosque Salvaje",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Cinemark Rosario",
+   "date_text": "18 nov",
+   "start": "2026-11-18",
+   "end": "2026-11-18",
+   "ranged": false,
+   "dates": [
+    "2026-11-18"
+   ],
+   "address": "Nansen 255 (Portal Rosario)",
+   "time": "16:40",
+   "price_from": null,
+   "free": false,
+   "image": "https://cdn.cinemark.com.ar/content/posters/HO00012754.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/wildwood-el-bosque-salvaje/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Cinemark Rosario",
+   "coords": [
+    [
+     -32.91082,
+     -60.68296
+    ]
+   ]
   },
   {
    "id": "3a337ce6f8",
@@ -1745,6 +1702,48 @@
     [
      -32.92522,
      -60.67838
+    ]
+   ]
+  },
+  {
+   "id": "7806507d96",
+   "title": "La asistente de la morgue",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "19 nov, 20 nov, 21 nov, 22 nov, 23 nov, 24 nov, 25 nov",
+   "start": "2026-11-19",
+   "end": "2026-11-25",
+   "ranged": false,
+   "dates": [
+    "2026-11-19",
+    "2026-11-20",
+    "2026-11-21",
+    "2026-11-22",
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "17:30 / 22:05",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6330.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6330"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
     ]
    ]
   },
@@ -2045,13 +2044,13 @@
      "url": "https://www.quehacemos.com.ar/eventos/agencia-de-placeres-en-rosario-78783"
     }
    ],
-   "feed": "Qué Hacemos",
    "coords": [
     [
      -32.95381,
      -60.64285
     ]
-   ]
+   ],
+   "feed": "Qué Hacemos"
   },
   {
    "id": "1f3ba3df85",
@@ -2834,6 +2833,37 @@
     "electronica"
    ],
    "feed": "Qué Hacemos"
+  },
+  {
+   "id": "2298bc43f8",
+   "title": "Pablo El Enterrador",
+   "category": "musica",
+   "categories": [
+    "musica"
+   ],
+   "plan": "cultura",
+   "venue": "Que Sea Rock – Espacio Cultural",
+   "date_text": "Viernes 20 de noviembre",
+   "start": "2026-11-20",
+   "end": "2026-11-20",
+   "ranged": false,
+   "dates": [
+    "2026-11-20"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": false,
+   "image": "https://www.rosarioencartel.com.ar/web/wp-content/uploads/2017/06/Pablo-El-Enterrador-222x187.jpeg",
+   "description": "Despedida definitiva de una leyenda del rock rosarino. Después de más de 40 años de historia, escenarios y canciones...",
+   "sources": [
+    {
+     "name": "Rosario en Cartel",
+     "url": "https://www.rosarioencartel.com.ar/pablo-el-enterrador/"
+    }
+   ],
+   "feed": "Rosario en Cartel",
+   "coords": []
   },
   {
    "id": "7ee7b5a4ea",

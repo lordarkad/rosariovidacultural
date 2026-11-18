@@ -1,15 +1,30 @@
 {
- "generated_at": "2026-11-17T18:03:57+00:00",
+ "generated_at": "2026-11-18T17:45:39+00:00",
  "source": "Rosario Noticias",
  "items": [
   {
-   "title": "La ciudad celebra una nueva edición de «Noche de Librerías»",
-   "url": "https://www.rosarionoticias.gob.ar/page/noticias/id/746168/title/La-ciudad-celebra-una-nueva-edici%C3%B3n-de-%C2%ABNoche-de-Librer%C3%ADas%C2%BB",
-   "summary": "Este viernes 20, de 18 a 23, más de 50 librerías y espacios vinculados al mundo editorial serán protagonistas de una jornada con promociones, lecturas, presentaciones, charlas y otras actividades.",
-   "image": "https://www.rosarionoticias.gob.ar/uploads/fotos/p1k7ihbf2r1og71sat186tvbdv9c8.jpg",
-   "published": "2026-11-16T14:46-03:00",
+   "title": "Colectividades cerró su edición 2026 con más de 1.100.000 visitantes",
+   "url": "https://www.rosarionoticias.gob.ar/page/noticias/id/746694/title/Colectividades-cerr%C3%B3-su-edici%C3%B3n-2026-con-m%C3%A1s-de-1.100.000-visitantes",
+   "summary": "El 42° Encuentro y Fiesta Nacional de las Colectividades culminó este martes con una gran respuesta del público, que colmó el Parque Nacional a la bandera durante todas las noches.",
+   "image": "https://www.rosarionoticias.gob.ar/uploads/fotos/p1k7mcv4mgvfq1a421nvjd2g1ubkj.png",
+   "published": "2026-11-18T10:35-03:00",
    "categories": [
-    "Cultura"
+    "Fiestas",
+    "Cultura",
+    "Turismo"
+   ],
+   "source": "Rosario Noticias"
+  },
+  {
+   "title": "«Una ciudad que lee»: Rosario celebra tres jornadas de lecturas, juegos y experiencias para las infancias",
+   "url": "https://www.rosarionoticias.gob.ar/page/noticias/id/746533/title/%C2%ABUna-ciudad-que-lee%C2%BB%3A-Rosario-celebra-tres-jornadas-de-lecturas%2C-juegos-y-experiencias-para-las-infancias",
+   "summary": "Del viernes 20 al domingo 22 de noviembre, librerías, espacios culturales y el Complejo Astronómico Municipal serán escenario de una programación especial destinada a las infancias.",
+   "image": "https://www.rosarionoticias.gob.ar/uploads/fotos/p1k7m3c5a3csa1bd216f5udm14mp7.jpg",
+   "published": "2026-11-17T22:23-03:00",
+   "categories": [
+    "Cultura",
+    "Infancias",
+    "Mil65"
    ],
    "source": "Rosario Noticias"
   }
