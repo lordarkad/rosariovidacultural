@@ -29,6 +29,7 @@
   -32.94964,
   -60.63519
  ],
+ "alianza francesa paga": null,
  "anfiteatro municipal": [
   -32.95795,
   -60.62241
@@ -45,6 +46,9 @@
   -32.94382,
   -60.67023
  ],
+ "auditorio del centro municipal distrito noroeste olga y leticia cossettini": null,
+ "auditorio del centro municipal distrito noroeste olga y leticia cossettini martes": null,
+ "auditorio del centro municipal distrito norte villa hortensia": null,
  "auditorio fundacion": [
   -32.94557,
   -60.63967
@@ -95,6 +99,7 @@
   -32.93989,
   -60.67038
  ],
+ "calle mendoza de peru a solis": null,
  "calle recreativa orono nicasio y lopez estanislao": null,
  "campus green": null,
  "capi club": null,
@@ -246,6 +251,7 @@
   -32.95929,
   -60.62474
  ],
+ "complejo blue velvet colombres 1756 paga": null,
  "complejo cultural atlas": null,
  "complejo cultural atlas mitre general bartolome 645": null,
  "complejo forest": null,
@@ -282,6 +288,10 @@
   -32.90643,
   -60.68773
  ],
+ "domingo lunes": [
+  -32.90643,
+  -60.68773
+ ],
  "ecu espacio cultural universitario": null,
  "el aserradero montevideo 1518": [
   -32.95503,
@@ -312,6 +322,10 @@
   -60.64285
  ],
  "espacio cultural expresiones paga": null,
+ "espacio cultural universitario san martin gral jose 750": [
+  -32.9462,
+  -60.63672
+ ],
  "estacion rosario 300 av c c estevez boero 640 sabado": [
   -32.94582,
   -60.62898
@@ -575,8 +589,14 @@
  ],
  "rosario municipal autodrome av jorge newbery": null,
  "sabado": null,
+ "sabado a 18 horas": null,
+ "sabado domingo": null,
  "sala asociacion empleados de comercio miercoles": null,
  "sala cultural de abajo": null,
+ "sala empleados de comercio corrientes 450": [
+  -32.94162,
+  -60.64136
+ ],
  "sala hum": null,
  "sala tandava nueve de julio 754": null,
  "salon del hipodromo de rosario": null,
@@ -585,6 +605,10 @@
   -60.63726
  ],
  "secret location": null,
+ "secretaria de cultura y educacion": [
+  -32.93075,
+  -60.65702
+ ],
  "secretaria de cultura y educacion del valle aristobulo 2734": [
   -32.93075,
   -60.65702
@@ -610,6 +634,7 @@
   -32.93909,
   -60.65064
  ],
+ "taura navarra 90 paga": null,
  "teatro astengo": [
   -32.94557,
   -60.63967
@@ -677,9 +702,14 @@
   -32.95126,
   -60.67118
  ],
+ "universidad del gran rosario": [
+  -32.95126,
+  -60.64412
+ ],
  "uriburu 637": [
   -32.99097,
   -60.64287
  ],
+ "viernes sabado": null,
  "viper club": null
 }

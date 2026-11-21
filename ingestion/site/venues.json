@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-19T17:55:07+00:00",
+ "generated_at": "2026-11-21T16:36:04+00:00",
  "offers": {
   "musica_en_vivo": "Música en vivo",
   "cena": "Cena",
@@ -84,8 +84,30 @@
      "url": "https://www.rosario.tur.ar/donde-ir/cultura/centros-culturales/la-casa-del-tango"
     }
    ],
-   "upcoming_count": 1,
+   "upcoming_count": 7,
    "upcoming": [
+    {
+     "id": "eab6d41868",
+     "title": "Tertulias Tangueras",
+     "start": "2026-11-20",
+     "date_text": "Del 27 al 27 de noviembre · Viernes · De 17 a 18:30 horas",
+     "time": "",
+     "url": "https://www.rosario.gob.ar/inicio/tertulias-tangueras-1",
+     "source": "Agenda municipal",
+     "free": true,
+     "price_from": null
+    },
+    {
+     "id": "af0a161eca",
+     "title": "Aproximación a la Murga (La catarsis del Tango)",
+     "start": "2026-11-21",
+     "date_text": "Sábado · a 16 horas",
+     "time": "",
+     "url": "https://www.rosario.gob.ar/inicio/aproximacion-la-murga-la-catarsis-del-tango",
+     "source": "Agenda municipal",
+     "free": false,
+     "price_from": null
+    },
     {
      "id": "1d878c1b21",
      "title": "Concierto de la Orquesta de Carlos Quilici",
@@ -95,6 +117,28 @@
      "url": "https://www.rosario.gob.ar/inicio/concierto-de-la-orquesta-de-carlos-quilici",
      "source": "Agenda municipal",
      "free": false,
+     "price_from": null
+    },
+    {
+     "id": "e6ffc1f07d",
+     "title": "Orquesta de Carlos Quilici",
+     "start": "2026-11-21",
+     "date_text": "Sábado 21 de noviembre",
+     "time": "",
+     "url": "https://www.rosarioencartel.com.ar/orquesta-de-carlos-quilici-2026/",
+     "source": "Rosario en Cartel",
+     "free": false,
+     "price_from": null
+    },
+    {
+     "id": "d829bd08d9",
+     "title": "Tango en Calle",
+     "start": "2026-11-22",
+     "date_text": "Del 22 al 29 de noviembre · Domingo · De 10 a 12 horas",
+     "time": "",
+     "url": "https://www.rosario.gob.ar/inicio/tango-en-calle",
+     "source": "Agenda municipal",
+     "free": true,
      "price_from": null
     }
    ]
