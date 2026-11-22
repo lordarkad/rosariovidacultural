@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-15T13:56:00+00:00",
- "incomplete_tiles": 2,
+ "generated_at": "2026-11-22T14:32:01+00:00",
+ "incomplete_tiles": 1,
  "attribution": "© colaboradores de OpenStreetMap (ODbL)",
  "places": [
   {
@@ -1615,7 +1615,7 @@
    "website": "",
    "instagram": "",
    "image": "",
-   "outdoor": null
+   "outdoor": false
   },
   {
    "id": "n4318791903",
@@ -1690,7 +1690,7 @@
    "website": "",
    "instagram": "",
    "image": "",
-   "outdoor": null
+   "outdoor": false
   },
   {
    "id": "n8280356050",
@@ -4484,7 +4484,7 @@
    "website": "",
    "instagram": "gasparcocina",
    "image": "",
-   "outdoor": false
+   "outdoor": null
   },
   {
    "id": "n13726121901",
@@ -5061,7 +5061,7 @@
    "website": "",
    "instagram": "",
    "image": "",
-   "outdoor": false
+   "outdoor": null
   },
   {
    "id": "n12532859246",
@@ -6459,7 +6459,7 @@
    "website": "",
    "instagram": "",
    "image": "",
-   "outdoor": null
+   "outdoor": false
   },
   {
    "id": "w284755803",
@@ -6895,7 +6895,7 @@
    "website": "",
    "instagram": "",
    "image": "",
-   "outdoor": null
+   "outdoor": false
   },
   {
    "id": "n12681115924",
@@ -7623,7 +7623,7 @@
    "website": "",
    "instagram": "",
    "image": "",
-   "outdoor": null
+   "outdoor": false
   },
   {
    "id": "w1306263598",
@@ -9708,7 +9708,7 @@
    "website": "",
    "instagram": "",
    "image": "",
-   "outdoor": null
+   "outdoor": false
   },
   {
    "id": "n6383228441",
@@ -9823,6 +9823,29 @@
    "instagram": "",
    "image": "",
    "outdoor": true
+  },
+  {
+   "id": "n14381227201",
+   "name": "Rosarigasino",
+   "kind": "Restaurante",
+   "cuisine": [
+    "argentinian",
+    "breakfast",
+    "burger",
+    "chicken",
+    "diner",
+    "local",
+    "noodles"
+   ],
+   "address": "Bulevar Nicolás Avellaneda 599",
+   "lat": -32.92082,
+   "lon": -60.67473,
+   "hours": "Mo-Sa 08:00-00:00; Su 09:00-00:00",
+   "phone": "03414388389;3413880675",
+   "website": "",
+   "instagram": "rosarigasinobar",
+   "image": "",
+   "outdoor": null
   },
   {
    "id": "n5344660723",
