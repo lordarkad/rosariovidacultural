@@ -102,6 +102,7 @@
  "calle mendoza de peru a solis": null,
  "calle recreativa orono nicasio y lopez estanislao": null,
  "campus green": null,
+ "cantina del oeste": null,
  "capi club": null,
  "capitan bar": [
   -32.95174,
@@ -266,6 +267,7 @@
  "corcovado estudio": null,
  "costanera norte florida": null,
  "crema": null,
+ "cultural de abajo cri entre rios 579": null,
  "cultural fontanarrosa": [
   -32.94991,
   -60.63797
@@ -368,6 +370,7 @@
  "garcia bar": null,
  "garcia bar rock": null,
  "garcia bar y rock": null,
+ "hi fi estudio": null,
  "hi fi studio": null,
  "hospital intendente gabriel carrasco avellaneda nicolas 1402": [
   -32.94643,
@@ -436,6 +439,10 @@
  "lotus night club": null,
  "lumvra club": null,
  "mapu": [
+  -32.88094,
+  -60.68706
+ ],
+ "mapu rosario": [
   -32.88094,
   -60.68706
  ],

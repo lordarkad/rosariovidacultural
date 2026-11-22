@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-21T16:36:04+00:00",
+ "generated_at": "2026-11-22T16:51:06+00:00",
  "offers": {
   "musica_en_vivo": "Música en vivo",
   "cena": "Cena",
@@ -48,20 +48,8 @@
      "url": "https://lanochedelasbirrerias.com.ar/cerveceria/bon-scott/"
     }
    ],
-   "upcoming_count": 1,
-   "upcoming": [
-    {
-     "id": "610d942edd",
-     "title": "LISA SCHA+ROSENDO EN ROSARIO",
-     "start": "2026-11-21",
-     "date_text": "21 nov",
-     "time": "20:00",
-     "url": "https://www.passline.com/eventos/lisa-scharosendo-en-rosario",
-     "source": "Passline",
-     "free": false,
-     "price_from": 10000
-    }
-   ]
+   "upcoming_count": 0,
+   "upcoming": []
   },
   {
    "id": "casa-del-tango",
@@ -84,7 +72,7 @@
      "url": "https://www.rosario.tur.ar/donde-ir/cultura/centros-culturales/la-casa-del-tango"
     }
    ],
-   "upcoming_count": 7,
+   "upcoming_count": 4,
    "upcoming": [
     {
      "id": "eab6d41868",
@@ -98,39 +86,6 @@
      "price_from": null
     },
     {
-     "id": "af0a161eca",
-     "title": "Aproximación a la Murga (La catarsis del Tango)",
-     "start": "2026-11-21",
-     "date_text": "Sábado · a 16 horas",
-     "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/aproximacion-la-murga-la-catarsis-del-tango",
-     "source": "Agenda municipal",
-     "free": false,
-     "price_from": null
-    },
-    {
-     "id": "1d878c1b21",
-     "title": "Concierto de la Orquesta de Carlos Quilici",
-     "start": "2026-11-21",
-     "date_text": "Sábado · a 23 horas",
-     "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/concierto-de-la-orquesta-de-carlos-quilici",
-     "source": "Agenda municipal",
-     "free": false,
-     "price_from": null
-    },
-    {
-     "id": "e6ffc1f07d",
-     "title": "Orquesta de Carlos Quilici",
-     "start": "2026-11-21",
-     "date_text": "Sábado 21 de noviembre",
-     "time": "",
-     "url": "https://www.rosarioencartel.com.ar/orquesta-de-carlos-quilici-2026/",
-     "source": "Rosario en Cartel",
-     "free": false,
-     "price_from": null
-    },
-    {
      "id": "d829bd08d9",
      "title": "Tango en Calle",
      "start": "2026-11-22",
@@ -139,6 +94,28 @@
      "url": "https://www.rosario.gob.ar/inicio/tango-en-calle",
      "source": "Agenda municipal",
      "free": true,
+     "price_from": null
+    },
+    {
+     "id": "933bf4ec65",
+     "title": "Taller de Técnicas de Danza y Composición Instantánea",
+     "start": "2026-11-25",
+     "date_text": "Del 25 al 25 de noviembre · Miércoles · De 16:30 a 18 horas",
+     "time": "",
+     "url": "https://www.rosario.gob.ar/inicio/taller-de-tecnicas-de-danza-y-composicion-instantanea",
+     "source": "Agenda municipal",
+     "free": true,
+     "price_from": null
+    },
+    {
+     "id": "b90c431687",
+     "title": "Quinteto Bataraz y Lucas Querini Grupo en concierto",
+     "start": "2026-11-27",
+     "date_text": "Viernes · a 23 horas",
+     "time": "",
+     "url": "https://www.rosario.gob.ar/inicio/quinteto-bataraz-y-lucas-querini-grupo-en-concierto",
+     "source": "Agenda municipal",
+     "free": false,
      "price_from": null
     }
    ]
