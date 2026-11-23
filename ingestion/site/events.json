@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-22T16:51:08+00:00",
+ "generated_at": "2026-11-23T20:48:46+00:00",
  "sources": {
   "Agenda municipal": {
    "ok": false,
@@ -7,7 +7,7 @@
   },
   "Rosario en Cartel": {
    "ok": true,
-   "count": 24,
+   "count": 28,
    "sin_fecha": 3
   },
   "Teatro La Comedia": {
@@ -32,12 +32,12 @@
   },
   "Qué Hacemos": {
    "ok": true,
-   "count": 150,
+   "count": 144,
    "sin_fecha": 0
   },
   "Disfruta Rosario": {
    "ok": true,
-   "count": 13,
+   "count": 12,
    "sin_fecha": 0
   },
   "TurboEntrada": {
@@ -47,7 +47,7 @@
   },
   "1000Tickets": {
    "ok": true,
-   "count": 4,
+   "count": 3,
    "sin_fecha": 0
   },
   "Producciones de Acá": {
@@ -70,7 +70,7 @@
   },
   "Rosario Noticias": {
    "ok": true,
-   "count": 2
+   "count": 3
   }
  },
  "events": [
@@ -105,7 +105,7 @@
     },
     {
      "name": "Qué Hacemos",
-     "url": "https://www.quehacemos.com.ar/eventos/navidad-made-in-argentina-62912"
+     "url": "https://www.quehacemos.com.ar/eventos/navidad-made-in-argentina-62913"
     }
    ],
    "feed": "Rosario en Cartel",
@@ -666,35 +666,6 @@
    ]
   },
   {
-   "id": "2440a0d115",
-   "title": "Super finde en Rosario. Ciudades que leen",
-   "category": "otros",
-   "categories": [
-    "otros"
-   ],
-   "plan": "recreacion",
-   "venue": "",
-   "date_text": "Del 20 al 22 de noviembre",
-   "start": "2026-11-20",
-   "end": "2026-11-22",
-   "ranged": true,
-   "dates": [],
-   "address": "",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "https://www.rosario.gob.ar/inicio/sites/default/files/styles/colorbox_modal/public/2026-11/FindeMilDias.jpg.webp?itok=WX_qKDYY",
-   "description": "Del 20 al 22 de noviembre llega un fin de semana para celebrar y compartir, con propuestas para las infancias y actividades especiales para primera infancia. Tres días de cuentos, lecturas, música, juegos, experiencias sensoriales, movimiento y exploraciones para habitar el mundo con todos los sentidos. Una invitación a detenernos, jugar, escuchar y descubrir que en esos primeros años cabe un univ",
-   "sources": [
-    {
-     "name": "Agenda municipal",
-     "url": "https://www.rosario.gob.ar/inicio/super-finde-mil-dias"
-    }
-   ],
-   "feed": "Agenda municipal",
-   "coords": []
-  },
-  {
    "id": "eab6d41868",
    "title": "Tertulias Tangueras",
    "category": "musica",
@@ -784,40 +755,6 @@
     [
      -32.94162,
      -60.64136
-    ]
-   ]
-  },
-  {
-   "id": "7624fbe140",
-   "title": "BMX Freestyle: Classic Contest en el galpón",
-   "category": "deporte",
-   "categories": [
-    "deporte"
-   ],
-   "plan": "recreacion",
-   "venue": "Domingo",
-   "date_text": "Sábado · 09 horas",
-   "start": "2026-11-21",
-   "end": "2026-11-22",
-   "ranged": true,
-   "dates": [],
-   "address": "",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "https://www.rosario.gob.ar/inicio/sites/default/files/styles/colorbox_modal/public/2026-11/BMX%20Freestyle.png.webp?itok=JwjcWWSp",
-   "description": "Este sábado 21 y domingo 22 de noviembre, en el Galpón Hell Track Bike Park (Paraguay y el río) se hace el Hell Track 30 años Classic Contest de BMX Freestyle.El certamen incluye divisiones para todos los niveles: Escuelita, Iniciantes, Expertos, Master y Profesionales. Organiza la Asociación de Deportes de Estilo Libre sobre Rampas de Rosario. Colabora la Secretaría de Deporte y Turismo municipal",
-   "sources": [
-    {
-     "name": "Agenda municipal",
-     "url": "https://www.rosario.gob.ar/inicio/bmx-freestyle-classic-contest-en-el-galpon"
-    }
-   ],
-   "feed": "Agenda municipal",
-   "coords": [
-    [
-     -32.90643,
-     -60.68773
     ]
    ]
   },
@@ -912,74 +849,6 @@
    ],
    "feed": "Agenda municipal",
    "coords": []
-  },
-  {
-   "id": "710eca9194",
-   "title": "Funciones de Perder el Tiempo",
-   "category": "teatro",
-   "categories": [
-    "teatro"
-   ],
-   "plan": "cultura",
-   "venue": "Cultural Fontanarrosa",
-   "date_text": "Del 21 al 22 de noviembre · Todos los días · De 20 a 21 horas",
-   "start": "2026-11-21",
-   "end": "2026-11-22",
-   "ranged": true,
-   "dates": [],
-   "address": "SAN MARTIN GRAL. JOSE 1080",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "https://www.rosario.gob.ar/inicio/sites/default/files/styles/colorbox_modal/public/2026-11/perder%20el%20tiempo-400x430.png.webp?itok=EV9nysG6",
-   "description": "El sábado 21 y domingo 22 de noviembre, a las 20 h en el Tercer Piso del Cultural Fontanarrosa (San Martín 1080) se presenta Perder el Tiempo. La obra es el resultado del laboratorio intensivo de creación escénica que explora dimensiones y dispositivos de ficción como el amor, el trabajo y el tiempo.",
-   "sources": [
-    {
-     "name": "Agenda municipal",
-     "url": "https://www.rosario.gob.ar/inicio/funciones-de-perder-el-tiempo"
-    }
-   ],
-   "feed": "Agenda municipal",
-   "coords": [
-    [
-     -32.94991,
-     -60.63797
-    ]
-   ]
-  },
-  {
-   "id": "480f753d4a",
-   "title": "Hockey in Line: Iron Cup en el Estadio Norte",
-   "category": "deporte",
-   "categories": [
-    "deporte"
-   ],
-   "plan": "recreacion",
-   "venue": "Domingo",
-   "date_text": "Sábado · 09 horas",
-   "start": "2026-11-21",
-   "end": "2026-11-22",
-   "ranged": true,
-   "dates": [],
-   "address": "",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "https://www.rosario.gob.ar/inicio/sites/default/files/styles/colorbox_modal/public/2026-11/Hockey%20sobre%20roller.png.webp?itok=N086dhb_",
-   "description": "Este sábado 21 y domingo 22 de noviembre, en el Club Estadio Norte (Av. Alberdi 1015) se disputa la Iron Cup de Hockey in Line, Torneo Nacional 3 vs. 3 + Arquero. Organiza la Asociación Civil de Hockey in Line y Hielo de la Provincia de Santa Fe. Colabora la Secretaría de Deporte y Turismo municipal.",
-   "sources": [
-    {
-     "name": "Agenda municipal",
-     "url": "https://www.rosario.gob.ar/inicio/hockey-line-iron-cup-en-el-estadio-norte"
-    }
-   ],
-   "feed": "Agenda municipal",
-   "coords": [
-    [
-     -32.90643,
-     -60.68773
-    ]
-   ]
   },
   {
    "id": "3603471b8c",
@@ -1118,159 +987,6 @@
    ]
   },
   {
-   "id": "0e968642a2",
-   "title": "Wushu Kung Fu: torneos en el Distrito Sudoeste",
-   "category": "deporte",
-   "categories": [
-    "deporte"
-   ],
-   "plan": "recreacion",
-   "venue": "Centro Municipal de Distrito Sudoeste \"Emilia Bertolé\"",
-   "date_text": "Sábado · 09 horas",
-   "start": "2026-11-21",
-   "end": "2026-11-22",
-   "ranged": true,
-   "dates": [],
-   "address": "FRANCIA 4435",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "https://www.rosario.gob.ar/inicio/sites/default/files/styles/colorbox_modal/public/2026-11/Wushu%20Kung%20Fu%202.png.webp?itok=hSWvT6_0",
-   "description": "Este sábado 21 y domingo 22 de noviembre en el SUM del Centro de Distrito Municipal Sudoeste (Av. Francia 4435) se realiza el séptimo Campeonato Provincial Junior Copa “Ciudad de Rosario” y Campeonato Argentino de Wushu Kung Fu para Mayores.",
-   "sources": [
-    {
-     "name": "Agenda municipal",
-     "url": "https://www.rosario.gob.ar/inicio/wushu-kung-fu-torneos-en-el-distrito-sudoeste"
-    }
-   ],
-   "feed": "Agenda municipal",
-   "coords": [
-    [
-     -32.98344,
-     -60.67596
-    ]
-   ]
-  },
-  {
-   "id": "75faf53e1b",
-   "title": "ALGARETE EN ROSARIO",
-   "category": "musica",
-   "categories": [
-    "musica"
-   ],
-   "plan": "cultura",
-   "venue": "FLOYD PUB",
-   "date_text": "22 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-22",
-   "ranged": false,
-   "dates": [
-    "2026-11-22"
-   ],
-   "address": "",
-   "time": "23:30",
-   "price_from": null,
-   "free": false,
-   "image": "https://imagenes.passline.com/eventos/algarete-en-rosario-578581-rec.jpg",
-   "description": "ALGARETE EN ROSARIO en FLOYD PUB",
-   "sources": [
-    {
-     "name": "Passline",
-     "url": "https://www.passline.com/eventos/algarete-en-rosario"
-    },
-    {
-     "name": "Qué Hacemos",
-     "url": "https://www.quehacemos.com.ar/eventos/algarete-en-rosario-78482"
-    }
-   ],
-   "coords": [
-    [
-     -32.95142,
-     -60.65103
-    ]
-   ],
-   "feed": "Qué Hacemos"
-  },
-  {
-   "id": "4260db0329",
-   "title": "ATTACK ON TITAN: The Last Concert - Orquesta Sinfonica en Rosario",
-   "category": "musica",
-   "categories": [
-    "musica"
-   ],
-   "plan": "cultura",
-   "venue": "Jaguar Haüs",
-   "date_text": "22 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-22",
-   "ranged": false,
-   "dates": [
-    "2026-11-22"
-   ],
-   "address": "Martín Rodríguez & Av. Rivadavia",
-   "time": "17:00",
-   "price_from": 75000,
-   "free": false,
-   "image": "https://imagenes.alpogo.com/eventos/69328e86-e5ae-46fd-a62c-cbf297861d25.webp",
-   "description": "🔊 ATTACK ON TITAN: THE LAST CONCERT LLEGA A ROSARIO!⚔️🔥 Luego del éxito arrollador de ventas en Buenos Aires , la experiencia sinfónica de Attack On Titan: The Last Concert continúa su expansión por Argentina en Rosario. 📆 DOMINGO 22 DE NOVIEMBRE 📍 Jaguar Haüs - Rosario 📌 Rodríguez Esq. Rivadavia 🔥 El 22 de noviembre, Rosario será protagonista de una noche épica , donde la música de uno de los ...",
-   "sources": [
-    {
-     "name": "Alpogo",
-     "url": "https://alpogo.com/evento/attack-on-titan-the-last-concert-orquesta-sinfonica-en-rosario-22-de-noviembre-28720"
-    },
-    {
-     "name": "Qué Hacemos",
-     "url": "https://www.quehacemos.com.ar/eventos/attack-on-titan-the-last-concert-orquesta-sinfonica-en-rosario-22-de-noviembre-52919"
-    }
-   ],
-   "coords": [
-    [
-     -32.96392,
-     -60.66403
-    ]
-   ],
-   "feed": "Qué Hacemos"
-  },
-  {
-   "id": "f63c7dc06b",
-   "title": "Caballo salvaje nueve",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "22 nov, 23 nov, 24 nov, 25 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-25",
-   "ranged": false,
-   "dates": [
-    "2026-11-22",
-    "2026-11-23",
-    "2026-11-24",
-    "2026-11-25"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "16:35",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6297.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6297"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
    "id": "96a14f1fd7",
    "title": "Calle Recreativa",
    "category": "deporte",
@@ -1297,987 +1013,6 @@
     }
    ],
    "feed": "Agenda municipal",
-   "coords": []
-  },
-  {
-   "id": "110fded9f3",
-   "title": "Cine El Cairo: cartelera La Gratis del Domingo",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "",
-   "date_text": "22 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-22",
-   "ranged": false,
-   "dates": [
-    "2026-11-22"
-   ],
-   "address": "",
-   "time": "18:00",
-   "price_from": null,
-   "free": true,
-   "image": "https://disfrutarosario.com/wp-content/uploads/2020/02/Cine-El-Cairo-1024x683.jpg",
-   "description": "El Cine El Cairo publicó la cartelera de películas que integran el ciclo La Gratis del Domingo.",
-   "sources": [
-    {
-     "name": "Disfruta Rosario",
-     "url": "https://disfrutarosario.com/cine-el-cairo-cartelera-la-gratis/"
-    }
-   ],
-   "feed": "Disfruta Rosario",
-   "coords": []
-  },
-  {
-   "id": "213d47eb56",
-   "title": "Clayface",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "22 nov, 23 nov, 24 nov, 25 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-25",
-   "ranged": false,
-   "dates": [
-    "2026-11-22",
-    "2026-11-23",
-    "2026-11-24",
-    "2026-11-25"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "22:30",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6209.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6209"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "5e7a1060c7",
-   "title": "Coyote vs ACME",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "22 nov, 23 nov, 24 nov, 25 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-25",
-   "ranged": false,
-   "dates": [
-    "2026-11-22",
-    "2026-11-23",
-    "2026-11-24",
-    "2026-11-25"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "12:00 / 14:15",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i5984.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=5984"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "89de0c31bf",
-   "title": "Dan Lluvia en Rosario",
-   "category": "musica",
-   "categories": [
-    "musica"
-   ],
-   "plan": "cultura",
-   "venue": "Capi Club",
-   "date_text": "22 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-22",
-   "ranged": false,
-   "dates": [
-    "2026-11-22"
-   ],
-   "address": "",
-   "time": "21:00",
-   "price_from": 25000,
-   "free": false,
-   "image": "https://imagenes.passline.com/eventos/-804376-rec.jpg",
-   "description": "Dan Lluvia en Rosario en Capi Club",
-   "sources": [
-    {
-     "name": "Passline",
-     "url": "https://www.passline.com/eventos/dan-lluvia-en-rosario"
-    },
-    {
-     "name": "Qué Hacemos",
-     "url": "https://www.quehacemos.com.ar/eventos/dan-lluvia-en-rosario-68649"
-    }
-   ],
-   "coords": [
-    [
-     -32.95181,
-     -60.6369
-    ]
-   ],
-   "feed": "Qué Hacemos"
-  },
-  {
-   "id": "7aea9f60c9",
-   "title": "Ebenezer: los fantasmas de Navidad",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario · Cinemark Rosario",
-   "date_text": "22 nov, 23 nov, 24 nov, 25 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-25",
-   "ranged": false,
-   "dates": [
-    "2026-11-22",
-    "2026-11-23",
-    "2026-11-24",
-    "2026-11-25"
-   ],
-   "address": "",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6295.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6295"
-    },
-    {
-     "name": "Cinemark Rosario",
-     "url": "https://www.cinemark.com.ar/pelicula/ebenezer-los-fantasmas-de-navidad/compra-entradas/entradas"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ],
-    [
-     -32.91082,
-     -60.68296
-    ]
-   ]
-  },
-  {
-   "id": "e23c46e224",
-   "title": "El bosque salvaje: Wildwood",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "22 nov, 23 nov, 24 nov, 25 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-25",
-   "ranged": false,
-   "dates": [
-    "2026-11-22",
-    "2026-11-23",
-    "2026-11-24",
-    "2026-11-25"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "14:00 / 16:50 / 19:45",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6252.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6252"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "9e746d664a",
-   "title": "El corazón de la bestia",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "22 nov, 23 nov, 24 nov, 25 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-25",
-   "ranged": false,
-   "dates": [
-    "2026-11-22",
-    "2026-11-23",
-    "2026-11-24",
-    "2026-11-25"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "19:15 / 21:45",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6083.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6083"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "da29af45da",
-   "title": "El gato con sombrero",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario · Cinemark Rosario",
-   "date_text": "22 nov, 23 nov, 24 nov, 25 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-25",
-   "ranged": false,
-   "dates": [
-    "2026-11-22",
-    "2026-11-23",
-    "2026-11-24",
-    "2026-11-25"
-   ],
-   "address": "",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6275.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6275"
-    },
-    {
-     "name": "Cinemark Rosario",
-     "url": "https://www.cinemark.com.ar/pelicula/el-gato-con-sombrero/compra-entradas/entradas"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ],
-    [
-     -32.91082,
-     -60.68296
-    ]
-   ]
-  },
-  {
-   "id": "d96a0bdb98",
-   "title": "En las venas en Cine Lumière",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Centro Cultural Cine Lumière",
-   "date_text": "Domingo · 20 horas",
-   "start": "2026-11-22",
-   "end": "2026-11-22",
-   "ranged": false,
-   "dates": [
-    "2026-11-22"
-   ],
-   "address": "VELEZ SARSFIELD DALMACIO 1027",
-   "time": "",
-   "price_from": null,
-   "free": true,
-   "image": "https://www.rosario.gob.ar/inicio/sites/default/files/styles/colorbox_modal/public/2026-10/en-las-venasplantilla-gestor.jpg.webp?itok=wiekv1rF",
-   "description": "A partir de una extraña muerte, Julio regresa a su pueblo, muchos años después para intentar descubrir qué es lo que pasa en Villa Molina.",
-   "sources": [
-    {
-     "name": "Agenda municipal",
-     "url": "https://www.rosario.gob.ar/inicio/en-las-venas-en-cine-lumiere"
-    }
-   ],
-   "feed": "Agenda municipal",
-   "coords": [
-    [
-     -32.92522,
-     -60.67838
-    ]
-   ]
-  },
-  {
-   "id": "d570018ac0",
-   "title": "FULL HOUSE",
-   "category": "musica",
-   "categories": [
-    "musica"
-   ],
-   "plan": "recreacion",
-   "venue": "Complejo Forest",
-   "date_text": "22 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-22",
-   "ranged": false,
-   "dates": [
-    "2026-11-22"
-   ],
-   "address": "Brown 3198",
-   "time": "23:00",
-   "price_from": null,
-   "free": false,
-   "image": "https://gppfuletdjrldbxoakqb.supabase.co/storage/v1/object/public/event_photos/ig-flyers/DdEmRLLjlzj.jpg",
-   "description": "22.11 | FULL HOUSE 🏠 Raresh una de las figuras más importantes de la escena electrónica rumana, llega con ese sonido deep, minimal y sofisticado que lo convirtió en un referente del circuito internacional. Compartiendo la noche Franco Cinelli uno de los grandes nombres del house argentino, con más de 50 releases propios y más de 100 remixes editados a lo largo de su carrera. Completa el line up Mo",
-   "sources": [
-    {
-     "name": "Getdogma.app",
-     "url": "https://getdogma.app/web/event/WU9aktvlvHsV"
-    },
-    {
-     "name": "Qué Hacemos",
-     "url": "https://www.quehacemos.com.ar/eventos/full-house-72139"
-    }
-   ],
-   "coords": [
-    [
-     -32.93192,
-     -60.66438
-    ]
-   ],
-   "genre_hints": [
-    "electronica"
-   ],
-   "feed": "Qué Hacemos"
-  },
-  {
-   "id": "d15e629953",
-   "title": "Godzilla Minus Zero",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario · Cinemark Rosario",
-   "date_text": "22 nov, 23 nov, 24 nov, 25 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-25",
-   "ranged": false,
-   "dates": [
-    "2026-11-22",
-    "2026-11-23",
-    "2026-11-24",
-    "2026-11-25"
-   ],
-   "address": "",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6234.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6234"
-    },
-    {
-     "name": "Cinemark Rosario",
-     "url": "https://www.cinemark.com.ar/pelicula/godzilla-minus-zero/compra-entradas/entradas"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ],
-    [
-     -32.91082,
-     -60.68296
-    ]
-   ]
-  },
-  {
-   "id": "bd0b2f2ac1",
-   "title": "LA JUNTADA DE LOS ARTISTAS - DECADA DISCO - Domingo 22",
-   "category": "otros",
-   "categories": [
-    "otros"
-   ],
-   "plan": "cultura",
-   "venue": "DECADA DISCO",
-   "date_text": "22 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-22",
-   "ranged": false,
-   "dates": [
-    "2026-11-22"
-   ],
-   "address": "",
-   "time": "21:30",
-   "price_from": null,
-   "free": false,
-   "image": "https://imagenes.passline.com/eventos/-828999-rec.jpg",
-   "description": "LA JUNTADA DE LOS ARTISTAS - DECADA DISCO - Domingo 22 en DECADA DISCO",
-   "sources": [
-    {
-     "name": "Passline",
-     "url": "https://www.passline.com/eventos/la-juntada-de-los-artistas-decada-disco-domingo-22"
-    },
-    {
-     "name": "Qué Hacemos",
-     "url": "https://www.quehacemos.com.ar/eventos/la-juntada-de-los-artistas-decada-disco-domingo-22-79301"
-    }
-   ],
-   "coords": [
-    [
-     -32.93662,
-     -60.6699
-    ]
-   ],
-   "feed": "Qué Hacemos"
-  },
-  {
-   "id": "dcce4fe268",
-   "title": "LADIES NIGHT - TUMBA LA CASA - 22.11.26",
-   "category": "otros",
-   "categories": [
-    "otros"
-   ],
-   "plan": "cultura",
-   "venue": "Hipódromo de Rosario",
-   "date_text": "22 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-22",
-   "ranged": false,
-   "dates": [
-    "2026-11-22"
-   ],
-   "address": "",
-   "time": "23:30",
-   "price_from": 6000,
-   "free": false,
-   "image": "https://imagenes.passline.com/eventos/ladies-night-tumba-la-casa-221126-578187-rec.jpg",
-   "description": "LADIES NIGHT - TUMBA LA CASA - 22.11.26 en Hipódromo de Rosario",
-   "sources": [
-    {
-     "name": "Passline",
-     "url": "https://www.passline.com/eventos/ladies-night-tumba-la-casa-221126"
-    },
-    {
-     "name": "Qué Hacemos",
-     "url": "https://www.quehacemos.com.ar/eventos/ladies-night-tumba-la-casa-22-11-26-78481"
-    }
-   ],
-   "coords": [
-    [
-     -32.95961,
-     -60.66156
-    ]
-   ],
-   "feed": "Qué Hacemos"
-  },
-  {
-   "id": "7806507d96",
-   "title": "La asistente de la morgue",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "22 nov, 23 nov, 24 nov, 25 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-25",
-   "ranged": false,
-   "dates": [
-    "2026-11-22",
-    "2026-11-23",
-    "2026-11-24",
-    "2026-11-25"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "17:30 / 22:05",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6330.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6330"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "bb47fc11c8",
-   "title": "Los Juegos del Hambre: Amanecer",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Cinemark Rosario",
-   "date_text": "22 nov, 23 nov, 24 nov, 25 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-25",
-   "ranged": false,
-   "dates": [
-    "2026-11-22",
-    "2026-11-23",
-    "2026-11-24",
-    "2026-11-25"
-   ],
-   "address": "Nansen 255 (Portal Rosario)",
-   "time": "15:10 / 15:20 / 15:50 / 16:10 / 18:20 / 18:40 / …",
-   "price_from": null,
-   "free": false,
-   "image": "https://cdn.cinemark.com.ar/content/posters/HO00013363.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Cinemark Rosario",
-     "url": "https://www.cinemark.com.ar/pelicula/los-juegos-del-hambre-amanecer-en-la-cosecha/compra-entradas/entradas"
-    }
-   ],
-   "feed": "Cinemark Rosario",
-   "coords": [
-    [
-     -32.91082,
-     -60.68296
-    ]
-   ]
-  },
-  {
-   "id": "3067e20b5b",
-   "title": "Los Juegos del Hambre: amanecer en la cosecha",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "22 nov, 23 nov, 24 nov, 25 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-25",
-   "ranged": false,
-   "dates": [
-    "2026-11-22",
-    "2026-11-23",
-    "2026-11-24",
-    "2026-11-25"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "12:05 / 12:25 / 12:45 / 13:20 / 14:40 / 15:00 / …",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6291.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6291"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "38dea92af9",
-   "title": "Lucho Garcia, Humor Emocion y Vibra",
-   "category": "teatro",
-   "categories": [
-    "teatro"
-   ],
-   "plan": "cultura",
-   "venue": "Multiespacio Nicasio",
-   "date_text": "22 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-22",
-   "ranged": false,
-   "dates": [
-    "2026-11-22"
-   ],
-   "address": "San Lorenzo 1055",
-   "time": "20:00",
-   "price_from": null,
-   "free": false,
-   "image": "https://www.ticketway.com.ar/twn/be/espectaculos/imagenes/lucho1440x400-Recuperado-Recuperado-Recuperado-Recuperado-Recuperado.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Ticketway",
-     "url": "https://www.ticketway.com.ar/#/cartelera?evento=2966"
-    },
-    {
-     "name": "Qué Hacemos",
-     "url": "https://www.quehacemos.com.ar/eventos/lucho-garcia-humor-emocion-y-vibra-71975"
-    }
-   ],
-   "coords": [
-    [
-     -32.94453,
-     -60.63706
-    ]
-   ],
-   "feed": "Qué Hacemos"
-  },
-  {
-   "id": "eda0c765c4",
-   "title": "Madre siniestra",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "22 nov, 23 nov, 24 nov, 25 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-25",
-   "ranged": false,
-   "dates": [
-    "2026-11-22",
-    "2026-11-23",
-    "2026-11-24",
-    "2026-11-25"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "12:40 / 15:15 / 19:40 / 21:55",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6154.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6154"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "73cb8d4ba1",
-   "title": "PERDER EL TIEMPO",
-   "category": "eventos",
-   "categories": [
-    "eventos"
-   ],
-   "plan": "cultura",
-   "venue": "CULTURAL FONTANARROSA",
-   "date_text": "22 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-22",
-   "ranged": false,
-   "dates": [
-    "2026-11-22"
-   ],
-   "address": "Av. San Martín 1080 - ROSARIO",
-   "time": "20:00",
-   "price_from": null,
-   "free": false,
-   "image": "https://www.1000tickets.ar/img/evento/1602_261118151307.webp",
-   "description": "PERDER EL TIEMPO Descripción La obra es el resultado del laboratorio intensivo de creación escénica que explora dimensiones y dispositivos de ficción como el amor, el trabajo y el tiempo.En tiempos de desorientación, de turbulencia intelectual, emerge una necesidad de delimitar un campo en el que el juego sea un ordenamiento, un tiempo común para el despliegue de potencias aisladas. Establecer un ",
-   "sources": [
-    {
-     "name": "1000Tickets",
-     "url": "https://www.1000tickets.ar/evento?id_evento=1602&perder-el-tiempo"
-    }
-   ],
-   "coords": [
-    [
-     -32.94999,
-     -60.638
-    ]
-   ],
-   "feed": "1000Tickets"
-  },
-  {
-   "id": "89b004eea4",
-   "title": "Patín carrera: 2° Torneo ARPAC",
-   "category": "deporte",
-   "categories": [
-    "deporte"
-   ],
-   "plan": "recreacion",
-   "venue": "",
-   "date_text": "Domingo · 09 horas",
-   "start": "2026-11-22",
-   "end": "2026-11-22",
-   "ranged": false,
-   "dates": [
-    "2026-11-22"
-   ],
-   "address": "",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "https://www.rosario.gob.ar/inicio/sites/default/files/styles/colorbox_modal/public/2026-11/Patin%20carrera%20nuevo%203.jpeg.webp?itok=L4_HLPkL",
-   "description": "Este domingo 22 de noviembre, en el Patinódromo Municipal ”Roberto Tagliabue” (Ovidio Lagos 2501) se corre el segundo Torneo ARPAC de Patín carrera. Organiza y fiscaliza la Asociación Rosarina de Patín Carrera.",
-   "sources": [
-    {
-     "name": "Agenda municipal",
-     "url": "https://www.rosario.gob.ar/inicio/patin-carrera-2deg-torneo-arpac"
-    }
-   ],
-   "feed": "Agenda municipal",
-   "coords": []
-  },
-  {
-   "id": "bfe17d41f8",
-   "title": "QUEEN SINFONICO",
-   "category": "eventos",
-   "categories": [
-    "eventos"
-   ],
-   "plan": "cultura",
-   "venue": "Teatro Broadway",
-   "date_text": "22 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-22",
-   "ranged": false,
-   "dates": [
-    "2026-11-22"
-   ],
-   "address": "",
-   "time": "20:00",
-   "price_from": 40000,
-   "free": false,
-   "image": "",
-   "description": "",
-   "sources": [
-    {
-     "name": "Teatro Broadway",
-     "url": "https://teatrobroadwayrosario.com/cartelera/868/queen-sinfonico"
-    }
-   ],
-   "feed": "Teatro Broadway",
-   "coords": [
-    [
-     -32.94396,
-     -60.63956
-    ]
-   ]
-  },
-  {
-   "id": "30272fb5b7",
-   "title": "RAP DE BARRIO - ROSARIO - GIRA DESPEDIDA",
-   "category": "musica",
-   "categories": [
-    "musica"
-   ],
-   "plan": "cultura",
-   "venue": "FLOYD PUB",
-   "date_text": "22 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-22",
-   "ranged": false,
-   "dates": [
-    "2026-11-22"
-   ],
-   "address": "",
-   "time": "19:00",
-   "price_from": 20000,
-   "free": false,
-   "image": "https://imagenes.passline.com/eventos/-798461-rec.jpg",
-   "description": "RAP DE BARRIO - ROSARIO - GIRA DESPEDIDA en FLOYD PUB",
-   "sources": [
-    {
-     "name": "Passline",
-     "url": "https://www.passline.com/eventos/rap-de-barrio-rosario-gira-despedida"
-    },
-    {
-     "name": "Qué Hacemos",
-     "url": "https://www.quehacemos.com.ar/eventos/rap-de-barrio-rosario-gira-despedida-68636"
-    }
-   ],
-   "coords": [
-    [
-     -32.95142,
-     -60.65103
-    ]
-   ],
-   "feed": "Qué Hacemos"
-  },
-  {
-   "id": "54dd94eb82",
-   "title": "RARESH + FRANCO CINELLI + MOMO TROSMAN @ COMPLEJO FOREST",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "complejo forest",
-   "date_text": "22 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-22",
-   "ranged": false,
-   "dates": [
-    "2026-11-22"
-   ],
-   "address": "Brown 3198, Rosario",
-   "time": "23:00",
-   "price_from": 20000,
-   "free": false,
-   "image": "https://images.venti.live/user-images/1788963733487-lg.jpg",
-   "description": "Evento en Venti: RARESH + FRANCO CINELLI + MOMO TROSMAN @ COMPLEJO FOREST",
-   "sources": [
-    {
-     "name": "Venti",
-     "url": "https://venti.com.ar/evento/raresh-franco-cinelli-momo-trosman-complejo-forest"
-    },
-    {
-     "name": "Qué Hacemos",
-     "url": "https://www.quehacemos.com.ar/eventos/raresh-franco-cinelli-momo-trosman-complejo-forest-54034"
-    }
-   ],
-   "coords": [
-    [
-     -32.93192,
-     -60.66438
-    ]
-   ],
-   "feed": "Qué Hacemos"
-  },
-  {
-   "id": "0b33d82ad0",
-   "title": "TINDER NIGHT 🔥",
-   "category": "otros",
-   "categories": [
-    "otros"
-   ],
-   "plan": "cultura",
-   "venue": "Güemes 2607",
-   "date_text": "22 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-22",
-   "ranged": false,
-   "dates": [
-    "2026-11-22"
-   ],
-   "address": "Güemes 2607, Rosario",
-   "time": "",
-   "price_from": 2500,
-   "free": false,
-   "image": "https://images.venti.live/user-images/1794849457839-lg.jpg",
-   "description": "Evento en Venti: TINDER NIGHT 🔥",
-   "sources": [
-    {
-     "name": "Venti",
-     "url": "https://venti.com.ar/evento/tinder-night"
-    },
-    {
-     "name": "Qué Hacemos",
-     "url": "https://www.quehacemos.com.ar/eventos/tinder-night-79392"
-    }
-   ],
-   "coords": [
-    [
-     -32.93239,
-     -60.65631
-    ]
-   ],
-   "feed": "Qué Hacemos"
-  },
-  {
-   "id": "7244a5f1e9",
-   "title": "TURBOTECA UNDERGROUND - DOMINGO 22 DE NOVIEMBRE",
-   "category": "otros",
-   "categories": [
-    "otros"
-   ],
-   "plan": "cultura",
-   "venue": "Club Mercury",
-   "date_text": "22 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-22",
-   "ranged": false,
-   "dates": [
-    "2026-11-22"
-   ],
-   "address": "",
-   "time": "23:30",
-   "price_from": 15000,
-   "free": false,
-   "image": "https://imagenes.passline.com/eventos/turboteca-underground-domingo-22-de-noviembre-579804-rec.jpg",
-   "description": "TURBOTECA UNDERGROUND - DOMINGO 22 DE NOVIEMBRE en Club Mercury",
-   "sources": [
-    {
-     "name": "Passline",
-     "url": "https://www.passline.com/eventos/turboteca-underground-domingo-22-de-noviembre"
-    },
-    {
-     "name": "Qué Hacemos",
-     "url": "https://www.quehacemos.com.ar/eventos/turboteca-underground-domingo-22-de-noviembre-80110"
-    }
-   ],
-   "feed": "Qué Hacemos",
    "coords": []
   },
   {
@@ -2338,132 +1073,6 @@
    ],
    "feed": "Agenda municipal",
    "coords": []
-  },
-  {
-   "id": "d693f82d6f",
-   "title": "Verity: la sombra de un engaño",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "22 nov, 23 nov, 24 nov, 25 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-25",
-   "ranged": false,
-   "dates": [
-    "2026-11-22",
-    "2026-11-23",
-    "2026-11-24",
-    "2026-11-25"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "16:55 / 22:25",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6102.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6102"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "6f59064f14",
-   "title": "Xxl irione",
-   "category": "musica",
-   "categories": [
-    "musica"
-   ],
-   "plan": "cultura",
-   "venue": "Floyd Bar",
-   "date_text": "22 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-22",
-   "ranged": false,
-   "dates": [
-    "2026-11-22"
-   ],
-   "address": "Dorrego 1362",
-   "time": "19:00",
-   "price_from": null,
-   "free": false,
-   "image": "https://photos.bandsintown.com/large/26729229.jpeg",
-   "description": "POR ULTIMA VEZ JUNTOS EN ROSARIO! XXL IRIONE/FILI WEY/EL MELLY Los 3 juntos tocando las canciones que marcaron el RAP DE BARRIO. Por primera y ultima vez juntos en Rosario. LUGAR DEL SHOW? \"Floyd\" DIRECCION: Dorrego 1363 *RECITAL PARA MAYORES DE 13 AÑOS. *SE VENDE MERCH OFICIAL DENTRO DEL LUGAR *BANDAS LOCALES TELONERAS INVITADAS. FINALIZA 23HS ENTRADA M&G: 19:30 ENTRADA GENERAL: 20.30 Organiza: N",
-   "sources": [
-    {
-     "name": "Bandsintown",
-     "url": "https://www.bandsintown.com/e/109157854-xxl-irione-at-floyd-bar"
-    },
-    {
-     "name": "Qué Hacemos",
-     "url": "https://www.quehacemos.com.ar/eventos/xxl-irione-79365"
-    }
-   ],
-   "coords": [
-    [
-     -32.95146,
-     -60.65102
-    ]
-   ],
-   "feed": "Qué Hacemos"
-  },
-  {
-   "id": "408358cf21",
-   "title": "Yo soy Rocky",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario · Cinemark Rosario",
-   "date_text": "22 nov, 23 nov, 24 nov, 25 nov",
-   "start": "2026-11-22",
-   "end": "2026-11-25",
-   "ranged": false,
-   "dates": [
-    "2026-11-22",
-    "2026-11-23",
-    "2026-11-24",
-    "2026-11-25"
-   ],
-   "address": "",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6325.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6325"
-    },
-    {
-     "name": "Cinemark Rosario",
-     "url": "https://www.cinemark.com.ar/pelicula/yo-soy-rocky/compra-entradas/entradas"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ],
-    [
-     -32.91082,
-     -60.68296
-    ]
-   ]
   },
   {
    "id": "071b521525",
@@ -2674,6 +1283,258 @@
    ]
   },
   {
+   "id": "213d47eb56",
+   "title": "Clayface",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "23 nov, 24 nov, 25 nov",
+   "start": "2026-11-23",
+   "end": "2026-11-25",
+   "ranged": false,
+   "dates": [
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "22:30",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6209.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6209"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
+   "id": "7aea9f60c9",
+   "title": "Ebenezer: los fantasmas de Navidad",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario · Cinemark Rosario",
+   "date_text": "23 nov, 24 nov, 25 nov",
+   "start": "2026-11-23",
+   "end": "2026-11-25",
+   "ranged": false,
+   "dates": [
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6295.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6295"
+    },
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/ebenezer-los-fantasmas-de-navidad/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ],
+    [
+     -32.91082,
+     -60.68296
+    ]
+   ]
+  },
+  {
+   "id": "e23c46e224",
+   "title": "El bosque salvaje: Wildwood",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "23 nov, 24 nov, 25 nov",
+   "start": "2026-11-23",
+   "end": "2026-11-25",
+   "ranged": false,
+   "dates": [
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "14:00 / 16:50 / 19:45",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6252.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6252"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
+   "id": "9e746d664a",
+   "title": "El corazón de la bestia",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "23 nov, 24 nov, 25 nov",
+   "start": "2026-11-23",
+   "end": "2026-11-25",
+   "ranged": false,
+   "dates": [
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "19:15 / 21:45",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6083.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6083"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
+   "id": "da29af45da",
+   "title": "El gato con sombrero",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario · Cinemark Rosario",
+   "date_text": "23 nov, 24 nov, 25 nov",
+   "start": "2026-11-23",
+   "end": "2026-11-25",
+   "ranged": false,
+   "dates": [
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6275.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6275"
+    },
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/el-gato-con-sombrero/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ],
+    [
+     -32.91082,
+     -60.68296
+    ]
+   ]
+  },
+  {
+   "id": "d15e629953",
+   "title": "Godzilla Minus Zero",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario · Cinemark Rosario",
+   "date_text": "23 nov, 24 nov, 25 nov",
+   "start": "2026-11-23",
+   "end": "2026-11-25",
+   "ranged": false,
+   "dates": [
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6234.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6234"
+    },
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/godzilla-minus-zero/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ],
+    [
+     -32.91082,
+     -60.68296
+    ]
+   ]
+  },
+  {
    "id": "eec8ffb502",
    "title": "Hockey para niños y preadolescentes en el Distrito Sudoeste",
    "category": "deporte",
@@ -2704,6 +1565,158 @@
     [
      -32.98344,
      -60.67596
+    ]
+   ]
+  },
+  {
+   "id": "7806507d96",
+   "title": "La asistente de la morgue",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "23 nov, 24 nov, 25 nov",
+   "start": "2026-11-23",
+   "end": "2026-11-25",
+   "ranged": false,
+   "dates": [
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "17:30 / 22:05",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6330.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6330"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
+   "id": "bb47fc11c8",
+   "title": "Los Juegos del Hambre: Amanecer",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Cinemark Rosario",
+   "date_text": "23 nov, 24 nov, 25 nov",
+   "start": "2026-11-23",
+   "end": "2026-11-25",
+   "ranged": false,
+   "dates": [
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25"
+   ],
+   "address": "Nansen 255 (Portal Rosario)",
+   "time": "15:10 / 15:20 / 15:50 / 16:10 / 18:20 / 18:40 / …",
+   "price_from": null,
+   "free": false,
+   "image": "https://cdn.cinemark.com.ar/content/posters/HO00013363.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/los-juegos-del-hambre-amanecer-en-la-cosecha/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Cinemark Rosario",
+   "coords": [
+    [
+     -32.91082,
+     -60.68296
+    ]
+   ]
+  },
+  {
+   "id": "3067e20b5b",
+   "title": "Los Juegos del Hambre: amanecer en la cosecha",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "23 nov, 24 nov, 25 nov",
+   "start": "2026-11-23",
+   "end": "2026-11-25",
+   "ranged": false,
+   "dates": [
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "14:40 / 15:00 / 15:20 / 15:40 / 16:00 / 16:40 / …",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6291.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6291"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
+   "id": "eda0c765c4",
+   "title": "Madre siniestra",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "23 nov, 24 nov, 25 nov",
+   "start": "2026-11-23",
+   "end": "2026-11-25",
+   "ranged": false,
+   "dates": [
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "15:15 / 19:40 / 21:55",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6154.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6154"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
     ]
    ]
   },
@@ -2802,6 +1815,44 @@
    "coords": []
   },
   {
+   "id": "d693f82d6f",
+   "title": "Verity: la sombra de un engaño",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "23 nov, 24 nov, 25 nov",
+   "start": "2026-11-23",
+   "end": "2026-11-25",
+   "ranged": false,
+   "dates": [
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "16:55 / 22:25",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6102.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6102"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
    "id": "256e170093",
    "title": "Voley adolescentes en el distrito sudoeste",
    "category": "deporte",
@@ -2832,6 +1883,52 @@
     [
      -32.98344,
      -60.67596
+    ]
+   ]
+  },
+  {
+   "id": "408358cf21",
+   "title": "Yo soy Rocky",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario · Cinemark Rosario",
+   "date_text": "23 nov, 24 nov, 25 nov",
+   "start": "2026-11-23",
+   "end": "2026-11-25",
+   "ranged": false,
+   "dates": [
+    "2026-11-23",
+    "2026-11-24",
+    "2026-11-25"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6325.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6325"
+    },
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/yo-soy-rocky/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ],
+    [
+     -32.91082,
+     -60.68296
     ]
    ]
   },
@@ -2904,6 +2001,43 @@
    ]
   },
   {
+   "id": "f63c7dc06b",
+   "title": "Caballo salvaje nueve",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "24 nov, 25 nov",
+   "start": "2026-11-24",
+   "end": "2026-11-25",
+   "ranged": false,
+   "dates": [
+    "2026-11-24",
+    "2026-11-25"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "16:35",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6297.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6297"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
    "id": "f811db5d52",
    "title": "Concierto Orquestal de Arsis Orquesta",
    "category": "musica",
@@ -2967,6 +2101,43 @@
     [
      -32.94964,
      -60.63519
+    ]
+   ]
+  },
+  {
+   "id": "5e7a1060c7",
+   "title": "Coyote vs ACME",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "24 nov, 25 nov",
+   "start": "2026-11-24",
+   "end": "2026-11-25",
+   "ranged": false,
+   "dates": [
+    "2026-11-24",
+    "2026-11-25"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "14:15",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i5984.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=5984"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
     ]
    ]
   },
@@ -3290,11 +2461,12 @@
    "title": "Festival Fontanarrosa",
    "category": "muestras",
    "categories": [
+    "eventos",
     "muestras",
     "teatro"
    ],
    "plan": "cultura",
-   "venue": "",
+   "venue": "Cultural Fontanarrosa",
    "date_text": "Del 25 al 29 de noviembre",
    "start": "2026-11-25",
    "end": "2026-11-29",
@@ -3310,10 +2482,55 @@
     {
      "name": "Agenda municipal",
      "url": "https://www.rosario.gob.ar/inicio/festival-fontanarrosa-1"
+    },
+    {
+     "name": "Rosario en Cartel",
+     "url": "https://www.rosarioencartel.com.ar/festival-fontanarrosa/"
     }
    ],
    "feed": "Agenda municipal",
-   "coords": []
+   "coords": [
+    [
+     -32.94991,
+     -60.63797
+    ]
+   ]
+  },
+  {
+   "id": "3d1cdb644c",
+   "title": "Jorge Fandermole y la Orquesta Municipal",
+   "category": "eventos",
+   "categories": [
+    "eventos"
+   ],
+   "plan": "cultura",
+   "venue": "Biblioteca Argentina Dr. Juan Álvarez",
+   "date_text": "Miércoles 25 de noviembre",
+   "start": "2026-11-25",
+   "end": "2026-11-25",
+   "ranged": false,
+   "dates": [
+    "2026-11-25"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": true,
+   "image": "https://www.rosarioencartel.com.ar/web/wp-content/uploads/2015/02/Jorge-Fandermole-2-222x187.jpg",
+   "description": "La propuesta lleva el nombre de «El remanso suena en la Biblioteca» y pone en diálogo la formación musical...",
+   "sources": [
+    {
+     "name": "Rosario en Cartel",
+     "url": "https://www.rosarioencartel.com.ar/jorge-fandermole-y-la-orquesta-municipal/"
+    }
+   ],
+   "feed": "Rosario en Cartel",
+   "coords": [
+    [
+     -32.94429,
+     -60.64474
+    ]
+   ]
   },
   {
    "id": "175b4395ce",
@@ -3798,6 +3015,42 @@
    ]
   },
   {
+   "id": "95e44c1c08",
+   "title": "Orquesta Sinfónica Provincial de Rosario",
+   "category": "eventos",
+   "categories": [
+    "eventos"
+   ],
+   "plan": "cultura",
+   "venue": "Teatro El Círculo",
+   "date_text": "Jueves 26 de noviembre",
+   "start": "2026-11-26",
+   "end": "2026-11-26",
+   "ranged": false,
+   "dates": [
+    "2026-11-26"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": true,
+   "image": "https://www.rosarioencartel.com.ar/web/wp-content/uploads/2015/04/Orquesta-Sinfonica-Provincial-de-Rosario-2025-222x187.jpg",
+   "description": "La Orquesta Sinfónica Provincial de Rosario dará un nuevo concierto de su Temporada 2026 en el Teatro “El Círculo”....",
+   "sources": [
+    {
+     "name": "Rosario en Cartel",
+     "url": "https://www.rosarioencartel.com.ar/orquesta-sinfonica-de-rosario/"
+    }
+   ],
+   "feed": "Rosario en Cartel",
+   "coords": [
+    [
+     -32.95258,
+     -60.63507
+    ]
+   ]
+  },
+  {
    "id": "9728f2612f",
    "title": "Puedes verlo todo",
    "category": "cine",
@@ -3838,6 +3091,46 @@
      -60.66785
     ]
    ]
+  },
+  {
+   "id": "e50d46bf6d",
+   "title": "SUNSET BY CRISTAL CLUB & CANNIBAL SET🌅",
+   "category": "otros",
+   "categories": [
+    "otros"
+   ],
+   "plan": "cultura",
+   "venue": "AnfiBar",
+   "date_text": "26 nov",
+   "start": "2026-11-26",
+   "end": "2026-11-26",
+   "ranged": false,
+   "dates": [
+    "2026-11-26"
+   ],
+   "address": "Av. Diario La Capital, Padre Rogelio Pizzi y, Rosario",
+   "time": "19:00",
+   "price_from": 4000,
+   "free": false,
+   "image": "https://images.venti.live/user-images/1795289801780-lg.jpg",
+   "description": "Evento en Venti: SUNSET BY CRISTAL CLUB & CANNIBAL SET🌅",
+   "sources": [
+    {
+     "name": "Venti",
+     "url": "https://venti.com.ar/evento/sunset-by-cristal-club-cannibal-set"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/sunset-by-cristal-club-cannibal-set-81025"
+    }
+   ],
+   "coords": [
+    [
+     -32.95844,
+     -60.62278
+    ]
+   ],
+   "feed": "Qué Hacemos"
   },
   {
    "id": "715e4a806f",
@@ -4415,6 +3708,49 @@
    "coords": []
   },
   {
+   "id": "d9c2931893",
+   "title": "Gusti Rabago & Kelo (Ar)",
+   "category": "musica",
+   "categories": [
+    "musica"
+   ],
+   "plan": "cultura",
+   "venue": "",
+   "date_text": "27 nov",
+   "start": "2026-11-27",
+   "end": "2026-11-27",
+   "ranged": false,
+   "dates": [
+    "2026-11-27"
+   ],
+   "address": "Brown 2248",
+   "time": "23:30",
+   "price_from": null,
+   "free": false,
+   "image": "https://gppfuletdjrldbxoakqb.supabase.co/storage/v1/object/public/event_photos/ig-flyers/Df8EgW8tekW.jpg",
+   "description": "Directo de España 🇪🇸 Gusti Rabago & Kelo (Ar)!💣 El proximo viernes 27 de noviembre, presentamos a Gusti Rabago & Kelo (Ar), argentinos directamente desde Mallorca y Barcelona Dos talentos que pisan fuerte en la escena Progressive House. Dos productoras, una misma conexión musical. Los esperamos a partir de las 23:30 ❤️ Groove connection Gusti Rabago Kelo ar Bunker Pichincha Basquiat Street Pub",
+   "sources": [
+    {
+     "name": "Getdogma.app",
+     "url": "https://getdogma.app/web/event/mI2t2S8iNNuQ"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/gusti-rabago-kelo-ar-80881"
+    }
+   ],
+   "coords": [
+    [
+     -32.93439,
+     -60.65187
+    ]
+   ],
+   "genre_hints": [
+    "electronica"
+   ],
+   "feed": "Qué Hacemos"
+  },
+  {
    "id": "2a340e4999",
    "title": "HOGAR DULCE HOGAR, no te podrás escapar!",
    "category": "teatro",
@@ -4981,6 +4317,49 @@
    ]
   },
   {
+   "id": "b5a9c07b53",
+   "title": "BELU ALMA",
+   "category": "musica",
+   "categories": [
+    "musica"
+   ],
+   "plan": "cultura",
+   "venue": "Bunker Pichincha",
+   "date_text": "28 nov",
+   "start": "2026-11-28",
+   "end": "2026-11-28",
+   "ranged": false,
+   "dates": [
+    "2026-11-28"
+   ],
+   "address": "Brown 2248",
+   "time": "23:30",
+   "price_from": null,
+   "free": false,
+   "image": "https://gppfuletdjrldbxoakqb.supabase.co/storage/v1/object/public/event_photos/ig-flyers/Df8TqB8G-RY.jpg",
+   "description": "Sábado 28/11 tenemos el agrado de presentar a Belu Alma en Bunker Pichincha Mama Blond va a estar abriendo está noche tan especial BELU ALMA es una DJ y productora argentina de Progressive House que actualmente reside en España. Elegida para integrar el Line UP oficial del Balance Croatia 2027. Es cofundadora de Progressive Hub Amsterdam y colaboradora de Progressive en España, dos proyectos desde",
+   "sources": [
+    {
+     "name": "Getdogma.app",
+     "url": "https://getdogma.app/web/event/dkUYa5HMja6m"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/belu-alma-80878"
+    }
+   ],
+   "coords": [
+    [
+     -32.93443,
+     -60.65196
+    ]
+   ],
+   "genre_hints": [
+    "electronica"
+   ],
+   "feed": "Qué Hacemos"
+  },
+  {
    "id": "7f4b3946db",
    "title": "Blend Wine & Beats: Primer aniversario",
    "category": "musica",
@@ -5474,13 +4853,13 @@
      "url": "https://www.quehacemos.com.ar/eventos/musica-en-cds-y-vinilos-mancinelli-paseo-luduena-80166"
     }
    ],
-   "feed": "Qué Hacemos",
    "coords": [
     [
      -32.90814,
      -60.67755
     ]
-   ]
+   ],
+   "feed": "Qué Hacemos"
   },
   {
    "id": "9d3e8139de",
@@ -7140,6 +6519,46 @@
    ]
   },
   {
+   "id": "87bb45363a",
+   "title": "BOHEMIA ULTIMA DEL AÑO",
+   "category": "otros",
+   "categories": [
+    "otros"
+   ],
+   "plan": "cultura",
+   "venue": "La Sala De Las Artes",
+   "date_text": "5 dic",
+   "start": "2026-12-05",
+   "end": "2026-12-05",
+   "ranged": false,
+   "dates": [
+    "2026-12-05"
+   ],
+   "address": "Suipacha Bis 98",
+   "time": "",
+   "price_from": 5,
+   "free": false,
+   "image": "https://entradaplay.com/media/imagenes_eventos/home/2026/10/IMG_3065.PNG",
+   "description": "BOHEMIA ULTIMA DEL AÑO en La Sala De Las Artes",
+   "sources": [
+    {
+     "name": "Entradaplay",
+     "url": "https://entradaplay.com/BOHEMIA-ULTIMA-DEL-ANO/"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/bohemia-ultima-del-ano-80945"
+    }
+   ],
+   "coords": [
+    [
+     -32.02544,
+     -61.20606
+    ]
+   ],
+   "feed": "Qué Hacemos"
+  },
+  {
    "id": "d309df06ca",
    "title": "BOILER sunset - NIGHT",
    "category": "musica",
@@ -7285,13 +6704,13 @@
      "url": "https://www.quehacemos.com.ar/eventos/chueka-sunset-80222"
     }
    ],
-   "feed": "Qué Hacemos",
    "coords": [
     [
      -32.88094,
      -60.68706
     ]
-   ]
+   ],
+   "feed": "Qué Hacemos"
   },
   {
    "id": "41f3b30796",
@@ -7517,6 +6936,46 @@
     {
      "name": "Qué Hacemos",
      "url": "https://www.quehacemos.com.ar/eventos/o-connor-darlo-todo-en-rosario-80055"
+    }
+   ],
+   "coords": [
+    [
+     -32.9317,
+     -60.65898
+    ]
+   ],
+   "feed": "Qué Hacemos"
+  },
+  {
+   "id": "751c06a12b",
+   "title": "OÍD MORTALES - PIPO CIPOLATTI | BAHIANO",
+   "category": "otros",
+   "categories": [
+    "otros"
+   ],
+   "plan": "cultura",
+   "venue": "Centro Cultural Güemes",
+   "date_text": "5 dic",
+   "start": "2026-12-05",
+   "end": "2026-12-05",
+   "ranged": false,
+   "dates": [
+    "2026-12-05"
+   ],
+   "address": "Güemes 2808",
+   "time": "",
+   "price_from": 5,
+   "free": false,
+   "image": "https://entradaplay.com/media/imagenes_eventos/home/2026/10/6fdab32e-2a4d-488f-872a-54e89f40d454.jpg",
+   "description": "OÍD MORTALES - PIPO CIPOLATTI | BAHIANO en Centro Cultural Güemes",
+   "sources": [
+    {
+     "name": "Entradaplay",
+     "url": "https://entradaplay.com/OID-MORTALES---PIPO-CIPOLATTI---BAHIANO/"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/oid-mortales-pipo-cipolatti-bahiano-80946"
     }
    ],
    "coords": [
@@ -7766,9 +7225,9 @@
   {
    "id": "8e2c5d7f22",
    "title": "BLASTOYZ - EDDIE @ SWITCH CLUB",
-   "category": "otros",
+   "category": "musica",
    "categories": [
-    "otros"
+    "musica"
    ],
    "plan": "cultura",
    "venue": "Switch Club",
@@ -7784,7 +7243,7 @@
    "price_from": 12000,
    "free": false,
    "image": "https://images.venti.live/user-images/1795047388548-lg.jpg",
-   "description": "Evento en Venti: BLASTOYZ - EDDIE @ SWITCH CLUB",
+   "description": "Blastoyz y Eddie Bitar en Switch Club, Rosario. Lineup: Blastoyz, Eddie Bitar, Leandro Medero y Mauro Aparicio. Hora del evento según Venti; horario del set por anunciar.",
    "sources": [
     {
      "name": "Venti",
@@ -7802,6 +7261,47 @@
     ]
    ],
    "feed": "Qué Hacemos"
+  },
+  {
+   "id": "a14471f53b",
+   "title": "DADDY ROCKS - PLAYA NUDISTA | Bar Bon Scott",
+   "category": "musica",
+   "categories": [
+    "musica"
+   ],
+   "plan": "cultura",
+   "venue": "bar bon scott",
+   "date_text": "6 dic",
+   "start": "2026-12-06",
+   "end": "2026-12-06",
+   "ranged": false,
+   "dates": [
+    "2026-12-06"
+   ],
+   "address": "Pichincha 131",
+   "time": "20:00",
+   "price_from": 8000,
+   "free": false,
+   "image": "https://imagenes.alpogo.com/eventos/fd798a11-ea78-4310-94f6-9a52dbeb0207.webp",
+   "description": "💥Para cerrar este hermoso año nos unimos @autochocador.club y @elpactosensible , para traerles una fecha especial en nuestro queridisimo @barbonscott .💕 En esta ocasion nos acompañan @lxsdaddyrocks junto a @playanudista .⛱️ 💿En el frente durante la noche CD set de @tomasavila_ .",
+   "sources": [
+    {
+     "name": "Alpogo",
+     "url": "https://alpogo.com/evento/daddy-rocks-playa-nudista-bar-bon-scott-30408"
+    },
+    {
+     "name": "Qué Hacemos",
+     "url": "https://www.quehacemos.com.ar/eventos/daddy-rocks-playa-nudista-bar-bon-scott-80869"
+    }
+   ],
+   "feed": "Qué Hacemos",
+   "coords": [
+    [
+     -32.93431,
+     -60.66072
+    ]
+   ],
+   "venue_id": "bon-scott"
   },
   {
    "id": "c16fc5aa79",
@@ -8298,7 +7798,7 @@
    "time": "19:30",
    "price_from": 17000,
    "free": false,
-   "image": "https://imagenes.alpogo.com/eventos/43357837-bc9a-40e5-a245-d3b1400ce9bc.webp",
+   "image": "https://imagenes.alpogo.com/eventos/b202e00d-67c9-438f-9d49-005ee37f1d8e.webp",
    "description": "Vení a disfrutar de Música a Ciegas, un viaje musical y sensorial en donde los sonidos se apropiarán de tu imaginación, en un entorno ideal para vivir la música como nunca antes.",
    "sources": [
     {
@@ -8908,7 +8408,7 @@
    "categories": [
     "musica"
    ],
-   "plan": "cultura",
+   "plan": "gastronomia",
    "venue": "Cantina del Oeste",
    "date_text": "11 dic",
    "start": "2026-12-11",
@@ -8917,12 +8417,12 @@
    "dates": [
     "2026-12-11"
    ],
-   "address": "",
+   "address": "Campbell 707",
    "time": "18:00",
    "price_from": null,
    "free": false,
    "image": "https://assets.prod.bandsintown.com/images/homeIcon/placeholder-artist.svg",
-   "description": "Dirtweed en vivo en Cantina del Oeste, Rosario.",
+   "description": "Sonidos de Guerra, cierre de año en la Cantina del Oeste (Rosario), de 18 a 23 h. DIRTWEED (stoner doom), Cerillera (grindcore, Rosario), Fimosis (death metal, San Nicolás) y Falla Social (hardcore punk, Paraná, primera vez en Rosario). Feria de pines y remeras.",
    "sources": [
     {
      "name": "Bandsintown",
@@ -8934,7 +8434,12 @@
     }
    ],
    "feed": "Qué Hacemos",
-   "coords": []
+   "coords": [
+    [
+     -32.96836,
+     -60.70684
+    ]
+   ]
   },
   {
    "id": "d2d098bae6",
@@ -11487,6 +10992,37 @@
      -60.66248
     ]
    ]
+  },
+  {
+   "id": "76210821fc",
+   "title": "Alejandro Sanz",
+   "category": "musica",
+   "categories": [
+    "musica"
+   ],
+   "plan": "cultura",
+   "venue": "Autódromo Municipal de Rosario",
+   "date_text": "Jueves 18 de marzo",
+   "start": "2027-03-18",
+   "end": "2027-03-18",
+   "ranged": false,
+   "dates": [
+    "2027-03-18"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": false,
+   "image": "https://www.rosarioencartel.com.ar/web/wp-content/uploads/2016/01/alejandro-sanz-2026-edit-1-222x187.jpg",
+   "description": "El cantautor español regresa a Rosario en el marco de su gira mundial ¿Y ahora qué +? Lugar: Autódromo...",
+   "sources": [
+    {
+     "name": "Rosario en Cartel",
+     "url": "https://www.rosarioencartel.com.ar/alejandro-sanz-2027/"
+    }
+   ],
+   "feed": "Rosario en Cartel",
+   "coords": []
   },
   {
    "id": "821b136a49",
