@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-23T20:48:44+00:00",
+ "generated_at": "2026-11-26T18:46:56+00:00",
  "offers": {
   "musica_en_vivo": "Música en vivo",
   "cena": "Cena",
@@ -84,7 +84,7 @@
      "url": "https://www.rosario.tur.ar/donde-ir/cultura/centros-culturales/la-casa-del-tango"
     }
    ],
-   "upcoming_count": 4,
+   "upcoming_count": 3,
    "upcoming": [
     {
      "id": "eab6d41868",
@@ -104,17 +104,6 @@
      "date_text": "Del 22 al 29 de noviembre · Domingo · De 10 a 12 horas",
      "time": "",
      "url": "https://www.rosario.gob.ar/inicio/tango-en-calle",
-     "source": "Agenda municipal",
-     "free": true,
-     "price_from": null
-    },
-    {
-     "id": "933bf4ec65",
-     "title": "Taller de Técnicas de Danza y Composición Instantánea",
-     "start": "2026-11-25",
-     "date_text": "Del 25 al 25 de noviembre · Miércoles · De 16:30 a 18 horas",
-     "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/taller-de-tecnicas-de-danza-y-composicion-instantanea",
      "source": "Agenda municipal",
      "free": true,
      "price_from": null
