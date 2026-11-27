@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-26T18:46:57+00:00",
+ "generated_at": "2026-11-27T18:38:47+00:00",
  "sources": {
   "Agenda municipal": {
    "ok": false,
@@ -7,7 +7,7 @@
   },
   "Rosario en Cartel": {
    "ok": true,
-   "count": 33,
+   "count": 32,
    "sin_fecha": 3
   },
   "Teatro La Comedia": {
@@ -32,7 +32,7 @@
   },
   "Qué Hacemos": {
    "ok": true,
-   "count": 141,
+   "count": 139,
    "sin_fecha": 0
   },
   "Disfruta Rosario": {
@@ -47,7 +47,7 @@
   },
   "1000Tickets": {
    "ok": true,
-   "count": 3,
+   "count": 2,
    "sin_fecha": 0
   },
   "Producciones de Acá": {
@@ -1321,531 +1321,6 @@
    ]
   },
   {
-   "id": "12ef26f2d8",
-   "title": "1er. Congreso de Ciencia de Datos e Inteligencia Artificial",
-   "category": "eventos",
-   "categories": [
-    "eventos"
-   ],
-   "plan": "cultura",
-   "venue": "Universidad del Gran Rosario",
-   "date_text": "Jueves 26 de noviembre",
-   "start": "2026-11-26",
-   "end": "2026-11-26",
-   "ranged": false,
-   "dates": [
-    "2026-11-26"
-   ],
-   "address": "",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "https://www.rosarioencartel.com.ar/web/wp-content/uploads/2026/11/Primer-Congreso-de-Ciencia-de-Datos-e-IA-1-222x187.png",
-   "description": "Una jornada que propone reunir en un mismo espacio a la comunidad académica, empresas, especialistas y actores vinculados al...",
-   "sources": [
-    {
-     "name": "Rosario en Cartel",
-     "url": "https://www.rosarioencartel.com.ar/1er-congreso-de-ciencia-de-datos-e-inteligencia-artificial/"
-    }
-   ],
-   "feed": "Rosario en Cartel",
-   "coords": [
-    [
-     -32.95126,
-     -60.64412
-    ]
-   ]
-  },
-  {
-   "id": "2408799ae7",
-   "title": "Clínica de palabras graciosas",
-   "category": "teatro",
-   "categories": [
-    "teatro"
-   ],
-   "plan": "cultura",
-   "venue": "Cultural Fontanarrosa",
-   "date_text": "Jueves · a 22 horas",
-   "start": "2026-11-26",
-   "end": "2026-11-26",
-   "ranged": false,
-   "dates": [
-    "2026-11-26"
-   ],
-   "address": "SAN MARTIN GRAL. JOSE 1080",
-   "time": "",
-   "price_from": null,
-   "free": true,
-   "image": "https://www.rosario.gob.ar/inicio/sites/default/files/styles/colorbox_modal/public/2026-11/andy%201.png.webp?itok=tJdn3y-P",
-   "description": "El jueves 26 de noviembre a las 21 h se realizará la primer noche del Festival Fontanarrosa en la expalanada del Cultural, con entrada gratuita.",
-   "sources": [
-    {
-     "name": "Agenda municipal",
-     "url": "https://www.rosario.gob.ar/inicio/clinica-de-palabras-graciosas"
-    }
-   ],
-   "feed": "Agenda municipal",
-   "coords": [
-    [
-     -32.94991,
-     -60.63797
-    ]
-   ]
-  },
-  {
-   "id": "7aea9f60c9",
-   "title": "Ebenezer: los fantasmas de Navidad",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "26 nov, 27 nov, 28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
-   "start": "2026-11-26",
-   "end": "2026-12-02",
-   "ranged": false,
-   "dates": [
-    "2026-11-26",
-    "2026-11-27",
-    "2026-11-28",
-    "2026-11-29",
-    "2026-11-30",
-    "2026-12-01",
-    "2026-12-02"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "14:00 / 16:30 / 22:30",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6295.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6295"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "3963dcf32a",
-   "title": "El Príncipe Idiota",
-   "category": "musica",
-   "categories": [
-    "musica"
-   ],
-   "plan": "cultura",
-   "venue": "Distrito 7",
-   "date_text": "26 nov",
-   "start": "2026-11-26",
-   "end": "2026-11-26",
-   "ranged": false,
-   "dates": [
-    "2026-11-26"
-   ],
-   "address": "Av. Ovidio Lagos 790",
-   "time": "21:00",
-   "price_from": null,
-   "free": false,
-   "image": "https://cdn.prod.website-files.com/6423440213c3f044ff2b62a1/6aac4224b6f14f24fb46f256_854.jpg",
-   "description": "El Príncipe Idiota en Distrito 7",
-   "sources": [
-    {
-     "name": "Agendade",
-     "url": "https://www.d7entradas.com.ar/eventos/el-principe-idiota-presenta-carisma-secreto-e344"
-    },
-    {
-     "name": "Qué Hacemos",
-     "url": "https://www.quehacemos.com.ar/eventos/el-principe-idiota-66353"
-    }
-   ],
-   "coords": [
-    [
-     -32.94198,
-     -60.66148
-    ]
-   ],
-   "feed": "Qué Hacemos"
-  },
-  {
-   "id": "e23c46e224",
-   "title": "El bosque salvaje: Wildwood",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "26 nov, 27 nov, 28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
-   "start": "2026-11-26",
-   "end": "2026-12-02",
-   "ranged": false,
-   "dates": [
-    "2026-11-26",
-    "2026-11-27",
-    "2026-11-28",
-    "2026-11-29",
-    "2026-11-30",
-    "2026-12-01",
-    "2026-12-02"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "22:35",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6252.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6252"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "da29af45da",
-   "title": "El gato con sombrero",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "26 nov, 27 nov, 28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
-   "start": "2026-11-26",
-   "end": "2026-12-02",
-   "ranged": false,
-   "dates": [
-    "2026-11-26",
-    "2026-11-27",
-    "2026-11-28",
-    "2026-11-29",
-    "2026-11-30",
-    "2026-12-01",
-    "2026-12-02"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "12:05 / 14:30 / 16:55",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6275.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6275"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "667fb8a66b",
-   "title": "Función CIT: \"El enfermo imaginario\" (versión litoraleña)",
-   "category": "teatro",
-   "categories": [
-    "teatro"
-   ],
-   "plan": "cultura",
-   "venue": "Centro Municipal de Distrito Sur \"Rosa Ziperovich\"",
-   "date_text": "Jueves · a 20 horas",
-   "start": "2026-11-26",
-   "end": "2026-11-26",
-   "ranged": false,
-   "dates": [
-    "2026-11-26"
-   ],
-   "address": "URIBURU PTE. JOSE EVARIST 637",
-   "time": "",
-   "price_from": null,
-   "free": true,
-   "image": "https://www.rosario.gob.ar/inicio/sites/default/files/styles/colorbox_modal/public/2026-11/El%20enfermo%20imaginario%20-%2016%20de%20octubre%20de%202026%20a%20las%2018%20horas.jpg.webp?itok=Xi7VD4RY",
-   "description": "Versión de la comedia de Molière, a cargo del grupo Tertulias del Oeste del Circuito Interbarrial de Teatro. Una versión litoraleña, donde la exageración, el humor popular y los vínculos familiares se mezclan para poner en escena una pregunta siempre vigente: ¿quién está realmente enfermo: ¿el cuerpo, la familia o la sociedad?",
-   "sources": [
-    {
-     "name": "Agenda municipal",
-     "url": "https://www.rosario.gob.ar/inicio/funcion-cit-el-enfermo-imaginario-version-litoralena"
-    }
-   ],
-   "feed": "Agenda municipal",
-   "coords": []
-  },
-  {
-   "id": "c30bcfec88",
-   "title": "Gotteskinder en Cine Lumière",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Centro Cultural Cine Lumière",
-   "date_text": "Jueves · 20 horas",
-   "start": "2026-11-26",
-   "end": "2026-11-26",
-   "ranged": false,
-   "dates": [
-    "2026-11-26"
-   ],
-   "address": "VELEZ SARSFIELD DALMACIO 1027",
-   "time": "",
-   "price_from": null,
-   "free": true,
-   "image": "https://www.rosario.gob.ar/inicio/sites/default/files/styles/colorbox_modal/public/2026-10/Gotteskinder.jpg.webp?itok=kqAbfCnC",
-   "description": "Los adolescentes Hannah y Timo se ven en conflicto con los principios de sus padres cuando Timo descubre que es homosexual y Hannah desarrolla intereses incompatibles con los valores de su familia.",
-   "sources": [
-    {
-     "name": "Agenda municipal",
-     "url": "https://www.rosario.gob.ar/inicio/gotteskinder-en-cine-lumiere"
-    }
-   ],
-   "feed": "Agenda municipal",
-   "coords": [
-    [
-     -32.92522,
-     -60.67838
-    ]
-   ]
-  },
-  {
-   "id": "964d862b34",
-   "title": "Hechizo: Bienvenidos a Hexe",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario · Cinemark Rosario",
-   "date_text": "26 nov, 27 nov, 28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
-   "start": "2026-11-26",
-   "end": "2026-12-02",
-   "ranged": false,
-   "dates": [
-    "2026-11-26",
-    "2026-11-27",
-    "2026-11-28",
-    "2026-11-29",
-    "2026-11-30",
-    "2026-12-01",
-    "2026-12-02"
-   ],
-   "address": "",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6347.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6347"
-    },
-    {
-     "name": "Cinemark Rosario",
-     "url": "https://www.cinemark.com.ar/pelicula/hechizo-bienvenidos-a-hexe/compra-entradas/entradas"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ],
-    [
-     -32.91082,
-     -60.68296
-    ]
-   ]
-  },
-  {
-   "id": "98a5dea86b",
-   "title": "LA EXCEPCIÓN",
-   "category": "eventos",
-   "categories": [
-    "eventos"
-   ],
-   "plan": "cultura",
-   "venue": "CEC - Centro de Expresiones Contemporáneas - gral.",
-   "date_text": "26 nov",
-   "start": "2026-11-26",
-   "end": "2026-11-26",
-   "ranged": false,
-   "dates": [
-    "2026-11-26"
-   ],
-   "address": "Paseo de las Artes y el río - Rosario - Santa Fe",
-   "time": "20:00",
-   "price_from": null,
-   "free": false,
-   "image": "https://www.1000tickets.ar/img/evento/1606_261027143810.webp",
-   "description": "LA EXCEPCIÓN Descripción Sinopsis: La excepción primera es una comedia dramática con elementos del treatro del absurdo que transcurre durante una cena en la residencia del señor Rucci, quien estará ausente toda la velada. Su esposa, Isabel Rucci, será quien reciba la visita de sus vecinos, los Martin, socios del club que preside su esposo. Mientras, Mármol, el mayordomo de la residencia, funcionar",
-   "sources": [
-    {
-     "name": "1000Tickets",
-     "url": "https://www.1000tickets.ar/evento?id_evento=1606&la-excepcin"
-    }
-   ],
-   "coords": [
-    [
-     -32.94426,
-     -60.64003
-    ]
-   ],
-   "feed": "1000Tickets"
-  },
-  {
-   "id": "b490c38f93",
-   "title": "La nueva Focker",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario · Cinemark Rosario",
-   "date_text": "26 nov, 27 nov, 28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
-   "start": "2026-11-26",
-   "end": "2026-12-02",
-   "ranged": false,
-   "dates": [
-    "2026-11-26",
-    "2026-11-27",
-    "2026-11-28",
-    "2026-11-29",
-    "2026-11-30",
-    "2026-12-01",
-    "2026-12-02"
-   ],
-   "address": "",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6341.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6341"
-    },
-    {
-     "name": "Cinemark Rosario",
-     "url": "https://www.cinemark.com.ar/pelicula/la-nueva-focker/compra-entradas/entradas"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ],
-    [
-     -32.91082,
-     -60.68296
-    ]
-   ]
-  },
-  {
-   "id": "bb47fc11c8",
-   "title": "Los Juegos del Hambre: Amanecer",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Cinemark Rosario",
-   "date_text": "26 nov, 27 nov, 28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
-   "start": "2026-11-26",
-   "end": "2026-12-02",
-   "ranged": false,
-   "dates": [
-    "2026-11-26",
-    "2026-11-27",
-    "2026-11-28",
-    "2026-11-29",
-    "2026-11-30",
-    "2026-12-01",
-    "2026-12-02"
-   ],
-   "address": "Nansen 255 (Portal Rosario)",
-   "time": "15:20 / 16:10 / 18:40 / 19:30 / 22:10 / 22:50 / …",
-   "price_from": null,
-   "free": false,
-   "image": "https://cdn.cinemark.com.ar/content/posters/HO00013363.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Cinemark Rosario",
-     "url": "https://www.cinemark.com.ar/pelicula/los-juegos-del-hambre-amanecer-en-la-cosecha/compra-entradas/entradas"
-    }
-   ],
-   "feed": "Cinemark Rosario",
-   "coords": [
-    [
-     -32.91082,
-     -60.68296
-    ]
-   ]
-  },
-  {
-   "id": "3067e20b5b",
-   "title": "Los Juegos del Hambre: amanecer en la cosecha",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "26 nov, 27 nov, 28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
-   "start": "2026-11-26",
-   "end": "2026-12-02",
-   "ranged": false,
-   "dates": [
-    "2026-11-26",
-    "2026-11-27",
-    "2026-11-28",
-    "2026-11-29",
-    "2026-11-30",
-    "2026-12-01",
-    "2026-12-02"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "12:05 / 12:25 / 14:55 / 15:15 / 15:35 / 16:00 / …",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6291.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6291"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
    "id": "90e88f0a97",
    "title": "Moscas en Cine Lumière",
    "category": "cine",
@@ -1914,174 +1389,6 @@
    ]
   },
   {
-   "id": "95e44c1c08",
-   "title": "Orquesta Sinfónica Provincial de Rosario",
-   "category": "eventos",
-   "categories": [
-    "eventos"
-   ],
-   "plan": "cultura",
-   "venue": "Teatro El Círculo",
-   "date_text": "Jueves 26 de noviembre",
-   "start": "2026-11-26",
-   "end": "2026-11-26",
-   "ranged": false,
-   "dates": [
-    "2026-11-26"
-   ],
-   "address": "",
-   "time": "",
-   "price_from": null,
-   "free": true,
-   "image": "https://www.rosarioencartel.com.ar/web/wp-content/uploads/2015/04/Orquesta-Sinfonica-Provincial-de-Rosario-2025-222x187.jpg",
-   "description": "La Orquesta Sinfónica Provincial de Rosario dará un nuevo concierto de su Temporada 2026 en el Teatro “El Círculo”....",
-   "sources": [
-    {
-     "name": "Rosario en Cartel",
-     "url": "https://www.rosarioencartel.com.ar/orquesta-sinfonica-de-rosario/"
-    }
-   ],
-   "feed": "Rosario en Cartel",
-   "coords": [
-    [
-     -32.95258,
-     -60.63507
-    ]
-   ]
-  },
-  {
-   "id": "9728f2612f",
-   "title": "Puedes verlo todo",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario · Cinemark Rosario",
-   "date_text": "26 nov, 27 nov, 28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
-   "start": "2026-11-26",
-   "end": "2026-12-02",
-   "ranged": false,
-   "dates": [
-    "2026-11-26",
-    "2026-11-27",
-    "2026-11-28",
-    "2026-11-29",
-    "2026-11-30",
-    "2026-12-01",
-    "2026-12-02"
-   ],
-   "address": "",
-   "time": "",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6326.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6326"
-    },
-    {
-     "name": "Cinemark Rosario",
-     "url": "https://www.cinemark.com.ar/pelicula/puedes-verlo-todo/compra-entradas/entradas"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ],
-    [
-     -32.91082,
-     -60.68296
-    ]
-   ]
-  },
-  {
-   "id": "918ff7bb7e",
-   "title": "Ramayana: El nacimiento de una leyenda",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "26 nov, 27 nov, 28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
-   "start": "2026-11-26",
-   "end": "2026-12-02",
-   "ranged": false,
-   "dates": [
-    "2026-11-26",
-    "2026-11-27",
-    "2026-11-28",
-    "2026-11-29",
-    "2026-11-30",
-    "2026-12-01",
-    "2026-12-02"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "12:00 / 15:10 / 18:40 / 22:05",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6348.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6348"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
-  },
-  {
-   "id": "e50d46bf6d",
-   "title": "SUNSET BY CRISTAL CLUB & CANNIBAL SET🌅",
-   "category": "otros",
-   "categories": [
-    "otros"
-   ],
-   "plan": "cultura",
-   "venue": "AnfiBar",
-   "date_text": "26 nov",
-   "start": "2026-11-26",
-   "end": "2026-11-26",
-   "ranged": false,
-   "dates": [
-    "2026-11-26"
-   ],
-   "address": "Av. Diario La Capital, Padre Rogelio Pizzi y, Rosario",
-   "time": "19:00",
-   "price_from": 4000,
-   "free": false,
-   "image": "https://images.venti.live/user-images/1795289801780-lg.jpg",
-   "description": "Evento en Venti: SUNSET BY CRISTAL CLUB & CANNIBAL SET🌅",
-   "sources": [
-    {
-     "name": "Venti",
-     "url": "https://venti.com.ar/evento/sunset-by-cristal-club-cannibal-set"
-    },
-    {
-     "name": "Qué Hacemos",
-     "url": "https://www.quehacemos.com.ar/eventos/sunset-by-cristal-club-cannibal-set-81025"
-    }
-   ],
-   "coords": [
-    [
-     -32.95844,
-     -60.62278
-    ]
-   ],
-   "feed": "Qué Hacemos"
-  },
-  {
    "id": "715e4a806f",
    "title": "Vóley: arranca la Superliga en el Invencible Rosario",
    "category": "deporte",
@@ -2109,48 +1416,6 @@
    ],
    "feed": "Agenda municipal",
    "coords": []
-  },
-  {
-   "id": "408358cf21",
-   "title": "Yo soy Rocky",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "26 nov, 27 nov, 28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
-   "start": "2026-11-26",
-   "end": "2026-12-02",
-   "ranged": false,
-   "dates": [
-    "2026-11-26",
-    "2026-11-27",
-    "2026-11-28",
-    "2026-11-29",
-    "2026-11-30",
-    "2026-12-01",
-    "2026-12-02"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "14:00 / 16:40 / 19:25 / 22:15",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6325.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6325"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
-    ]
-   ]
   },
   {
    "id": "f3aab2c8dc",
@@ -2264,47 +1529,6 @@
     [
      -32.9038,
      -60.74483
-    ]
-   ]
-  },
-  {
-   "id": "654b14672f",
-   "title": "Bichos del mar",
-   "category": "cine",
-   "categories": [
-    "cine"
-   ],
-   "plan": "cultura",
-   "venue": "Showcase Rosario",
-   "date_text": "27 nov, 28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
-   "start": "2026-11-27",
-   "end": "2026-12-02",
-   "ranged": false,
-   "dates": [
-    "2026-11-27",
-    "2026-11-28",
-    "2026-11-29",
-    "2026-11-30",
-    "2026-12-01",
-    "2026-12-02"
-   ],
-   "address": "Junín 501 (Alto Rosario Shopping)",
-   "time": "12:10 / 14:05",
-   "price_from": null,
-   "free": false,
-   "image": "https://static.voyalcine.net/Uploads/i6350.jpg",
-   "description": "",
-   "sources": [
-    {
-     "name": "Showcase Rosario",
-     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6350"
-    }
-   ],
-   "feed": "Showcase Rosario",
-   "coords": [
-    [
-     -32.92804,
-     -60.66785
     ]
    ]
   },
@@ -2480,6 +1704,129 @@
     [
      -32.94991,
      -60.63797
+    ]
+   ]
+  },
+  {
+   "id": "7aea9f60c9",
+   "title": "Ebenezer: los fantasmas de Navidad",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "27 nov, 28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
+   "start": "2026-11-27",
+   "end": "2026-12-02",
+   "ranged": false,
+   "dates": [
+    "2026-11-27",
+    "2026-11-28",
+    "2026-11-29",
+    "2026-11-30",
+    "2026-12-01",
+    "2026-12-02"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "14:00 / 16:30 / 22:30",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6295.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6295"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
+   "id": "e23c46e224",
+   "title": "El bosque salvaje: Wildwood",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "27 nov, 28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
+   "start": "2026-11-27",
+   "end": "2026-12-02",
+   "ranged": false,
+   "dates": [
+    "2026-11-27",
+    "2026-11-28",
+    "2026-11-29",
+    "2026-11-30",
+    "2026-12-01",
+    "2026-12-02"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "22:35",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6252.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6252"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
+   "id": "da29af45da",
+   "title": "El gato con sombrero",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "27 nov, 28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
+   "start": "2026-11-27",
+   "end": "2026-12-02",
+   "ranged": false,
+   "dates": [
+    "2026-11-27",
+    "2026-11-28",
+    "2026-11-29",
+    "2026-11-30",
+    "2026-12-01",
+    "2026-12-02"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "12:05 / 14:30 / 16:55",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6275.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6275"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
     ]
    ]
   },
@@ -2831,6 +2178,55 @@
    "feed": "Qué Hacemos"
   },
   {
+   "id": "964d862b34",
+   "title": "Hechizo: Bienvenidos a Hexe",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario · Cinemark Rosario",
+   "date_text": "27 nov, 28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
+   "start": "2026-11-27",
+   "end": "2026-12-02",
+   "ranged": false,
+   "dates": [
+    "2026-11-27",
+    "2026-11-28",
+    "2026-11-29",
+    "2026-11-30",
+    "2026-12-01",
+    "2026-12-02"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6347.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6347"
+    },
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/hechizo-bienvenidos-a-hexe/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ],
+    [
+     -32.91082,
+     -60.68296
+    ]
+   ]
+  },
+  {
    "id": "67821062f4",
    "title": "IDAM",
    "category": "otros",
@@ -2973,6 +2369,137 @@
    "coords": []
   },
   {
+   "id": "b490c38f93",
+   "title": "La nueva Focker",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario · Cinemark Rosario",
+   "date_text": "27 nov, 28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
+   "start": "2026-11-27",
+   "end": "2026-12-02",
+   "ranged": false,
+   "dates": [
+    "2026-11-27",
+    "2026-11-28",
+    "2026-11-29",
+    "2026-11-30",
+    "2026-12-01",
+    "2026-12-02"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6341.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6341"
+    },
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/la-nueva-focker/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ],
+    [
+     -32.91082,
+     -60.68296
+    ]
+   ]
+  },
+  {
+   "id": "bb47fc11c8",
+   "title": "Los Juegos del Hambre: Amanecer",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Cinemark Rosario",
+   "date_text": "27 nov, 28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
+   "start": "2026-11-27",
+   "end": "2026-12-02",
+   "ranged": false,
+   "dates": [
+    "2026-11-27",
+    "2026-11-28",
+    "2026-11-29",
+    "2026-11-30",
+    "2026-12-01",
+    "2026-12-02"
+   ],
+   "address": "Nansen 255 (Portal Rosario)",
+   "time": "15:20 / 16:10 / 18:40 / 19:30 / 22:10 / 22:50 / …",
+   "price_from": null,
+   "free": false,
+   "image": "https://cdn.cinemark.com.ar/content/posters/HO00013363.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/los-juegos-del-hambre-amanecer-en-la-cosecha/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Cinemark Rosario",
+   "coords": [
+    [
+     -32.91082,
+     -60.68296
+    ]
+   ]
+  },
+  {
+   "id": "3067e20b5b",
+   "title": "Los Juegos del Hambre: amanecer en la cosecha",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "27 nov, 28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
+   "start": "2026-11-27",
+   "end": "2026-12-02",
+   "ranged": false,
+   "dates": [
+    "2026-11-27",
+    "2026-11-28",
+    "2026-11-29",
+    "2026-11-30",
+    "2026-12-01",
+    "2026-12-02"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "12:05 / 12:25 / 14:55 / 15:15 / 15:35 / 16:00 / …",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6291.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6291"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
+  },
+  {
    "id": "c4ac0c33cf",
    "title": "MARIANA CARRIZO EN ROSARIO - PARRANDA COPLERA",
    "category": "otros",
@@ -3064,6 +2591,55 @@
    "feed": "Qué Hacemos"
   },
   {
+   "id": "9728f2612f",
+   "title": "Puedes verlo todo",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario · Cinemark Rosario",
+   "date_text": "27 nov, 28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
+   "start": "2026-11-27",
+   "end": "2026-12-02",
+   "ranged": false,
+   "dates": [
+    "2026-11-27",
+    "2026-11-28",
+    "2026-11-29",
+    "2026-11-30",
+    "2026-12-01",
+    "2026-12-02"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6326.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6326"
+    },
+    {
+     "name": "Cinemark Rosario",
+     "url": "https://www.cinemark.com.ar/pelicula/puedes-verlo-todo/compra-entradas/entradas"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ],
+    [
+     -32.91082,
+     -60.68296
+    ]
+   ]
+  },
+  {
    "id": "b90c431687",
    "title": "Quinteto Bataraz y Lucas Querini Grupo en concierto",
    "category": "musica",
@@ -3128,6 +2704,47 @@
     [
      -32.9465,
      -60.63298
+    ]
+   ]
+  },
+  {
+   "id": "918ff7bb7e",
+   "title": "Ramayana: El nacimiento de una leyenda",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "27 nov, 28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
+   "start": "2026-11-27",
+   "end": "2026-12-02",
+   "ranged": false,
+   "dates": [
+    "2026-11-27",
+    "2026-11-28",
+    "2026-11-29",
+    "2026-11-30",
+    "2026-12-01",
+    "2026-12-02"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "12:00 / 15:10 / 18:40 / 22:05",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6348.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6348"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
     ]
    ]
   },
@@ -3246,6 +2863,47 @@
     ]
    ],
    "feed": "Qué Hacemos"
+  },
+  {
+   "id": "408358cf21",
+   "title": "Yo soy Rocky",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "27 nov, 28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
+   "start": "2026-11-27",
+   "end": "2026-12-02",
+   "ranged": false,
+   "dates": [
+    "2026-11-27",
+    "2026-11-28",
+    "2026-11-29",
+    "2026-11-30",
+    "2026-12-01",
+    "2026-12-02"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "14:00 / 16:40 / 19:25 / 22:15",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6325.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6325"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
   },
   {
    "id": "7c57aa46c7",
@@ -3417,6 +3075,46 @@
     "electronica"
    ],
    "feed": "Qué Hacemos"
+  },
+  {
+   "id": "654b14672f",
+   "title": "Bichos del mar",
+   "category": "cine",
+   "categories": [
+    "cine"
+   ],
+   "plan": "cultura",
+   "venue": "Showcase Rosario",
+   "date_text": "28 nov, 29 nov, 30 nov, 1 dic, 2 dic",
+   "start": "2026-11-28",
+   "end": "2026-12-02",
+   "ranged": false,
+   "dates": [
+    "2026-11-28",
+    "2026-11-29",
+    "2026-11-30",
+    "2026-12-01",
+    "2026-12-02"
+   ],
+   "address": "Junín 501 (Alto Rosario Shopping)",
+   "time": "12:10 / 14:05",
+   "price_from": null,
+   "free": false,
+   "image": "https://static.voyalcine.net/Uploads/i6350.jpg",
+   "description": "",
+   "sources": [
+    {
+     "name": "Showcase Rosario",
+     "url": "https://entradas.todoshowcase.com/showcase/pelicula?filmid=6350"
+    }
+   ],
+   "feed": "Showcase Rosario",
+   "coords": [
+    [
+     -32.92804,
+     -60.66785
+    ]
+   ]
   },
   {
    "id": "7f4b3946db",
@@ -3957,6 +3655,37 @@
    ]
   },
   {
+   "id": "39ecffc15d",
+   "title": "Orsini",
+   "category": "teatro",
+   "categories": [
+    "teatro"
+   ],
+   "plan": "cultura",
+   "venue": "Centro Cultural Contraviento",
+   "date_text": "Sábado 28 de noviembre",
+   "start": "2026-11-28",
+   "end": "2026-11-28",
+   "ranged": false,
+   "dates": [
+    "2026-11-28"
+   ],
+   "address": "",
+   "time": "",
+   "price_from": null,
+   "free": false,
+   "image": "https://www.rosarioencartel.com.ar/web/wp-content/uploads/2016/05/ruben-orsini-222x187.jpeg",
+   "description": "El artista estrena «Para nacer he nacido». Es un ciclo de vida, una poesía visual que nos sugiere el...",
+   "sources": [
+    {
+     "name": "Rosario en Cartel",
+     "url": "https://www.rosarioencartel.com.ar/marionetas-orsini-2026/"
+    }
+   ],
+   "feed": "Rosario en Cartel",
+   "coords": []
+  },
+  {
    "id": "6abd5d2384",
    "title": "Por ese palpitar. Exposición del Colectivo de Arte Dorado Ciprés, Casa del Paraná, en el CAM",
    "category": "muestras",
@@ -4096,38 +3825,6 @@
     ]
    ],
    "feed": "Qué Hacemos"
-  },
-  {
-   "id": "fc3951562c",
-   "title": "Rosario Car Show edición especial",
-   "category": "eventos",
-   "categories": [
-    "eventos"
-   ],
-   "plan": "cultura",
-   "venue": "",
-   "date_text": "28 nov, 29 nov",
-   "start": "2026-11-28",
-   "end": "2026-11-29",
-   "ranged": false,
-   "dates": [
-    "2026-11-28",
-    "2026-11-29"
-   ],
-   "address": "",
-   "time": "13:00",
-   "price_from": 18000,
-   "free": false,
-   "image": "https://disfrutarosario.com/wp-content/uploads/2026/10/rosario-car-show.avif",
-   "description": "Rosario Car Show reunirá más de 100 autos y motos clásicos, deportivos y de colección.",
-   "sources": [
-    {
-     "name": "Disfruta Rosario",
-     "url": "https://disfrutarosario.com/salon-del-automovil-rosario/"
-    }
-   ],
-   "feed": "Disfruta Rosario",
-   "coords": []
   },
   {
    "id": "1c11a53113",
@@ -6895,7 +6592,7 @@
     "2026-12-07"
    ],
    "address": "Ruta 9 y José Hernández",
-   "time": "17:00",
+   "time": "19:00",
    "price_from": null,
    "free": false,
    "image": "https://contenidos.entradauno.com/cache/imagenes/productos/landing-(5)_4420ceeb-a1ef-47de-b24c-fa12610b3fc5.png",
@@ -7388,7 +7085,7 @@
   },
   {
    "id": "e9b73f6543",
-   "title": "Duna",
+   "title": "Duna (2021)",
    "category": "cine",
    "categories": [
     "cine"
@@ -7698,7 +7395,7 @@
   },
   {
    "id": "b820045e57",
-   "title": "Duna: parte dos",
+   "title": "Duna: parte dos (2024)",
    "category": "cine",
    "categories": [
     "cine"
@@ -9055,6 +8752,41 @@
     {
      "name": "Disfruta Rosario",
      "url": "https://disfrutarosario.com/fiesta-bresh-en-rosario/"
+    }
+   ],
+   "feed": "Disfruta Rosario",
+   "coords": []
+  },
+  {
+   "id": "eae90880e5",
+   "title": "Fiestón: fechas y precios",
+   "category": "eventos",
+   "categories": [
+    "eventos"
+   ],
+   "plan": "cultura",
+   "venue": "",
+   "date_text": "19 dic",
+   "start": "2026-12-19",
+   "end": "2026-12-19",
+   "ranged": false,
+   "dates": [
+    "2026-12-19"
+   ],
+   "address": "",
+   "time": "20:00",
+   "price_from": 12000,
+   "free": false,
+   "image": "https://disfrutarosario.com/wp-content/uploads/2025/03/fieston.avif",
+   "description": "El Fiestón anunció una nueva fecha y se prepara para poner a bailar a Rosario.",
+   "sources": [
+    {
+     "name": "Tickets for Lovers",
+     "url": "https://www.ticketsforlovers.com/eventos/fieston-e1490"
+    },
+    {
+     "name": "Disfruta Rosario",
+     "url": "https://disfrutarosario.com/fieston/"
     }
    ],
    "feed": "Disfruta Rosario",
