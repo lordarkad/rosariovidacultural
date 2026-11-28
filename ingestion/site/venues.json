@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-27T18:38:45+00:00",
+ "generated_at": "2026-11-28T17:33:36+00:00",
  "offers": {
   "musica_en_vivo": "Música en vivo",
   "cena": "Cena",
@@ -84,39 +84,17 @@
      "url": "https://www.rosario.tur.ar/donde-ir/cultura/centros-culturales/la-casa-del-tango"
     }
    ],
-   "upcoming_count": 3,
+   "upcoming_count": 1,
    "upcoming": [
-    {
-     "id": "eab6d41868",
-     "title": "Tertulias Tangueras",
-     "start": "2026-11-20",
-     "date_text": "Del 27 al 27 de noviembre · Viernes · De 17 a 18:30 horas",
-     "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/tertulias-tangueras-1",
-     "source": "Agenda municipal",
-     "free": true,
-     "price_from": null
-    },
     {
      "id": "d829bd08d9",
      "title": "Tango en Calle",
-     "start": "2026-11-22",
-     "date_text": "Del 22 al 29 de noviembre · Domingo · De 10 a 12 horas",
+     "start": "2026-11-29",
+     "date_text": "Del 29 al 29 de noviembre · Domingo · De 10 a 12 horas",
      "time": "",
      "url": "https://www.rosario.gob.ar/inicio/tango-en-calle",
      "source": "Agenda municipal",
      "free": true,
-     "price_from": null
-    },
-    {
-     "id": "b90c431687",
-     "title": "Quinteto Bataraz y Lucas Querini Grupo en concierto",
-     "start": "2026-11-27",
-     "date_text": "Viernes · a 23 horas",
-     "time": "",
-     "url": "https://www.rosario.gob.ar/inicio/quinteto-bataraz-y-lucas-querini-grupo-en-concierto",
-     "source": "Agenda municipal",
-     "free": false,
      "price_from": null
     }
    ]
